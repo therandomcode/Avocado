@@ -21,5 +21,13 @@ public class FarmerHome extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
+        final Button signOutButton = findViewById(R.id.farmerHomeSignOutButton);
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(FarmerHome.this, BeginSignUp.class);
+                startActivity(myIntent);
+            }
+        });
     }
 }
