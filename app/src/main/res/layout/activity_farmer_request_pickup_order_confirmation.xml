@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/farmerRequestPickupOrderConfirmationFinishButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="367dp"
         android:layout_height="wrap_content"

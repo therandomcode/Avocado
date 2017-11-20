@@ -1,8 +1,12 @@
 package com.example.wagner.avocado;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class SignUpLater extends AppCompatActivity {
@@ -46,5 +50,20 @@ public class SignUpLater extends AppCompatActivity {
                 }
             }
         });
+
+        final Button button = findViewById(R.id.button_cal_next3);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showToast();
+                Intent farmerRequestPickupSetPickupLocationIntent = new Intent(SignUpLater.this,
+                        FarmerHome.class);
+                startActivity(farmerRequestPickupSetPickupLocationIntent);
+            }
+        });
+
+    }
+
+    private void showToast() {
+        Toast.makeText(this, "Great! We will send you a reminder.", Toast.LENGTH_LONG).show();
     }
 }
