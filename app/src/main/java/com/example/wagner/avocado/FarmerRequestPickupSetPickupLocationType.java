@@ -16,9 +16,9 @@ public class FarmerRequestPickupSetPickupLocationType extends AppCompatActivity 
         final Button button = findViewById(R.id.farmerRequestPickupSetPickupLocationTypeNextButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent farmerRequestPickupSetPickupLocationTypeIntent = new Intent(FarmerRequestPickupSetPickupLocationType.this,
-                        FarmerRequestPickupOrderConfirmation.class);
-                startActivity(farmerRequestPickupSetPickupLocationTypeIntent);
+                Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupSetPickupLocationType.this,
+                        FarmerRequestPickupSetDropoffLocation.class);
+                startActivity(farmerBeginRequestPickupIntent);
             }
         });
     }
