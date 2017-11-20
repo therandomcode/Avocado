@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
@@ -67,6 +69,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                 startActivity(farmerRequestPickupSetPickupLocationIntent);
             }
         });
+
     }
 
     @Override
@@ -88,8 +91,10 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(4.5709,-74.2973), (float) 5.0));
+
         Toast.makeText(this,
-                "Set your pickup location by dropping a pin or going to your location.",
+                "Set your pickup location by dropping a pin or entering your address.",
                 Toast.LENGTH_LONG).show();
     }
 
@@ -175,4 +180,5 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         // for the default behavior to occur.
         return false;
     }
+
 }
