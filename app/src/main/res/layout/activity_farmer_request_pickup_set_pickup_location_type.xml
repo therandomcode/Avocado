@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.wagner.avocado.FarmerRequestPickupSetPickupLocationType">
     <Button
-        android:id="@+id/farmerRequestPickupSetPickupLocationTypeNextButton"
+        android:id="@+id/farmerRequestPickupSetLocationPickupLocationTypeNextButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,9 +82,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:ems="10"
-        android:hint="Please specify what kind of location the address you entered is"
+        android:hint="If other, please specify"
         android:inputType="text"
-        android:text="If other, please specify"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
