@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.example.wagner.avocado.SignUpSetLocation">
 
+    <fragment
+        android:id="@+id/map"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="327dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="56dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.608"
+        tools:layout_editor_absoluteX="0dp" />
+
     <Button
         android:id="@+id/signUpSetLocationBackButton"
         style="@style/Widget.AppCompat.Button.Colored"
