@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.wagner.avocado.FarmerRequestPickupSetPickupLocationType">
     <Button
-        android:id="@+id/farmerRequestPickupSetLocationPickupLocationTypeNextButton"
+        android:id="@+id/farmerRequestPickupSetPickupLocationTypeNextButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
