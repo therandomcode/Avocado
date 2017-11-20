@@ -68,6 +68,15 @@ public class SignUpSetLocation extends AppCompatActivity implements
             }
         });
 
+        final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
+        skipButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(SignUpSetLocation.this, SignUpLater.class);
+                startActivity(myIntent);
+            }
+        });
+
+
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         new OnMapAndViewReadyListener(mapFragment, this);
