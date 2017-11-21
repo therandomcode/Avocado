@@ -106,9 +106,12 @@
         android:id="@+id/button3"
         android:layout_width="352dp"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginBottom="212dp"
         android:text="+ Add payment method"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="4dp" />
+=======
+>>>>>>> f668dcbc34c6322b682e8404a270e3a00b5c5147
 
 </android.support.constraint.ConstraintLayout>
