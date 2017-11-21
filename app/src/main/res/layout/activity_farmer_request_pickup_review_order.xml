@@ -112,6 +112,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="4dp" />
 =======
+        android:layout_marginBottom="152dp"
+        android:layout_marginStart="4dp"
+        android:text="+ Add payment method"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 >>>>>>> f668dcbc34c6322b682e8404a270e3a00b5c5147
 
 </android.support.constraint.ConstraintLayout>
