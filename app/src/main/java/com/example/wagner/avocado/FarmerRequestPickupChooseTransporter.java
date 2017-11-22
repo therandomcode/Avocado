@@ -10,7 +10,7 @@ import android.widget.ListView;
 public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
     ListView lst;
-    String[] transportername={"John","Richard","David"};
+    String[] transportername={"Juan","Ricardo","Davíd"};
     String[] time={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};
     Integer[] imgid ={R.drawable.bgavocado,R.drawable.bgavocado,R.drawable.bgavocado};
 

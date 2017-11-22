@@ -13,11 +13,20 @@ public class FarmerRequestPickupSetPickupLocationType extends AppCompatActivity 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_set_pickup_location_type);
 
-        final Button button = findViewById(R.id.farmerRequestPickupSetPickupLocationTypeNextButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = findViewById(R.id.farmerRequestPickupSetPickupLocationTypeNextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupSetPickupLocationType.this,
                         FarmerRequestPickupSetDropoffLocation.class);
+                startActivity(farmerBeginRequestPickupIntent);
+            }
+        });
+
+        final Button backButton = findViewById(R.id.farmerRequestPickupSetPickupLocationTypeBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupSetPickupLocationType.this,
+                        FarmerRequestPickupSetPickupLocation.class);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });

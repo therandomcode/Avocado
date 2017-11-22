@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wagner.agromovil.FarmerRequestPickupPickDate">
+    tools:context="com.example.wagner.avocado.FarmerRequestPickupPickDate">
 
     <TextView
         android:id="@+id/textView5"
@@ -45,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/farmerRequestPickupDateBackButton"
+        android:id="@+id/FarmerRequestPickupDateBackButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginTop="8dp"
         android:text="AM"
-        app:layout_constraintBottom_toTopOf="@+id/farmerRequestPickupDateBackButton"
+        app:layout_constraintBottom_toTopOf="@+id/FarmerRequestPickupDateBackButton"
         app:layout_constraintEnd_toStartOf="@+id/pmCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/datePicker"
         tools:text="AM" />
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:text="PM"
-        app:layout_constraintBottom_toTopOf="@+id/farmerRequestPickupDateBackButton"
+        app:layout_constraintBottom_toTopOf="@+id/FarmerRequestPickupDateBackButton"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="PM" />
 

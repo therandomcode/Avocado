@@ -22,21 +22,13 @@
         android:id="@+id/map"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-<<<<<<< HEAD
-        android:layout_height="364dp"
-=======
         android:layout_height="352dp"
->>>>>>> f668dcbc34c6322b682e8404a270e3a00b5c5147
         android:layout_marginBottom="8dp"
         android:layout_marginTop="56dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintVertical_bias="0.421"
-=======
         app:layout_constraintVertical_bias="0.368"
->>>>>>> f668dcbc34c6322b682e8404a270e3a00b5c5147
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
@@ -64,21 +56,12 @@
     <EditText
         android:id="@+id/editText7"
         android:layout_width="wrap_content"
-<<<<<<< HEAD
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="40dp"
-=======
         android:layout_height="41dp"
         android:layout_marginStart="84dp"
->>>>>>> f668dcbc34c6322b682e8404a270e3a00b5c5147
         android:ems="10"
         android:hint="Enter Your Address Here"
         android:inputType="textPostalAddress"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintTop_toTopOf="@+id/textView22" />
-=======
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <TextView
@@ -92,6 +75,5 @@
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
->>>>>>> f668dcbc34c6322b682e8404a270e3a00b5c5147
 
 </android.support.constraint.ConstraintLayout>

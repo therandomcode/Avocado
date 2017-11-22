@@ -60,10 +60,18 @@ public class SignUpSetLocation extends AppCompatActivity implements
 
         findViewById(R.id.map).setVisibility(View.GONE);
 
-        final Button signOutButton = findViewById(R.id.signUpSetLocationNextButton);
-        signOutButton.setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = findViewById(R.id.signUpSetLocationNextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpSetLocation.this, SignUpFarmerAddPhotos.class);
+                startActivity(myIntent);
+            }
+        });
+
+        final Button backButton = findViewById(R.id.signUpSetLocationBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(SignUpSetLocation.this, BeginSignUp.class);
                 startActivity(myIntent);
             }
         });
