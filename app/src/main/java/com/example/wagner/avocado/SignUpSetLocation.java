@@ -71,7 +71,7 @@ public class SignUpSetLocation extends AppCompatActivity implements
         final Button backButton = findViewById(R.id.signUpSetLocationBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetLocation.this, BeginSignUp.class);
+                Intent myIntent = new Intent(SignUpSetLocation.this, CreateAccount.class);
                 startActivity(myIntent);
             }
         });
