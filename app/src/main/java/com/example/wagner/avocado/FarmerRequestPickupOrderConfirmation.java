@@ -23,8 +23,6 @@ public class FarmerRequestPickupOrderConfirmation extends AppCompatActivity {
                 startActivity(farmerRequestPickupSetPickupLocationIntent);
             }
         });
-
-
     }
 
     private void showToast() {

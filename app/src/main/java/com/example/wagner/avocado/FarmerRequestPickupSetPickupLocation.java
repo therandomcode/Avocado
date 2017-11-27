@@ -70,6 +70,14 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
             }
         });
 
+        final Button backButton = findViewById(R.id.farmerRequestPickupSetPickupLocationBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(FarmerRequestPickupSetPickupLocation.this, FarmerRequestPickupPickDate.class);
+                startActivity(myIntent);
+            }
+        });
+
     }
 
     @Override

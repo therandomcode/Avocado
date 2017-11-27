@@ -13,11 +13,20 @@ public class FarmerRequestPickupReviewOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_review_order);
 
-        final Button button = findViewById(R.id.farmerRequestPickupReviewOrderNextButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = findViewById(R.id.farmerRequestPickupReviewOrderNextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupReviewOrder.this,
                         FarmerRequestPickupEnterPayment.class);
+                startActivity(farmerBeginRequestPickupIntent);
+            }
+        });
+
+        final Button backButton = findViewById(R.id.farmerRequestPickupReviewOrderBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupReviewOrder.this,
+                        FarmerRequestPickupChooseTransporter.class);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });

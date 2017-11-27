@@ -31,5 +31,14 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });
+
+        final Button backButton = findViewById(R.id.farmerRequestPickupChooseTransporterBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(FarmerRequestPickupChooseTransporter.this,
+                        FarmerRequestPickupSetDropoffLocation.class);
+                startActivity(myIntent);
+            }
+        });
     }
 }
