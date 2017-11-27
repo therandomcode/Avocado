@@ -22,6 +22,10 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
+import android.location.Geocoder;
+import android.location.Address;
+import android.widget.EditText;
+import java.util.List;
 
 
 public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity implements
@@ -51,6 +55,8 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
      * Keeps track of the selected marker.
      */
     private Marker mLastMarker;
+    //private Geocoder = new Geocoder();
+    private List<Address> adds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +70,14 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         final Button button = findViewById(R.id.farmerRequestPickupSetPickupLocationNextButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                final EditText inputAddress = findViewById(R.id.farmerRequestPickupSetPickupLocationEnterAddress);
+                String addy = inputAddress.getText().toString();
+
                 Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupSetPickupLocation.this,
                         FarmerRequestPickupSetPickupLocationType.class);
                 startActivity(farmerRequestPickupSetPickupLocationIntent);
             }
         });
-
     }
 
     @Override
