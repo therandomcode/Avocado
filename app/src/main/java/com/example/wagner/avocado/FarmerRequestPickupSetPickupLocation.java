@@ -22,6 +22,12 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
+import android.widget.EditText;
+import android.location.Geocoder;
+import android.location.Address;
+
+import java.io.IOException;
+import java.util.List;
 
 
 public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity implements
@@ -51,6 +57,9 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
      * Keeps track of the selected marker.
      */
     private Marker mLastMarker;
+    private List<Address> address;
+    private Geocoder coder = new Geocoder(this);
+    private LatLng resLatLng = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +70,10 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         new OnMapAndViewReadyListener(mapFragment, this);
 
-        final Button button = findViewById(R.id.farmerRequestPickupSetPickupLocationNextButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = findViewById(R.id.farmerRequestPickupSetPickupLocationNextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                checkAddress();
                 Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupSetPickupLocation.this,
                         FarmerRequestPickupSetPickupLocationType.class);
                 startActivity(farmerRequestPickupSetPickupLocationIntent);
@@ -171,6 +181,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
         Toast.makeText(this, "Setting your pickup location", Toast.LENGTH_SHORT).show();
+        resLatLng = point;
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
     }
 
@@ -179,6 +190,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         // The user has re-tapped on the marker which was already showing an info window.
         if (marker.equals(mLastMarker)) {
             mLastMarker.remove();
+            resLatLng = null;
             return true;
         }
 
@@ -187,6 +199,23 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         // Return false to indicate that we have not consumed the event and that we wish
         // for the default behavior to occur.
         return false;
+    }
+
+    private void checkAddress() {
+        try {
+            final EditText inputAddress = findViewById(R.id.farmerRequestPickupSetPickupLocationEnterAddress);
+            String addy = inputAddress.getText().toString();
+            address = coder.getFromLocationName(addy, 5);
+            Address location = address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+            resLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+        } catch (IOException ex) {
+            if (mLastMarker.getPosition() == null) {
+                ex.printStackTrace();
+                Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 }
