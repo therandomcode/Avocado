@@ -54,6 +54,11 @@
         <activity android:name=".FarmerRequestPickupEnterPayment" />
         <activity android:name=".FarmerRequestPickupReviewOrder" />
         <activity android:name=".FarmerRequestPickupOrderConfirmation" />
+        <activity android:name=".TransporterHome" />
+        <activity android:name=".TransporterViewSchedule" />
+        <activity android:name=".TransporterAddTripSetStartLocation" />
+        <activity android:name=".TransporterAddTripSetDestination" />
+        <activity android:name=".TransporterAddTripPickDate" />
         <activity android:name=".CreateAccount"/>
     </application>
 

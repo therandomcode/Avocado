@@ -6,24 +6,24 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="@drawable/bgavocado"
-    tools:context="com.example.wagner.avocado.FarmerHome">
+    tools:context="com.example.wagner.avocado.TransporterHome">
 
     <Button
-        android:id="@+id/farmerHomeRequestPickupButton"
+        android:id="@+id/transporterHomeViewScheduleButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="196dp"
-        android:text="Request crop pickup"
+        android:text="View Schedule"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/farmerHomeProfileButton"
+        android:id="@+id/transporterHomeProfileButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -34,10 +34,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/farmerHomeRequestPickupButton" />
+        app:layout_constraintTop_toBottomOf="@+id/transporterHomeViewScheduleButton" />
 
     <Button
-        android:id="@+id/farmerHomeHistoryButton"
+        android:id="@+id/transporterHomeHistoryButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -48,10 +48,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/farmerHomeProfileButton" />
+        app:layout_constraintTop_toBottomOf="@+id/transporterHomeProfileButton" />
 
     <Button
-        android:id="@+id/farmerHomeMessagesButton"
+        android:id="@+id/transporterHomeMessagesButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/farmerHomeHistoryButton" />
+        app:layout_constraintTop_toBottomOf="@+id/transporterHomeHistoryButton" />
 
     <TextView
         android:id="@+id/textView"
@@ -76,9 +76,10 @@
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
         android:paddingTop="32dp"
-        android:text="Welcome Farmer."
+        android:text="Welcome Transporter."
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@android:color/background_light"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -99,12 +100,12 @@
         android:text="Agromovil is a startup based in Washington D.C. designed to reduce food waste by making sure produce gets to market on time. "
         android:textColor="@android:color/background_light"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/farmerHomeRequestPickupButton"
+        app:layout_constraintBottom_toTopOf="@+id/transporterHomeViewScheduleButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/farmerHomeSignOutButton"
+        android:id="@+id/transporterHomeSignOutButton"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -116,16 +117,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/farmerHomeMessagesButton" />
+        app:layout_constraintTop_toBottomOf="@+id/transporterHomeMessagesButton" />
 
     <Button
-        android:id="@+id/farmerHomeTransporterButton"
+        android:id="@+id/transporterHomeFarmerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
-        android:text="Transporter"
+        android:text="Farmer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/farmerHomeMessagesButton" />
+        app:layout_constraintTop_toBottomOf="@+id/transporterHomeMessagesButton" />
 
 </android.support.constraint.ConstraintLayout>
