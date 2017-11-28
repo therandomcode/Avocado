@@ -87,7 +87,6 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                 startActivity(myIntent);
             }
         });
-
     }
 
     @Override
