@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
  * Created by jeremy on 11/29/17.
  */
 
-public class Messages extends AppCompatActivity {
+public class FarmerMessages extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

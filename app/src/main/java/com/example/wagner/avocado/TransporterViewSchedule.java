@@ -29,7 +29,7 @@ public class TransporterViewSchedule extends AppCompatActivity {
         setAvailabilityButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterViewSchedule.this,
-                        TransporterSetAvailabilityPickDate.class);
+                        TransporterSetAvailabilityEnterInfo.class);
                 startActivity(myIntent);
             }
         });
