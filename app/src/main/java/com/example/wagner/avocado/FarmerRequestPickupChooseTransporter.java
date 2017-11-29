@@ -25,7 +25,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
     ListView lst;
     String[] transportername={"Juan","Ricardo","Davíd"};
-    String[] time={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};
+    String[] times={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};
     Integer[] imgid ={R.drawable.bgavocado,R.drawable.bgavocado,R.drawable.bgavocado};
 
     @Override
@@ -48,7 +48,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         ArrayList<Transporter> availableTransporters = getTransporters(time, date, crop, amount, metric);
 
         lst= findViewById(R.id.listview);
-        FarmerRequestPickupChooseTransporterCustomListView customListview = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,time,imgid);
+        FarmerRequestPickupChooseTransporterCustomListView customListview = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,times,imgid);
         lst.setAdapter(customListview);
 
 
