@@ -14,10 +14,18 @@ public class FarmerHome extends AppCompatActivity {
         setContentView(R.layout.activity_farmer_home);
 
         //Back and next navigation buttons
-        final Button button = findViewById(R.id.farmerHomeRequestPickupButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button requestPickupButton = findViewById(R.id.farmerHomeRequestPickupButton);
+        requestPickupButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerHome.this, FarmerBeginRequestPickup.class);
+                startActivity(myIntent);
+            }
+        });
+
+        final Button editProfileButton = findViewById(R.id.farmerHomeProfileButton);
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(FarmerHome.this, FarmerEditProfile.class);
                 startActivity(myIntent);
             }
         });
