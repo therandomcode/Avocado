@@ -4,49 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wagner.avocado.FarmerMessages">
+    tools:context="com.example.wagner.avocado.TransporterEditProfile">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/header_cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bgavocado" />
+
+        <ImageButton
+            android:id="@+id/user_profile_photo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_below="@+id/header_cover_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-60dp"
+            android:background="@drawable/profile_circular_border_imageview"
+            android:elevation="5dp"
+            android:padding="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile" />
+
         <RelativeLayout
-            android:id="@+id/messages"
+            android:id="@+id/profile_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#eb66d760"
+            android:layout_below="@+id/header_cover_image"
+            android:background="#ebca0707"
             android:elevation="4dp"
             android:paddingBottom="24dp">
 
             <TextView
-                android:id="@+id/message_text"
+                android:id="@+id/user_profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="11dp"
-                android:text="Messages"
+                android:layout_marginTop="76dp"
+                android:text="Jose Cartolos"
                 android:textColor="#fff"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/instructions_text"
+                android:id="@+id/user_profile_short_bio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/message_text"
+                android:layout_below="@+id/user_profile_name"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="12dp"
-                android:text="Tap on a name to send an SMS"
+                android:text="yo amo el aguacate"
                 android:textColor="#fff"
                 android:textSize="14sp" />
+
         </RelativeLayout>
 
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/messages"
+            android:layout_below="@+id/profile_layout"
             android:layout_marginTop="5dp"
             android:orientation="vertical">
 
@@ -58,7 +79,7 @@
                 android:clickable="true"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="+Add a new contact" />
+                android:text="Phone Number: 123-456-7890" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -70,7 +91,7 @@
                 android:clickable="true"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Santiago" />
+                android:text="Address: # 55, Suesca-Cucunubá, Las Vegas, Suesca, Cundinamarca, Colombia" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -80,7 +101,7 @@
                 android:clickable="true"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Felipe" />
+                android:text="Crops Transported: Avocado" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -90,9 +111,8 @@
                 android:clickable="true"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Alejandro" />
+                android:text="Preferred Pickup Location: Farm, Town Centre" />
 
         </LinearLayout>
     </RelativeLayout>
-
 </ScrollView>
