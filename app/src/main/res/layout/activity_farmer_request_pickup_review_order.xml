@@ -51,13 +51,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="84dp"
         android:layout_marginTop="8dp"
         android:text="160.00 COP"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintVertical_bias="0.654" />
 
     <TextView
         android:id="@+id/textView14"
@@ -105,7 +106,7 @@
         android:id="@+id/button3"
         android:layout_width="352dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="152dp"
+        android:layout_marginBottom="176dp"
         android:layout_marginStart="4dp"
         android:text="+ Add payment method"
         app:layout_constraintBottom_toBottomOf="parent"

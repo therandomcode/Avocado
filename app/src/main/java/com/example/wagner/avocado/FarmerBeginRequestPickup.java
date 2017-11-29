@@ -35,10 +35,18 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
         t.setAdapter(metricAdapter);
         //Back and next navigation buttons
 
-        final Button button = findViewById(R.id.farmerBeginRequestPickupNextButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = findViewById(R.id.farmerBeginRequestPickupNextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerBeginRequestPickup.this, FarmerRequestPickupPickDate.class);
+                startActivity(farmerBeginRequestPickupIntent);
+            }
+        });
+
+        final Button backButton = findViewById(R.id.farmerBeginRequestPickupBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent farmerBeginRequestPickupIntent = new Intent(FarmerBeginRequestPickup.this, FarmerHome.class);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });

@@ -13,27 +13,41 @@ public class FarmerHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_home);
 
-        //Back and next navigation buttons
-        final Button requestPickupButton = findViewById(R.id.farmerHomeRequestPickupButton);
-        requestPickupButton.setOnClickListener(new View.OnClickListener() {
+        final Button pickupButton = findViewById(R.id.farmerHomeRequestPickupButton);
+        pickupButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerHome.this, FarmerBeginRequestPickup.class);
                 startActivity(myIntent);
             }
         });
 
-        final Button editProfileButton = findViewById(R.id.farmerHomeProfileButton);
-        editProfileButton.setOnClickListener(new View.OnClickListener() {
+        final Button profileButton = findViewById(R.id.farmerHomeProfileButton);
+        profileButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerHome.this, FarmerEditProfile.class);
                 startActivity(myIntent);
             }
         });
 
+        final Button historyButton = findViewById(R.id.farmerHomeHistoryButton);
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(FarmerHome.this, FarmerViewHistory.class);
+                startActivity(myIntent);
+            }
+        });
         final Button signOutButton = findViewById(R.id.farmerHomeSignOutButton);
         signOutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerHome.this, CreateAccount.class);
+                startActivity(myIntent);
+            }
+        });
+
+        final Button transporterButton = findViewById(R.id.farmerHomeTransporterButton);
+        transporterButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(FarmerHome.this, TransporterHome.class);
                 startActivity(myIntent);
             }
         });
