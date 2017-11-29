@@ -27,7 +27,7 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
 
                 DatePicker datepicker = (DatePicker)findViewById(R.id.datePicker);
                 String day = Integer.toString(datepicker.getDayOfMonth());
-                String month = Integer.toString(datepicker.getMonth());
+                String month = Integer.toString(datepicker.getMonth()+1);
                 String year = Integer.toString(datepicker.getYear());
 
                 CheckBox cb1 = (CheckBox)findViewById(R.id.amCheckBox);

@@ -25,6 +25,8 @@ public class Transporter {
     private String clients;
     private String car_make;
     private Integer imgid;
+    private String transports;
+    private String availabilities;
 
     public Transporter()
     {
