@@ -56,9 +56,8 @@
         <activity android:name=".FarmerRequestPickupOrderConfirmation" />
         <activity android:name=".TransporterHome" />
         <activity android:name=".TransporterViewSchedule" />
-        <activity android:name=".TransporterAddTripSetStartLocation" />
-        <activity android:name=".TransporterAddTripSetDestination" />
-        <activity android:name=".TransporterAddTripPickDate" />
+        <activity android:name=".TransporterSetAvailabilityPickDate" />
+        <activity android:name=".TransporterSetAvailabilityLocationType" />
         <activity android:name=".Messages" />
         <activity android:name=".CreateAccount"/>
     </application>

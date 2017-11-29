@@ -25,11 +25,11 @@ public class TransporterViewSchedule extends AppCompatActivity {
         TransporterViewScheduleCustomListView customListview = new TransporterViewScheduleCustomListView(this,transportername,time,imgid);
         lst.setAdapter(customListview);
 
-        final Button addTripButton = findViewById(R.id.transporterViewScheduleAddTripButton);
-        addTripButton.setOnClickListener(new View.OnClickListener() {
+        final Button setAvailabilityButton = findViewById(R.id.transporterViewScheduleSetAvailabilityButton);
+        setAvailabilityButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterViewSchedule.this,
-                        TransporterAddTripSetStartLocation.class);
+                        TransporterSetAvailabilityPickDate.class);
                 startActivity(myIntent);
             }
         });
