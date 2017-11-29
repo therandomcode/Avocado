@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.wagner.avocado.TransporterHistory">
+
+
+    <Button
+        android:id="@+id/transporterHistoryBackButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="321dp"
+        android:layout_height="371dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transporterHistoryPlanOrderButton" />
+
+    <ToggleButton
+        android:id="@+id/transporterHistoryHistoryButton"
+        android:layout_width="103dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="History"
+        android:textOff="History"
+        android:textOn="History"
+        app:layout_constraintStart_toEndOf="@+id/transporterHistoryPlanOrderButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/transporterHistoryPlanOrderButton"
+        android:layout_width="117dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:textOff="Plan Order"
+        android:textOn="Plan Order"
+        app:layout_constraintStart_toEndOf="@+id/transporterHistoryHomeButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/transporterHistoryHomeButton"
+        android:layout_width="74dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="Today"
+        android:textOff="Home"
+        android:textOn="Home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
