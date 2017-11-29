@@ -61,6 +61,12 @@
         <activity android:name=".TransporterAddTripPickDate" />
         <activity android:name=".FarmerRequestPickupAddBankAccount" />
         <activity android:name=".FarmerRequestPickupAddPayment"></activity>
+        <activity android:name=".TransporterMessages" />
+        <activity android:name=".TransporterEditProfile" />
+        <activity android:name=".TransporterSetAvailabilityEnterInfo" />
+        <activity android:name=".TransporterSetAvailabilityPickDate" />
+        <activity android:name=".TransporterSetAvailabilityLocationType" />
+        <activity android:name=".FarmerMessages" />
     </application>
 
 </manifest>
