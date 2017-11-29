@@ -43,7 +43,7 @@
         <activity android:name=".SignUpLater" />
         <activity android:name=".FarmerBeginRequestPickup" />
         <activity android:name=".FarmerEditProfile" />
-        <activity android:name=".FarmerViewHistory" />
+        <activity android:name=".FarmerHistory" />
         <activity android:name=".FarmerViewHistoryDetail" />
         <activity android:name=".FarmerRequestPickupPickDate" />
         <activity android:name=".FarmerRequestPickupSetPickupLocation" />
@@ -54,6 +54,15 @@
         <activity android:name=".FarmerRequestPickupEnterPayment" />
         <activity android:name=".FarmerRequestPickupReviewOrder" />
         <activity android:name=".FarmerRequestPickupOrderConfirmation" />
+        <activity android:name=".TransporterHome" />
+        <activity android:name=".TransporterViewSchedule" />
+        <activity android:name=".TransporterMessages" />
+        <activity android:name=".TransporterEditProfile" />
+        <activity android:name=".TransporterHistory" />
+        <activity android:name=".TransporterSetAvailabilityEnterInfo" />
+        <activity android:name=".TransporterSetAvailabilityPickDate" />
+        <activity android:name=".TransporterSetAvailabilityLocationType" />
+        <activity android:name=".FarmerMessages" />
         <activity android:name=".CreateAccount"/>
     </application>
 

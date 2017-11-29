@@ -10,12 +10,10 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="Choose your driver"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@+id/textView16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,10 +22,10 @@
         android:id="@+id/constraintLayout"
         android:layout_width="368dp"
         android:layout_height="89dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView20"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -72,82 +70,23 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="Best Match"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="336dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="88dp"
-        android:layout_marginStart="32dp"
-        android:background="#ffffff"
-        android:padding="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-
-
-            android:id="@+id/imageView"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_weight="0.11" />
-
-        <TextView
-            android:id="@+id/transporterNames"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_toRightOf="@+id/imageView"
-            android:textColor="#264d00"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/addresses"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/transporterNames"
-            android:layout_alignStart="@+id/transporterNames"
-            android:layout_below="@+id/transporterNames"
-            android:layout_marginTop="4dp"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:textColor="#408000"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/carMake"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/addresses"
-            android:layout_alignStart="@+id/addresses"
-            android:layout_below="@+id/addresses"
-            android:layout_marginTop="12dp"
-            android:layout_weight="1"
-            android:paddingLeft="10dp"
-            android:textColor="#408000"
-            android:textSize="15sp" />
-    </RelativeLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:text="Browse other drivers"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <Button
         android:id="@+id/farmerRequestPickupChooseTransporterNextButton"
@@ -170,5 +109,14 @@
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="321dp"
+        android:layout_height="177dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
 </android.support.constraint.ConstraintLayout>

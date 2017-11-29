@@ -36,8 +36,8 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
         t.setAdapter(metricAdapter);
         //Back and next navigation buttons
 
-        final Button button = findViewById(R.id.farmerBeginRequestPickupNextButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = findViewById(R.id.farmerBeginRequestPickupNextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 Spinner spinner1 = (Spinner)findViewById(R.id.produceSpinner);
@@ -55,6 +55,14 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
                 farmerBeginRequestPickupIntent.putExtra("metric", metric);
                 farmerBeginRequestPickupIntent.putExtra("amount", amount);
 
+                startActivity(farmerBeginRequestPickupIntent);
+            }
+        });
+
+        final Button backButton = findViewById(R.id.farmerBeginRequestPickupBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent farmerBeginRequestPickupIntent = new Intent(FarmerBeginRequestPickup.this, FarmerHome.class);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });

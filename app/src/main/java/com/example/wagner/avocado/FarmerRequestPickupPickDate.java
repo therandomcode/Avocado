@@ -20,8 +20,8 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_pick_date);
 
-    final Button button = findViewById(R.id.FarmerRequestPickupDateNextButton);
-        button.setOnClickListener(new View.OnClickListener() {
+    final Button nextButton = findViewById(R.id.FarmerRequestPickupDateNextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
 
@@ -48,6 +48,7 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
                     time = "NEVER";
 
                 Intent myIntent = new Intent(FarmerRequestPickupPickDate.this, FarmerRequestPickupSetPickupLocation.class);
+
                 // Bundle myBundle = new Bundle();
                 myIntent.putExtra("date", date);
                 myIntent.putExtra("time", time);
@@ -59,7 +60,15 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
                 //myBundle.putBoolean("myAM", AMCheckBox.isChecked());
                 //myBundle.putBoolean("myPM", PMCheckBox.isChecked());
 
-                //myIntent.putExtras(myBundle);
+                startActivity(myIntent);
+            }
+        });
+
+
+        final Button backButton = findViewById(R.id.FarmerRequestPickupDateBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(FarmerRequestPickupPickDate.this, FarmerBeginRequestPickup.class);
                 startActivity(myIntent);
             }
         });

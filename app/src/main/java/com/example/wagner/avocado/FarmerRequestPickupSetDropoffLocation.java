@@ -62,8 +62,8 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         new OnMapAndViewReadyListener(mapFragment, this);
 
-        final Button button = findViewById(R.id.farmerRequestPickupSetDropoffLocationNextButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = findViewById(R.id.farmerRequestPickupSetDropoffLocationNextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 EditText edittext7 = (EditText)findViewById(R.id.editText7);
@@ -90,6 +90,15 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
                 farmerRequestPickupSetPickupLocationIntent.putExtra
                         ("amount", getIntent().getStringExtra("amount"));
 
+                startActivity(farmerRequestPickupSetPickupLocationIntent);
+            }
+        });
+
+        final Button backButton = findViewById(R.id.farmerRequestPickupSetDropoffLocationBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupSetDropoffLocation.this,
+                        FarmerRequestPickupSetPickupLocationType.class);
                 startActivity(farmerRequestPickupSetPickupLocationIntent);
             }
         });

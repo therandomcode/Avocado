@@ -1,5 +1,6 @@
 package com.example.wagner.avocado;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,13 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 import android.widget.EditText;
+
+import android.location.Geocoder;
+import android.location.Address;
+
+import java.io.IOException;
+import java.util.List;
+
 
 public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity implements
         OnMarkerClickListener,
@@ -51,24 +59,33 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
      * Keeps track of the selected marker.
      */
     private Marker mLastMarker;
+    private List<Address> address;
+    private Geocoder coder;
+    private LatLng resLatLng = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_set_pickup_location);
 
+        //coder = new Geocoder(this);
+
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         new OnMapAndViewReadyListener(mapFragment, this);
 
-        final Button button = findViewById(R.id.farmerRequestPickupSetPickupLocationNextButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = findViewById(R.id.farmerRequestPickupSetPickupLocationNextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
 
                 EditText edittext7 = (EditText)findViewById(R.id.editText7);
                 String address = edittext7.getText().toString();
 
 
+
+
+                //checkAddress();
 
                 Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupSetPickupLocation.this,
                         FarmerRequestPickupSetPickupLocationType.class);
@@ -89,6 +106,13 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
             }
         });
 
+        final Button backButton = findViewById(R.id.farmerRequestPickupSetPickupLocationBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(FarmerRequestPickupSetPickupLocation.this, FarmerRequestPickupPickDate.class);
+                startActivity(myIntent);
+            }
+        });
     }
 
     @Override
@@ -182,6 +206,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
         Toast.makeText(this, "Setting your pickup location", Toast.LENGTH_SHORT).show();
+        resLatLng = point;
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
     }
 
@@ -190,6 +215,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         // The user has re-tapped on the marker which was already showing an info window.
         if (marker.equals(mLastMarker)) {
             mLastMarker.remove();
+            resLatLng = null;
             return true;
         }
 
@@ -198,6 +224,23 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         // Return false to indicate that we have not consumed the event and that we wish
         // for the default behavior to occur.
         return false;
+    }
+
+    private void checkAddress() {
+        try {
+            final EditText inputAddress = findViewById(R.id.farmerRequestPickupSetPickupLocationEnterAddress);
+            String addy = inputAddress.getText().toString();
+            address = coder.getFromLocationName(addy, 5);
+            Address location = address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+            resLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+        } catch (IOException ex) {
+            if (mLastMarker.getPosition() == null) {
+                ex.printStackTrace();
+                Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 }

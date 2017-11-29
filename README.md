@@ -1,3 +1,7 @@
+**IMPORTANT** 
+Kristina is the DUMMY branch
+Full functionality will be supported in the MASTER branch.
+
 **Team to-dos**
 
 Finish building out farmer screens [70%]

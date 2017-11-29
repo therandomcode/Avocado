@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.example.wagner.avocado.FarmerRequestPickupSetPickupLocation">
 
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="304dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="4dp"
+        android:text="Set your pickup location."
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <fragment
         android:id="@+id/map"
         class="com.google.android.gms.maps.SupportMapFragment"
@@ -42,7 +54,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/farmerRequestPickupSetPickupLocationEnterAddress"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
         android:layout_marginStart="84dp"
