@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.EditText;
 
 public class FarmerBeginRequestPickup extends AppCompatActivity {
 
@@ -38,7 +39,22 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
         final Button nextButton = findViewById(R.id.farmerBeginRequestPickupNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                Spinner spinner1 = (Spinner)findViewById(R.id.produceSpinner);
+                String crop = spinner1.getSelectedItem().toString();
+
+                Spinner spinner2 = (Spinner)findViewById(R.id.metricSpinner);
+                String metric = spinner1.getSelectedItem().toString();
+
+                EditText text1 = (EditText)findViewById(R.id.editText2);
+                String amount = text1.getText().toString();
+
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerBeginRequestPickup.this, FarmerRequestPickupPickDate.class);
+
+                farmerBeginRequestPickupIntent.putExtra("crop", crop);
+                farmerBeginRequestPickupIntent.putExtra("metric", metric);
+                farmerBeginRequestPickupIntent.putExtra("amount", amount);
+
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });
