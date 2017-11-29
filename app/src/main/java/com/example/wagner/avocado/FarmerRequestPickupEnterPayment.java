@@ -24,31 +24,9 @@ public class FarmerRequestPickupEnterPayment extends AppCompatActivity {
             public void onClick(View v) {
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupEnterPayment.this,
                         FarmerRequestPickupOrderConfirmation.class);
-                startActivity(farmerBeginRequestPickupIntent);
+                        startActivity(farmerBeginRequestPickupIntent);
             }
         });
 
-        final Button nextButton = findViewById(R.id.farmerRequestPickupEnterPaymentNextButton);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                if (cashRadioButton.isChecked()) {
-                    Intent CashIntent = new Intent(FarmerRequestPickupEnterPayment.this, FarmerRequestPickupOrderConfirmation.class); // <----- START "BEACHES" ACTIVITY
-                    startActivity(CashIntent);
-                }
-                else if (bankAccountRadioButton.isChecked()) {
-                    /*
-                    Intent BankAccountIntent = new Intent(getApplicationContext(), mountains.class);
-                    startActivityForResult(BankAccountIntent, 0);*/
-                }/*
-                else if (creditCardRadioButton.isChecked()) {
-                    Intent Intentm = new Intent(getApplicationContext(), FarmerRequestPickupEnterAnotherPayment.class);
-                    startActivityForResult(Intentm, 0);
-                } */else {
-                    Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupEnterPayment.this, FarmerRequestPickupOrderConfirmation.class);
-                    startActivity(farmerBeginRequestPickupIntent);
-                }
-            }
-        });
     }
 }

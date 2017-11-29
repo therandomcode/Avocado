@@ -59,7 +59,8 @@
         <activity android:name=".TransporterAddTripSetStartLocation" />
         <activity android:name=".TransporterAddTripSetDestination" />
         <activity android:name=".TransporterAddTripPickDate" />
-        <activity android:name=".FarmerRequestPickupAddBankAccount"></activity>
+        <activity android:name=".FarmerRequestPickupAddBankAccount" />
+        <activity android:name=".FarmerRequestPickupAddPayment"></activity>
     </application>
 
 </manifest>
