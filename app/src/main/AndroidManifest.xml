@@ -8,7 +8,6 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="22" />
@@ -23,7 +22,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDSypbiDSbbZeikhCxs6_UYhfxvKMszglY" />
@@ -54,8 +52,15 @@
         <activity android:name=".FarmerRequestPickupEnterPayment" />
         <activity android:name=".FarmerRequestPickupReviewOrder" />
         <activity android:name=".FarmerRequestPickupOrderConfirmation" />
+        <activity android:name=".CreateAccount" />
+        <activity android:name=".FarmerRequestPickupEnterAnotherPayment" />
         <activity android:name=".TransporterHome" />
         <activity android:name=".TransporterViewSchedule" />
+        <activity android:name=".TransporterAddTripSetStartLocation" />
+        <activity android:name=".TransporterAddTripSetDestination" />
+        <activity android:name=".TransporterAddTripPickDate" />
+        <activity android:name=".FarmerRequestPickupAddBankAccount" />
+        <activity android:name=".FarmerRequestPickupAddPayment"></activity>
         <activity android:name=".TransporterMessages" />
         <activity android:name=".TransporterEditProfile" />
         <activity android:name=".TransporterHistory" />
@@ -63,7 +68,6 @@
         <activity android:name=".TransporterSetAvailabilityPickDate" />
         <activity android:name=".TransporterSetAvailabilityLocationType" />
         <activity android:name=".FarmerMessages" />
-        <activity android:name=".CreateAccount"/>
     </application>
 
 </manifest>
