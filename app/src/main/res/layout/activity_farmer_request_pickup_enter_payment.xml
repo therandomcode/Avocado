@@ -90,7 +90,7 @@ tools:context="com.example.wagner.avocado.FarmerRequestPickupEnterPayment">
             android:layout_height="match_parent" >
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/farmerRequestPickupEnterAnotherPaymentAddCardButton"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
