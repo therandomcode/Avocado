@@ -59,6 +59,7 @@
         <activity android:name=".TransporterAddTripSetStartLocation" />
         <activity android:name=".TransporterAddTripSetDestination" />
         <activity android:name=".TransporterAddTripPickDate" />
+        <activity android:name=".Messages" />
         <activity android:name=".CreateAccount"/>
     </application>
 
