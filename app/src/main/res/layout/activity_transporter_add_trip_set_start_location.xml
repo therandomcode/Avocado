@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wagner.avocado.FarmerRequestPickupSetPickupLocation">
+    tools:context="com.example.wagner.avocado.TransporterAddTripSetStartLocation">
 
     <TextView
         android:id="@+id/textView22"
@@ -12,7 +12,7 @@
         android:layout_height="46dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="4dp"
-        android:text="Set your pickup location."
+        android:text="Set your start location."
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:id="@+id/farmerRequestPickupSetPickupLocationNextButton"
+        android:id="@+id/transporterAddTripSetStartLocationNextButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/farmerRequestPickupSetPickupLocationBackButton"
+        android:id="@+id/transporterAddTripSetStartLocationBackButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/farmerRequestPickupSetPickupLocationEnterAddress"
+        android:id="@+id/transporterAddTripSetStartLocationEnterAddress"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
         android:layout_marginStart="84dp"
@@ -70,7 +70,7 @@
         android:layout_height="46dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="4dp"
-        android:text="Set your pickup location."
+        android:text="Set your start location."
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
