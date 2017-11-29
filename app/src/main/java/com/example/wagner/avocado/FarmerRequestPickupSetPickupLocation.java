@@ -1,5 +1,6 @@
 package com.example.wagner.avocado;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -58,13 +59,15 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
      */
     private Marker mLastMarker;
     private List<Address> address;
-    //private Geocoder coder = new Geocoder(getBaseContext());
+    private Geocoder coder;
     private LatLng resLatLng = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_set_pickup_location);
+
+        //coder = new Geocoder(this);
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -200,21 +203,21 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         return false;
     }
 
-//    private void checkAddress() {
-//        try {
-//            final EditText inputAddress = findViewById(R.id.farmerRequestPickupSetPickupLocationEnterAddress);
-//            String addy = inputAddress.getText().toString();
-//            address = coder.getFromLocationName(addy, 5);
-//            Address location = address.get(0);
-//            location.getLatitude();
-//            location.getLongitude();
-//            resLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-//        } catch (IOException ex) {
-//            if (mLastMarker.getPosition() == null) {
-//                ex.printStackTrace();
-//                Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//    }
+    private void checkAddress() {
+        try {
+            final EditText inputAddress = findViewById(R.id.farmerRequestPickupSetPickupLocationEnterAddress);
+            String addy = inputAddress.getText().toString();
+            address = coder.getFromLocationName(addy, 5);
+            Address location = address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+            resLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+        } catch (IOException ex) {
+            if (mLastMarker.getPosition() == null) {
+                ex.printStackTrace();
+                Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 
 }
