@@ -24,6 +24,20 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import cz.msebera.android.httpclient.Header;
 
 public class SignUpSetLocation extends AppCompatActivity implements
         OnMarkerClickListener,
@@ -63,6 +77,27 @@ public class SignUpSetLocation extends AppCompatActivity implements
         final Button signOutButton = findViewById(R.id.signUpSetLocationNextButton);
         signOutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+
+                String name = getIntent().getStringExtra("name");
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                String password = getIntent().getStringExtra("password");
+
+                EditText text2 = (EditText)findViewById(R.id.editText2);
+                EditText text6 = (EditText)findViewById(R.id.editText6);
+                String address = text2.getText().toString() + " " + text6.getText().toString();
+
+                EditText text3 = (EditText)findViewById(R.id.editText3);
+                String country = text3.getText().toString();
+
+                EditText text4 = (EditText)findViewById(R.id.editText4);
+                String postalcode = text3.getText().toString();
+
+                EditText text5 = (EditText)findViewById(R.id.editText5);
+                String city = text5.getText().toString();
+
+                insertFarmerMySQL(name, phonenumber, password, address, country, postalcode, city);
+
                 Intent myIntent = new Intent(SignUpSetLocation.this, SignUpFarmerAddPhotos.class);
                 startActivity(myIntent);
             }
@@ -109,6 +144,59 @@ public class SignUpSetLocation extends AppCompatActivity implements
                     enterAddressButton.setChecked(true);
                     setAddressTextView();
                 }
+            }
+        });
+    }
+
+    public void insertFarmerMySQL(String name, String phonenumber, String password, String
+            address, String country, String postalcode, String
+                                          city)
+    {
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        String names[] = name.split( " ");
+        ArrayList<HashMap<String, String>> wordList;
+        wordList = new ArrayList<HashMap<String, String>>();
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("firstname", names[0]);
+        map.put("lastname", names[1]);
+        map.put("phonenumber", phonenumber);
+        map.put("password", password);
+        map.put("address", address);
+        map.put("country", country);
+        map.put("postalcode", postalcode);
+        map.put("city", city);
+
+        wordList.add(map);
+
+        Gson gson = new GsonBuilder().create();
+        params.put("insertFarmer", gson.toJson(wordList));
+        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/insertfarmer.php",params ,new AsyncHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                try {
+                    System.out.println("Hello I am here!");
+                    String response = new String(bytes);
+                    System.out.println(response);
+                    JSONArray arr = new JSONArray(response);
+                    System.out.println(arr.length());
+                    for(int j=0; j<arr.length();j++){
+                        JSONObject obj = (JSONObject)arr.get(j);
+                        System.out.println(obj.get("id"));
+                        System.out.println(obj.get("status"));
+                    }
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+
+                }
+            }
+
+            @Override
+            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+
             }
         });
     }

@@ -22,6 +22,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
+import android.widget.EditText;
 
 
 public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity implements
@@ -64,8 +65,31 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
         final Button button = findViewById(R.id.farmerRequestPickupSetDropoffLocationNextButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupSetDropoffLocation.this,
+
+                EditText edittext7 = (EditText)findViewById(R.id.editText7);
+                String droplocation = edittext7.getText().toString();
+
+                Intent farmerRequestPickupSetPickupLocationIntent = new Intent
+                        (FarmerRequestPickupSetDropoffLocation.this,
                         FarmerRequestPickupChooseTransporter.class);
+
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("droplocation", droplocation);
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("locationtype", getIntent().getStringExtra("locationtype"));
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("address", getIntent().getStringExtra("address"));
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("date", getIntent().getStringExtra("date"));
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("time", getIntent().getStringExtra("time"));
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("crop", getIntent().getStringExtra("crop"));
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("metric", getIntent().getStringExtra("metric"));
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("amount", getIntent().getStringExtra("amount"));
+
                 startActivity(farmerRequestPickupSetPickupLocationIntent);
             }
         });

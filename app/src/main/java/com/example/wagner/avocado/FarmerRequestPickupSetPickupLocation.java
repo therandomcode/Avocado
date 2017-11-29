@@ -22,7 +22,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
-
+import android.widget.EditText;
 
 public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity implements
         OnMarkerClickListener,
@@ -64,8 +64,27 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         final Button button = findViewById(R.id.farmerRequestPickupSetPickupLocationNextButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                EditText edittext7 = (EditText)findViewById(R.id.editText7);
+                String address = edittext7.getText().toString();
+
+
+
                 Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupSetPickupLocation.this,
                         FarmerRequestPickupSetPickupLocationType.class);
+
+                farmerRequestPickupSetPickupLocationIntent.putExtra("address", address);
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("date", getIntent().getStringExtra("date"));
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("time", getIntent().getStringExtra("time"));
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("crop", getIntent().getStringExtra("crop"));
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("metric", getIntent().getStringExtra("metric"));
+                farmerRequestPickupSetPickupLocationIntent.putExtra
+                        ("amount", getIntent().getStringExtra("amount"));
+
                 startActivity(farmerRequestPickupSetPickupLocationIntent);
             }
         });
