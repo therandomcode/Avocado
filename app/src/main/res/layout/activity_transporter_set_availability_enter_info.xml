@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wagner.avocado.FarmerBeginRequestPickup">
+    tools:context="com.example.wagner.avocado.TransporterSetAvailabilityEnterInfo">
 
     <Spinner
         android:id="@+id/produceSpinner"
@@ -37,7 +37,7 @@
         android:layout_height="23dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="What produce would you like to be transported?"
+        android:text="What produce would you like to transport?"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +48,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
-        android:text="How much? "
+        android:text="How much can you transport?"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/produceSpinner" />
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
-        android:id="@+id/farmerBeginRequestPickupNextButton"
+        android:id="@+id/transporterSetAvailabilityEnterInfoNextButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/farmerBeginRequestPickupBackButton"
+        android:id="@+id/transporterSetAvailabilityEnterInfoBackButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -56,6 +56,7 @@
         <activity android:name=".FarmerRequestPickupOrderConfirmation" />
         <activity android:name=".TransporterHome" />
         <activity android:name=".TransporterViewSchedule" />
+        <activity android:name=".TransporterSetAvailabilityEnterInfo" />
         <activity android:name=".TransporterSetAvailabilityPickDate" />
         <activity android:name=".TransporterSetAvailabilityLocationType" />
         <activity android:name=".Messages" />

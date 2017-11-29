@@ -38,7 +38,7 @@ public class TransporterSetAvailabilityPickDate extends AppCompatActivity {
         final Button backButton = findViewById(R.id.transporterSetAvailabilityBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterViewSchedule.class);
+                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityEnterInfo.class);
                 startActivity(myIntent);
             }
         });
