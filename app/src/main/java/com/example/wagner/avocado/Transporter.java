@@ -32,15 +32,15 @@ public class Transporter {
     {
     }
 
-    public Transporter(String firstname, String lastname, String address, String car_make,
-                       Integer imgid, Hashtable<Integer, String> available_days)
+    public Transporter(String firstname, String lastname, String address, String car_make/*, Hashtable<Integer*/)
+        /*, String> available_days*/
     {
         this.firstname=firstname;
         this.lastname=lastname;
         this.address=address;
         this.car_make=car_make;
-        this.imgid = imgid;
-        this.available_days=available_days;
+        //this.imgid = imgid;
+        //this.available_days=available_days;
     }
 
 
