@@ -79,7 +79,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
             public void onClick(View v) {
 
 
-                EditText edittext7 = (EditText)findViewById(R.id.editText7);
+                EditText edittext7 = (EditText)findViewById(R.id.farmerRequestPickupSetPickupLocationEnterAddress);
                 String address = edittext7.getText().toString();
 
 

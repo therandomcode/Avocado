@@ -14,11 +14,11 @@ android:background="#f2ffe6">
     >
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_weight="0.11"
-        />
+    android:id="@+id/imageView"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_weight="0.11"
+    />
 
     <TextView
         android:id="@+id/transporterName"

@@ -24,8 +24,9 @@ import cz.msebera.android.httpclient.Header;
 public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
     ListView lst;
+    ArrayList<Transporter> trans = new ArrayList<Transporter>();
     String[] transportername={"Juan","Ricardo","Davíd"};
-    String[] time={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};
+    String[] times={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};
     Integer[] imgid ={R.drawable.bgavocado,R.drawable.bgavocado,R.drawable.bgavocado};
 
     @Override
@@ -47,8 +48,18 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
         ArrayList<Transporter> availableTransporters = getTransporters(time, date, crop, amount, metric);
 
+
+        System.out.println(availableTransporters.size());
+
+        int ind = 0;
+        for (Transporter T: availableTransporters){
+            transportername[ind] = T.getFirstName()+" "+T.getLastName();
+            times[ind] = T.getCarMake();
+            ind++;
+        }
+
         lst= findViewById(R.id.listview);
-        FarmerRequestPickupChooseTransporterCustomListView customListview = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,time,imgid);
+        FarmerRequestPickupChooseTransporterCustomListView customListview = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,times,imgid);
         lst.setAdapter(customListview);
 
 
@@ -107,7 +118,12 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
                         System.out.println(obj.get("firstname"));
                         System.out.println(obj.get("lastname"));
                         System.out.println(obj.get("availability"));
+                        Transporter joe = new Transporter
+                                ((String)obj.get("firstname"), (String)obj.get("lastname")
+                                        , (String)obj.get("address"), (String)obj.get("carmake"));
+                        trans.add(joe);
                     }
+
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
 
@@ -119,7 +135,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
             }
         });
-        ArrayList<Transporter> trans = new ArrayList<Transporter>();
+
         return trans;
     }
 
