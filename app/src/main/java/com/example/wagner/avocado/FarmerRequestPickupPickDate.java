@@ -64,7 +64,6 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
             }
         });
 
-
         final Button backButton = findViewById(R.id.FarmerRequestPickupDateBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
