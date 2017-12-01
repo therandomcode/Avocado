@@ -25,9 +25,10 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
     ListView lst;
     ArrayList<Transporter> trans = new ArrayList<Transporter>();
-    String[] transportername={"Juan","Ricardo","Davíd"};
+    String[] transportername={"Juan Felipe","Ricardo Sanchez-Delorio","Davíd de Leon"};
     String[] times={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};
-    Integer[] imgid ={R.drawable.bgavocado,R.drawable.bgavocado,R.drawable.bgavocado};
+    String[] locations ={"Cartagena", "Cúcuta", "Santa Marta"};
+    Integer[] imgid ={R.drawable.arka,R.drawable.cecilia,R.drawable.raza};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         for (Transporter T: availableTransporters){
             transportername[ind] = T.getFirstName()+" "+T.getLastName();
             times[ind] = T.getCarMake();
+            locations[ind] = T.getAddress();
             ind++;
         }
 
