@@ -17,7 +17,7 @@ public class FarmerRequestPickupReviewOrder extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupReviewOrder.this,
-                        FarmerRequestPickupEnterPayment.class);
+                        FarmerRequestPickupAddPayment.class);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });

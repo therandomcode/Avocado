@@ -21,6 +21,30 @@ public class TransporterHome extends AppCompatActivity {
             }
         });
 
+        final Button editProfileButton = findViewById(R.id.transporterHomeProfileButton);
+        editProfileButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(TransporterHome.this, TransporterEditProfile.class);
+                startActivity(myIntent);
+            }
+        });
+
+        final Button messagesButton = findViewById(R.id.transporterHomeMessagesButton);
+        messagesButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(TransporterHome.this, TransporterMessages.class);
+                startActivity(myIntent);
+            }
+        });
+
+        final Button historyButton = findViewById(R.id.transporterHomeHistoryButton);
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(TransporterHome.this, TransporterHistory.class);
+                startActivity(myIntent);
+            }
+        });
+
         final Button signOutButton = findViewById(R.id.transporterHomeSignOutButton);
         signOutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

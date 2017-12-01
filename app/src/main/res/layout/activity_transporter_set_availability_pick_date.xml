@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wagner.avocado.TransporterAddTripPickDate">
+    tools:context="com.example.wagner.avocado.TransporterSetAvailabilityPickDate">
 
     <TextView
         android:id="@+id/textView5"
@@ -13,8 +13,9 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
-        android:text="When will you be making this trip?"
+        android:text="When are you available to transport?"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/datePicker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.617"
@@ -24,8 +25,8 @@
 
     <DatePicker
         android:id="@+id/datePicker"
-        android:layout_width="359dp"
-        android:layout_height="370dp"
+        android:layout_width="331dp"
+        android:layout_height="353dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -34,18 +35,29 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/transporterAddTripFinishButton"
+        android:id="@+id/transporterSetAvailabilityFinishButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="136dp"
         android:text="Finish"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/transporterAddTripBackButton"
+        android:id="@+id/transporterSetAvailabilityAddMoreButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="256dp"
+        android:text="+ More"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/transporterSetAvailabilityBackButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,7 +74,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginTop="8dp"
         android:text="AM"
-        app:layout_constraintBottom_toTopOf="@+id/transporterAddTripBackButton"
+        app:layout_constraintBottom_toTopOf="@+id/transporterSetAvailabilityBackButton"
         app:layout_constraintEnd_toStartOf="@+id/pmCheckBox"
         app:layout_constraintTop_toBottomOf="@+id/datePicker"
         tools:text="AM" />
@@ -73,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:text="PM"
-        app:layout_constraintBottom_toTopOf="@+id/transporterAddTripBackButton"
+        app:layout_constraintBottom_toTopOf="@+id/transporterSetAvailabilityBackButton"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="PM" />
 

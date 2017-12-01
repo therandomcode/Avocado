@@ -1,32 +1,31 @@
 package com.example.wagner.avocado;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.widget.Toast;
-
-
-public class TransporterAddTripSetDestination extends AppCompatActivity implements
-        OnMarkerClickListener,
-        OnMapClickListener,
+public class TransporterSetAvailabilityLocationType extends AppCompatActivity implements
+        GoogleMap.OnMarkerClickListener,
+        GoogleMap.OnMapClickListener,
         OnMapReadyCallback,
         GoogleMap.OnMyLocationButtonClickListener,
         ActivityCompat.OnRequestPermissionsResultCallback,
@@ -52,33 +51,73 @@ public class TransporterAddTripSetDestination extends AppCompatActivity implemen
      */
     private Marker mLastMarker;
 
+    private ToggleButton homeButton;
+    private ToggleButton anotherLocationButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transporter_add_trip_set_destination);
+        setContentView(R.layout.activity_transporter_set_availability_location_type);
 
-        SupportMapFragment mapFragment =
-                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        new OnMapAndViewReadyListener(mapFragment, this);
+        findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.GONE);
+        final EditText address = findViewById(R.id.transporterSetAvailabilityLocationTypeAddress);
+        address.setVisibility(View.GONE);
 
-        final Button nextButton = findViewById(R.id.transporterAddTripSetDestinationNextButton);
+        homeButton = findViewById(R.id.transporterSetAvailabilityLocationTypeHomeButton);
+        anotherLocationButton = findViewById(R.id.transporterSetAvailabilityLocationTypeAnotherLocationButton);
+
+        homeButton.setChecked(true);
+        anotherLocationButton.setChecked(false);
+
+        homeButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    anotherLocationButton.setChecked(false);
+                    findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.GONE);
+                    address.setVisibility(View.GONE);
+                } else {
+                    anotherLocationButton.setChecked(true);
+                    findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.VISIBLE);
+                    address.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        anotherLocationButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    homeButton.setChecked(false);
+                    findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.VISIBLE);
+                    address.setVisibility(View.VISIBLE);
+                } else {
+                    homeButton.setChecked(true);
+                    findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.GONE);
+                    address.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        final Button nextButton = findViewById(R.id.transporterSetAvailabilityLocationTypeNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(TransporterAddTripSetDestination.this,
-                        TransporterAddTripPickDate.class);
+                Intent myIntent = new Intent(TransporterSetAvailabilityLocationType.this,
+                        TransporterSetAvailabilityPickDate.class);
                 startActivity(myIntent);
             }
         });
 
-        final Button backButton = findViewById(R.id.transporterAddTripSetDestinationBackButton);
+        final Button backButton = findViewById(R.id.transporterSetAvailabilityLocationTypeBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(TransporterAddTripSetDestination.this,
-                        TransporterAddTripSetStartLocation.class);
+                Intent myIntent = new Intent(TransporterSetAvailabilityLocationType.this,
+                        TransporterViewSchedule.class);
                 startActivity(myIntent);
             }
         });
 
+        SupportMapFragment mapFragment =
+                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.transporterSetAvailabilityLocationTypeMap);
+        new OnMapAndViewReadyListener(mapFragment, this);
     }
 
     @Override
@@ -101,10 +140,6 @@ public class TransporterAddTripSetDestination extends AppCompatActivity implemen
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(4.5709,-74.2973), (float) 5.0));
-
-        Toast.makeText(this,
-                "Set your dropoff location by dropping a pin or entering your address.",
-                Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -171,7 +206,7 @@ public class TransporterAddTripSetDestination extends AppCompatActivity implemen
         // Clear the currently selected marker.
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
-        Toast.makeText(this, "Setting your dropoff location", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Setting your location", Toast.LENGTH_SHORT).show();
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
     }
 
@@ -189,5 +224,4 @@ public class TransporterAddTripSetDestination extends AppCompatActivity implemen
         // for the default behavior to occur.
         return false;
     }
-
 }

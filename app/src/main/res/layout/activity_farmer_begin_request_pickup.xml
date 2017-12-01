@@ -37,7 +37,7 @@
         android:layout_height="23dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="What produce would you like transported?"
+        android:text="What produce would you like to be transported?"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

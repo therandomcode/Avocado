@@ -6,11 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
-public class TransporterAddTripPickDate extends AppCompatActivity {
+public class TransporterSetAvailabilityPickDate extends AppCompatActivity {
 
     DatePicker picker;
     CheckBox AMCheckBox;
@@ -19,21 +18,29 @@ public class TransporterAddTripPickDate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transporter_add_trip_pick_date);
+        setContentView(R.layout.activity_transporter_set_availability_pick_date);
 
-        final Button finishButton = findViewById(R.id.transporterAddTripFinishButton);
-        finishButton.setOnClickListener(new View.OnClickListener() {
+        final Button addMoreButton = findViewById(R.id.transporterSetAvailabilityAddMoreButton);
+        addMoreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showToast();
-                Intent myIntent = new Intent(TransporterAddTripPickDate.this, TransporterViewSchedule.class);
+                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityPickDate.class);
                 startActivity(myIntent);
             }
         });
 
-        final Button backButton = findViewById(R.id.transporterAddTripBackButton);
+        final Button finishButton = findViewById(R.id.transporterSetAvailabilityFinishButton);
+        finishButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showToast();
+                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterViewSchedule.class);
+                startActivity(myIntent);
+            }
+        });
+
+        final Button backButton = findViewById(R.id.transporterSetAvailabilityBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(TransporterAddTripPickDate.this, TransporterAddTripSetDestination.class);
+                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityLocationType.class);
                 startActivity(myIntent);
             }
         });

@@ -32,7 +32,7 @@ public class FarmerHome extends AppCompatActivity {
         final Button historyButton = findViewById(R.id.farmerHomeHistoryButton);
         historyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(FarmerHome.this, FarmerViewHistory.class);
+                Intent myIntent = new Intent(FarmerHome.this, FarmerHistory.class);
                 startActivity(myIntent);
             }
         });
@@ -40,7 +40,7 @@ public class FarmerHome extends AppCompatActivity {
         final Button messagesButton = findViewById(R.id.farmerHomeMessagesButton);
         messagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(FarmerHome.this, Messages.class);
+                Intent myIntent = new Intent(FarmerHome.this, FarmerMessages.class);
                 startActivity(myIntent);
             }
         });
