@@ -62,7 +62,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_FIRSTNAME, transporter.getFirstName()); // Transporter First Name
         values.put(KEY_LASTNAME, transporter.getLastName()); // Transporter Last Name
         values.put(KEY_ADDRESS, transporter.getAddress()); //Transporter Address
-        values.put(KEY_CARMAKE, transporter.getTimes()); // Transporter Times
+        values.put(KEY_CARMAKE, transporter.getCarMake()); // Transporter Times
 // Inserting Row
         db.insert(TABLE_TRANSPORTERS, null, values);
         db.close(); // Closing database connection
@@ -122,7 +122,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 transporter.setFirstName(cursor.getString(0));
                 transporter.setLastName(cursor.getString(1));
                 transporter.setAddress(cursor.getString(2));
-                transporter.setHash(string_to_hash(cursor.getString(3)));
+                transporter.setCarMake(cursor.getString(3));
 // Adding contact to list
                 transporterList.add(transporter);
             } while (cursor.moveToNext());
