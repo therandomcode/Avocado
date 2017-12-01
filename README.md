@@ -5,6 +5,16 @@ Full functionality will be supported in the MASTER branch.
 **Team to-dos**
 
 Finish building out farmer screens [70%]
+
+12/1/17
+Joyce - history 
+Jeremy - Make everything interactive 
+Kristina - Poster, double-check sequencing, fix images, add sign up sequence
+Arka - integrate everything with real backend 
+Kylee -- db help
+
+
+
 High priority
 * Add progress bar to bottom of sign-up sequence - whoever figures it out first
 * Fix sign-up and sign-in screens - Joyce
