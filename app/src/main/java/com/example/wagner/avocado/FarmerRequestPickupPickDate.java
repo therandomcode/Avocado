@@ -20,7 +20,9 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_pick_date);
 
-    final Button nextButton = findViewById(R.id.FarmerRequestPickupDateNextButton);
+
+
+        final Button nextButton = findViewById(R.id.FarmerRequestPickupDateNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 

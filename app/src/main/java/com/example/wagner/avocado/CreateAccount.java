@@ -5,19 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 import android.widget.EditText;
 
-
 public class CreateAccount extends AppCompatActivity {
 
+    final CheckBox farmerBox = (CheckBox) findViewById(R.id.Farmer);
+    final CheckBox transporterBox = (CheckBox) findViewById(R.id.Transporter);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
-
 
         final Button button = findViewById(R.id.createAccountSubmitButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -42,5 +43,18 @@ public class CreateAccount extends AppCompatActivity {
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });
+    }
+
+    public void onTransporterClicked(View view) {
+        if (farmerBox.isChecked()) {
+            farmerBox.setChecked(false);
+        }
+    }
+
+
+    public void onFarmerClicked(View view) {
+        if (transporterBox.isChecked()) {
+            transporterBox.setChecked(false);
+        }
     }
 }
