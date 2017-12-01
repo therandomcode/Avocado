@@ -79,7 +79,8 @@ public class SignUpSetLocation extends AppCompatActivity implements
             public void onClick(View v) {
 
 
-                String name = getIntent().getStringExtra("name");
+                String firstname = getIntent().getStringExtra("firstname");
+                String lastname = getIntent().getStringExtra("lastname");
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 String password = getIntent().getStringExtra("password");
 
@@ -91,12 +92,12 @@ public class SignUpSetLocation extends AppCompatActivity implements
                 String country = text3.getText().toString();
 
                 EditText text4 = (EditText)findViewById(R.id.editText4);
-                String postalcode = text3.getText().toString();
+                String postalcode = text4.getText().toString();
 
                 EditText text5 = (EditText)findViewById(R.id.editText5);
                 String city = text5.getText().toString();
 
-                insertFarmerMySQL(name, phonenumber, password, address, country, postalcode, city);
+                insertFarmerMySQL(firstname, lastname, phonenumber, password, address, country, postalcode, city);
 
                 Intent myIntent = new Intent(SignUpSetLocation.this, SignUpFarmerAddPhotos.class);
                 startActivity(myIntent);
@@ -156,20 +157,19 @@ public class SignUpSetLocation extends AppCompatActivity implements
         });
     }
 
-    public void insertFarmerMySQL(String name, String phonenumber, String password, String
+    public void insertFarmerMySQL(String firstname, String lastname, String phonenumber, String password, String
             address, String country, String postalcode, String
                                           city)
     {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
-        String names[] = name.split( " ");
         ArrayList<HashMap<String, String>> wordList;
         wordList = new ArrayList<HashMap<String, String>>();
 
         HashMap<String, String> map = new HashMap<String, String>();
-        map.put("firstname", names[0]);
-        map.put("lastname", names[1]);
+        map.put("firstname", firstname);
+        map.put("lastname", lastname);
         map.put("phonenumber", phonenumber);
         map.put("password", password);
         map.put("address", address);

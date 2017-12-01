@@ -28,7 +28,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_FIRSTNAME = "firstname";
     private static final String KEY_LASTNAME = "lastname";
     private static final String KEY_ADDRESS = "address";
-    private static final String KEY_TIMES = "availability";
+    private static final String KEY_CARMAKE = "car_make";
     private static final String KEY_CROPS = "crops";
 
     private enum Time{
@@ -43,7 +43,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_TRANSPORTERS + "("
                 + KEY_FIRSTNAME + " TEXT," + KEY_LASTNAME + " TEXT," + KEY_ADDRESS + " TEXT,"
-                + KEY_TIMES + " TEXT" + ")";
+                + KEY_CARMAKE + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
 
@@ -62,7 +62,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_FIRSTNAME, transporter.getFirstName()); // Transporter First Name
         values.put(KEY_LASTNAME, transporter.getLastName()); // Transporter Last Name
         values.put(KEY_ADDRESS, transporter.getAddress()); //Transporter Address
-        values.put(KEY_TIMES, transporter.getTimes()); // Transporter Times
+        values.put(KEY_CARMAKE, transporter.getTimes()); // Transporter Times
 // Inserting Row
         db.insert(TABLE_TRANSPORTERS, null, values);
         db.close(); // Closing database connection
@@ -72,13 +72,12 @@ public class DBHandler extends SQLiteOpenHelper {
     public Transporter getTransporter(String lastname) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_TRANSPORTERS, new String[]{KEY_FIRSTNAME,
-                        KEY_LASTNAME, KEY_ADDRESS, KEY_TIMES}, KEY_LASTNAME + "=?",
+                        KEY_LASTNAME, KEY_ADDRESS, KEY_CARMAKE}, KEY_LASTNAME + "=?",
                 new String[]{String.valueOf(lastname)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
         Transporter contact = new Transporter(cursor.getString(0),
-                cursor.getString(1), cursor.getString(2),
-                string_to_hash(cursor.getString(3)));
+                cursor.getString(1), cursor.getString(2), cursor.getString(3));
         db.close();
         return contact;
     }
@@ -133,27 +132,27 @@ public class DBHandler extends SQLiteOpenHelper {
         return transporterList;
     }
 
-//    // Getting transporters Count
-//    public int getTransportersCount() {
-//        String countQuery = "SELECT * FROM " + TABLE_TRANSPORTERS;
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery(countQuery, null);
-//        cursor.close();
-//        db.close();
-//// return count
-//        return cursor.getCount();
-//    }
-//
-//    // Updating a transporter
-//    public int updateTransporter(Transporter transporter) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(KEY_FIRSTNAME, transporter.getFirstName());
-//        db.close();
-//// updating row
-//        return db.update(TABLE_TRANSPORTERS, values, KEY_LASTNAME + " = ?",
-//                new String[]{String.valueOf(transporter.getLastName())});
-//    }
+    // Getting transporters Count
+    public int getTransportersCount() {
+        String countQuery = "SELECT * FROM " + TABLE_TRANSPORTERS;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        cursor.close();
+        db.close();
+// return count
+        return cursor.getCount();
+    }
+
+    // Updating a transporter
+    public int updateTransporter(Transporter transporter) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_FIRSTNAME, transporter.getFirstName());
+        db.close();
+// updating row
+        return db.update(TABLE_TRANSPORTERS, values, KEY_LASTNAME + " = ?",
+                new String[]{String.valueOf(transporter.getLastName())});
+    }
 
     // Deleting a transporter
     public void deleteTransporter(Transporter transporter) {

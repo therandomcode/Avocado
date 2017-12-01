@@ -24,7 +24,7 @@ public class CreateAccount extends AppCompatActivity {
             public void onClick(View v) {
 
                 EditText text2 = (EditText)findViewById(R.id.editText2);
-                String name = text2.getText().toString();
+                String firstname = text2.getText().toString();
 
                 EditText text3 = (EditText)findViewById(R.id.editText3);
                 String phonenumber = text3.getText().toString();
@@ -32,10 +32,14 @@ public class CreateAccount extends AppCompatActivity {
                 EditText text4 = (EditText)findViewById(R.id.editText4);
                 String password = text4.getText().toString();
 
+                EditText text5 = (EditText)findViewById(R.id.editText5);
+                String lastname = text4.getText().toString();
+
                 Intent farmerBeginRequestPickupIntent = new Intent(CreateAccount.this,
                         SignUpSetLocation.class);
 
-                farmerBeginRequestPickupIntent.putExtra("name", name);
+                farmerBeginRequestPickupIntent.putExtra("firstname", firstname);
+                farmerBeginRequestPickupIntent.putExtra("lastname", lastname);
                 farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 farmerBeginRequestPickupIntent.putExtra("password", password);
 
