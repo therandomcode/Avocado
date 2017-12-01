@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 public class TransporterSetAvailabilityPickDate extends AppCompatActivity {
 
@@ -27,10 +28,11 @@ public class TransporterSetAvailabilityPickDate extends AppCompatActivity {
             }
         });
 
-        final Button doneButton = findViewById(R.id.transporterSetAvailabilityDoneButton);
-        doneButton.setOnClickListener(new View.OnClickListener() {
+        final Button finishButton = findViewById(R.id.transporterSetAvailabilityFinishButton);
+        finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityLocationType.class);
+                showToast();
+                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterViewSchedule.class);
                 startActivity(myIntent);
             }
         });
@@ -38,9 +40,15 @@ public class TransporterSetAvailabilityPickDate extends AppCompatActivity {
         final Button backButton = findViewById(R.id.transporterSetAvailabilityBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityEnterInfo.class);
+                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityLocationType.class);
                 startActivity(myIntent);
             }
         });
+    }
+
+    private void showToast() {
+        Toast.makeText(this,
+                "Thank you! Farmers in the area will be notified.",
+                Toast.LENGTH_LONG).show();
     }
 }

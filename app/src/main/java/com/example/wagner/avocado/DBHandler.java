@@ -28,7 +28,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String KEY_FIRSTNAME = "firstname";
     private static final String KEY_LASTNAME = "lastname";
     private static final String KEY_ADDRESS = "address";
-    private static final String KEY_TIMES = "availability";
+    private static final String KEY_CARMAKE = "car_make";
     private static final String KEY_CROPS = "crops";
 
     private enum Time{
@@ -43,7 +43,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_TRANSPORTERS + "("
                 + KEY_FIRSTNAME + " TEXT," + KEY_LASTNAME + " TEXT," + KEY_ADDRESS + " TEXT,"
-                + KEY_TIMES + " TEXT" + ")";
+                + KEY_CARMAKE + " TEXT" + ")";
         db.execSQL(CREATE_CONTACTS_TABLE);
     }
 
@@ -62,7 +62,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(KEY_FIRSTNAME, transporter.getFirstName()); // Transporter First Name
         values.put(KEY_LASTNAME, transporter.getLastName()); // Transporter Last Name
         values.put(KEY_ADDRESS, transporter.getAddress()); //Transporter Address
-        values.put(KEY_TIMES, transporter.getTimes()); // Transporter Times
+        values.put(KEY_CARMAKE, transporter.getCarMake()); // Transporter Times
 // Inserting Row
         db.insert(TABLE_TRANSPORTERS, null, values);
         db.close(); // Closing database connection
@@ -72,13 +72,13 @@ public class DBHandler extends SQLiteOpenHelper {
     public Transporter getTransporter(String lastname) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_TRANSPORTERS, new String[]{KEY_FIRSTNAME,
-                        KEY_LASTNAME, KEY_ADDRESS, KEY_TIMES}, KEY_LASTNAME + "=?",
+                        KEY_LASTNAME, KEY_ADDRESS, KEY_CARMAKE}, KEY_LASTNAME + "=?",
                 new String[]{String.valueOf(lastname)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
         Transporter contact = new Transporter(cursor.getString(0),
                 cursor.getString(1), cursor.getString(2),
-                string_to_hash(cursor.getString(3)));
+                cursor.getString(3));
         db.close();
         return contact;
     }
@@ -123,7 +123,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 transporter.setFirstName(cursor.getString(0));
                 transporter.setLastName(cursor.getString(1));
                 transporter.setAddress(cursor.getString(2));
-                transporter.setHash(string_to_hash(cursor.getString(3)));
+                transporter.setCarMake(cursor.getString(3));
 // Adding contact to list
                 transporterList.add(transporter);
             } while (cursor.moveToNext());
