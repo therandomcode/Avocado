@@ -39,6 +39,7 @@
         <activity android:name=".SignUpNameNumber" />
         <activity android:name=".SignUpSetLocation" />
         <activity android:name=".SignUpFarmerAddPhotos" />
+        <activity android:name=".SignUpFarmerAddProfile" />
         <activity android:name=".SignUpTransporterAddPhotos" />
         <activity android:name=".SignUpLater" />
         <activity android:name=".FarmerBeginRequestPickup" />
@@ -64,6 +65,9 @@
         <activity android:name=".TransporterSetAvailabilityLocationType" />
         <activity android:name=".FarmerMessages" />
         <activity android:name=".CreateAccount"/>
+        <activity android:name=".SignUpTransporterAddProfile"/>
+        <activity android:name=".SignUpSetCarInfoTransporter"/>
+        <activity android:name=".SignUpSetLocationTransporter"/>
     </application>
 
 </manifest>
