@@ -97,12 +97,11 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
             }
         });
 
-        final Button finishButton = findViewById(R.id.transporterSetAvailabilityLocationTypeFinishButton);
-        finishButton.setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = findViewById(R.id.transporterSetAvailabilityLocationTypeNextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showToast();
                 Intent myIntent = new Intent(TransporterSetAvailabilityLocationType.this,
-                        TransporterViewSchedule.class);
+                        TransporterSetAvailabilityPickDate.class);
                 startActivity(myIntent);
             }
         });
@@ -111,7 +110,7 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterSetAvailabilityLocationType.this,
-                        TransporterSetAvailabilityPickDate.class);
+                        TransporterViewSchedule.class);
                 startActivity(myIntent);
             }
         });
@@ -119,12 +118,6 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.transporterSetAvailabilityLocationTypeMap);
         new OnMapAndViewReadyListener(mapFragment, this);
-    }
-
-    private void showToast() {
-        Toast.makeText(this,
-                "Thank you! Farmers in the area will be notified.",
-                Toast.LENGTH_LONG).show();
     }
 
     @Override

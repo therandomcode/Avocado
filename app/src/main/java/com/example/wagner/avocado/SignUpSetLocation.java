@@ -91,7 +91,7 @@ public class SignUpSetLocation extends AppCompatActivity implements
                 String country = text3.getText().toString();
 
                 EditText text4 = (EditText)findViewById(R.id.editText4);
-                String postalcode = text3.getText().toString();
+                String postalcode = text4.getText().toString();
 
                 EditText text5 = (EditText)findViewById(R.id.editText5);
                 String city = text5.getText().toString();
