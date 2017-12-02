@@ -28,13 +28,16 @@ public class CreateAccount extends AppCompatActivity {
             public void onClick(View v) {
 
                 EditText text2 = (EditText)findViewById(R.id.editText2);
-                String name = text2.getText().toString();
+                String firstname = text2.getText().toString();
 
                 EditText text3 = (EditText)findViewById(R.id.editText3);
                 String phonenumber = text3.getText().toString();
 
                 EditText text4 = (EditText)findViewById(R.id.editText4);
                 String password = text4.getText().toString();
+
+                EditText text5 = (EditText)findViewById(R.id.editText5);
+                String lastname = text4.getText().toString();
 
                 farmerBox = (CheckBox) findViewById(R.id.Farmer);
                 transporterBox = (CheckBox) findViewById(R.id.Transporter);
@@ -44,7 +47,8 @@ public class CreateAccount extends AppCompatActivity {
                     Intent farmerBeginRequestPickupIntent = new Intent(CreateAccount.this,
                             SignUpSetLocation.class);
 
-                    farmerBeginRequestPickupIntent.putExtra("name", name);
+                    farmerBeginRequestPickupIntent.putExtra("firstname", name);
+                    farmerBeginRequestPickupIntent.putExtra("lastname", lastname);
                     farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                     farmerBeginRequestPickupIntent.putExtra("password", password);
 
@@ -54,10 +58,11 @@ public class CreateAccount extends AppCompatActivity {
                     Intent farmerBeginRequestPickupIntent = new Intent(CreateAccount.this,
                             SignUpSetLocationTransporter.class);
 
-                    farmerBeginRequestPickupIntent.putExtra("name", name);
+                    farmerBeginRequestPickupIntent.putExtra("firstname", name);
+                    farmerBeginRequestPickupIntent.putExtra("lastname", lastname);
                     farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                     farmerBeginRequestPickupIntent.putExtra("password", password);
-
+                  
                     startActivity(farmerBeginRequestPickupIntent);
                 }
             }

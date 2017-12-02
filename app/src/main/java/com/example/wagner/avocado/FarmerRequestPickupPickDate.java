@@ -70,6 +70,9 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerRequestPickupPickDate.this, FarmerBeginRequestPickup.class);
+                myIntent.putExtra("crop", getIntent().getStringExtra("crop"));
+                myIntent.putExtra("metric", getIntent().getStringExtra("metric"));
+                myIntent.putExtra("amount", getIntent().getStringExtra("amount"));
                 startActivity(myIntent);
             }
         });

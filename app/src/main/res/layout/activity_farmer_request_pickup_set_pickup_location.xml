@@ -57,7 +57,7 @@
         android:id="@+id/farmerRequestPickupSetPickupLocationEnterAddress"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
-        android:layout_marginStart="84dp"
+        android:layout_marginStart="96dp"
         android:ems="10"
         android:hint="Enter Your Address Here"
         android:inputType="textPostalAddress"
@@ -75,5 +75,14 @@
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toStartOf="@+id/farmerRequestPickupSetPickupLocationEnterAddress"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/house" />
 
 </android.support.constraint.ConstraintLayout>
