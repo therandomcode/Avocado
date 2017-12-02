@@ -7,7 +7,7 @@
     tools:context="com.example.wagner.avocado.SignUpTransporterAddPhotos">
 
     <Button
-        android:id="@+id/signUpTransporterAddPhotosBackButton"
+        android:id="@+id/backButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"></Button>
 
     <Button
-        android:id="@+id/signUpTransporterAddPhotosNextButton"
+        android:id="@+id/nextButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -35,23 +35,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:text="Add more details"
+        android:text="Add Vehicle Pictures"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="Add photos of your farm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
 
     <TextView
         android:id="@+id/textView8"
@@ -60,21 +48,33 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="This will improve your chances of getting higher quality transporters."
+        android:text="This will improve your chances of getting higher quality farmers."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="119dp"
-        android:layout_height="112dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="73dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="248dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/insert_photo" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="272dp"
+        android:text="Add photos"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

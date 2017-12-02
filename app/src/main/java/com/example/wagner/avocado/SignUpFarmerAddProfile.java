@@ -7,19 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class SignUpFarmerAddPhotos extends AppCompatActivity {
+public class SignUpFarmerAddProfile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_farmer_add_photos);
+        setContentView(R.layout.activity_sign_up_farmer_add_profile);
 
-        final Button finishButton = findViewById(R.id.signUpFarmerAddPhotosFinishButton);
-        finishButton.setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = findViewById(R.id.signUpFarmerAddPhotosFinishButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showToast();
-                Intent myIntent = new Intent(SignUpFarmerAddPhotos.this,
-                        FarmerHome.class);
+                Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
+                        SignUpFarmerAddPhotos.class);
                 startActivity(myIntent);
             }
         });
@@ -27,16 +26,12 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
         final Button backButton = findViewById(R.id.signUpFarmerAddPhotosBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpFarmerAddPhotos.this,
-                        SignUpFarmerAddProfile.class);
+                Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
+                        SignUpSetLocation.class);
                 startActivity(myIntent);
             }
         });
     }
 
-    private void showToast() {
-        Toast.makeText(this,
-                "Thank you for signing up!",
-                Toast.LENGTH_LONG).show();
-    }
+
 }

@@ -39,7 +39,7 @@ import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
 
-public class SignUpSetLocation extends AppCompatActivity implements
+public class SignUpSetLocationTransporter extends AppCompatActivity implements
         OnMarkerClickListener,
         OnMapClickListener,
         OnMapReadyCallback,
@@ -70,7 +70,7 @@ public class SignUpSetLocation extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_set_location);
+        setContentView(R.layout.activity_sign_up_set_location_transporter);
 
         findViewById(R.id.map).setVisibility(View.GONE);
 
@@ -79,8 +79,7 @@ public class SignUpSetLocation extends AppCompatActivity implements
             public void onClick(View v) {
 
 
-                String firstname = getIntent().getStringExtra("firstname");
-                String lastname = getIntent().getStringExtra("lastname");
+                String name = getIntent().getStringExtra("name");
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 String password = getIntent().getStringExtra("password");
 
@@ -92,14 +91,14 @@ public class SignUpSetLocation extends AppCompatActivity implements
                 String country = text3.getText().toString();
 
                 EditText text4 = (EditText)findViewById(R.id.editText4);
-                String postalcode = text4.getText().toString();
+                String postalcode = text3.getText().toString();
 
                 EditText text5 = (EditText)findViewById(R.id.editText5);
                 String city = text5.getText().toString();
 
-                insertFarmerMySQL(firstname, lastname, phonenumber, password, address, country, postalcode, city);
+                insertFarmerMySQL(name, phonenumber, password, address, country, postalcode, city);
 
-                Intent myIntent = new Intent(SignUpSetLocation.this, SignUpFarmerAddProfile.class);
+                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, SignUpSetCarInfoTransporter.class);
                 startActivity(myIntent);
             }
         });
@@ -107,7 +106,7 @@ public class SignUpSetLocation extends AppCompatActivity implements
         final Button backButton = findViewById(R.id.signUpSetLocationBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetLocation.this, CreateAccount.class);
+                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, CreateAccount.class);
                 startActivity(myIntent);
             }
         });
@@ -115,7 +114,7 @@ public class SignUpSetLocation extends AppCompatActivity implements
         final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
         skipButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetLocation.this, SignUpLater.class);
+                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, SignUpLater.class);
                 startActivity(myIntent);
             }
         });
@@ -157,19 +156,20 @@ public class SignUpSetLocation extends AppCompatActivity implements
         });
     }
 
-    public void insertFarmerMySQL(String firstname, String lastname, String phonenumber, String password, String
+    public void insertFarmerMySQL(String name, String phonenumber, String password, String
             address, String country, String postalcode, String
                                           city)
     {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
+        String names[] = name.split( " ");
         ArrayList<HashMap<String, String>> wordList;
         wordList = new ArrayList<HashMap<String, String>>();
 
         HashMap<String, String> map = new HashMap<String, String>();
-        map.put("firstname", firstname);
-        map.put("lastname", lastname);
+        map.put("firstname", names[0]);
+        map.put("lastname", names[1]);
         map.put("phonenumber", phonenumber);
         map.put("password", password);
         map.put("address", address);
@@ -342,3 +342,4 @@ public class SignUpSetLocation extends AppCompatActivity implements
         return false;
     }
 }
+

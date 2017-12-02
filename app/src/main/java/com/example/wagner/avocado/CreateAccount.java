@@ -5,19 +5,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 import android.widget.EditText;
 
-
 public class CreateAccount extends AppCompatActivity {
 
+    private CheckBox farmerBox;
+    private CheckBox transporterBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
+        farmerBox = (CheckBox) findViewById(R.id.Farmer);
+        transporterBox = (CheckBox) findViewById(R.id.Transporter);
 
         final Button button = findViewById(R.id.createAccountSubmitButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -35,16 +39,46 @@ public class CreateAccount extends AppCompatActivity {
                 EditText text5 = (EditText)findViewById(R.id.editText5);
                 String lastname = text4.getText().toString();
 
-                Intent farmerBeginRequestPickupIntent = new Intent(CreateAccount.this,
-                        SignUpSetLocation.class);
+                farmerBox = (CheckBox) findViewById(R.id.Farmer);
+                transporterBox = (CheckBox) findViewById(R.id.Transporter);
 
-                farmerBeginRequestPickupIntent.putExtra("firstname", firstname);
-                farmerBeginRequestPickupIntent.putExtra("lastname", lastname);
-                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
-                farmerBeginRequestPickupIntent.putExtra("password", password);
 
-                startActivity(farmerBeginRequestPickupIntent);
+                if (farmerBox.isChecked()) {
+                    Intent farmerBeginRequestPickupIntent = new Intent(CreateAccount.this,
+                            SignUpSetLocation.class);
+
+                    farmerBeginRequestPickupIntent.putExtra("firstname", name);
+                    farmerBeginRequestPickupIntent.putExtra("lastname", lastname);
+                    farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
+                    farmerBeginRequestPickupIntent.putExtra("password", password);
+
+                    startActivity(farmerBeginRequestPickupIntent);
+                }
+                else if (transporterBox.isChecked()){
+                    Intent farmerBeginRequestPickupIntent = new Intent(CreateAccount.this,
+                            SignUpSetLocationTransporter.class);
+
+                    farmerBeginRequestPickupIntent.putExtra("firstname", name);
+                    farmerBeginRequestPickupIntent.putExtra("lastname", lastname);
+                    farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
+                    farmerBeginRequestPickupIntent.putExtra("password", password);
+                  
+                    startActivity(farmerBeginRequestPickupIntent);
+                }
             }
         });
+    }
+
+    public void onTransporterClicked(View view) {
+        if (farmerBox.isChecked()) {
+            farmerBox.setChecked(false);
+        }
+    }
+
+
+    public void onFarmerClicked(View view) {
+        if (transporterBox.isChecked()) {
+            transporterBox.setChecked(false);
+        }
     }
 }
