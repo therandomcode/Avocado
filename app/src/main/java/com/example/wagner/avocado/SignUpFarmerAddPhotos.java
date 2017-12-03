@@ -67,14 +67,12 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
         int permissionCheck = ContextCompat.checkSelfPermission(
                 this, Manifest.permission.READ_EXTERNAL_STORAGE);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-            showToast("Permission check says permission not already granted.");
             if (ActivityCompat.shouldShowRequestPermissionRationale(SignUpFarmerAddPhotos.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 showExplanation("Permission Needed",
                         "Rationale",
                         Manifest.permission.READ_EXTERNAL_STORAGE,
                         REQUEST_PERMISSION_READ_EXTERNAL_STORAGE);
             } else {
-                showToast("Requesting permission");
                 requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_PERMISSION_READ_EXTERNAL_STORAGE);
             }
         } else {
