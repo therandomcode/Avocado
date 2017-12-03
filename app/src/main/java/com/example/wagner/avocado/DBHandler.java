@@ -77,8 +77,7 @@ public class DBHandler extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
         Transporter contact = new Transporter(cursor.getString(0),
-                cursor.getString(1), cursor.getString(2),
-                cursor.getString(3));
+                cursor.getString(1), cursor.getString(2), cursor.getString(3));
         db.close();
         return contact;
     }
@@ -133,27 +132,27 @@ public class DBHandler extends SQLiteOpenHelper {
         return transporterList;
     }
 
-//    // Getting transporters Count
-//    public int getTransportersCount() {
-//        String countQuery = "SELECT * FROM " + TABLE_TRANSPORTERS;
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.rawQuery(countQuery, null);
-//        cursor.close();
-//        db.close();
-//// return count
-//        return cursor.getCount();
-//    }
-//
-//    // Updating a transporter
-//    public int updateTransporter(Transporter transporter) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(KEY_FIRSTNAME, transporter.getFirstName());
-//        db.close();
-//// updating row
-//        return db.update(TABLE_TRANSPORTERS, values, KEY_LASTNAME + " = ?",
-//                new String[]{String.valueOf(transporter.getLastName())});
-//    }
+    // Getting transporters Count
+    public int getTransportersCount() {
+        String countQuery = "SELECT * FROM " + TABLE_TRANSPORTERS;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+        cursor.close();
+        db.close();
+// return count
+        return cursor.getCount();
+    }
+
+    // Updating a transporter
+    public int updateTransporter(Transporter transporter) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_FIRSTNAME, transporter.getFirstName());
+        db.close();
+// updating row
+        return db.update(TABLE_TRANSPORTERS, values, KEY_LASTNAME + " = ?",
+                new String[]{String.valueOf(transporter.getLastName())});
+    }
 
     // Deleting a transporter
     public void deleteTransporter(Transporter transporter) {
