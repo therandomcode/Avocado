@@ -19,6 +19,25 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
                         SignUpFarmerAddPhotos.class);
+
+                String firstname = getIntent().getStringExtra("firstname");
+                String lastname = getIntent().getStringExtra("lastname");
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                String password = getIntent().getStringExtra("password");
+                String address = getIntent().getStringExtra("address");
+                String city = getIntent().getStringExtra("city");
+                String country = getIntent().getStringExtra("country");
+                String postalcode = getIntent().getStringExtra("postalcode");
+
+                myIntent.putExtra("firstname", firstname);
+                myIntent.putExtra("lastname", lastname);
+                myIntent.putExtra("phonenumber", phonenumber);
+                myIntent.putExtra("password", password);
+                myIntent.putExtra("address", address);
+                myIntent.putExtra("city", city);
+                myIntent.putExtra("country", country);
+                myIntent.putExtra("postalcode", postalcode);
+
                 startActivity(myIntent);
             }
         });
@@ -28,6 +47,29 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
                         SignUpSetLocation.class);
+                startActivity(myIntent);
+            }
+        });
+
+        final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
+                        FarmerHome.class);
+
+                String firstname = getIntent().getStringExtra("firstname");
+                String lastname = getIntent().getStringExtra("lastname");
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                String password = getIntent().getStringExtra("password");
+                String address = getIntent().getStringExtra("address");
+                String city = getIntent().getStringExtra("city");
+                String country = getIntent().getStringExtra("country");
+                String postalcode = getIntent().getStringExtra("postalcode");
+
+                DatabaseHandler db = new DatabaseHandler();
+                db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
+                        postalcode, city);
+
                 startActivity(myIntent);
             }
         });
