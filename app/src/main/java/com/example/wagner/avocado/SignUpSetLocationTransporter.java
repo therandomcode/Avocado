@@ -123,7 +123,7 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
         final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
         skipButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, TransporterHome.class);
+                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, SignUpLater.class);
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
@@ -178,11 +178,11 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
     }
 
     private void setAddressTextView(){
-        EditText addressLine1 = findViewById(R.id.editText2);
-        EditText country = findViewById(R.id.editText3);
-        EditText addressLine2 = findViewById(R.id.editText6);
-        EditText postalCode = findViewById(R.id.editText4);
-        EditText city = findViewById(R.id.editText5);
+        EditText addressLine1 = findViewById(R.id.addressline1);
+        EditText country = findViewById(R.id.country);
+        EditText addressLine2 = findViewById(R.id.addressline2);
+        EditText postalCode = findViewById(R.id.postalcode);
+        EditText city = findViewById(R.id.city);
         addressLine1.setVisibility(View.VISIBLE);
         addressLine2.setVisibility(View.VISIBLE);
         city.setVisibility(View.VISIBLE);
@@ -192,11 +192,11 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
     }
 
     private void setDropPinTextView() {
-        EditText addressLine1 = findViewById(R.id.editText2);
-        EditText country = findViewById(R.id.editText3);
-        EditText addressLine2 = findViewById(R.id.editText6);
-        EditText postalCode = findViewById(R.id.editText4);
-        EditText city = findViewById(R.id.editText5);
+        EditText addressLine1 = findViewById(R.id.addressline1);
+        EditText country = findViewById(R.id.country);
+        EditText addressLine2 = findViewById(R.id.addressline2);
+        EditText postalCode = findViewById(R.id.postalcode);
+        EditText city = findViewById(R.id.city);
         addressLine1.setVisibility(View.GONE);
         addressLine2.setVisibility(View.GONE);
         city.setVisibility(View.GONE);

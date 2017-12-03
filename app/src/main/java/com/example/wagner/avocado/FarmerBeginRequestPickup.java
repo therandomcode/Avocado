@@ -34,7 +34,7 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
         s.setAdapter(produceAdapter);
 
 //        String savedProduce = getIntent().getStringExtra("produce");
-//        if (!savedProduce.equals(null)) {
+//        if (savedProduce != null) {
 //            int position = produceAdapter.getPosition(savedProduce);
 //            s.setSelection(position);
 //        }

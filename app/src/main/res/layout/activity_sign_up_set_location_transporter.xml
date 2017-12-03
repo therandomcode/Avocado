@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.example.wagner.avocado.SignUpSetLocation">
 
+    <Button
+        android:id="@+id/signUpSetLocationSkipButton"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="62dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Skip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <fragment
         android:id="@+id/map"
         class="com.google.android.gms.maps.SupportMapFragment"
@@ -60,17 +72,15 @@
 
     <EditText
         android:id="@+id/country"
-        android:layout_width="wrap_content"
+        android:layout_width="126dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Country"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/postalcode"
+        app:layout_constraintTop_toBottomOf="@+id/city" />
 
     <EditText
         android:id="@+id/addressline2"
@@ -84,31 +94,34 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/addressline1" />
 
     <EditText
         android:id="@+id/postalcode"
-        android:layout_width="124dp"
+        android:layout_width="83dp"
         android:layout_height="43dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="Zip Code"
         android:inputType="textPersonName"
-        android:hint="Postal Code"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city" />
 
     <EditText
         android:id="@+id/city"
-        android:layout_width="76dp"
+        android:layout_width="213dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="City"
-        app:layout_constraintEnd_toStartOf="@+id/editText4"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressline2" />
 
     <TextView
         android:id="@+id/textView5"
@@ -146,17 +159,6 @@
         android:textOn="Drop Pin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <Button
-        android:id="@+id/signUpSetLocationSkipButton"
-        android:layout_width="62dp"
-        android:layout_height="39dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Skip"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
