@@ -8,17 +8,6 @@
 
 
     <Button
-        android:id="@+id/button_cal_next2"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:text="BACK"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></Button>
-
-    <Button
         android:id="@+id/button_cal_next3"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"

@@ -61,7 +61,7 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
         skipbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, TransporterHome.class);
+                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, SignUpLater.class);
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
