@@ -47,7 +47,7 @@ public class CreateAccount extends AppCompatActivity {
                     Intent farmerBeginRequestPickupIntent = new Intent(CreateAccount.this,
                             SignUpSetLocation.class);
 
-                    farmerBeginRequestPickupIntent.putExtra("firstname", name);
+                    farmerBeginRequestPickupIntent.putExtra("firstname", firstname);
                     farmerBeginRequestPickupIntent.putExtra("lastname", lastname);
                     farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                     farmerBeginRequestPickupIntent.putExtra("password", password);
@@ -58,7 +58,7 @@ public class CreateAccount extends AppCompatActivity {
                     Intent farmerBeginRequestPickupIntent = new Intent(CreateAccount.this,
                             SignUpSetLocationTransporter.class);
 
-                    farmerBeginRequestPickupIntent.putExtra("firstname", name);
+                    farmerBeginRequestPickupIntent.putExtra("firstname", firstname);
                     farmerBeginRequestPickupIntent.putExtra("lastname", lastname);
                     farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                     farmerBeginRequestPickupIntent.putExtra("password", password);
