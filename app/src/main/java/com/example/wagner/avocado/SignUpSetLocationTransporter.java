@@ -119,6 +119,7 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
                 myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
                 myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
                 myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("password", getIntent().getStringExtra("password"));
                 myIntent.putExtra("user", "transporter");
                 startActivity(myIntent);
             }
