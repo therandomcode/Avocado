@@ -60,15 +60,17 @@
 
     <EditText
         android:id="@+id/country"
-        android:layout_width="132dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Country"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/postalcode"
-        app:layout_constraintTop_toBottomOf="@+id/city" />
+        android:hint="Country"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText5" />
 
     <EditText
         android:id="@+id/addressline2"
@@ -82,33 +84,31 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressline1" />
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
     <EditText
         android:id="@+id/postalcode"
-        android:layout_width="81dp"
+        android:layout_width="124dp"
         android:layout_height="43dp"
-        android:layout_marginStart="72dp"
+        android:layout_marginEnd="80dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Zip Code"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/city" />
+        android:hint="Postal Code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText6" />
 
     <EditText
         android:id="@+id/city"
-        android:layout_width="217dp"
-        android:layout_height="46dp"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="City"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressline2" />
+        android:hint="City"
+        app:layout_constraintEnd_toStartOf="@+id/editText4"
+        app:layout_constraintTop_toBottomOf="@+id/editText6" />
 
     <TextView
         android:id="@+id/textView5"

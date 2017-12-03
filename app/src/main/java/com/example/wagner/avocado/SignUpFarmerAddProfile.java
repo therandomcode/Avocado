@@ -14,12 +14,11 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_farmer_add_profile);
 
-        final Button finishButton = findViewById(R.id.signUpFarmerAddPhotosFinishButton);
-        finishButton.setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = findViewById(R.id.signUpFarmerAddPhotosFinishButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showToast();
                 Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
-                        FarmerHome.class);
+                        SignUpFarmerAddPhotos.class);
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
@@ -47,17 +46,34 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
-                        SignUpFarmerAddProfile.class);
+                        SignUpSetLocation.class);
+                startActivity(myIntent);
+            }
+        });
+
+        final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
+                        FarmerHome.class);
+
+                String firstname = getIntent().getStringExtra("firstname");
+                String lastname = getIntent().getStringExtra("lastname");
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                String password = getIntent().getStringExtra("password");
+                String address = getIntent().getStringExtra("address");
+                String city = getIntent().getStringExtra("city");
+                String country = getIntent().getStringExtra("country");
+                String postalcode = getIntent().getStringExtra("postalcode");
+
+                DatabaseHandler db = new DatabaseHandler();
+                db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
+                        postalcode, city);
+
                 startActivity(myIntent);
             }
         });
     }
-    private void showToast() {
-        Toast.makeText(this,
-                "Thank you for signing up!",
-                Toast.LENGTH_LONG).show();
-    }
-
 
 
 }
