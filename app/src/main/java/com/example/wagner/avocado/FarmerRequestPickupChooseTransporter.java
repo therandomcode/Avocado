@@ -25,12 +25,13 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
     ListView bestMatch;
     ListView lst;
+
     ArrayList<Transporter> trans = new ArrayList<Transporter>();
     String[] transportername={"Juan Felipe","Ricardo Sanchez-Delorio","Davíd de Leon"};
     String[] times={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};
     String[] locations ={"Cartagena", "Cúcuta", "Santa Marta"};
     Integer[] imgid ={R.drawable.arka,R.drawable.cecilia,R.drawable.raza};
-
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +68,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         bestMatch.setAdapter(customListview);
 
         lst= findViewById(R.id.listview);
+        //FarmerRequestPickupChooseTransporterCustomListView customListview = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,times,imgid);
         lst.setAdapter(customListview);
 
 
