@@ -61,7 +61,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         }
 
         lst= findViewById(R.id.listview);
-        FarmerRequestPickupChooseTransporterCustomListView customListview = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,times,imgid);
+        FarmerRequestPickupChooseTransporterCustomListView customListview = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,times,imgid,locations);
         lst.setAdapter(customListview);
 
 

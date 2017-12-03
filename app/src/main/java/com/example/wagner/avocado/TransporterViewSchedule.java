@@ -13,8 +13,12 @@ public class TransporterViewSchedule extends AppCompatActivity {
 
     ListView lst;
     String[] transportername={"Juan","Ricardo","Davíd"};
-    String[] time={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};
-    Integer[] imgid ={R.drawable.bgavocado,R.drawable.bgavocado,R.drawable.bgavocado};
+    String[] time={"Tuesday, 2 October","Thursday, 4 October","Tuesday, 2 October"};
+    Integer[] imgid ={R.drawable.arka,R.drawable.cecilia,R.drawable.raza};
+    String[] price={"150 COP", "130 COP", "200 COP"};
+    String[] detail={"2 tonnes of bananas", "3 tonnes of avocados", "2 tonnes of avocados"};
+    String[] locationfrom ={"from Tony in Santa Cruz", "from Vaterme in La Paz", "from Adiffere in La Paz"};
+    String[] locationto ={"to Pedro in La Paz", "to Miguel in La Paz", "to Abigail in Santa Cruz"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +26,7 @@ public class TransporterViewSchedule extends AppCompatActivity {
         setContentView(R.layout.activity_transporter_view_schedule);
 
         lst= findViewById(R.id.listview);
-        TransporterViewScheduleCustomListView customListview = new TransporterViewScheduleCustomListView(this,transportername,time,imgid);
+        TransporterViewScheduleCustomListView customListview = new TransporterViewScheduleCustomListView(this,transportername,time,imgid,price,locationfrom,locationto,detail);
         lst.setAdapter(customListview);
 
         final Button setAvailabilityButton = findViewById(R.id.transporterViewScheduleSetAvailabilityButton);

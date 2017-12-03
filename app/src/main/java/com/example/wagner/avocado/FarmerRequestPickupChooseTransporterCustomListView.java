@@ -18,15 +18,17 @@ import android.widget.TextView;
 public class FarmerRequestPickupChooseTransporterCustomListView extends ArrayAdapter<String> {
     private String[] transportername;
     private String[] time;
+    private String[] transporterLocation;
     private Integer[] imgid;
     private Activity context;
 
-    public FarmerRequestPickupChooseTransporterCustomListView(Activity context, String[] transportername, String[] time, Integer[] imgid) {
+    public FarmerRequestPickupChooseTransporterCustomListView(Activity context, String[] transportername, String[] time, Integer[] imgid, String[] transporterLocation) {
         super(context, R.layout.activity_farmer_request_pickup_choose_trasporter_listview, transportername);
         this.context = context;
         this.transportername = transportername;
         this.time = time;
         this.imgid = imgid;
+        this.transporterLocation =transporterLocation;
     }
 
     @NonNull
@@ -45,8 +47,8 @@ public class FarmerRequestPickupChooseTransporterCustomListView extends ArrayAda
 
         viewHolder.ivw.setImageResource(imgid[position]);
         viewHolder.tvw1.setText(transportername[position]);
-        viewHolder.tvw2.setText(time[position]);
-
+        viewHolder.tvw2.setText("drives "+time[position]);
+        viewHolder.tvw3.setText("lives in "+transporterLocation[position]);
 
         return r;
     }
@@ -54,11 +56,13 @@ public class FarmerRequestPickupChooseTransporterCustomListView extends ArrayAda
     class ViewHolder {
         TextView tvw1;
         TextView tvw2;
+        TextView tvw3;
         ImageView ivw;
 
         ViewHolder(View v) {
             tvw1 = v.findViewById(R.id.transporterName);
             tvw2 = v.findViewById(R.id.time);
+            tvw3 = v.findViewById(R.id.transporterLocation);
             ivw = v.findViewById(R.id.imageView);
         }
     }

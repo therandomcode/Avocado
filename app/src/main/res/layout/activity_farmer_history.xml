@@ -8,7 +8,7 @@
 
 
     <Button
-        android:id="@+id/farmerHistoryBackButton"
+        android:id="@+id/FarmerHistoryBackButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,23 +21,44 @@
     <ListView
         android:id="@+id/listview"
         android:layout_width="321dp"
-        android:layout_height="351dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
+        android:layout_height="371dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+        app:layout_constraintTop_toBottomOf="@+id/FarmerHistoryPlanOrderButton" />
 
-    <TextView
-        android:id="@+id/textView29"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+    <ToggleButton
+        android:id="@+id/FarmerHistoryHistoryButton"
+        android:layout_width="103dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:text="History"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textOff="History"
+        android:textOn="History"
+        app:layout_constraintStart_toEndOf="@+id/FarmerHistoryPlanOrderButton"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ToggleButton
+        android:id="@+id/FarmerHistoryPlanOrderButton"
+        android:layout_width="117dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:textOff="Plan Order"
+        android:textOn="Plan Order"
+        app:layout_constraintStart_toEndOf="@+id/FarmerHistoryHomeButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/FarmerHistoryHomeButton"
+        android:layout_width="74dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="Home"
+        android:textOff="Home"
+        android:textOn="Home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -17,8 +17,10 @@ public class FarmerHistoryListView extends ArrayAdapter<String> {
     private Activity context;
     private String[] price;
     private String[] delivered;
+    private String[] detail;
+    private String[] location;
 
-    public FarmerHistoryListView(Activity context, String[] transportername, String[] time, Integer[] imgid, String[] price, String[] delivered) {
+    public FarmerHistoryListView(Activity context, String[] transportername, String[] time, Integer[] imgid, String[] price, String[] delivered, String[] detail, String[] location) {
         super(context, R.layout.activity_farmer_history_listview, transportername);
         this.context = context;
         this.transportername = transportername;
@@ -26,6 +28,8 @@ public class FarmerHistoryListView extends ArrayAdapter<String> {
         this.imgid = imgid;
         this.price = price;
         this.delivered = delivered;
+        this.detail = detail;
+        this.location = location;
     }
 
     @NonNull
@@ -47,6 +51,8 @@ public class FarmerHistoryListView extends ArrayAdapter<String> {
         viewHolder.tvw2.setText(time[position]);
         viewHolder.tvw3.setText(price[position]);
         viewHolder.tvw4.setText(delivered[position]);
+        viewHolder.tvw5.setText(detail[position]);
+        viewHolder.tvw6.setText(location[position]);
 
 
         return r;
@@ -57,6 +63,8 @@ public class FarmerHistoryListView extends ArrayAdapter<String> {
         TextView tvw2;
         TextView tvw3;
         TextView tvw4;
+        TextView tvw5;
+        TextView tvw6;
         ImageView ivw;
 
         ViewHolder(View v) {
@@ -64,6 +72,8 @@ public class FarmerHistoryListView extends ArrayAdapter<String> {
             tvw2 = v.findViewById(R.id.time);
             tvw3 = v.findViewById(R.id.price);
             tvw4 = v.findViewById(R.id.delivered);
+            tvw5 = v.findViewById(R.id.detail);
+            tvw6 = v.findViewById(R.id.location);
             ivw = v.findViewById(R.id.imageView);
         }
     }
