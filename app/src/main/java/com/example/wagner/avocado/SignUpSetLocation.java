@@ -118,6 +118,10 @@ public class SignUpSetLocation extends AppCompatActivity implements
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpSetLocation.this, CreateAccount.class);
+                myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
+                myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("user", "farmer");
                 startActivity(myIntent);
             }
         });
