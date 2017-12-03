@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.EditText;
 
@@ -23,6 +24,26 @@ public class SignUpSetCarInfoTransporter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_set_car_info_transporter);
+
+        String carMakeTemp = getIntent().getStringExtra("carmake");
+        String licensePlateNumberTemp = getIntent().getStringExtra("licenseplatenumber");
+        String capacityTemp = getIntent().getStringExtra("capacity");
+
+        EditText car = (EditText)findViewById(R.id.carmake);
+        EditText lpn = (EditText)findViewById(R.id.licenseplatenumber);
+        EditText cap = (EditText)findViewById(R.id.capacity);
+
+        if ((carMakeTemp != null) && (!carMakeTemp.equals(""))) {
+            car.setText(carMakeTemp, TextView.BufferType.EDITABLE);
+        }
+
+        if ((licensePlateNumberTemp != null) && (!licensePlateNumberTemp.equals(""))) {
+            lpn.setText(licensePlateNumberTemp, TextView.BufferType.EDITABLE);
+        }
+
+        if ((capacityTemp != null) && (!capacityTemp.equals(""))) {
+            cap.setText(capacityTemp, TextView.BufferType.EDITABLE);
+        }
 
         final Button nextbutton = findViewById(R.id.signUpSetCarNextButton);
         nextbutton.setOnClickListener(new View.OnClickListener() {
@@ -44,10 +65,10 @@ public class SignUpSetCarInfoTransporter extends AppCompatActivity {
                 String carmake = edittext1.getText().toString();
 
                 EditText edittext2 = (EditText)findViewById(R.id.licenseplatenumber);
-                String licenseplatenumber = edittext1.getText().toString();
+                String licenseplatenumber = edittext2.getText().toString();
 
                 EditText edittext3 = (EditText)findViewById(R.id.capacity);
-                String capacity = edittext1.getText().toString();
+                String capacity = edittext3.getText().toString();
 
                 myIntent.putExtra("firstname", firstname);
                 myIntent.putExtra("lastname", lastname);
