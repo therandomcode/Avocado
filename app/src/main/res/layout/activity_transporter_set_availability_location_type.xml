@@ -89,4 +89,14 @@
         app:layout_constraintBottom_toTopOf="@+id/transporterSetAvailabilityLocationTypeMap"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/transporterSetAvailabilityLocationTypeHouseIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="128dp"
+        app:layout_constraintEnd_toStartOf="@+id/transporterSetAvailabilityLocationTypeAddress"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/house" />
+
 </android.support.constraint.ConstraintLayout>

@@ -23,6 +23,7 @@ import cz.msebera.android.httpclient.Header;
 
 public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
+    ListView bestMatch;
     ListView lst;
     ArrayList<Transporter> trans = new ArrayList<Transporter>();
     String[] transportername={"Juan Felipe","Ricardo Sanchez-Delorio","Davíd de Leon"};
@@ -60,15 +61,20 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
             ind++;
         }
 
+        bestMatch = findViewById(R.id.bestMatchListView);
+        FarmerRequestPickupChooseTransporterCustomListView customListview
+                = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,times,imgid);
+        bestMatch.setAdapter(customListview);
+
         lst= findViewById(R.id.listview);
-        FarmerRequestPickupChooseTransporterCustomListView customListview = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,times,imgid);
         lst.setAdapter(customListview);
 
 
         final Button button = findViewById(R.id.farmerRequestPickupChooseTransporterNextButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupChooseTransporter.this,
+                Intent farmerBeginRequestPickupIntent
+                        = new Intent(FarmerRequestPickupChooseTransporter.this,
                         FarmerRequestPickupReviewOrder.class);
                 startActivity(farmerBeginRequestPickupIntent);
             }
@@ -97,7 +103,6 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         map.put("metric", metric);
 
 
-
         ArrayList<HashMap<String, String>> wordList;
         wordList = new ArrayList<HashMap<String, String>>();
         wordList.add(map);
@@ -105,12 +110,12 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         Gson gson = new GsonBuilder().create();
         params.put("getTransporters", gson.toJson(wordList));
 
-        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/getTransporters.php",params ,new AsyncHttpResponseHandler() {
+        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/getTransporters.php", params,
+                new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
                 try {
-                    System.out.println("Hello I am here!");
                     String response = new String(bytes);
                     System.out.println(response);
                     JSONArray arr = new JSONArray(response);

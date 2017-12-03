@@ -20,6 +20,21 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 showToast();
                 Intent myIntent = new Intent(SignUpFarmerAddPhotos.this,
                         FarmerHome.class);
+
+                String firstname = getIntent().getStringExtra("firstname");
+                String lastname = getIntent().getStringExtra("lastname");
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                String password = getIntent().getStringExtra("password");
+                String address = getIntent().getStringExtra("address");
+                String city = getIntent().getStringExtra("city");
+                String country = getIntent().getStringExtra("country");
+                String postalcode = getIntent().getStringExtra("postalcode");
+
+
+                DatabaseHandler db = new DatabaseHandler();
+                db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
+                        postalcode, city);
+
                 startActivity(myIntent);
             }
         });
@@ -28,7 +43,7 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpFarmerAddPhotos.this,
-                        SignUpSetLocation.class);
+                        SignUpFarmerAddProfile.class);
                 startActivity(myIntent);
             }
         });
