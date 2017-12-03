@@ -22,6 +22,23 @@ public class SignUpTransporterAddProfile extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpTransporterAddProfile.this, TransporterHome.class);
+
+                String firstname = getIntent().getStringExtra("firstname");
+                String lastname = getIntent().getStringExtra("lastname");
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                String password = getIntent().getStringExtra("password");
+                String address = getIntent().getStringExtra("address");
+                String country = getIntent().getStringExtra("country");
+                String postalcode = getIntent().getStringExtra("postalcode");
+                String city = getIntent().getStringExtra("city");
+                String carmake = getIntent().getStringExtra("carmake");
+                String licenseplatenumber = getIntent().getStringExtra("licenseplatenumber");
+                String capacity = getIntent().getStringExtra("capacity");
+
+                DatabaseHandler db = new DatabaseHandler();
+                db.insertTransporter(firstname, lastname, "", address, city, postalcode
+                        , country, password, phonenumber, carmake, capacity, licenseplatenumber);
+
                 startActivity(myIntent);
             }
         });

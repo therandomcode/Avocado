@@ -27,17 +27,17 @@ public class CreateAccount extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                EditText text2 = (EditText)findViewById(R.id.editText2);
-                String firstname = text2.getText().toString();
+                EditText text8 = (EditText)findViewById(R.id.firstname);
+                String firstname = text8.getText().toString();
 
-                EditText text3 = (EditText)findViewById(R.id.editText3);
+                EditText text3 = (EditText)findViewById(R.id.phonenumber);
                 String phonenumber = text3.getText().toString();
 
-                EditText text4 = (EditText)findViewById(R.id.editText4);
+                EditText text4 = (EditText)findViewById(R.id.password);
                 String password = text4.getText().toString();
 
-                EditText text5 = (EditText)findViewById(R.id.editText5);
-                String lastname = text4.getText().toString();
+                EditText text2 = (EditText)findViewById(R.id.lastname);
+                String lastname = text2.getText().toString();
 
                 farmerBox = (CheckBox) findViewById(R.id.Farmer);
                 transporterBox = (CheckBox) findViewById(R.id.Transporter);
