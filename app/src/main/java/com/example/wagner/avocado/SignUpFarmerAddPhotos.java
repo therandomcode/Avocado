@@ -89,8 +89,8 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
-      
-              final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
+
+        final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
         skipButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpFarmerAddPhotos.this,
@@ -112,6 +112,7 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+    }
 
  private void showPhoneStatePermission() {
         int permissionCheck = ContextCompat.checkSelfPermission(
