@@ -2,7 +2,7 @@
 
 *Arka - finish transporters sign up sequence, connect everything 
 
-*Jeremy - Make profile editable, telling Arka what to do 
+*Jeremy - Make profile editable (almost done), telling Arka what to do, Look into geocoder for FarmerRequestPickupSetLocation 
 
 *Joyce - Fix the schedules
 
