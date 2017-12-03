@@ -17,8 +17,11 @@ public class TransporterHistoryListView extends ArrayAdapter<String> {
     private Activity context;
     private String[] price;
     private String[] delivered;
+    private String[] locationfrom;
+    private String[] locationto;
+    private String[] detail;
 
-    public TransporterHistoryListView(Activity context, String[] transportername, String[] time, Integer[] imgid, String[] price, String[] delivered) {
+    public TransporterHistoryListView(Activity context, String[] transportername, String[] time, Integer[] imgid, String[] price, String[] delivered, String[] locationfrom, String[] locationto, String[] detail) {
         super(context, R.layout.activity_transporter_history_listview, transportername);
         this.context = context;
         this.transportername = transportername;
@@ -26,6 +29,9 @@ public class TransporterHistoryListView extends ArrayAdapter<String> {
         this.imgid = imgid;
         this.price = price;
         this.delivered = delivered;
+        this.locationfrom = locationfrom;
+        this.locationto = locationto;
+        this.detail = detail;
     }
 
     @NonNull
@@ -47,6 +53,9 @@ public class TransporterHistoryListView extends ArrayAdapter<String> {
         viewHolder.tvw2.setText(time[position]);
         viewHolder.tvw3.setText(price[position]);
         viewHolder.tvw4.setText(delivered[position]);
+        viewHolder.tvw5.setText(locationfrom[position]);
+        viewHolder.tvw6.setText(locationto[position]);
+        viewHolder.tvw7.setText(detail[position]);
 
 
         return r;
@@ -57,6 +66,9 @@ public class TransporterHistoryListView extends ArrayAdapter<String> {
         TextView tvw2;
         TextView tvw3;
         TextView tvw4;
+        TextView tvw5;
+        TextView tvw6;
+        TextView tvw7;
         ImageView ivw;
 
         ViewHolder(View v) {
@@ -64,6 +76,9 @@ public class TransporterHistoryListView extends ArrayAdapter<String> {
             tvw2 = v.findViewById(R.id.time);
             tvw3 = v.findViewById(R.id.price);
             tvw4 = v.findViewById(R.id.delivered);
+            tvw5 = v.findViewById(R.id.locationfrom);
+            tvw6 = v.findViewById(R.id.locationto);
+            tvw7 = v.findViewById(R.id.detail);
             ivw = v.findViewById(R.id.imageView);
         }
     }

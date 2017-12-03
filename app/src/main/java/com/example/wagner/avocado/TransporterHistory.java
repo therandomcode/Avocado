@@ -12,9 +12,13 @@ public class TransporterHistory extends AppCompatActivity {
     ListView lst;
     String[] transportername={"Juan","Ricardo","Davíd"};
     String[] time={"Tuesday, 2 October","Thursday, 4 October","Tuesday, 2 October"};
-    Integer[] imgid ={R.drawable.bgavocado,R.drawable.bgavocado,R.drawable.bgavocado};
+    Integer[] imgid ={R.drawable.arka,R.drawable.cecilia,R.drawable.raza};
     String[] price={"150 COP", "130 COP", "200 COP"};
     String[] delivered={"delivered","delivered","not delivered"};
+    String[] detail={"2 tonnes of bananas", "3 tonnes of avocados", "2 tonnes of avocados"};
+    String[] locationfrom ={"from Tony in Santa Cruz", "from Vaterme in La Paz", "from Adiffere in La Paz"};
+    String[] locationto ={"to Pedro in La Paz", "to Miguel in La Paz", "to Abigail in Santa Cruz"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +26,7 @@ public class TransporterHistory extends AppCompatActivity {
         setContentView(R.layout.activity_transporter_history);
 
         lst= findViewById(R.id.listview);
-        TransporterHistoryListView customListview = new TransporterHistoryListView(this,transportername,time,imgid,price,delivered);
+        TransporterHistoryListView customListview = new TransporterHistoryListView(this,transportername,time,imgid,price,delivered,locationfrom,locationto,detail);
         lst.setAdapter(customListview);
         
         final Button backButton = findViewById(R.id.transporterHistoryBackButton);
@@ -33,5 +37,6 @@ public class TransporterHistory extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
     }
 }

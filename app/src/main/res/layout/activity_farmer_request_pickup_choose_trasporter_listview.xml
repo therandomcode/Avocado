@@ -25,34 +25,36 @@ android:background="#f2ffe6">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
         android:layout_toEndOf="@+id/imageView"
         android:layout_toRightOf="@+id/imageView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large" />
+        android:textColor="#264d00"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        />
 
     <TextView
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/transporterName"
-        android:layout_alignStart="@+id/transporterName"
+        android:layout_toRightOf="@+id/imageView"
         android:layout_below="@+id/transporterName"
-        android:layout_marginTop="12dp"
         android:layout_weight="1"
         android:paddingLeft="10dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textColor="#408000"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/transporterLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/time"
-        android:layout_alignStart="@+id/time"
         android:layout_below="@+id/time"
-        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
         android:layout_weight="1"
         android:paddingLeft="10dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textColor="#408000"
+        android:textSize="15sp" />
+
 </RelativeLayout>
 </LinearLayout>

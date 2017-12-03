@@ -67,14 +67,16 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         bestMatch.setAdapter(customListview);
 
         lst= findViewById(R.id.listview);
+<<<<<<< HEAD
+        FarmerRequestPickupChooseTransporterCustomListView customListview = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,times,imgid,locations);
+=======
+>>>>>>> af076201fb77b54104f654165934092dd573db20
         lst.setAdapter(customListview);
 
 
         final Button button = findViewById(R.id.farmerRequestPickupChooseTransporterNextButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent farmerBeginRequestPickupIntent
-                        = new Intent(FarmerRequestPickupChooseTransporter.this,
                         FarmerRequestPickupReviewOrder.class);
                 startActivity(farmerBeginRequestPickupIntent);
             }
@@ -110,8 +112,6 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         Gson gson = new GsonBuilder().create();
         params.put("getTransporters", gson.toJson(wordList));
 
-        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/getTransporters.php", params,
-                new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
