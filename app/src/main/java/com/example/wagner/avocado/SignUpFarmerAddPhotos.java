@@ -187,13 +187,12 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
     }
 
-
+    //This is a complete misuse of the toast method sorry
     private void showToast(String message) {
         Toast.makeText(this,
                 message,
                 Toast.LENGTH_LONG).show();
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

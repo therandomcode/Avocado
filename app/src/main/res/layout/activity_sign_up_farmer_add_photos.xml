@@ -42,22 +42,23 @@
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="288dp"
-        android:layout_height="134dp"
+        android:layout_width="313dp"
+        android:layout_height="82dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="28dp"
         android:text="Would you like to add photos of your farm or crops?"
-        android:textAlignment="center"
-        android:textSize="26sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/signUpFarmerAddPhotosButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="Add Photos"
         app:layout_constraintEnd_toEndOf="parent"
