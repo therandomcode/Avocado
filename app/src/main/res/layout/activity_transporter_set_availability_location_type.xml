@@ -20,13 +20,13 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:id="@+id/transporterSetAvailabilityLocationTypeFinishButton"
+        android:id="@+id/transporterSetAvailabilityLocationTypeNextButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Finish"
+        android:text="Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -88,5 +88,15 @@
         android:inputType="textPostalAddress"
         app:layout_constraintBottom_toTopOf="@+id/transporterSetAvailabilityLocationTypeMap"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/transporterSetAvailabilityLocationTypeHouseIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="128dp"
+        app:layout_constraintEnd_toStartOf="@+id/transporterSetAvailabilityLocationTypeAddress"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/house" />
 
 </android.support.constraint.ConstraintLayout>

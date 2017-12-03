@@ -14,11 +14,11 @@ android:background="#f2ffe6">
     >
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_weight="0.11"
-        />
+    android:id="@+id/imageView"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_weight="0.11"
+    />
 
     <TextView
         android:id="@+id/transporterName"
@@ -29,9 +29,7 @@ android:background="#f2ffe6">
         android:layout_marginStart="16dp"
         android:layout_toEndOf="@+id/imageView"
         android:layout_toRightOf="@+id/imageView"
-        android:textColor="#264d00"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large" />
 
     <TextView
         android:id="@+id/time"
@@ -43,7 +41,18 @@ android:background="#f2ffe6">
         android:layout_marginTop="12dp"
         android:layout_weight="1"
         android:paddingLeft="10dp"
-        android:textColor="#408000"
-        android:textSize="15sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/transporterLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/time"
+        android:layout_alignStart="@+id/time"
+        android:layout_below="@+id/time"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 </RelativeLayout>
 </LinearLayout>
