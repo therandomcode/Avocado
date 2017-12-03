@@ -67,10 +67,13 @@ public class SignUpSetLocation extends AppCompatActivity implements
      */
     private Marker mLastMarker;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_set_location);
+
+
 
         findViewById(R.id.map).setVisibility(View.GONE);
 
@@ -78,28 +81,35 @@ public class SignUpSetLocation extends AppCompatActivity implements
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 String password = getIntent().getStringExtra("password");
 
-                EditText text2 = (EditText)findViewById(R.id.editText2);
-                EditText text6 = (EditText)findViewById(R.id.editText6);
+                EditText text2 = (EditText)findViewById(R.id.addressline1);
+                EditText text6 = (EditText)findViewById(R.id.addressline2);
                 String address = text2.getText().toString() + " " + text6.getText().toString();
 
-                EditText text3 = (EditText)findViewById(R.id.editText3);
+                EditText text3 = (EditText)findViewById(R.id.country);
                 String country = text3.getText().toString();
 
-                EditText text4 = (EditText)findViewById(R.id.editText4);
+                EditText text4 = (EditText)findViewById(R.id.postalcode);
                 String postalcode = text4.getText().toString();
 
-                EditText text5 = (EditText)findViewById(R.id.editText5);
+                EditText text5 = (EditText)findViewById(R.id.city);
                 String city = text5.getText().toString();
 
-                insertFarmerMySQL(firstname, lastname, phonenumber, password, address, country, postalcode, city);
-
                 Intent myIntent = new Intent(SignUpSetLocation.this, SignUpFarmerAddProfile.class);
+
+                myIntent.putExtra("firstname", firstname);
+                myIntent.putExtra("lastname", lastname);
+                myIntent.putExtra("phonenumber", phonenumber);
+                myIntent.putExtra("password", password);
+                myIntent.putExtra("address", address);
+                myIntent.putExtra("country", country);
+                myIntent.putExtra("postalcode", postalcode);
+                myIntent.putExtra("city", city);
+
                 startActivity(myIntent);
             }
         });
@@ -115,6 +125,16 @@ public class SignUpSetLocation extends AppCompatActivity implements
         final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
         skipButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                String firstname = getIntent().getStringExtra("firstname");
+                String lastname = getIntent().getStringExtra("lastname");
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                String password = getIntent().getStringExtra("password");
+
+                DatabaseHandler db = new DatabaseHandler();
+
+                db.insertFarmer(firstname, lastname, phonenumber, password, "", "", "", "");
+
                 Intent myIntent = new Intent(SignUpSetLocation.this, SignUpLater.class);
                 startActivity(myIntent);
             }
@@ -153,58 +173,6 @@ public class SignUpSetLocation extends AppCompatActivity implements
                     enterAddressButton.setChecked(true);
                     setAddressTextView();
                 }
-            }
-        });
-    }
-
-    public void insertFarmerMySQL(String firstname, String lastname, String phonenumber, String password, String
-            address, String country, String postalcode, String
-                                          city)
-    {
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-
-        ArrayList<HashMap<String, String>> wordList;
-        wordList = new ArrayList<HashMap<String, String>>();
-
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("firstname", firstname);
-        map.put("lastname", lastname);
-        map.put("phonenumber", phonenumber);
-        map.put("password", password);
-        map.put("address", address);
-        map.put("country", country);
-        map.put("postalcode", postalcode);
-        map.put("city", city);
-
-        wordList.add(map);
-
-        Gson gson = new GsonBuilder().create();
-        params.put("insertFarmer", gson.toJson(wordList));
-        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/insertfarmer.php",params ,new AsyncHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(int i, Header[] headers, byte[] bytes) {
-                try {
-                    System.out.println("Hello I am here!");
-                    String response = new String(bytes);
-                    System.out.println(response);
-                    JSONArray arr = new JSONArray(response);
-                    System.out.println(arr.length());
-                    for(int j=0; j<arr.length();j++){
-                        JSONObject obj = (JSONObject)arr.get(j);
-                        System.out.println(obj.get("id"));
-                        System.out.println(obj.get("status"));
-                    }
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-
-                }
-            }
-
-            @Override
-            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-
             }
         });
     }
