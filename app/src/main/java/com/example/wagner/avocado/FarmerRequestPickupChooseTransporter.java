@@ -96,6 +96,9 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
                 Intent farmerBeginRequestPickupIntent
                         = new Intent(FarmerRequestPickupChooseTransporter.this,
                         FarmerRequestPickupReviewOrder.class);
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });

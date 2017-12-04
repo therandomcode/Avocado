@@ -25,7 +25,7 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
     CheckBox cb1;
     CheckBox cb2;
 
-    String date,time;
+    String date,time, phonenumber;
 
     Boolean am, pm, again;
 
@@ -105,11 +105,13 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
 
                 showToast2(date, time);
                 showToast();
+
                 DatabaseHandler db = new DatabaseHandler(activity);
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 db.getTransporter(phonenumber);
 
                 again = false;
+
             }
         });
 
@@ -117,6 +119,8 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityLocationType.class);
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);
             }
         });
@@ -184,14 +188,14 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
         {
             Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this
                     , TransporterSetAvailabilityPickDate.class);
-
+            myIntent.putExtra("phonenumber", phonenumber);
             startActivity(myIntent);
         }
         else
         {
             Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this
                     , TransporterViewSchedule.class);
-
+            myIntent.putExtra("phonenumber", phonenumber);
             startActivity(myIntent);
         }
 

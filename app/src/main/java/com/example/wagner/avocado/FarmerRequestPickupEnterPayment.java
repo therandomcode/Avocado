@@ -17,8 +17,11 @@ public class FarmerRequestPickupEnterPayment extends AppCompatActivity {
         Button nextButton = findViewById(R.id.farmerRequestPickupEnterPaymentNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
+
                     Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupEnterPayment.this,
                             FarmerRequestPickupOrderConfirmation.class);
+                    String phonenumber = getIntent().getStringExtra("phonenumber");
+                    farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 }
             });
 
@@ -27,17 +30,25 @@ public class FarmerRequestPickupEnterPayment extends AppCompatActivity {
         RadioButton creditCardRadioButton = findViewById(R.id.creditCardRadioButton);
 
         if (creditCardRadioButton.isChecked()){
-                    Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupEnterPayment.this,
+            Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupEnterPayment.this,
                             FarmerRequestPickupEnterAnotherPayment.class);
-                    startActivity(farmerBeginRequestPickupIntent);
+            String phonenumber = getIntent().getStringExtra("phonenumber");
+            farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
+            startActivity(farmerBeginRequestPickupIntent);
+
         } else if (bankAccountRadioButton.isChecked()){
-                    Intent addBankAccountIntent = new Intent(FarmerRequestPickupEnterPayment.this,
+            Intent addBankAccountIntent = new Intent(FarmerRequestPickupEnterPayment.this,
                             FarmerRequestPickupAddBankAccount.class);
-                    startActivity(addBankAccountIntent);
-        } else if (cashRadioButton.isChecked()) {
-                    Intent skipAhead = new Intent(FarmerRequestPickupEnterPayment.this,
+            String phonenumber = getIntent().getStringExtra("phonenumber");
+            addBankAccountIntent.putExtra("phonenumber", phonenumber);
+            startActivity(addBankAccountIntent);
+
+        } else {
+            Intent skipAhead = new Intent(FarmerRequestPickupEnterPayment.this,
                             FarmerRequestPickupReviewOrder.class);
-                    startActivity(skipAhead);
+            String phonenumber = getIntent().getStringExtra("phonenumber");
+            skipAhead.putExtra("phonenumber", phonenumber);
+            startActivity(skipAhead);
         }
 
         final Button backButton = findViewById(R.id.farmerRequestPickupEnterPaymentBackButton);
@@ -45,7 +56,9 @@ public class FarmerRequestPickupEnterPayment extends AppCompatActivity {
             public void onClick(View v) {
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupEnterPayment.this,
                         FarmerRequestPickupOrderConfirmation.class);
-                        startActivity(farmerBeginRequestPickupIntent);
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
+                startActivity(farmerBeginRequestPickupIntent);
             }
         });
 

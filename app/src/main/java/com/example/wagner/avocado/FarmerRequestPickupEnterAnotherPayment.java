@@ -18,6 +18,9 @@ public class FarmerRequestPickupEnterAnotherPayment extends AppCompatActivity {
             public void onClick(View v) {
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupEnterAnotherPayment.this,
                         FarmerRequestPickupOrderConfirmation.class);
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });
