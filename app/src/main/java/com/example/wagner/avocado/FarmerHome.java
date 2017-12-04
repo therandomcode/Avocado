@@ -29,14 +29,14 @@ public class FarmerHome extends AppCompatActivity {
             }
         });
 
-        final Button historyButton = findViewById(R.id.farmerHomeHistoryButton);
+/*        final Button historyButton = findViewById(R.id.farmerHomeHistoryButton);
         historyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerHome.this, FarmerHistory.class);
                 startActivity(myIntent);
             }
         });
-
+*/
         final Button messagesButton = findViewById(R.id.farmerHomeMessagesButton);
         messagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
