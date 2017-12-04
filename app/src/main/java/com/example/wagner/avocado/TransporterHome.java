@@ -54,7 +54,7 @@ public class TransporterHome extends AppCompatActivity {
         final Button signOutButton = findViewById(R.id.transporterHomeSignOutButton);
         signOutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(TransporterHome.this, CreateAccount.class);
+                Intent myIntent = new Intent(TransporterHome.this, BeginSignUp.class);
                 startActivity(myIntent);
             }
         });

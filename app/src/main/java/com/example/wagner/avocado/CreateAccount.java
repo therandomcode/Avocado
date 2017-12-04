@@ -101,6 +101,14 @@ public class CreateAccount extends AppCompatActivity {
                 }
             }
         });
+
+        final Button cancelButton = findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(CreateAccount.this, BeginSignUp.class);
+                startActivity(myIntent);
+            }
+        });
     }
 
     public void onTransporterClicked(View view) {

@@ -54,6 +54,7 @@
         <activity android:name=".FarmerRequestPickupReviewOrder" />
         <activity android:name=".FarmerRequestPickupOrderConfirmation" />
         <activity android:name=".CreateAccount" />
+        <activity android:name=".LogIn" />
         <activity android:name=".FarmerRequestPickupEnterAnotherPayment" />
         <activity android:name=".TransporterHome" />
         <activity android:name=".TransporterViewSchedule" />
