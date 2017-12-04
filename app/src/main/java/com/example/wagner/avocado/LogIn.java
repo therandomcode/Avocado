@@ -15,7 +15,7 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        final Button logInButton = findViewById(R.id.logInButton);
+        final Button logInButton = findViewById(R.id.signUpButton);
         logInButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(LogIn.this, FarmerHome.class);
