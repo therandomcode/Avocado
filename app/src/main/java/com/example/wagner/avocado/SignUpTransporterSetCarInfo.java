@@ -5,21 +5,20 @@ import android.os.Bundle;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by arkaroy on 12/2/17.
  */
 
-public class SignUpSetCarInfoTransporter extends AppCompatActivity {
+public class SignUpTransporterSetCarInfo extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +49,7 @@ public class SignUpSetCarInfoTransporter extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetCarInfoTransporter.this, SignUpTransporterAddPhotos.class);
+                Intent myIntent = new Intent(SignUpTransporterSetCarInfo.this, SignUpTransporterAddPhotos.class);
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
@@ -70,20 +69,30 @@ public class SignUpSetCarInfoTransporter extends AppCompatActivity {
                 EditText edittext3 = (EditText)findViewById(R.id.capacity);
                 String capacity = edittext3.getText().toString();
 
-                myIntent.putExtra("firstname", firstname);
-                myIntent.putExtra("lastname", lastname);
-                myIntent.putExtra("phonenumber", phonenumber);
-                myIntent.putExtra("password", password);
-                myIntent.putExtra("address", address);
-                myIntent.putExtra("country", country);
-                myIntent.putExtra("postalcode", postalcode);
-                myIntent.putExtra("city", city);
-                myIntent.putExtra("carmake", carmake);
-                myIntent.putExtra("licenseplatenumber", licenseplatenumber);
-                myIntent.putExtra("capacity", capacity);
+                if (!carmake.equals("") && !licenseplatenumber.equals("") && !capacity.equals("")) {
+                    myIntent.putExtra("firstname", firstname);
+                    myIntent.putExtra("lastname", lastname);
+                    myIntent.putExtra("phonenumber", phonenumber);
+                    myIntent.putExtra("password", password);
+                    myIntent.putExtra("address", address);
+                    myIntent.putExtra("country", country);
+                    myIntent.putExtra("postalcode", postalcode);
+                    myIntent.putExtra("city", city);
+                    myIntent.putExtra("carmake", carmake);
+                    myIntent.putExtra("licenseplatenumber", licenseplatenumber);
+                    myIntent.putExtra("capacity", capacity);
 
+                    Bundle bundle = getIntent().getParcelableExtra("bundle");
+                    LatLng coords = bundle.getParcelable("coordinates");
+                    Bundle args = new Bundle();
+                    args.putParcelable("coordinates", coords);
+                    myIntent.putExtra("bundle", args);
 
-                startActivity(myIntent);
+                    startActivity(myIntent);
+                }
+                else {
+                    showToast("Please enter information for all of the fields to continue.");
+                }
             }
         });
 
@@ -91,7 +100,7 @@ public class SignUpSetCarInfoTransporter extends AppCompatActivity {
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetCarInfoTransporter.this, SignUpSetLocationTransporter.class);
+                Intent myIntent = new Intent(SignUpTransporterSetCarInfo.this, SignUpTransporterSetLocation.class);
                 myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
                 myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
                 myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
@@ -100,6 +109,12 @@ public class SignUpSetCarInfoTransporter extends AppCompatActivity {
                 myIntent.putExtra("postalcode", getIntent().getStringExtra("postalcode"));
                 myIntent.putExtra("country", getIntent().getStringExtra("country"));
                 myIntent.putExtra("user", "transporter");
+
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });
@@ -108,7 +123,7 @@ public class SignUpSetCarInfoTransporter extends AppCompatActivity {
         skipbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetCarInfoTransporter.this, SignUpLater.class);
+                Intent myIntent = new Intent(SignUpTransporterSetCarInfo.this, SignUpLater.class);
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
@@ -127,10 +142,29 @@ public class SignUpSetCarInfoTransporter extends AppCompatActivity {
                 myIntent.putExtra("type", "transporter");
                 myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
 
+                myIntent.putExtra("firstname", firstname);
+                myIntent.putExtra("lastname", lastname);
+                myIntent.putExtra("phonenumber", phonenumber);
+                myIntent.putExtra("address", address);
+                myIntent.putExtra("city", city);
+                myIntent.putExtra("postalcode", postalcode);
+                myIntent.putExtra("country", country);
+                myIntent.putExtra("user", "transporter");
+                myIntent.putExtra("screen", "TransporterSetCarInfo");
+
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });
+    }
 
-
+    private void showToast(String message) {
+        Toast.makeText(this,
+                message,
+                Toast.LENGTH_SHORT).show();
     }
 }

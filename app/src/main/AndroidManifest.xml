@@ -36,8 +36,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".BeginSignUp" />
-        <activity android:name=".SignUpNameNumber" />
-        <activity android:name=".SignUpSetLocation" />
+        <activity android:name=".SignUpFarmerSetLocation" />
         <activity android:name=".SignUpFarmerAddPhotos" />
         <activity android:name=".SignUpFarmerAddProfile" />
         <activity android:name=".SignUpTransporterAddPhotos" />
@@ -45,7 +44,6 @@
         <activity android:name=".FarmerBeginRequestPickup" />
         <activity android:name=".FarmerEditProfile" />
         <activity android:name=".FarmerHistory" />
-        <activity android:name=".FarmerViewHistoryDetail" />
         <activity android:name=".FarmerRequestPickupPickDate" />
         <activity android:name=".FarmerRequestPickupSetPickupLocation" />
         <activity android:name=".FarmerRequestPickupSetPickupLocationType" />
@@ -65,11 +63,11 @@
         <activity android:name=".TransporterEditProfile" />
         <activity android:name=".TransporterHistory" />
         <activity android:name=".TransporterSetAvailabilityPickDate" />
-        <activity android:name=".TransporterSetAvailabilityLocationType" />
+        <activity android:name=".TransporterSetAvailabilityLocation" />
         <activity android:name=".FarmerMessages" />
         <activity android:name=".SignUpTransporterAddProfile"/>
-        <activity android:name=".SignUpSetCarInfoTransporter"/>
-        <activity android:name=".SignUpSetLocationTransporter"/>
+        <activity android:name=".SignUpTransporterSetCarInfo"/>
+        <activity android:name=".SignUpTransporterSetLocation"/>
         <activity android:name=".Loading"/>
     </application>
 

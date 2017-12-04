@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import android.content.Context;
+
+import com.google.android.gms.maps.model.LatLng;
+
 /**
  * Created by arkaroy on 12/3/17.
  */
@@ -34,6 +37,49 @@ public class Loading  extends AppActivity implements TransporterReceived{
                 FarmerRequestPickupChooseTransporter.class);
 
         farmerBeginRequestPickupIntent.putExtra("availability", response);
+
+        String phonenumber = getIntent().getStringExtra("phonenumber");
+        farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
+        farmerBeginRequestPickupIntent.putExtra
+                ("locationtype", getIntent().getStringExtra("locationtype"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("address", getIntent().getStringExtra("address"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("date", getIntent().getStringExtra("date"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("time", getIntent().getStringExtra("time"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("crop", getIntent().getStringExtra("crop"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("metric", getIntent().getStringExtra("metric"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("amount", getIntent().getStringExtra("amount"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("address", getIntent().getStringExtra("address"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("country", getIntent().getStringExtra("country"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("postalcode", getIntent().getStringExtra("postalcode"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("city", getIntent().getStringExtra("city"));
+        Bundle bundle = getIntent().getParcelableExtra("bundle");
+        LatLng coords = bundle.getParcelable("coordinates");
+        Bundle args = new Bundle();
+        args.putParcelable("coordinates", coords);
+        farmerBeginRequestPickupIntent.putExtra("bundle", args);
+        farmerBeginRequestPickupIntent.putExtra
+                ("address2", getIntent().getStringExtra("address2"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("country2", getIntent().getStringExtra("country2"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("postalcode2", getIntent().getStringExtra("postalcode2"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("city2", getIntent().getStringExtra("city2"));
+        Bundle bundle2 = getIntent().getParcelableExtra("bundle2");
+        LatLng coords2 = bundle.getParcelable("coordinates2");
+        Bundle args2 = new Bundle();
+        args.putParcelable("coordinates2", coords2);
+        farmerBeginRequestPickupIntent.putExtra("bundle2", args2);
 
         startActivity(farmerBeginRequestPickupIntent);
     }

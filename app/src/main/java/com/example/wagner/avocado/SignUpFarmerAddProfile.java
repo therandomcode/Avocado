@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class SignUpFarmerAddProfile extends AppCompatActivity {
 
     @Override
@@ -29,6 +31,9 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
                 String city = getIntent().getStringExtra("city");
                 String country = getIntent().getStringExtra("country");
                 String postalcode = getIntent().getStringExtra("postalcode");
+
+                int index = address.indexOf("/");
+                String newaddress = address.substring(0,index) + " " + address.substring(index+1);
 
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
@@ -53,6 +58,12 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
                 myIntent.putExtra("postalcode", getIntent().getStringExtra("postalcode"));
                 myIntent.putExtra("country", getIntent().getStringExtra("country"));
                 myIntent.putExtra("user", "transporter");
+
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });

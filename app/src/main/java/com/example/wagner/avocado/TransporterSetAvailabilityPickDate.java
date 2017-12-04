@@ -9,6 +9,8 @@ import android.widget.DatePicker;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,6 +27,8 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
     CheckBox cb1;
     CheckBox cb2;
 
+    Bundle bundle, args;
+
     String date,time, phonenumber;
 
     Boolean am, pm, again;
@@ -39,51 +43,66 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transporter_set_availability_pick_date);
 
-
-
         final Button addMoreButton = findViewById(R.id.transporterSetAvailabilityAddMoreButton);
         final TransporterSetAvailabilityPickDate activity = this;
         addMoreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                DatePicker datepicker = (DatePicker)findViewById(R.id.datePicker);
-                day = Integer.toString(datepicker.getDayOfMonth());
-                month = Integer.toString(datepicker.getMonth()+1);
-                year = Integer.toString(datepicker.getYear());
-
+                
                 cb1 = (CheckBox)findViewById(R.id.amCheckBox);
-                am = cb1.isChecked();
-
                 cb2 = (CheckBox)findViewById(R.id.pmCheckBox);
-                pm = cb2.isChecked();
 
-                date = month+"/"+day+"/"+year;
+                if (!cb1.isChecked() && !cb2.isChecked()) {
+                    showToast("Please enter a time when you will be available.");
+                }
+                else {
+                    bundle = getIntent().getParcelableExtra("bundle");
+                    LatLng coords = bundle.getParcelable("coordinates");
+                    args = new Bundle();
+                    args.putParcelable("coordinates", coords);
 
-                if (am && pm)
-                    time = "ALLDAY";
-                else if (am && !pm)
-                    time = "AM";
-                else if (pm & !am)
-                    time = "PM";
-                else
-                    time = "NEVER";
+                    DatePicker datepicker = (DatePicker)findViewById(R.id.datePicker);
+                    day = Integer.toString(datepicker.getDayOfMonth());
+                    month = Integer.toString(datepicker.getMonth()+1);
+                    year = Integer.toString(datepicker.getYear());
 
-                showToast2(date, time);
-                DatabaseHandler db = new DatabaseHandler(activity);
-                String phonenumber = getIntent().getStringExtra("phonenumber");
-                db.getTransporter(phonenumber);
+                    am = cb1.isChecked();
 
+                    pm = cb2.isChecked();
+
+                    date = month+"/"+day+"/"+year;
+
+                    if (am && pm)
+                        time = "ALLDAY";
+                    else if (am && !pm)
+                        time = "AM";
+                    else if (pm & !am)
+                        time = "PM";
+                    else
+                        time = "NEVER";
+
+                    showToast2(date, time);
+                    DatabaseHandler db = new DatabaseHandler(activity);
+                    String phonenumber = getIntent().getStringExtra("phonenumber");
+                    db.getTransporter(phonenumber);
+                }
             }
         });
 
         final Button finishButton = findViewById(R.id.transporterSetAvailabilityFinishButton);
         finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                showToast("Thank you! Farmers in the area will be notified.");
 
                 Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this
                         , TransporterViewSchedule.class);
                 phonenumber = getIntent().getStringExtra("phonenumber");
+                
                 myIntent.putExtra("phonenumber", phonenumber);
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
 
             }
@@ -92,17 +111,23 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
         final Button backButton = findViewById(R.id.transporterSetAvailabilityBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityLocationType.class);
+                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityLocation.class);
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 myIntent.putExtra("phonenumber", phonenumber);
+
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });
     }
 
-    private void showToast() {
+    private void showToast(String message) {
         Toast.makeText(this,
-                "Thank you! Farmers in the area will be notified.",
+                message,
                 Toast.LENGTH_LONG).show();
     }
 
@@ -163,6 +188,7 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
                 , TransporterSetAvailabilityPickDate.class);
         phonenumber = getIntent().getStringExtra("phonenumber");
         myIntent.putExtra("phonenumber", phonenumber);
+        myIntent.putExtra("bundle", args);
         startActivity(myIntent);
     }
 }

@@ -24,7 +24,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class TransporterSetAvailabilityLocationType extends AppCompatActivity implements
+public class TransporterSetAvailabilityLocation extends AppCompatActivity implements
         GoogleMap.OnMarkerClickListener,
         GoogleMap.OnMapClickListener,
         OnMapReadyCallback,
@@ -50,7 +50,8 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
     /**
      * Keeps track of the selected marker.
      */
-    private Marker mLastMarker;
+    private Marker mLastMarker = null;
+    private LatLng markerLatLng = null;
 
     private ToggleButton homeButton;
     private ToggleButton anotherLocationButton;
@@ -70,6 +71,12 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
 
         homeButton.setChecked(true);
         anotherLocationButton.setChecked(false);
+
+        Bundle coords = getIntent().getParcelableExtra("bundle");
+        if (coords != null) {
+            LatLng coordinates = coords.getParcelable("coordinates");
+            if (coordinates != null) { markerLatLng = coordinates; }
+        }
 
         homeButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -106,7 +113,7 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
         final Button nextButton = findViewById(R.id.transporterSetAvailabilityLocationTypeNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(TransporterSetAvailabilityLocationType.this,
+                Intent myIntent = new Intent(TransporterSetAvailabilityLocation.this,
                         TransporterSetAvailabilityPickDate.class);
               
                 if (homeButton.isChecked())
@@ -120,6 +127,9 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 myIntent.putExtra("phonenumber", phonenumber);
 
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", markerLatLng);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });
@@ -127,7 +137,7 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
         final Button backButton = findViewById(R.id.transporterSetAvailabilityLocationTypeBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(TransporterSetAvailabilityLocationType.this,
+                Intent myIntent = new Intent(TransporterSetAvailabilityLocation.this,
                         TransporterViewSchedule.class);
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 myIntent.putExtra("phonenumber", phonenumber);
@@ -143,6 +153,10 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+
+        if (markerLatLng != null) {
+            mLastMarker = mMap.addMarker(new MarkerOptions().position(markerLatLng));
+        }
 
         // Set listener for marker click event.  See the bottom of this class for its behavior.
         mMap.setOnMarkerClickListener(this);
@@ -224,6 +238,7 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
     public void onMapClick(final LatLng point) {
         // Any showing info window closes when the map is clicked.
         // Clear the currently selected marker.
+        markerLatLng = point;
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
         Toast.makeText(this, "Setting your location", Toast.LENGTH_SHORT).show();
@@ -235,6 +250,7 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
         // The user has re-tapped on the marker which was already showing an info window.
         if (marker.equals(mLastMarker)) {
             mLastMarker.remove();
+            markerLatLng = null;
             return true;
         }
 
