@@ -21,8 +21,11 @@ import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.EditText;
+import android.widget.ToggleButton;
 
 
 public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity implements
@@ -51,12 +54,53 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
     /**
      * Keeps track of the selected marker.
      */
-    private Marker mLastMarker;
+    private Marker mLastMarker = null;
+    private LatLng markerLatLng = null;
+    private EditText addressLine1;
+    private EditText addressLine2;
+    private EditText cityText;
+    private EditText countryText;
+    private EditText postalCodeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_set_dropoff_location);
+
+        addressLine1 = (EditText)findViewById(R.id.addressline1);
+        addressLine2 = (EditText)findViewById(R.id.addressline2);
+        cityText = (EditText)findViewById(R.id.city);
+        countryText = (EditText)findViewById(R.id.country);
+        postalCodeText = (EditText)findViewById(R.id.postalcode);
+
+        String address = getIntent().getStringExtra("address2");
+        if (address != null) {
+            String[] addresses = address.split("/");
+            if (addresses.length > 0) {
+                String address1 = addresses[0];
+                addressLine1.setText(address1, TextView.BufferType.EDITABLE);
+            }
+            if (addresses.length == 2) {
+                addressLine2.setText(addresses[1], TextView.BufferType.EDITABLE);
+            }
+        }
+        String city = getIntent().getStringExtra("city2");
+        if ((city != null) && (!city.equals(""))) cityText.setText(city, TextView.BufferType.EDITABLE);
+        String country = getIntent().getStringExtra("country2");
+        if ((country != null) && (!country.equals(""))) countryText.setText(country, TextView.BufferType.EDITABLE);
+        String postalcode = getIntent().getStringExtra("postalcode2");
+        if ((postalcode != null) && (!postalcode.equals(""))) {
+            postalCodeText.setText(postalcode, TextView.BufferType.EDITABLE);
+        }
+        else {
+            Bundle coords = getIntent().getParcelableExtra("bundle2");
+            if (coords != null) {
+                LatLng coordinates = coords.getParcelable("coordinates2");
+                if (coordinates != null) { markerLatLng = coordinates; }
+            }
+        }
+
+        findViewById(R.id.map).setVisibility(View.GONE);
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -66,51 +110,177 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                EditText edittext7 = (EditText)findViewById(R.id.editText7);
-                String droplocation = edittext7.getText().toString();
+                addressLine1 = (EditText)findViewById(R.id.addressline1);
+                addressLine2 = (EditText)findViewById(R.id.addressline2);
+                cityText = (EditText)findViewById(R.id.city);
+                countryText = (EditText)findViewById(R.id.country);
+                postalCodeText = (EditText)findViewById(R.id.postalcode);
+                String addressLine1String = addressLine1.getText().toString();
+                String addressLine2String = addressLine2.getText().toString();
+                String cityString = cityText.getText().toString();
+                String countryString = countryText.getText().toString();
+                String postalCodeString = postalCodeText.getText().toString();
 
                 Intent farmerRequestPickupSetPickupLocationIntent = new Intent
                         (FarmerRequestPickupSetDropoffLocation.this,
                         Loading.class);
 
+                if ((!addressLine1String.equals("") && !cityString.equals("") &&
+                        !countryString.equals("") && !postalCodeString.equals("")) ||
+                        markerLatLng != null) {
+                    String address = addressLine1String + "/" + addressLine2String;
+                    String phonenumber = getIntent().getStringExtra("phonenumber");
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("locationtype", getIntent().getStringExtra("locationtype"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("address", getIntent().getStringExtra("address"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("date", getIntent().getStringExtra("date"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("time", getIntent().getStringExtra("time"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("crop", getIntent().getStringExtra("crop"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("metric", getIntent().getStringExtra("metric"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("amount", getIntent().getStringExtra("amount"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("address", getIntent().getStringExtra("address"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("country", getIntent().getStringExtra("country"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("postalcode", getIntent().getStringExtra("postalcode"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("city", getIntent().getStringExtra("city"));
+                    Bundle bundle = getIntent().getParcelableExtra("bundle");
+                    LatLng coords = bundle.getParcelable("coordinates");
+                    Bundle args = new Bundle();
+                    args.putParcelable("coordinates", coords);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("bundle", args);
 
-                String phonenumber = getIntent().getStringExtra("phonenumber");
-                farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("droplocation", droplocation);
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("locationtype", getIntent().getStringExtra("locationtype"));
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("address", getIntent().getStringExtra("address"));
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("date", getIntent().getStringExtra("date"));
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("time", getIntent().getStringExtra("time"));
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("crop", getIntent().getStringExtra("crop"));
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("metric", getIntent().getStringExtra("metric"));
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("amount", getIntent().getStringExtra("amount"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("address2", address);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("country2", countryString);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("postalcode2", postalCodeString);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("city2", cityString);
+                    Bundle args2 = new Bundle();
+                    args.putParcelable("coordinates2", markerLatLng);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("bundle2", args2);
 
-                startActivity(farmerRequestPickupSetPickupLocationIntent);
+                    startActivity(farmerRequestPickupSetPickupLocationIntent);
+                }
+                else {
+                    showToast("Please enter information for all of the address" +
+                            " fields or drop a pin to continue.");
+                }
             }
         });
 
         final Button backButton = findViewById(R.id.farmerRequestPickupSetDropoffLocationBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupSetDropoffLocation.this,
+                Intent farmerRequestPickupSetDropoffLocationIntent = new Intent(FarmerRequestPickupSetDropoffLocation.this,
                         FarmerRequestPickupSetPickupLocationType.class);
-                startActivity(farmerRequestPickupSetPickupLocationIntent);
+
+                farmerRequestPickupSetDropoffLocationIntent.putExtra
+                        ("locationtype", getIntent().getStringExtra("locationtype"));
+                farmerRequestPickupSetDropoffLocationIntent.putExtra
+                        ("phonenumber", getIntent().getStringExtra("phonenumber"));
+                farmerRequestPickupSetDropoffLocationIntent.putExtra
+                        ("date", getIntent().getStringExtra("date"));
+                farmerRequestPickupSetDropoffLocationIntent.putExtra
+                        ("time", getIntent().getStringExtra("time"));
+                farmerRequestPickupSetDropoffLocationIntent.putExtra
+                        ("crop", getIntent().getStringExtra("crop"));
+                farmerRequestPickupSetDropoffLocationIntent.putExtra
+                        ("metric", getIntent().getStringExtra("metric"));
+                farmerRequestPickupSetDropoffLocationIntent.putExtra
+                        ("amount", getIntent().getStringExtra("amount"));
+                farmerRequestPickupSetDropoffLocationIntent.putExtra
+                        ("address", getIntent().getStringExtra("address"));
+                farmerRequestPickupSetDropoffLocationIntent.putExtra
+                        ("country", getIntent().getStringExtra("country"));
+                farmerRequestPickupSetDropoffLocationIntent.putExtra
+                        ("postalcode", getIntent().getStringExtra("postalcode"));
+                farmerRequestPickupSetDropoffLocationIntent.putExtra
+                        ("city", getIntent().getStringExtra("city"));
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                farmerRequestPickupSetDropoffLocationIntent.putExtra("bundle", args);
+
+                startActivity(farmerRequestPickupSetDropoffLocationIntent);
+            }
+        });
+
+        final ToggleButton enterAddressButton = findViewById(R.id.farmerRequestPickupSetDropoffLocationEnterAddressButton);
+        final ToggleButton dropPinButton = findViewById(R.id.farmerRequestPickupSetDropoffLocationDropPinButton);
+
+        enterAddressButton.setChecked(true);
+        dropPinButton.setChecked(false);
+
+        enterAddressButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    dropPinButton.setChecked(false);
+                    setAddressTextView();
+                } else {
+                    dropPinButton.setChecked(true);
+                    setDropPinTextView();
+                }
+            }
+        });
+
+        dropPinButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    enterAddressButton.setChecked(false);
+                    setDropPinTextView();
+                } else {
+                    enterAddressButton.setChecked(true);
+                    setAddressTextView();
+                }
             }
         });
 
     }
 
+    private void setAddressTextView(){
+        EditText addressLine1 = findViewById(R.id.addressline1);
+        EditText country = findViewById(R.id.country);
+        EditText addressLine2 = findViewById(R.id.addressline2);
+        EditText postalCode = findViewById(R.id.postalcode);
+        EditText city = findViewById(R.id.city);
+        addressLine1.setVisibility(View.VISIBLE);
+        addressLine2.setVisibility(View.VISIBLE);
+        city.setVisibility(View.VISIBLE);
+        country.setVisibility(View.VISIBLE);
+        postalCode.setVisibility(View.VISIBLE);
+        findViewById(R.id.map).setVisibility(View.GONE);
+    }
+
+    private void setDropPinTextView() {
+        EditText addressLine1 = findViewById(R.id.addressline1);
+        EditText country = findViewById(R.id.country);
+        EditText addressLine2 = findViewById(R.id.addressline2);
+        EditText postalCode = findViewById(R.id.postalcode);
+        EditText city = findViewById(R.id.city);
+        addressLine1.setVisibility(View.GONE);
+        addressLine2.setVisibility(View.GONE);
+        city.setVisibility(View.GONE);
+        country.setVisibility(View.GONE);
+        postalCode.setVisibility(View.GONE);
+        findViewById(R.id.map).setVisibility(View.VISIBLE);
+    }
+
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+
+        if (markerLatLng != null) {
+            mLastMarker = mMap.addMarker(new MarkerOptions().position(markerLatLng));
+        }
 
         // Set listener for marker click event.  See the bottom of this class for its behavior.
         mMap.setOnMarkerClickListener(this);
@@ -196,6 +366,7 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
     public void onMapClick(final LatLng point) {
         // Any showing info window closes when the map is clicked.
         // Clear the currently selected marker.
+        markerLatLng = point;
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
         Toast.makeText(this, "Setting your dropoff location", Toast.LENGTH_SHORT).show();
@@ -207,6 +378,7 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
         // The user has re-tapped on the marker which was already showing an info window.
         if (marker.equals(mLastMarker)) {
             mLastMarker.remove();
+            markerLatLng = null;
             return true;
         }
 
@@ -215,6 +387,12 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
         // Return false to indicate that we have not consumed the event and that we wish
         // for the default behavior to occur.
         return false;
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this,
+                message,
+                Toast.LENGTH_SHORT).show();
     }
 
 }
