@@ -26,7 +26,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:design:26.1.0'
-    compile 'com.google.android.gms:play-services-maps:11.6.0'
+    implementation 'com.google.android.gms:play-services-maps:11.6.0'
     implementation files('libs/android-async-http-1.4.9.jar')
     implementation files('libs/gson-2.8.2.jar')
     implementation files('libs/httpclient-4.4.1.1.jar')
