@@ -21,8 +21,10 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
         setContentView(R.layout.activity_farmer_edit_profile);
         setDefaultView();
 
+
         DatabaseHandler db = new DatabaseHandler(this);
         db.getFarmer(getIntent().getStringExtra("phonenumber"));
+
     }
 
     private void setDefaultView(){
@@ -164,6 +166,14 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
         editProfileButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setEditorView();
+            }
+        });
+      
+        final Button historyButton = findViewById(R.id.farmerHistoryButton);
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(FarmerEditProfile.this, FarmerHistory.class);
+                startActivity(myIntent);
             }
         });
 
