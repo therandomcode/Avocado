@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,8 +16,14 @@ import android.widget.EditText;
 
 public class LogIn extends AppActivity implements TransporterReceived{
 
+
+    private CheckBox farmerBox;
+    private CheckBox transporterBox;
+
+
     private String password, phone;
     Boolean isFarmer = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,9 +31,24 @@ public class LogIn extends AppActivity implements TransporterReceived{
         final DatabaseHandler db = new DatabaseHandler(this);
 
 
+        farmerBox = (CheckBox) findViewById(R.id.Farmer);
+        transporterBox = (CheckBox) findViewById(R.id.Transporter);
+
         final Button logInButton = findViewById(R.id.signUpButton);
         logInButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                farmerBox = (CheckBox) findViewById(R.id.Farmer);
+                transporterBox = (CheckBox) findViewById(R.id.Transporter);
+                
+                
+                if (farmerBox.isChecked()) {
+                    isFarmer = true;
+                }
+                else if (transporterBox.isChecked()) {
+                    isFarmer = false;
+                }
+
                 //Intent myIntent = new Intent(LogIn.this, FarmerHome.class);
 
                 EditText user = (EditText)findViewById(R.id.phonenumber);
@@ -55,6 +77,18 @@ public class LogIn extends AppActivity implements TransporterReceived{
                 startActivity(myIntent);
             }
         });
+    }
+
+    public void onTransporterClicked(View view) {
+        if (farmerBox.isChecked()) {
+            farmerBox.setChecked(false);
+        }
+    }
+
+    public void onFarmerClicked(View view) {
+        if (transporterBox.isChecked()) {
+            transporterBox.setChecked(false);
+        }
     }
 
     private void showToast(String message) {

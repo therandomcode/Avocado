@@ -50,7 +50,6 @@
         <activity android:name=".FarmerRequestPickupSetDropoffLocation" />
         <activity android:name=".FarmerRequestPickupChooseTransporter" />
         <activity android:name=".FarmerRequestPickupViewTransporterDetails" />
-        <activity android:name=".FarmerRequestPickupEnterPayment" />
         <activity android:name=".FarmerRequestPickupReviewOrder" />
         <activity android:name=".FarmerRequestPickupOrderConfirmation" />
         <activity android:name=".CreateAccount" />

@@ -128,7 +128,7 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
     private void showToast(String message) {
         Toast.makeText(this,
                 message,
-                Toast.LENGTH_LONG).show();
+                Toast.LENGTH_SHORT).show();
     }
 
     private void showToast2(String date, String time){
