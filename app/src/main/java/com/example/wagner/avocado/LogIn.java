@@ -111,7 +111,11 @@ public class LogIn extends AppActivity implements TransporterReceived{
                 String realpass = (String) x.get("pass");
                 if (realpass.equals(password)){
                     showToast("Welcome "+(String)x.get("firstname"));
-                    Intent myIntent = new Intent(LogIn.this, FarmerHome.class);
+                    Intent myIntent;
+                    if (isFarmer)
+                        myIntent = new Intent(LogIn.this, FarmerHome.class);
+                    else
+                        myIntent = new Intent(LogIn.this, TransporterHome.class);
                     myIntent.putExtra("phonenumber", phone);
                     startActivity(myIntent);
                 }
