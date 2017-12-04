@@ -71,7 +71,7 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
 
                 Intent farmerRequestPickupSetPickupLocationIntent = new Intent
                         (FarmerRequestPickupSetDropoffLocation.this,
-                        FarmerRequestPickupChooseTransporter.class);
+                        Loading.class);
 
                 farmerRequestPickupSetPickupLocationIntent.putExtra
                         ("droplocation", droplocation);
