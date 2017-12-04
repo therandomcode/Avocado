@@ -58,10 +58,18 @@ public class SignUpLater extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showToast();
-<<<<<<< HEAD
-                Intent myIntent = new Intent(SignUpLater.this,
-                        FarmerHome.class);
-                startActivity(myIntent);
+                Intent farmerRequestPickupSetPickupLocationIntent;
+
+                String type = getIntent().getStringExtra("type");
+                if (type.equals("farmer")){
+                    farmerRequestPickupSetPickupLocationIntent = new Intent(SignUpLater.this, FarmerHome.class);
+                }   
+                else {
+                    farmerRequestPickupSetPickupLocationIntent = new Intent(SignUpLater.this, TransporterHome.class);
+                }   
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);
+                startActivity(farmerRequestPickupSetPickupLocationIntent);
             }
         });
 
@@ -110,23 +118,6 @@ public class SignUpLater extends AppCompatActivity {
                     }
                     startActivity(myIntent);
                 }
-=======
-                Intent farmerRequestPickupSetPickupLocationIntent;
-
-                String type = getIntent().getStringExtra("type");
-                if (type.equals("farmer")){
-                    farmerRequestPickupSetPickupLocationIntent = new Intent(SignUpLater.this,
-                            FarmerHome.class);
-                }
-                else {
-                    farmerRequestPickupSetPickupLocationIntent = new Intent(SignUpLater.this,
-                            TransporterHome.class);
-                }
-                String phonenumber = getIntent().getStringExtra("phonenumber");
-                farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);
-
-                startActivity(farmerRequestPickupSetPickupLocationIntent);
->>>>>>> Arka
             }
         });
 
