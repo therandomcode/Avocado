@@ -9,6 +9,8 @@ import android.widget.DatePicker;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class TransporterSetAvailabilityPickDate extends AppCompatActivity {
 
     DatePicker picker;
@@ -26,6 +28,11 @@ public class TransporterSetAvailabilityPickDate extends AppCompatActivity {
                 Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityPickDate.class);
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 myIntent.putExtra("phonenumber", phonenumber);
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });
@@ -44,9 +51,15 @@ public class TransporterSetAvailabilityPickDate extends AppCompatActivity {
         final Button backButton = findViewById(R.id.transporterSetAvailabilityBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityLocationType.class);
+                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this, TransporterSetAvailabilityLocation.class);
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 myIntent.putExtra("phonenumber", phonenumber);
+
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });
