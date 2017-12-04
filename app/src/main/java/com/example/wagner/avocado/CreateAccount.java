@@ -76,7 +76,7 @@ public class CreateAccount extends AppCompatActivity {
 
                     if (farmerBox.isChecked()) {
                         Intent farmerBeginRequestPickupIntent = new Intent(CreateAccount.this,
-                                SignUpSetLocation.class);
+                                SignUpFarmerSetLocation.class);
 
                         farmerBeginRequestPickupIntent.putExtra("firstname", firstname);
                         farmerBeginRequestPickupIntent.putExtra("lastname", lastname);
@@ -86,7 +86,7 @@ public class CreateAccount extends AppCompatActivity {
                         startActivity(farmerBeginRequestPickupIntent);
                     } else if (transporterBox.isChecked()) {
                         Intent farmerBeginRequestPickupIntent = new Intent(CreateAccount.this,
-                                SignUpSetLocationTransporter.class);
+                                SignUpTransporterSetLocation.class);
 
                         farmerBeginRequestPickupIntent.putExtra("firstname", firstname);
                         farmerBeginRequestPickupIntent.putExtra("lastname", lastname);
@@ -119,6 +119,6 @@ public class CreateAccount extends AppCompatActivity {
     private void showToast() {
         Toast.makeText(this,
                 "Please enter information for all of the fields to continue.",
-                Toast.LENGTH_LONG).show();
+                Toast.LENGTH_SHORT).show();
     }
 }
