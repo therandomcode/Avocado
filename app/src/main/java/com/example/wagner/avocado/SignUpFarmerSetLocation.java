@@ -177,7 +177,6 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
                 db.insertFarmer(firstname, lastname, phonenumber, password, "", ""
                         , "", "", "[]");
 
-<<<<<<< HEAD:app/src/main/java/com/example/wagner/avocado/SignUpFarmerSetLocation.java
                 addressLine1 = (EditText)findViewById(R.id.addressline1);
                 addressLine2 = (EditText)findViewById(R.id.addressline2);
                 cityText = (EditText)findViewById(R.id.city);
@@ -200,13 +199,9 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
                 myIntent.putExtra("postalcode", postalcode);
                 myIntent.putExtra("city", city);
                 myIntent.putExtra("screen", "FarmerSetLocation");
-=======
-                Intent myIntent = new Intent(SignUpSetLocation.this, SignUpLater.class);
 
                 myIntent.putExtra("type", "farmer");
-                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
 
->>>>>>> Arka:app/src/main/java/com/example/wagner/avocado/SignUpSetLocation.java
                 startActivity(myIntent);
             }
         });
