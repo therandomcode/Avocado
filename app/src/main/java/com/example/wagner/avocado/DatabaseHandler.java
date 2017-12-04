@@ -4,7 +4,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.SyncHttpClient;
+import android.content.Intent;
+import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,14 +17,25 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import android.content.Context;
+
+
 
 import cz.msebera.android.httpclient.Header;
+
+import static android.support.v4.content.ContextCompat.startActivity;
 
 /**
  * Created by arkaroy on 12/2/17.
  */
 
-public class DatabaseHandler {
+public class DatabaseHandler extends AppCompatActivity{
+
+    Loading activity;
+
+    public DatabaseHandler(Loading activity){
+        this.activity = activity;
+    }
 
     public DatabaseHandler(){
 
@@ -132,5 +148,53 @@ public class DatabaseHandler {
             }
         });
     }
+
+    public void getTransporters(String time, String date, String crop, String amount,
+                                String metric){
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("time", time);
+        map.put("date", date);
+        map.put("crop", crop);
+        map.put("amount", amount);
+        map.put("metric", metric);
+
+        //intent = nextscreen;
+        final ArrayList<Transporter> trans = new ArrayList<Transporter>();
+
+        ArrayList<HashMap<String, String>> wordList;
+        wordList = new ArrayList<HashMap<String, String>>();
+        wordList.add(map);
+
+        Gson gson = new GsonBuilder().create();
+        params.put("getTransporters", gson.toJson(wordList));
+
+        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/getTransporters.php", params,
+                new AsyncHttpResponseHandler() {
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] b) {
+
+                        String response = new String(b);
+                        System.out.println("hello!");
+                        System.out.println(response);
+                        activity.Success(response);
+
+                    }
+
+                    @Override
+                    public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+
+                    }
+
+
+                }
+        );
+
+
+    }
+
 
 }
