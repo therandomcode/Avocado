@@ -137,7 +137,7 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
 
                 DatabaseHandler db = new DatabaseHandler();
 
-                db.insertTransporter(firstname, lastname, "", "", "",
+                db.insertTransporter(firstname, lastname, "[]", "", "",
                         "", "", password, phonenumber, ""
                         , "", "");
 

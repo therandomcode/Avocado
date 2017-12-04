@@ -25,7 +25,7 @@ public class Loading  extends AppCompatActivity implements TransporterReceived{
 
         DatabaseHandler db = new DatabaseHandler(this);
 
-        db.getTransporters(time, date, crop, amount, metric);
+        db.getAvailableTransporters(time, date, crop, amount, metric);
     }
 
     @Override

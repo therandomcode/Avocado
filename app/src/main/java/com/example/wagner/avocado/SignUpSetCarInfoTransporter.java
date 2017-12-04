@@ -120,7 +120,7 @@ public class SignUpSetCarInfoTransporter extends AppCompatActivity {
                 String city = getIntent().getStringExtra("city");
 
                 DatabaseHandler db = new DatabaseHandler();
-                db.insertTransporter(firstname, lastname, "", address, city, postalcode
+                db.insertTransporter(firstname, lastname, "[]", address, city, postalcode
                         , country, password, phonenumber, "", "", "");
 
                 startActivity(myIntent);

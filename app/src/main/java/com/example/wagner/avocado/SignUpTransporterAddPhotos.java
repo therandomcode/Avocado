@@ -87,7 +87,7 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
                 String capacity = getIntent().getStringExtra("capacity");
 
                 DatabaseHandler db = new DatabaseHandler();
-                db.insertTransporter(firstname, lastname, "", address, city, postalcode
+                db.insertTransporter(firstname, lastname, "[]", address, city, postalcode
                         , country, password, phonenumber, carmake, capacity, licenseplatenumber);
 
                 startActivity(myIntent);

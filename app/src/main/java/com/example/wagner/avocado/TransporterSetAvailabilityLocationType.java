@@ -108,6 +108,15 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterSetAvailabilityLocationType.this,
                         TransporterSetAvailabilityPickDate.class);
+
+                if (homeButton.isChecked())
+                    myIntent.putExtra("address", "home");
+                else {
+                    EditText loc = (EditText)findViewById(R.id.transporterSetAvailabilityLocationTypeAddress);
+                    String address = loc.getText().toString();
+                    myIntent.putExtra("address", address);
+                }
+
                 startActivity(myIntent);
             }
         });
