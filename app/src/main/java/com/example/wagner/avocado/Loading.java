@@ -81,6 +81,15 @@ public class Loading  extends AppActivity implements TransporterReceived{
         args.putParcelable("coordinates2", coords2);
         farmerBeginRequestPickupIntent.putExtra("bundle2", args2);
 
+        farmerBeginRequestPickupIntent.putExtra
+                ("myDate", getIntent().getIntExtra("myDate", 0));
+        farmerBeginRequestPickupIntent.putExtra
+                ("myMonth", getIntent().getIntExtra("myMonth", 0));
+        farmerBeginRequestPickupIntent.putExtra
+                ("myAM", getIntent().getBooleanExtra("myAM",false));
+        farmerBeginRequestPickupIntent.putExtra
+                ("myPM", getIntent().getBooleanExtra("myPM",false));
+
         startActivity(farmerBeginRequestPickupIntent);
     }
 }
