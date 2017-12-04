@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class SignUpTransporterAddPhotos extends AppCompatActivity {
 
     @Override
@@ -44,6 +46,12 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
                 myIntent.putExtra("licenseplatenumber", licenseplatenumber);
                 myIntent.putExtra("capacity", capacity);
 
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
+
                 startActivity(myIntent);
             }
         });
@@ -52,7 +60,7 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, SignUpSetCarInfoTransporter.class);
+                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, SignUpTransporterSetCarInfo.class);
                 myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
                 myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
                 myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
@@ -64,6 +72,13 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
                 myIntent.putExtra("carmake", getIntent().getStringExtra("carmake"));
                 myIntent.putExtra("licenseplatenumber", getIntent().getStringExtra("licenseplatenumber"));
                 myIntent.putExtra("capacity", getIntent().getStringExtra("capacity"));
+
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
+
                 startActivity(myIntent);
             }
         });
@@ -90,6 +105,24 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
                 db.insertTransporter(firstname, lastname, "", address, city, postalcode
                         , country, password, phonenumber, carmake, capacity, licenseplatenumber);
 
+                myIntent.putExtra("firstname", firstname);
+                myIntent.putExtra("lastname", lastname);
+                myIntent.putExtra("phonenumber", phonenumber);
+                myIntent.putExtra("address", address);
+                myIntent.putExtra("city", city);
+                myIntent.putExtra("postalcode", postalcode);
+                myIntent.putExtra("country", country);
+                myIntent.putExtra("user", "transporter");
+                myIntent.putExtra("carmake", carmake);
+                myIntent.putExtra("licenseplatenumber", licenseplatenumber);
+                myIntent.putExtra("capacity", capacity);
+                myIntent.putExtra("screen", "TransporterAddPhotos");
+
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });
