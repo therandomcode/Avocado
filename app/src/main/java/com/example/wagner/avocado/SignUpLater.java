@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import android.widget.EditText;
 
 public class SignUpLater extends AppCompatActivity {
 
@@ -55,8 +56,20 @@ public class SignUpLater extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showToast();
-                Intent farmerRequestPickupSetPickupLocationIntent = new Intent(SignUpLater.this,
-                        FarmerHome.class);
+                Intent farmerRequestPickupSetPickupLocationIntent;
+
+                String type = getIntent().getStringExtra("type");
+                if (type.equals("farmer")){
+                    farmerRequestPickupSetPickupLocationIntent = new Intent(SignUpLater.this,
+                            FarmerHome.class);
+                }
+                else {
+                    farmerRequestPickupSetPickupLocationIntent = new Intent(SignUpLater.this,
+                            TransporterHome.class);
+                }
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);
+
                 startActivity(farmerRequestPickupSetPickupLocationIntent);
             }
         });

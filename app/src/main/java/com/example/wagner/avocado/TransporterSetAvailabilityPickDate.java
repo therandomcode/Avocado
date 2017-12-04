@@ -73,7 +73,6 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 db.getTransporter(phonenumber);
 
-                again = true;
             }
         });
 
@@ -81,36 +80,11 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
         finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                datepicker = (DatePicker)findViewById(R.id.datePicker);
-                day = Integer.toString(datepicker.getDayOfMonth());
-                month = Integer.toString(datepicker.getMonth()+1);
-                year = Integer.toString(datepicker.getYear());
-
-                cb1 = (CheckBox)findViewById(R.id.amCheckBox);
-                am = cb1.isChecked();
-
-                cb2 = (CheckBox)findViewById(R.id.pmCheckBox);
-                pm = cb2.isChecked();
-
-                date = month+"/"+day+"/"+year;
-
-                if (am && pm)
-                    time = "ALLDAY";
-                else if (am && !pm)
-                    time = "AM";
-                else if (pm & !am)
-                    time = "PM";
-                else
-                    time = "NEVER";
-
-                showToast2(date, time);
-                showToast();
-
-                DatabaseHandler db = new DatabaseHandler(activity);
-                String phonenumber = getIntent().getStringExtra("phonenumber");
-                db.getTransporter(phonenumber);
-
-                again = false;
+                Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this
+                        , TransporterViewSchedule.class);
+                phonenumber = getIntent().getStringExtra("phonenumber");
+                myIntent.putExtra("phonenumber", phonenumber);
+                startActivity(myIntent);
 
             }
         });
@@ -142,11 +116,12 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
     public void Success(String response) {
 
         try {
+            System.out.println("THE RESPONSE: "+response);
             JSONArray avail = new JSONArray(response);
             for (int i = 0; i < avail.length(); i++) {
                 //x is the transporter object
                 JSONObject x = avail.getJSONObject(i);
-
+                System.out.println("Transporter x: "+x.toString());
                 //transavail is the availabilities of transporter
                 JSONArray transavail = new JSONArray((String) x.get("availability"));
 
@@ -154,9 +129,9 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
                 JSONObject newavail = new JSONObject();
                 newavail.put("time", time);
                 newavail.put("date", date);
-                newavail.put("time", crop);
-                newavail.put("time", amount);
-                newavail.put("time", metric);
+                newavail.put("crop", crop);
+                newavail.put("amount", amount);
+                newavail.put("metric", metric);
                 transavail.put(newavail);
 
                 x.put("availability", transavail.toString());
@@ -169,7 +144,7 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
                 String city = (String)x.get("city");
                 String postalcode = (String)x.get("postalcode");
                 String country = (String)x.get("country");
-                String password = (String)x.get("password");
+                String password = (String)x.get("pass");
                 String phonenumber = (String)x.get("phonenumber");
                 String carmake = (String)x.get("carmake");
                 String capacity = (String)x.get("capacity");
@@ -177,27 +152,17 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertTransporter(firstname, lastname, availability, address, city,
                         postalcode, country, password, phonenumber, carmake, capacity,
-                        licenseplatenumber);
+                        licenseplatenumber, "[]");
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        if (again)
-        {
-            Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this
-                    , TransporterSetAvailabilityPickDate.class);
-            myIntent.putExtra("phonenumber", phonenumber);
-            startActivity(myIntent);
-        }
-        else
-        {
-            Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this
-                    , TransporterViewSchedule.class);
-            myIntent.putExtra("phonenumber", phonenumber);
-            startActivity(myIntent);
-        }
-
+        Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this
+                , TransporterSetAvailabilityPickDate.class);
+        phonenumber = getIntent().getStringExtra("phonenumber");
+        myIntent.putExtra("phonenumber", phonenumber);
+        startActivity(myIntent);
     }
 }

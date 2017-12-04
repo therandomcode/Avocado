@@ -88,8 +88,10 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
 
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertTransporter(firstname, lastname, "[]", address, city, postalcode
-                        , country, password, phonenumber, carmake, capacity, licenseplatenumber);
+                        , country, password, phonenumber, carmake, capacity, licenseplatenumber, "[]");
 
+                myIntent.putExtra("type", "transporter");
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
                 startActivity(myIntent);
             }
         });

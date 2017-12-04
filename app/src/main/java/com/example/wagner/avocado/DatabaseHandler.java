@@ -43,7 +43,7 @@ public class DatabaseHandler extends AppCompatActivity{
 
     public void insertFarmer(String firstname, String lastname, String phonenumber, String password, String
             address, String country, String postalcode, String
-                                      city){
+                                      city, String transactions){
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
@@ -59,6 +59,7 @@ public class DatabaseHandler extends AppCompatActivity{
         map.put("country", country);
         map.put("postalcode", postalcode);
         map.put("city", city);
+        map.put("transactions", transactions);
 
         wordList.add(map);
 
@@ -95,7 +96,7 @@ public class DatabaseHandler extends AppCompatActivity{
     public void insertTransporter(String firstname, String lastname, String availability, String
             address, String city, String postalcode, String
                                      country, String password, String phonenumber, String carmake
-                                , String capacity, String licenseplatenumber){
+                                , String capacity, String licenseplatenumber, String requests){
 
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
@@ -116,6 +117,7 @@ public class DatabaseHandler extends AppCompatActivity{
         map.put("carmake", carmake);
         map.put("capacity", capacity);
         map.put("licenseplatenumber", licenseplatenumber);
+        map.put("requests", requests);
 
         wordList.add(map);
 
@@ -201,6 +203,8 @@ public class DatabaseHandler extends AppCompatActivity{
         RequestParams params = new RequestParams();
 
         HashMap<String, String> map = new HashMap<String, String>();
+        System.out.println("phonenumber: "+phonenumber);
+
         map.put("phonenumber", phonenumber);
 
         //intent = nextscreen;

@@ -139,9 +139,14 @@ public class SignUpSetLocation extends AppCompatActivity implements
 
                 DatabaseHandler db = new DatabaseHandler();
 
-                db.insertFarmer(firstname, lastname, phonenumber, password, "", "", "", "");
+                db.insertFarmer(firstname, lastname, phonenumber, password, "", ""
+                        , "", "", "[]");
 
                 Intent myIntent = new Intent(SignUpSetLocation.this, SignUpLater.class);
+
+                myIntent.putExtra("type", "farmer");
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+
                 startActivity(myIntent);
             }
         });

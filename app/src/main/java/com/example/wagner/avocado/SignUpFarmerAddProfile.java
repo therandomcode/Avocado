@@ -32,7 +32,9 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
 
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
-                        postalcode, city);
+                        postalcode, city, "[]");
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("type", "farmer");
 
                 startActivity(myIntent);
             }

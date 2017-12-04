@@ -36,8 +36,12 @@ public class SignUpTransporterAddProfile extends AppCompatActivity{
                 String capacity = getIntent().getStringExtra("capacity");
 
                 DatabaseHandler db = new DatabaseHandler();
+                System.out.println("Hello");
                 db.insertTransporter(firstname, lastname, "[]", address, city, postalcode
-                        , country, password, phonenumber, carmake, capacity, licenseplatenumber);
+                        , country, password, phonenumber, carmake, capacity, licenseplatenumber, "[]");
+
+                myIntent.putExtra("type", "transporter");
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
 
                 startActivity(myIntent);
             }
