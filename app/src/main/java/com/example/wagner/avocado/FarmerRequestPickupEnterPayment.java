@@ -15,35 +15,29 @@ public class FarmerRequestPickupEnterPayment extends AppCompatActivity {
         setContentView(R.layout.activity_farmer_request_pickup_enter_payment);
 
         Button nextButton = findViewById(R.id.farmerRequestPickupEnterPaymentNextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupEnterPayment.this,
+                            FarmerRequestPickupOrderConfirmation.class);
+                }
+            });
 
         RadioButton cashRadioButton = findViewById(R.id.cashRadioButton);
         RadioButton bankAccountRadioButton = findViewById(R.id.bankAccountRadioButton);
         RadioButton creditCardRadioButton = findViewById(R.id.creditCardRadioButton);
 
         if (creditCardRadioButton.isChecked()){
-            nextButton.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
                     Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupEnterPayment.this,
                             FarmerRequestPickupEnterAnotherPayment.class);
                     startActivity(farmerBeginRequestPickupIntent);
-                }
-            });
         } else if (bankAccountRadioButton.isChecked()){
-            nextButton.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
                     Intent addBankAccountIntent = new Intent(FarmerRequestPickupEnterPayment.this,
                             FarmerRequestPickupAddBankAccount.class);
                     startActivity(addBankAccountIntent);
-                }
-            });
         } else if (cashRadioButton.isChecked()) {
-            nextButton.setOnClickListener(new View.OnClickListener(){
-                public void onClick(View v) {
                     Intent skipAhead = new Intent(FarmerRequestPickupEnterPayment.this,
                             FarmerRequestPickupReviewOrder.class);
                     startActivity(skipAhead);
-                }
-            });
         }
 
         final Button backButton = findViewById(R.id.farmerRequestPickupEnterPaymentBackButton);
