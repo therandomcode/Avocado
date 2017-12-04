@@ -22,6 +22,14 @@ public class FarmerEditProfile extends AppCompatActivity {
             }
         });
 
+        final Button historyButton = findViewById(R.id.farmerHistoryButton);
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(FarmerEditProfile.this, FarmerHistory.class);
+                startActivity(myIntent);
+            }
+        });
+
         final Button saveChangesButton = findViewById(R.id.farmerSaveChangesButton);
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
