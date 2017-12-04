@@ -56,9 +56,11 @@
         <activity android:name=".LogIn" />
         <activity android:name=".FarmerRequestPickupEnterAnotherPayment" />
         <activity android:name=".TransporterHome" />
+        <activity android:name=".ViewProfile" />
+        <activity android:name=".ProfileHistory" />
         <activity android:name=".TransporterViewSchedule" />
         <activity android:name=".FarmerRequestPickupAddBankAccount" />
-        <activity android:name=".FarmerRequestPickupAddPayment"></activity>
+        <activity android:name=".FarmerRequestPickupAddPayment" />
         <activity android:name=".TransporterMessages" />
         <activity android:name=".TransporterEditProfile" />
         <activity android:name=".TransporterHistory" />
