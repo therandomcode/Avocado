@@ -18,6 +18,9 @@ public class FarmerRequestPickupReviewOrder extends AppCompatActivity {
             public void onClick(View v) {
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupReviewOrder.this,
                         FarmerRequestPickupAddPayment.class);
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });
@@ -27,6 +30,9 @@ public class FarmerRequestPickupReviewOrder extends AppCompatActivity {
             public void onClick(View v) {
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupReviewOrder.this,
                         FarmerRequestPickupChooseTransporter.class);
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });

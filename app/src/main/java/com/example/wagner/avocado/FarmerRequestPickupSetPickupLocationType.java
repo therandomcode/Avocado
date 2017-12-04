@@ -9,6 +9,8 @@ import android.widget.RadioGroup;
 import android.widget.RadioButton;
 import android.widget.EditText;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class FarmerRequestPickupSetPickupLocationType extends AppCompatActivity {
 
     @Override
@@ -33,33 +35,72 @@ public class FarmerRequestPickupSetPickupLocationType extends AppCompatActivity 
                     locationtype = rb.getText().toString();
                 }
 
-                Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupSetPickupLocationType.this,
+                Intent farmerRequestPickupSetPickupLocationTypeIntent = new Intent(FarmerRequestPickupSetPickupLocationType.this,
                         FarmerRequestPickupSetDropoffLocation.class);
 
-                farmerBeginRequestPickupIntent.putExtra("locationtype", locationtype);
-                farmerBeginRequestPickupIntent.putExtra
-                        ("address", getIntent().getStringExtra("address"));
-                farmerBeginRequestPickupIntent.putExtra
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra("locationtype", locationtype);
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("phonenumber", getIntent().getStringExtra("phonenumber"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
                         ("date", getIntent().getStringExtra("date"));
-                farmerBeginRequestPickupIntent.putExtra
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
                         ("time", getIntent().getStringExtra("time"));
-                farmerBeginRequestPickupIntent.putExtra
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
                         ("crop", getIntent().getStringExtra("crop"));
-                farmerBeginRequestPickupIntent.putExtra
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
                         ("metric", getIntent().getStringExtra("metric"));
-                farmerBeginRequestPickupIntent.putExtra
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
                         ("amount", getIntent().getStringExtra("amount"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("address", getIntent().getStringExtra("address"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("country", getIntent().getStringExtra("country"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("postalcode", getIntent().getStringExtra("postalcode"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("city", getIntent().getStringExtra("city"));
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra("bundle", args);
 
-                startActivity(farmerBeginRequestPickupIntent);
+                startActivity(farmerRequestPickupSetPickupLocationTypeIntent);
             }
         });
 
         final Button backButton = findViewById(R.id.farmerRequestPickupSetPickupLocationTypeBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupSetPickupLocationType.this,
+                Intent farmerRequestPickupSetPickupLocationTypeIntent = new Intent(FarmerRequestPickupSetPickupLocationType.this,
                         FarmerRequestPickupSetPickupLocation.class);
-                startActivity(farmerBeginRequestPickupIntent);
+
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("phonenumber", getIntent().getStringExtra("phonenumber"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("date", getIntent().getStringExtra("date"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("time", getIntent().getStringExtra("time"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("crop", getIntent().getStringExtra("crop"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("metric", getIntent().getStringExtra("metric"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("amount", getIntent().getStringExtra("amount"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("address", getIntent().getStringExtra("address"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("country", getIntent().getStringExtra("country"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("postalcode", getIntent().getStringExtra("postalcode"));
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra
+                        ("city", getIntent().getStringExtra("city"));
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                farmerRequestPickupSetPickupLocationTypeIntent.putExtra("bundle", args);
+                startActivity(farmerRequestPickupSetPickupLocationTypeIntent);
             }
         });
     }

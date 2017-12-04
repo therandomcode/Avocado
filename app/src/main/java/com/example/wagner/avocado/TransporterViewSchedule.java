@@ -29,7 +29,9 @@ public class TransporterViewSchedule extends AppCompatActivity {
         setAvailabilityButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterViewSchedule.this,
-                        TransporterSetAvailabilityLocationType.class);
+                        TransporterSetAvailabilityLocation.class);
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);
             }
         });
@@ -39,6 +41,8 @@ public class TransporterViewSchedule extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterViewSchedule.this,
                         TransporterHome.class);
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);
             }
         });

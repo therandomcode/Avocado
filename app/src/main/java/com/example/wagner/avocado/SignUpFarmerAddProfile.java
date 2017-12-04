@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class SignUpFarmerAddProfile extends AppCompatActivity {
 
     @Override
@@ -30,14 +32,19 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
                 String country = getIntent().getStringExtra("country");
                 String postalcode = getIntent().getStringExtra("postalcode");
 
-                myIntent.putExtra("firstname", firstname);
-                myIntent.putExtra("lastname", lastname);
-                myIntent.putExtra("phonenumber", phonenumber);
-                myIntent.putExtra("password", password);
-                myIntent.putExtra("address", address);
-                myIntent.putExtra("city", city);
-                myIntent.putExtra("country", country);
-                myIntent.putExtra("postalcode", postalcode);
+                int index = address.indexOf("/");
+                String newaddress = address.substring(0,index) + " " + address.substring(index+1);
+
+                DatabaseHandler db = new DatabaseHandler();
+<<<<<<< HEAD
+                db.insertFarmer(firstname, lastname, phonenumber, password, newaddress, country,
+                        postalcode, city);
+=======
+                db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
+                        postalcode, city, "[]");
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("type", "farmer");
+>>>>>>> Arka
 
                 startActivity(myIntent);
             }
@@ -47,7 +54,21 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
-                        SignUpFarmerAddProfile.class);
+                        SignUpFarmerAddPhotos.class);
+                myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
+                myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("address", getIntent().getStringExtra("address"));
+                myIntent.putExtra("city", getIntent().getStringExtra("city"));
+                myIntent.putExtra("postalcode", getIntent().getStringExtra("postalcode"));
+                myIntent.putExtra("country", getIntent().getStringExtra("country"));
+                myIntent.putExtra("user", "transporter");
+
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });

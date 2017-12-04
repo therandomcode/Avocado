@@ -10,38 +10,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-import android.widget.CompoundButton;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
-import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import cz.msebera.android.httpclient.Header;
-
-public class SignUpSetLocationTransporter extends AppCompatActivity implements
-        OnMarkerClickListener,
-        OnMapClickListener,
+public class TransporterSetAvailabilityLocation extends AppCompatActivity implements
+        GoogleMap.OnMarkerClickListener,
+        GoogleMap.OnMapClickListener,
         OnMapReadyCallback,
         GoogleMap.OnMyLocationButtonClickListener,
         ActivityCompat.OnRequestPermissionsResultCallback,
@@ -65,149 +50,113 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
     /**
      * Keeps track of the selected marker.
      */
-    private Marker mLastMarker;
+    private Marker mLastMarker = null;
+    private LatLng markerLatLng = null;
+
+    private ToggleButton homeButton;
+    private ToggleButton anotherLocationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_set_location_transporter);
+        setContentView(R.layout.activity_transporter_set_availability_location_type);
 
-        findViewById(R.id.map).setVisibility(View.GONE);
+        findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.GONE);
+        final EditText address = findViewById(R.id.transporterSetAvailabilityLocationTypeAddress);
+        address.setVisibility(View.GONE);
 
-        final Button nextButton = findViewById(R.id.signUpSetLocationNextButton);
+        homeButton = findViewById(R.id.transporterSetAvailabilityLocationTypeHomeButton);
+        anotherLocationButton = findViewById(R.id.transporterSetAvailabilityLocationTypeAnotherLocationButton);
+        final ImageView house = findViewById(R.id.transporterSetAvailabilityLocationTypeHouseIcon);
+
+        homeButton.setChecked(true);
+        anotherLocationButton.setChecked(false);
+
+        Bundle coords = getIntent().getParcelableExtra("bundle");
+        if (coords != null) {
+            LatLng coordinates = coords.getParcelable("coordinates");
+            if (coordinates != null) { markerLatLng = coordinates; }
+        }
+
+        homeButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    anotherLocationButton.setChecked(false);
+                    findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.GONE);
+                    address.setVisibility(View.GONE);
+                    house.setVisibility(View.GONE);
+                } else {
+                    anotherLocationButton.setChecked(true);
+                    findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.VISIBLE);
+                    address.setVisibility(View.VISIBLE);
+                    house.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        anotherLocationButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    homeButton.setChecked(false);
+                    findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.VISIBLE);
+                    address.setVisibility(View.VISIBLE);
+                    house.setVisibility(View.VISIBLE);
+                } else {
+                    homeButton.setChecked(true);
+                    findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.GONE);
+                    address.setVisibility(View.GONE);
+                    house.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        final Button nextButton = findViewById(R.id.transporterSetAvailabilityLocationTypeNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent myIntent = new Intent(TransporterSetAvailabilityLocation.this,
+                        TransporterSetAvailabilityPickDate.class);
+              
+                if (homeButton.isChecked())
+                    myIntent.putExtra("address", "home");
+                else {
+                    EditText loc = (EditText)findViewById(R.id.transporterSetAvailabilityLocationTypeAddress);
+                    String address = loc.getText().toString();
+                    myIntent.putExtra("address", address);
+                }
 
-
-                String firstname = getIntent().getStringExtra("firstname");
-                String lastname = getIntent().getStringExtra("lastname");
                 String phonenumber = getIntent().getStringExtra("phonenumber");
-                String password = getIntent().getStringExtra("password");
-
-                EditText text2 = (EditText)findViewById(R.id.addressline1);
-                EditText text6 = (EditText)findViewById(R.id.addressline2);
-                String address = text2.getText().toString() + " " + text6.getText().toString();
-
-                EditText text3 = (EditText)findViewById(R.id.country);
-                String country = text3.getText().toString();
-
-                EditText text4 = (EditText)findViewById(R.id.postalcode);
-                String postalcode = text4.getText().toString();
-
-                EditText text5 = (EditText)findViewById(R.id.city);
-                String city = text5.getText().toString();
-
-                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, SignUpSetCarInfoTransporter.class);
-
-                myIntent.putExtra("firstname", firstname);
-                myIntent.putExtra("lastname", lastname);
                 myIntent.putExtra("phonenumber", phonenumber);
-                myIntent.putExtra("password", password);
-                myIntent.putExtra("address", address);
-                myIntent.putExtra("country", country);
-                myIntent.putExtra("postalcode", postalcode);
-                myIntent.putExtra("city", city);
 
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", markerLatLng);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });
 
-        final Button backButton = findViewById(R.id.signUpSetLocationBackButton);
+        final Button backButton = findViewById(R.id.transporterSetAvailabilityLocationTypeBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, CreateAccount.class);
-                startActivity(myIntent);
-            }
-        });
-
-        final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
-        skipButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, SignUpLater.class);
-
-                String firstname = getIntent().getStringExtra("firstname");
-                String lastname = getIntent().getStringExtra("lastname");
+                Intent myIntent = new Intent(TransporterSetAvailabilityLocation.this,
+                        TransporterViewSchedule.class);
                 String phonenumber = getIntent().getStringExtra("phonenumber");
-                String password = getIntent().getStringExtra("password");
-
-                DatabaseHandler db = new DatabaseHandler();
-
-                db.insertTransporter(firstname, lastname, "", "", "",
-                        "", "", password, phonenumber, ""
-                        , "", "");
-
+                myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);
             }
         });
-
 
         SupportMapFragment mapFragment =
-                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.transporterSetAvailabilityLocationTypeMap);
         new OnMapAndViewReadyListener(mapFragment, this);
-
-
-        final ToggleButton enterAddressButton = findViewById(R.id.signUpSetLocationEnterAddressButton);
-        final ToggleButton dropPinButton = findViewById(R.id.signUpSetLocationDropPinButton);
-
-        enterAddressButton.setChecked(true);
-        dropPinButton.setChecked(false);
-
-        enterAddressButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    dropPinButton.setChecked(false);
-                    setAddressTextView();
-                } else {
-                    dropPinButton.setChecked(true);
-                    setDropPinTextView();
-                }
-            }
-        });
-
-        dropPinButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    enterAddressButton.setChecked(false);
-                    setDropPinTextView();
-                } else {
-                    enterAddressButton.setChecked(true);
-                    setAddressTextView();
-                }
-            }
-        });
-    }
-
-    private void setAddressTextView(){
-        EditText addressLine1 = findViewById(R.id.addressline1);
-        EditText country = findViewById(R.id.country);
-        EditText addressLine2 = findViewById(R.id.addressline2);
-        EditText postalCode = findViewById(R.id.postalcode);
-        EditText city = findViewById(R.id.city);
-        addressLine1.setVisibility(View.VISIBLE);
-        addressLine2.setVisibility(View.VISIBLE);
-        city.setVisibility(View.VISIBLE);
-        country.setVisibility(View.VISIBLE);
-        postalCode.setVisibility(View.VISIBLE);
-        findViewById(R.id.map).setVisibility(View.GONE);
-    }
-
-    private void setDropPinTextView() {
-        EditText addressLine1 = findViewById(R.id.addressline1);
-        EditText country = findViewById(R.id.country);
-        EditText addressLine2 = findViewById(R.id.addressline2);
-        EditText postalCode = findViewById(R.id.postalcode);
-        EditText city = findViewById(R.id.city);
-        addressLine1.setVisibility(View.GONE);
-        addressLine2.setVisibility(View.GONE);
-        city.setVisibility(View.GONE);
-        country.setVisibility(View.GONE);
-        postalCode.setVisibility(View.GONE);
-        findViewById(R.id.map).setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+
+        if (markerLatLng != null) {
+            mLastMarker = mMap.addMarker(new MarkerOptions().position(markerLatLng));
+        }
 
         // Set listener for marker click event.  See the bottom of this class for its behavior.
         mMap.setOnMarkerClickListener(this);
@@ -289,9 +238,10 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
     public void onMapClick(final LatLng point) {
         // Any showing info window closes when the map is clicked.
         // Clear the currently selected marker.
+        markerLatLng = point;
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
-        Toast.makeText(this, "Setting your pickup location", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Setting your location", Toast.LENGTH_SHORT).show();
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
     }
 
@@ -300,6 +250,7 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
         // The user has re-tapped on the marker which was already showing an info window.
         if (marker.equals(mLastMarker)) {
             mLastMarker.remove();
+            markerLatLng = null;
             return true;
         }
 
@@ -310,4 +261,3 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
         return false;
     }
 }
-

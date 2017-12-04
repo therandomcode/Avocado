@@ -22,11 +22,14 @@ import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.EditText;
 
 import android.location.Geocoder;
 import android.location.Address;
+import android.widget.ToggleButton;
 
 import java.io.IOException;
 import java.util.List;
@@ -58,51 +61,108 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
     /**
      * Keeps track of the selected marker.
      */
-    private Marker mLastMarker;
-    private List<Address> address;
-    private Geocoder coder;
-    private LatLng resLatLng = null;
+    private Marker mLastMarker = null;
+    private LatLng markerLatLng = null;
+    private EditText addressLine1;
+    private EditText addressLine2;
+    private EditText cityText;
+    private EditText countryText;
+    private EditText postalCodeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_set_pickup_location);
 
-        //coder = new Geocoder(this);
-
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         new OnMapAndViewReadyListener(mapFragment, this);
+
+        addressLine1 = (EditText)findViewById(R.id.addressline1);
+        addressLine2 = (EditText)findViewById(R.id.addressline2);
+        cityText = (EditText)findViewById(R.id.city);
+        countryText = (EditText)findViewById(R.id.country);
+        postalCodeText = (EditText)findViewById(R.id.postalcode);
+
+        String address = getIntent().getStringExtra("address");
+        if (address != null) {
+            String[] addresses = address.split("/");
+            if (addresses.length > 0) {
+                String address1 = addresses[0];
+                addressLine1.setText(address1, TextView.BufferType.EDITABLE);
+            }
+            if (addresses.length == 2) {
+                addressLine2.setText(addresses[1], TextView.BufferType.EDITABLE);
+            }
+        }
+        String city = getIntent().getStringExtra("city");
+        if ((city != null) && (!city.equals(""))) cityText.setText(city, TextView.BufferType.EDITABLE);
+        String country = getIntent().getStringExtra("country");
+        if ((country != null) && (!country.equals(""))) countryText.setText(country, TextView.BufferType.EDITABLE);
+        String postalcode = getIntent().getStringExtra("postalcode");
+        if ((postalcode != null) && (!postalcode.equals(""))) {
+            postalCodeText.setText(postalcode, TextView.BufferType.EDITABLE);
+        }
+        else {
+            Bundle coords = getIntent().getParcelableExtra("bundle");
+            if (coords != null) {
+                LatLng coordinates = coords.getParcelable("coordinates");
+                if (coordinates != null) { markerLatLng = coordinates; }
+            }
+        }
+
+        findViewById(R.id.map).setVisibility(View.GONE);
 
         final Button nextButton = findViewById(R.id.farmerRequestPickupSetPickupLocationNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-
-                EditText edittext7 = (EditText)findViewById(R.id.farmerRequestPickupSetPickupLocationEnterAddress);
-                String address = edittext7.getText().toString();
-
-
-
-
-                //checkAddress();
-
                 Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupSetPickupLocation.this,
                         FarmerRequestPickupSetPickupLocationType.class);
 
-                farmerRequestPickupSetPickupLocationIntent.putExtra("address", address);
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("date", getIntent().getStringExtra("date"));
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("time", getIntent().getStringExtra("time"));
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("crop", getIntent().getStringExtra("crop"));
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("metric", getIntent().getStringExtra("metric"));
-                farmerRequestPickupSetPickupLocationIntent.putExtra
-                        ("amount", getIntent().getStringExtra("amount"));
+                addressLine1 = (EditText)findViewById(R.id.addressline1);
+                addressLine2 = (EditText)findViewById(R.id.addressline2);
+                cityText = (EditText)findViewById(R.id.city);
+                countryText = (EditText)findViewById(R.id.country);
+                postalCodeText = (EditText)findViewById(R.id.postalcode);
+                String addressLine1String = addressLine1.getText().toString();
+                String addressLine2String = addressLine2.getText().toString();
+                String cityString = cityText.getText().toString();
+                String countryString = countryText.getText().toString();
+                String postalCodeString = postalCodeText.getText().toString();
 
-                startActivity(farmerRequestPickupSetPickupLocationIntent);
+                if ((!addressLine1String.equals("") && !cityString.equals("") &&
+                        !countryString.equals("") && !postalCodeString.equals("")) ||
+                        markerLatLng != null) {
+                    String address = addressLine1String + "/" + addressLine2String;
+                    String phonenumber = getIntent().getStringExtra("phonenumber");
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("date", getIntent().getStringExtra("date"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("time", getIntent().getStringExtra("time"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("crop", getIntent().getStringExtra("crop"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("metric", getIntent().getStringExtra("metric"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("amount", getIntent().getStringExtra("amount"));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("address", address);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("country", countryString);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("postalcode", postalCodeString);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("city", cityString);
+                    Bundle args = new Bundle();
+                    args.putParcelable("coordinates", markerLatLng);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("bundle", args);
+
+                    startActivity(farmerRequestPickupSetPickupLocationIntent);
+                }
+                else {
+                    showToast("Please enter information for all of the address" +
+                            " fields or drop a pin to continue.");
+                }
+
+
             }
         });
 
@@ -110,14 +170,89 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerRequestPickupSetPickupLocation.this, FarmerRequestPickupPickDate.class);
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                myIntent.putExtra("phonenumber", phonenumber);
+                myIntent.putExtra
+                        ("date", getIntent().getStringExtra("date"));
+                myIntent.putExtra
+                        ("time", getIntent().getStringExtra("time"));
+                myIntent.putExtra
+                        ("crop", getIntent().getStringExtra("crop"));
+                myIntent.putExtra
+                        ("metric", getIntent().getStringExtra("metric"));
+                myIntent.putExtra
+                        ("amount", getIntent().getStringExtra("amount"));
                 startActivity(myIntent);
             }
         });
+
+        final ToggleButton enterAddressButton = findViewById(R.id.farmerRequestPickupSetLocationEnterAddressButton);
+        final ToggleButton dropPinButton = findViewById(R.id.farmerRequestPickupSetLocationDropPinButton);
+
+        enterAddressButton.setChecked(true);
+        dropPinButton.setChecked(false);
+
+        enterAddressButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    dropPinButton.setChecked(false);
+                    setAddressTextView();
+                } else {
+                    dropPinButton.setChecked(true);
+                    setDropPinTextView();
+                }
+            }
+        });
+
+        dropPinButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    enterAddressButton.setChecked(false);
+                    setDropPinTextView();
+                } else {
+                    enterAddressButton.setChecked(true);
+                    setAddressTextView();
+                }
+            }
+        });
+    }
+
+    private void setAddressTextView(){
+        EditText addressLine1 = findViewById(R.id.addressline1);
+        EditText country = findViewById(R.id.country);
+        EditText addressLine2 = findViewById(R.id.addressline2);
+        EditText postalCode = findViewById(R.id.postalcode);
+        EditText city = findViewById(R.id.city);
+        addressLine1.setVisibility(View.VISIBLE);
+        addressLine2.setVisibility(View.VISIBLE);
+        city.setVisibility(View.VISIBLE);
+        country.setVisibility(View.VISIBLE);
+        postalCode.setVisibility(View.VISIBLE);
+        findViewById(R.id.map).setVisibility(View.GONE);
+    }
+
+    private void setDropPinTextView() {
+        EditText addressLine1 = findViewById(R.id.addressline1);
+        EditText country = findViewById(R.id.country);
+        EditText addressLine2 = findViewById(R.id.addressline2);
+        EditText postalCode = findViewById(R.id.postalcode);
+        EditText city = findViewById(R.id.city);
+        addressLine1.setVisibility(View.GONE);
+        addressLine2.setVisibility(View.GONE);
+        city.setVisibility(View.GONE);
+        country.setVisibility(View.GONE);
+        postalCode.setVisibility(View.GONE);
+        findViewById(R.id.map).setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+
+        if (markerLatLng != null) {
+            mLastMarker = mMap.addMarker(new MarkerOptions().position(markerLatLng));
+        }
 
         // Set listener for marker click event.  See the bottom of this class for its behavior.
         mMap.setOnMarkerClickListener(this);
@@ -203,10 +338,11 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
     public void onMapClick(final LatLng point) {
         // Any showing info window closes when the map is clicked.
         // Clear the currently selected marker.
+        markerLatLng = point;
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
         Toast.makeText(this, "Setting your pickup location", Toast.LENGTH_SHORT).show();
-        resLatLng = point;
+        markerLatLng = point;
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
     }
 
@@ -215,7 +351,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         // The user has re-tapped on the marker which was already showing an info window.
         if (marker.equals(mLastMarker)) {
             mLastMarker.remove();
-            resLatLng = null;
+            markerLatLng = null;
             return true;
         }
 
@@ -226,21 +362,10 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         return false;
     }
 
-    private void checkAddress() {
-        try {
-            final EditText inputAddress = findViewById(R.id.farmerRequestPickupSetPickupLocationEnterAddress);
-            String addy = inputAddress.getText().toString();
-            address = coder.getFromLocationName(addy, 5);
-            Address location = address.get(0);
-            location.getLatitude();
-            location.getLongitude();
-            resLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-        } catch (IOException ex) {
-            if (mLastMarker.getPosition() == null) {
-                ex.printStackTrace();
-                Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }
+    private void showToast(String message) {
+        Toast.makeText(this,
+                message,
+                Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.wagner.avocado;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,20 +26,20 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
     ListView bestMatch;
     ListView lst;
-    ArrayList<Transporter> trans = new ArrayList<Transporter>();
-    String[] transportername={"Juan Felipe","Ricardo Sanchez-Delorio","Davíd de Leon"};
-    String[] times={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};
-    String[] locations ={"Cartagena", "Cúcuta", "Santa Marta"};
-    Integer[] imgid ={R.drawable.arka,R.drawable.cecilia,R.drawable.raza};
 
+    ArrayList<Transporter> trans = new ArrayList<Transporter>();
+    final ArrayList<String> transportername = new ArrayList<String>();/*={"Juan Felipe","Ricardo Sanchez-Delorio","Davíd de Leon"};*/
+    final ArrayList<String> cars = new ArrayList<String>();/*={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};*/
+    final ArrayList<String> cities = new ArrayList<String>();/* ={"Cartagena", "Cúcuta", "Santa Marta"};*/
+    Integer[] imgid ={R.drawable.arka,R.drawable.cecilia,R.drawable.raza};
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_choose_transporter);
 
 
-        String firstname = "joe";
-        String lastname = "blow";
+
         String locationtype = getIntent().getStringExtra("locationtype");
         String droplocation = getIntent().getStringExtra("droplocation");
         String address = getIntent().getStringExtra("address");
@@ -48,26 +49,44 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         String metric = getIntent().getStringExtra("metric");
         String amount = getIntent().getStringExtra("amount");
 
-        ArrayList<Transporter> availableTransporters = getTransporters(time, date, crop, amount, metric);
+        String availability = getIntent().getStringExtra("availability");
 
+        String firstname, lastname, available, addresstrans, city, postalcode, country, phonenumber,
+                carmake, capacity, licenseplatenumber;
+        try {
+            JSONArray avail = new JSONArray(availability);
 
-        System.out.println(availableTransporters.size());
+            for (int i = 0; i < avail.length(); i++){
+                JSONObject x = avail.getJSONObject(i);
 
-        int ind = 0;
-        for (Transporter T: availableTransporters){
-            transportername[ind] = T.getFirstName()+" "+T.getLastName();
-            times[ind] = T.getCarMake();
-            locations[ind] = T.getAddress();
-            ind++;
+                firstname = (String)x.get("firstname");
+
+                lastname = (String)x.get("lastname");
+                carmake = (String)x.get("carmake");
+                city = (String)x.get("city");
+                transportername.add(firstname + " " + lastname);
+                cars.add(carmake);
+                cities.add(city);
+            }
+        } catch (JSONException e) {
+            System.out.println("Failure");
+            e.printStackTrace();
         }
 
+
         bestMatch = findViewById(R.id.bestMatchListView);
+        String [] transarray = transportername.toArray(new String[transportername.size()]);
+        String [] cararray = cars.toArray(new String[cars.size()]);
+
         FarmerRequestPickupChooseTransporterCustomListView customListview
-                = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,times,imgid);
+                = new FarmerRequestPickupChooseTransporterCustomListView(this
+                , transarray, cararray, imgid);
         bestMatch.setAdapter(customListview);
 
         lst= findViewById(R.id.listview);
+        //FarmerRequestPickupChooseTransporterCustomListView customListview = new FarmerRequestPickupChooseTransporterCustomListView(this,transportername,times,imgid);
         lst.setAdapter(customListview);
+
 
 
         final Button button = findViewById(R.id.farmerRequestPickupChooseTransporterNextButton);
@@ -76,6 +95,9 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
                 Intent farmerBeginRequestPickupIntent
                         = new Intent(FarmerRequestPickupChooseTransporter.this,
                         FarmerRequestPickupReviewOrder.class);
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });
@@ -88,62 +110,6 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
-    }
-
-    public ArrayList<Transporter> getTransporters(String time, String date, String crop, String amount,
-                                                  String metric){
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("time", time);
-        map.put("date", date);
-        map.put("crop", crop);
-        map.put("amount", amount);
-        map.put("metric", metric);
-
-
-        ArrayList<HashMap<String, String>> wordList;
-        wordList = new ArrayList<HashMap<String, String>>();
-        wordList.add(map);
-
-        Gson gson = new GsonBuilder().create();
-        params.put("getTransporters", gson.toJson(wordList));
-
-        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/getTransporters.php", params,
-                new AsyncHttpResponseHandler() {
-
-            @Override
-            public void onSuccess(int i, Header[] headers, byte[] bytes) {
-                try {
-                    String response = new String(bytes);
-                    System.out.println(response);
-                    JSONArray arr = new JSONArray(response);
-                    System.out.println(arr.length());
-                    for(int j=0; j<arr.length();j++){
-                        JSONObject obj = (JSONObject)arr.get(j);
-                        System.out.println(obj.get("firstname"));
-                        System.out.println(obj.get("lastname"));
-                        System.out.println(obj.get("availability"));
-                        Transporter joe = new Transporter
-                                ((String)obj.get("firstname"), (String)obj.get("lastname")
-                                        , (String)obj.get("address"), (String)obj.get("carmake"));
-                        trans.add(joe);
-                    }
-
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-
-                }
-            }
-
-            @Override
-            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-
-            }
-        });
-
-        return trans;
     }
 
 

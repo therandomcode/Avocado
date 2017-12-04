@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.wagner.agromovil.FarmerViewHistoryDetail">
+    tools:context="com.example.wagner.agromovil.FarmerViewHistory">
 
     <TextView
-        android:id="@+id/textView23"
-        android:layout_width="0dp"
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Joyce to do (should populate from db)"
+        android:text="Joyce to do (List)"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
