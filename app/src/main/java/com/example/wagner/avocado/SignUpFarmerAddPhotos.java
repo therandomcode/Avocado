@@ -120,8 +120,8 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 String postalcode = getIntent().getStringExtra("postalcode");
 
                 DatabaseHandler db = new DatabaseHandler();
-                db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
-                        postalcode, city);
+                db.insertFarmer(firstname, lastname, phonenumber, password, address, country
+                        , postalcode, city, "[]");
 
                 myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
                 myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
@@ -139,6 +139,7 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 args.putParcelable("coordinates", coords);
                 myIntent.putExtra("bundle", args);
 
+                myIntent.putExtra("type", "farmer");
                 startActivity(myIntent);
             }
         });

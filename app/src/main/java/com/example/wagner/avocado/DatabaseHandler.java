@@ -31,10 +31,10 @@ import static android.support.v4.content.ContextCompat.startActivity;
 
 public class DatabaseHandler extends AppCompatActivity{
 
-    Loading activity;
+    AppActivity activity;
 
-    public DatabaseHandler(Loading activity){
-        this.activity = activity;
+    public DatabaseHandler(AppCompatActivity activity){
+        this.activity = (AppActivity) activity;
     }
 
     public DatabaseHandler(){
@@ -43,7 +43,7 @@ public class DatabaseHandler extends AppCompatActivity{
 
     public void insertFarmer(String firstname, String lastname, String phonenumber, String password, String
             address, String country, String postalcode, String
-                                      city){
+                                      city, String transactions){
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
@@ -59,6 +59,7 @@ public class DatabaseHandler extends AppCompatActivity{
         map.put("country", country);
         map.put("postalcode", postalcode);
         map.put("city", city);
+        map.put("transactions", transactions);
 
         wordList.add(map);
 
@@ -95,7 +96,7 @@ public class DatabaseHandler extends AppCompatActivity{
     public void insertTransporter(String firstname, String lastname, String availability, String
             address, String city, String postalcode, String
                                      country, String password, String phonenumber, String carmake
-                                , String capacity, String licenseplatenumber){
+                                , String capacity, String licenseplatenumber, String requests){
 
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
@@ -116,6 +117,7 @@ public class DatabaseHandler extends AppCompatActivity{
         map.put("carmake", carmake);
         map.put("capacity", capacity);
         map.put("licenseplatenumber", licenseplatenumber);
+        map.put("requests", requests);
 
         wordList.add(map);
 
@@ -149,7 +151,7 @@ public class DatabaseHandler extends AppCompatActivity{
         });
     }
 
-    public void getTransporters(String time, String date, String crop, String amount,
+    public void getAvailableTransporters(String time, String date, String crop, String amount,
                                 String metric){
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
@@ -195,6 +197,49 @@ public class DatabaseHandler extends AppCompatActivity{
 
 
     }
+
+    public void getTransporter(String phonenumber){
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        System.out.println("phonenumber: "+phonenumber);
+
+        map.put("phonenumber", phonenumber);
+
+        //intent = nextscreen;
+        final ArrayList<Transporter> trans = new ArrayList<Transporter>();
+
+        ArrayList<HashMap<String, String>> wordList;
+        wordList = new ArrayList<HashMap<String, String>>();
+        wordList.add(map);
+
+        Gson gson = new GsonBuilder().create();
+        params.put("getTransporter", gson.toJson(wordList));
+
+        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/getTransporter.php", params,
+                new AsyncHttpResponseHandler() {
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] b) {
+
+                        String response = new String(b);
+                        System.out.println("hello!");
+                        System.out.println(response);
+                        activity.Success(response);
+
+                    }
+
+                    @Override
+                    public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+
+                    }
+
+
+                }
+        );
+    }
+
 
 
 }

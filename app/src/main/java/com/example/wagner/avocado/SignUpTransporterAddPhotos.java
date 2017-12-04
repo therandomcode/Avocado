@@ -102,8 +102,8 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
                 String capacity = getIntent().getStringExtra("capacity");
 
                 DatabaseHandler db = new DatabaseHandler();
-                db.insertTransporter(firstname, lastname, "", address, city, postalcode
-                        , country, password, phonenumber, carmake, capacity, licenseplatenumber);
+                db.insertTransporter(firstname, lastname, "[]", address, city, postalcode
+                        , country, password, phonenumber, carmake, capacity, licenseplatenumber, "[]");
 
                 myIntent.putExtra("firstname", firstname);
                 myIntent.putExtra("lastname", lastname);
@@ -123,6 +123,8 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
                 Bundle args = new Bundle();
                 args.putParcelable("coordinates", coords);
                 myIntent.putExtra("bundle", args);
+                myIntent.putExtra("type", "transporter");
+                
                 startActivity(myIntent);
             }
         });

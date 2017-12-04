@@ -174,7 +174,8 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
 
                 DatabaseHandler db = new DatabaseHandler();
 
-                db.insertFarmer(firstname, lastname, phonenumber, password, "", "", "", "");
+                db.insertFarmer(firstname, lastname, phonenumber, password, "", ""
+                        , "", "", "[]");
 
                 addressLine1 = (EditText)findViewById(R.id.addressline1);
                 addressLine2 = (EditText)findViewById(R.id.addressline2);
@@ -198,6 +199,9 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
                 myIntent.putExtra("postalcode", postalcode);
                 myIntent.putExtra("city", city);
                 myIntent.putExtra("screen", "FarmerSetLocation");
+
+                myIntent.putExtra("type", "farmer");
+
                 startActivity(myIntent);
             }
         });

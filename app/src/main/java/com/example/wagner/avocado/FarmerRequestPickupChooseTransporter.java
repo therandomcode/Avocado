@@ -52,17 +52,16 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
         String availability = getIntent().getStringExtra("availability");
 
-        System.out.println("availabliity: "+availability);
         String firstname, lastname, available, addresstrans, city, postalcode, country, phonenumber,
                 carmake, capacity, licenseplatenumber;
         try {
             JSONArray avail = new JSONArray(availability);
-            System.out.println(avail.getString(0));
+
             for (int i = 0; i < avail.length(); i++){
                 JSONObject x = avail.getJSONObject(i);
-                System.out.println("hi");
+
                 firstname = (String)x.get("firstname");
-                System.out.println(firstname);
+
                 lastname = (String)x.get("lastname");
                 carmake = (String)x.get("carmake");
                 city = (String)x.get("city");

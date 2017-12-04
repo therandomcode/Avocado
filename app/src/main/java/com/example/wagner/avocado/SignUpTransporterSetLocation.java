@@ -176,9 +176,11 @@ public class SignUpTransporterSetLocation extends AppCompatActivity implements
 
                 DatabaseHandler db = new DatabaseHandler();
 
-                db.insertTransporter(firstname, lastname, "", "", "",
+                db.insertTransporter(firstname, lastname, "[]", "", "",
                         "", "", password, phonenumber, ""
-                        , "", "");
+                        , "", "", "[]");
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("type", "transporter");
 
                 addressLine1 = (EditText)findViewById(R.id.addressline1);
                 addressLine2 = (EditText)findViewById(R.id.addressline2);
