@@ -19,8 +19,6 @@ public class CreateAccount extends AppCompatActivity {
     private EditText pn;
     private EditText pass;
     private EditText ln;
-    private CheckBox farmerCheckBox;
-    private CheckBox transporterCheckBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

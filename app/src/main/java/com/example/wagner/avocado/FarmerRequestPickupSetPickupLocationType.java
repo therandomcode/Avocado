@@ -21,7 +21,7 @@ public class FarmerRequestPickupSetPickupLocationType extends AppCompatActivity 
 
         String templocation = getIntent().getStringExtra("locationtype");
         if ( (templocation != null) && !templocation.equals("")) {
-            
+
         }
 
         final Button nextButton = findViewById(R.id.farmerRequestPickupSetPickupLocationTypeNextButton);
