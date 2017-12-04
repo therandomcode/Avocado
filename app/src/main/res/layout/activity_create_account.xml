@@ -7,16 +7,32 @@
     tools:context="com.example.wagner.avocado.CreateAccount">
 
     <Button
+        android:id="@+id/cancelButton"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="92dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createAccountSubmitButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
         android:id="@+id/createAccountSubmitButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="219dp"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:text="Next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.672"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Transporter" />
 
@@ -53,8 +69,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:layout_marginStart="192dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="40dp"
         android:onClick="onTransporterClicked"
         android:text="Transporter"
         app:layout_constraintBottom_toTopOf="@+id/FarmerRequestPickupDateBackButton"
@@ -67,8 +83,8 @@
         android:id="@+id/Farmer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="40dp"
         android:onClick="onFarmerClicked"
         android:text="Farmer"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +103,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.44"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintStart_toEndOf="@+id/phoneIcon"
         app:layout_constraintTop_toBottomOf="@+id/lastname" />
 
     <EditText
@@ -102,21 +118,21 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.44"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/passwordIcon"
         app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/passwordIcon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+        app:layout_constraintTop_toBottomOf="@+id/phoneIcon"
         app:srcCompat="@mipmap/password_lock" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/phoneIcon"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="28dp"
