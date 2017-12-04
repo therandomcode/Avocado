@@ -17,6 +17,8 @@ public class FarmerHome extends AppCompatActivity {
         pickupButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerHome.this, FarmerBeginRequestPickup.class);
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);
             }
         });

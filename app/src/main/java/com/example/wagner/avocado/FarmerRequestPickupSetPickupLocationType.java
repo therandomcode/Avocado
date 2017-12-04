@@ -36,6 +36,9 @@ public class FarmerRequestPickupSetPickupLocationType extends AppCompatActivity 
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupSetPickupLocationType.this,
                         FarmerRequestPickupSetDropoffLocation.class);
 
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 farmerBeginRequestPickupIntent.putExtra("locationtype", locationtype);
                 farmerBeginRequestPickupIntent.putExtra
                         ("address", getIntent().getStringExtra("address"));

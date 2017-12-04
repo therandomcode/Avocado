@@ -73,6 +73,9 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
                         (FarmerRequestPickupSetDropoffLocation.this,
                         FarmerRequestPickupChooseTransporter.class);
 
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);
                 farmerRequestPickupSetPickupLocationIntent.putExtra
                         ("droplocation", droplocation);
                 farmerRequestPickupSetPickupLocationIntent.putExtra

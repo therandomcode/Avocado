@@ -70,6 +70,7 @@ public class SignUpSetLocation extends AppCompatActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_set_location);
 
@@ -101,6 +102,8 @@ public class SignUpSetLocation extends AppCompatActivity implements
 
                 Intent myIntent = new Intent(SignUpSetLocation.this, SignUpFarmerAddPhotos.class);
 
+                myIntent.putExtra("phonenumber", phonenumber);
+
                 myIntent.putExtra("firstname", firstname);
                 myIntent.putExtra("lastname", lastname);
                 myIntent.putExtra("phonenumber", phonenumber);
@@ -129,7 +132,6 @@ public class SignUpSetLocation extends AppCompatActivity implements
         final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
         skipButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
                 String phonenumber = getIntent().getStringExtra("phonenumber");

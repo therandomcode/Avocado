@@ -108,6 +108,8 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterSetAvailabilityLocationType.this,
                         TransporterSetAvailabilityPickDate.class);
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);
             }
         });
@@ -117,6 +119,8 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterSetAvailabilityLocationType.this,
                         TransporterViewSchedule.class);
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);
             }
         });

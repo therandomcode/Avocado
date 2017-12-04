@@ -18,6 +18,8 @@ public class FarmerRequestPickupAddBankAccount extends AppCompatActivity {
             public void onClick(View v) {
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupAddBankAccount.this,
                         FarmerRequestPickupOrderConfirmation.class);
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });
@@ -27,6 +29,9 @@ public class FarmerRequestPickupAddBankAccount extends AppCompatActivity {
             public void onClick(View v) {
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupAddBankAccount.this,
                         FarmerRequestPickupEnterPayment.class);
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });

@@ -20,13 +20,16 @@ public class FarmerRequestPickupAddPayment extends AppCompatActivity {
         final RadioButton bankAccountRadioButton = (RadioButton) findViewById(R.id.bankAccountRadioButton);
         final RadioButton creditCardRadioButton = (RadioButton) findViewById(R.id.creditCardRadioButton);
 
+
         nextButton.setOnClickListener(new View.OnClickListener() {
+            String phonenumber = getIntent().getStringExtra("phonenumber");
             public void onClick(View v) {
                 if (creditCardRadioButton.isChecked()){
                     nextButton.setOnClickListener(new View.OnClickListener() {
                         public void onClick(View v) {
                             Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupAddPayment.this,
                                     FarmerRequestPickupEnterAnotherPayment.class);
+                            farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                             startActivity(farmerBeginRequestPickupIntent);
                         }
                     });
@@ -35,6 +38,7 @@ public class FarmerRequestPickupAddPayment extends AppCompatActivity {
                         public void onClick(View v) {
                             Intent addBankAccountIntent = new Intent(FarmerRequestPickupAddPayment.this,
                                     FarmerRequestPickupAddBankAccount.class);
+                            addBankAccountIntent.putExtra("phonenumber", phonenumber);
                             startActivity(addBankAccountIntent);
                         }
                     });
@@ -43,20 +47,21 @@ public class FarmerRequestPickupAddPayment extends AppCompatActivity {
                         public void onClick(View v) {
                             Intent skipAhead = new Intent(FarmerRequestPickupAddPayment.this,
                                     FarmerRequestPickupReviewOrder.class);
+                            skipAhead.putExtra("phonenumber", phonenumber);
                             startActivity(skipAhead);
                         }
                     });
                 }
-                Intent i = new Intent(FarmerRequestPickupAddPayment.this,
-                        FarmerRequestPickupOrderConfirmation.class);
-                startActivity(i);
             }
         });
 
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupAddPayment.this,
                         FarmerRequestPickupOrderConfirmation.class);
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });
