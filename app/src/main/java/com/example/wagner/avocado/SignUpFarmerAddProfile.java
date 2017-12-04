@@ -14,46 +14,10 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_farmer_add_profile);
 
-        final Button nextButton = findViewById(R.id.signUpFarmerAddPhotosFinishButton);
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        final Button finishButton = findViewById(R.id.signUpFarmerAddPhotosFinishButton);
+        finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
-                        SignUpFarmerAddPhotos.class);
-
-                String firstname = getIntent().getStringExtra("firstname");
-                String lastname = getIntent().getStringExtra("lastname");
-                String phonenumber = getIntent().getStringExtra("phonenumber");
-                String password = getIntent().getStringExtra("password");
-                String address = getIntent().getStringExtra("address");
-                String city = getIntent().getStringExtra("city");
-                String country = getIntent().getStringExtra("country");
-                String postalcode = getIntent().getStringExtra("postalcode");
-
-                myIntent.putExtra("firstname", firstname);
-                myIntent.putExtra("lastname", lastname);
-                myIntent.putExtra("phonenumber", phonenumber);
-                myIntent.putExtra("password", password);
-                myIntent.putExtra("address", address);
-                myIntent.putExtra("city", city);
-                myIntent.putExtra("country", country);
-                myIntent.putExtra("postalcode", postalcode);
-
-                startActivity(myIntent);
-            }
-        });
-
-        final Button backButton = findViewById(R.id.signUpFarmerAddPhotosBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
-                        SignUpSetLocation.class);
-                startActivity(myIntent);
-            }
-        });
-
-        final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                showToast();
                 Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
                         FarmerHome.class);
 
@@ -73,7 +37,30 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
+        final Button backButton = findViewById(R.id.signUpFarmerAddPhotosBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
+                        SignUpFarmerAddPhotos.class);
+                myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
+                myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("address", getIntent().getStringExtra("address"));
+                myIntent.putExtra("city", getIntent().getStringExtra("city"));
+                myIntent.putExtra("postalcode", getIntent().getStringExtra("postalcode"));
+                myIntent.putExtra("country", getIntent().getStringExtra("country"));
+                myIntent.putExtra("user", "transporter");
+                startActivity(myIntent);
+            }
+        });
     }
+    private void showToast() {
+        Toast.makeText(this,
+                "Thank you for signing up!",
+                Toast.LENGTH_LONG).show();
+    }
+
 
 
 }

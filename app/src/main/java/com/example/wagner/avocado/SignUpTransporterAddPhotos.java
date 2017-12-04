@@ -53,6 +53,17 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, SignUpSetCarInfoTransporter.class);
+                myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
+                myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("address", getIntent().getStringExtra("address"));
+                myIntent.putExtra("city", getIntent().getStringExtra("city"));
+                myIntent.putExtra("postalcode", getIntent().getStringExtra("postalcode"));
+                myIntent.putExtra("country", getIntent().getStringExtra("country"));
+                myIntent.putExtra("user", "transporter");
+                myIntent.putExtra("carmake", getIntent().getStringExtra("carmake"));
+                myIntent.putExtra("licenseplatenumber", getIntent().getStringExtra("licenseplatenumber"));
+                myIntent.putExtra("capacity", getIntent().getStringExtra("capacity"));
                 startActivity(myIntent);
             }
         });
@@ -61,7 +72,7 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
         skipbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, TransporterHome.class);
+                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, SignUpLater.class);
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
