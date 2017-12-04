@@ -6,4 +6,185 @@
     android:layout_height="match_parent"
     tools:context="com.example.wagner.avocado.FarmerRequestPickupAddBankAccount">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView128"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="16dp"
+                android:text="Please enter your bank details."
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:text="Your data will be kept confidential. For more information, see our privacy policy at https://www.agromovil.co/"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="48dp" />
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="322dp"
+                android:layout_height="309dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.166"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView128">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/bankAccountNumber"
+                        android:layout_width="278dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="Account Number"
+                        android:inputType="textPersonName" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/editText253"
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="IBAN"
+                        android:inputType="textPersonName" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="333dp"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/editText231"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="Currency"
+                        android:inputType="textPersonName" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/editText253"
+                        android:layout_width="278dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="Bank Name"
+                        android:inputType="textPersonName" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/editText253"
+                        android:layout_width="278dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="Country"
+                        android:inputType="textPersonName" />
+
+                </TableRow>
+
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/editText231"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="SWIFT"
+                        android:inputType="textPersonName" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/farmerRequestPickupEnterAnotherPaymentNextButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/farmerRequestPickupEnterAnotherPaymentBackButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 </android.support.constraint.ConstraintLayout>

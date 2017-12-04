@@ -5,27 +5,59 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 
 public class FarmerRequestPickupAddPayment extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_farmer_request_pickup_add_payment);
+        setContentView(R.layout.activity_farmer_request_pickup_enter_payment);
 
-        final Button nextButton = findViewById(R.id.FarmerRequestPickupAddPaymentNextButton);
+        final Button nextButton = findViewById(R.id.farmerRequestPickupEnterPaymentNextButton);
+        Button backButton = findViewById(R.id.farmerRequestPickupEnterPaymentBackButton);
+        final RadioButton cashRadioButton = (RadioButton) findViewById(R.id.cashRadioButton);
+        final RadioButton bankAccountRadioButton = (RadioButton) findViewById(R.id.bankAccountRadioButton);
+        final RadioButton creditCardRadioButton = (RadioButton) findViewById(R.id.creditCardRadioButton);
+
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(FarmerRequestPickupAddPayment.this, FarmerRequestPickupEnterAnotherPayment.class);
-                startActivity(myIntent);
+                if (creditCardRadioButton.isChecked()){
+                    nextButton.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View v) {
+                            Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupAddPayment.this,
+                                    FarmerRequestPickupEnterAnotherPayment.class);
+                            startActivity(farmerBeginRequestPickupIntent);
+                        }
+                    });
+                } else if (bankAccountRadioButton.isChecked()){
+                    nextButton.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View v) {
+                            Intent addBankAccountIntent = new Intent(FarmerRequestPickupAddPayment.this,
+                                    FarmerRequestPickupAddBankAccount.class);
+                            startActivity(addBankAccountIntent);
+                        }
+                    });
+                } else if (cashRadioButton.isChecked()) {
+                    nextButton.setOnClickListener(new View.OnClickListener(){
+                        public void onClick(View v) {
+                            Intent skipAhead = new Intent(FarmerRequestPickupAddPayment.this,
+                                    FarmerRequestPickupReviewOrder.class);
+                            startActivity(skipAhead);
+                        }
+                    });
+                }
+                Intent i = new Intent(FarmerRequestPickupAddPayment.this,
+                        FarmerRequestPickupOrderConfirmation.class);
+                startActivity(i);
             }
         });
 
-        final Button backButton = findViewById(R.id.FarmerRequestPickupAddPaymentBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(FarmerRequestPickupAddPayment.this, FarmerBeginRequestPickup.class);
-                startActivity(myIntent);
+                Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupAddPayment.this,
+                        FarmerRequestPickupOrderConfirmation.class);
+                startActivity(farmerBeginRequestPickupIntent);
             }
         });
     }
