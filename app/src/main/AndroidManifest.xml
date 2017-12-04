@@ -10,10 +10,12 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="22" />
+        android:maxSdkVersion="23" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="22" />
+        android:maxSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -68,6 +70,7 @@
         <activity android:name=".SignUpTransporterAddProfile"/>
         <activity android:name=".SignUpSetCarInfoTransporter"/>
         <activity android:name=".SignUpSetLocationTransporter"/>
+        <activity android:name=".Loading"/>
     </application>
 
 </manifest>

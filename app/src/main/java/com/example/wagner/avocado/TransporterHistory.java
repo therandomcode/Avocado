@@ -30,6 +30,9 @@ public class TransporterHistory extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterHistory.this,
                         TransporterHome.class);
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);
             }
         });

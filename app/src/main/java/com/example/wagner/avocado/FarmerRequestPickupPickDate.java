@@ -52,6 +52,9 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
                 Intent myIntent = new Intent(FarmerRequestPickupPickDate.this, FarmerRequestPickupSetPickupLocation.class);
 
                 // Bundle myBundle = new Bundle();
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                myIntent.putExtra("phonenumber", phonenumber);
                 myIntent.putExtra("date", date);
                 myIntent.putExtra("time", time);
                 myIntent.putExtra("crop", getIntent().getStringExtra("crop"));
