@@ -41,8 +41,12 @@ public class SignUpTransporterAddProfile extends AppCompatActivity{
                 String newaddress = address.substring(0,index) + " " + address.substring(index+1);
 
                 DatabaseHandler db = new DatabaseHandler();
-                db.insertTransporter(firstname, lastname, "", newaddress, city, postalcode
-                        , country, password, phonenumber, carmake, capacity, licenseplatenumber);
+                System.out.println("Hello");
+                db.insertTransporter(firstname, lastname, "[]", address, city, postalcode
+                        , country, password, phonenumber, carmake, capacity, licenseplatenumber, "[]");
+
+                myIntent.putExtra("type", "transporter");
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
 
                 startActivity(myIntent);
             }

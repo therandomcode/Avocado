@@ -11,7 +11,7 @@ import android.content.Context;
  * Created by arkaroy on 12/3/17.
  */
 
-public class Loading  extends AppCompatActivity implements TransporterReceived{
+public class Loading  extends AppActivity implements TransporterReceived{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,7 @@ public class Loading  extends AppCompatActivity implements TransporterReceived{
 
         DatabaseHandler db = new DatabaseHandler(this);
 
-        db.getTransporters(time, date, crop, amount, metric);
+        db.getAvailableTransporters(time, date, crop, amount, metric);
     }
 
     @Override

@@ -135,8 +135,12 @@ public class SignUpTransporterSetCarInfo extends AppCompatActivity {
                 String city = getIntent().getStringExtra("city");
 
                 DatabaseHandler db = new DatabaseHandler();
-                db.insertTransporter(firstname, lastname, "", address, city, postalcode
-                        , country, password, phonenumber, "", "", "");
+                db.insertTransporter(firstname, lastname, "[]", address, city, postalcode
+                        , country, password, phonenumber, "", "", "",
+                        "[]");
+
+                myIntent.putExtra("type", "transporter");
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
 
                 myIntent.putExtra("firstname", firstname);
                 myIntent.putExtra("lastname", lastname);

@@ -36,8 +36,15 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
                 String newaddress = address.substring(0,index) + " " + address.substring(index+1);
 
                 DatabaseHandler db = new DatabaseHandler();
+<<<<<<< HEAD
                 db.insertFarmer(firstname, lastname, phonenumber, password, newaddress, country,
                         postalcode, city);
+=======
+                db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
+                        postalcode, city, "[]");
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("type", "farmer");
+>>>>>>> Arka
 
                 startActivity(myIntent);
             }

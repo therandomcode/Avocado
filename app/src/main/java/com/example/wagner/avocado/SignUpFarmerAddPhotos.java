@@ -121,6 +121,7 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
 
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
+<<<<<<< HEAD
                         postalcode, city);
 
                 myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
@@ -139,6 +140,11 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 args.putParcelable("coordinates", coords);
                 myIntent.putExtra("bundle", args);
 
+=======
+                        postalcode, city, "[]");
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("type", "farmer");
+>>>>>>> Arka
                 startActivity(myIntent);
             }
         });
