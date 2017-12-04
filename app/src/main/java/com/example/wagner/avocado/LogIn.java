@@ -8,28 +8,43 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LogIn extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import android.widget.EditText;
 
+public class LogIn extends AppActivity implements TransporterReceived{
+
+    private String password, phone;
+    Boolean isFarmer = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        final DatabaseHandler db = new DatabaseHandler(this);
+
 
         final Button logInButton = findViewById(R.id.signUpButton);
         logInButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(LogIn.this, FarmerHome.class);
-                EditText phonenumber = findViewById(R.id.phonenumber);
-                EditText password = findViewById(R.id.password);
-                String phonenumberString = phonenumber.getText().toString();
-                String passwordString = password.getText().toString();
-                if ((phonenumberString != null) && !phonenumberString.equals("") &&
-                        (passwordString != null) && !phonenumberString.equals("")) {
-                    startActivity(myIntent);
+                //Intent myIntent = new Intent(LogIn.this, FarmerHome.class);
+
+                EditText user = (EditText)findViewById(R.id.phonenumber);
+                EditText pass = (EditText)findViewById(R.id.password);
+                password = pass.getText().toString();
+                phone = user.getText().toString();
+
+                if (!phone.equals(null) && !pass.equals(null)) {
+                    if (isFarmer)
+                        db.getFarmer(phone);
+                    else
+                        db.getTransporter(phone);
                 }
                 else {
-                    showToast("Please enter your log in information.");
+                    showToast("Please enter username and password");
                 }
+                //startActivity(myIntent);
+
             }
         });
 
@@ -46,5 +61,34 @@ public class LogIn extends AppCompatActivity {
         Toast.makeText(this,
                 message,
                 Toast.LENGTH_SHORT).show();
+    }
+
+    public void Success(String response){
+        try {
+            JSONArray avail = new JSONArray(response);
+            if (avail.length() == 0){
+                showToast("Username does not exist, please sign up!");
+                Intent myIntent = new Intent(LogIn.this, LogIn.class);
+                startActivity(myIntent);
+            }
+            else
+            {
+                JSONObject x = avail.getJSONObject(0);
+                String realpass = (String) x.get("pass");
+                if (realpass.equals(password)){
+                    showToast("Welcome "+(String)x.get("firstname"));
+                    Intent myIntent = new Intent(LogIn.this, FarmerHome.class);
+                    myIntent.putExtra("phonenumber", phone);
+                    startActivity(myIntent);
+                }
+                else {
+                    showToast("Invalid password");
+                    Intent myIntent = new Intent(LogIn.this, LogIn.class);
+                    startActivity(myIntent);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
