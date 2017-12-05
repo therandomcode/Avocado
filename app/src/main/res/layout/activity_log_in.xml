@@ -19,11 +19,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logInButton"
+
+        app:layout_constraintTop_toBottomOf="@+id/signUpButton"
         app:layout_constraintVertical_bias="0.014" />
 
     <Button
-        android:id="@+id/logInButton"
+        android:id="@+id/signUpButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="219dp"
         android:layout_height="43dp"

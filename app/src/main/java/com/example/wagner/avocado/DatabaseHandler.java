@@ -240,6 +240,46 @@ public class DatabaseHandler extends AppCompatActivity{
         );
     }
 
+    public void getFarmer(String phonenumber){
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
 
+        HashMap<String, String> map = new HashMap<String, String>();
+        System.out.println("phonenumber: "+phonenumber);
+
+        map.put("phonenumber", phonenumber);
+
+        //intent = nextscreen;
+        final ArrayList<Transporter> trans = new ArrayList<Transporter>();
+
+        ArrayList<HashMap<String, String>> wordList;
+        wordList = new ArrayList<HashMap<String, String>>();
+        wordList.add(map);
+
+        Gson gson = new GsonBuilder().create();
+        params.put("getFarmer", gson.toJson(wordList));
+
+        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/getFarmer.php", params,
+                new AsyncHttpResponseHandler() {
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] b) {
+
+                        String response = new String(b);
+                        System.out.println("hello!");
+                        System.out.println(response);
+                        activity.Success(response);
+
+                    }
+
+                    @Override
+                    public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+
+                    }
+
+
+                }
+        );
+    }
 
 }
