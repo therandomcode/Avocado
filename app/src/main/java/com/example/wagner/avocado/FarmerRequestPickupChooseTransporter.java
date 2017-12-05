@@ -68,18 +68,6 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         popUpWindow = new PopupWindow(this);
         tvMsg = new TextView(this);
 
-        transportername.add("Juan Felipe");
-        transportername.add("Ricardo Sanchez-Delorio");
-        transportername.add("Davíd de Leon");
-
-        cars.add("1996 Toyota Tacoma");
-        cars.add("2002 Nissan Navara");
-        cars.add("2000 Agrale Murrua");
-
-        cities.add("Cartagena");
-        cities.add("Cúcuta");
-        cities.add("Santa Marta");
-
         String locationtype = getIntent().getStringExtra("locationtype");
         String droplocation = getIntent().getStringExtra("droplocation");
         String address = getIntent().getStringExtra("address");
@@ -89,29 +77,29 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         String metric = getIntent().getStringExtra("metric");
         String amount = getIntent().getStringExtra("amount");
 
-//        String availability = getIntent().getStringExtra("availability");
-//
-//        String firstname, lastname, available, addresstrans, city, postalcode, country, phonenumber,
-//                carmake, capacity, licenseplatenumber;
-//        try {
-//            JSONArray avail = new JSONArray(availability);
-//
-//            for (int i = 0; i < avail.length(); i++){
-//                JSONObject x = avail.getJSONObject(i);
-//
-//                firstname = (String)x.get("firstname");
-//
-//                lastname = (String)x.get("lastname");
-//                carmake = (String)x.get("carmake");
-//                city = (String)x.get("city");
-//                transportername.add(firstname + " " + lastname);
-//                cars.add(carmake);
-//                cities.add(city);
-//            }
-//        } catch (JSONException e) {
-//            System.out.println("Failure");
-//            e.printStackTrace();
-//        }
+        String availability = getIntent().getStringExtra("availability");
+
+        String firstname, lastname, available, addresstrans, city, postalcode, country, phonenumber,
+                carmake, capacity, licenseplatenumber;
+        try {
+            JSONArray avail = new JSONArray(availability);
+
+            for (int i = 0; i < avail.length(); i++){
+                JSONObject x = avail.getJSONObject(i);
+
+                firstname = (String)x.get("firstname");
+
+                lastname = (String)x.get("lastname");
+                carmake = (String)x.get("carmake");
+                city = (String)x.get("city");
+                transportername.add(firstname + " " + lastname);
+                cars.add(carmake);
+                cities.add(city);
+            }
+        } catch (JSONException e) {
+            System.out.println("Failure");
+            e.printStackTrace();
+        }
 
 
         bestMatch = findViewById(R.id.bestMatchListView);
