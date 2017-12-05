@@ -46,7 +46,6 @@
         <activity android:name=".FarmerHistory" />
         <activity android:name=".FarmerRequestPickupPickDate" />
         <activity android:name=".FarmerRequestPickupSetPickupLocation" />
-        <activity android:name=".FarmerRequestPickupSetPickupLocationType" />
         <activity android:name=".FarmerRequestPickupSetDropoffLocation" />
         <activity android:name=".FarmerRequestPickupChooseTransporter" />
         <activity android:name=".FarmerRequestPickupViewTransporterDetails" />
