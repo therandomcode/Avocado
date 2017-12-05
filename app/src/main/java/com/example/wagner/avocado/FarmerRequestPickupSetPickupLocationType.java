@@ -19,9 +19,25 @@ public class FarmerRequestPickupSetPickupLocationType extends AppCompatActivity 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_set_pickup_location_type);
 
+        RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroup);
         String templocation = getIntent().getStringExtra("locationtype");
         if ( (templocation != null) && !templocation.equals("")) {
-
+            if (templocation.equals("My Farm")) {
+                rg.check(R.id.myFarm);
+            }
+            else if (templocation.equals("Farm")) {
+                rg.check(R.id.farm);
+            }
+            else if (templocation.equals("Town Centre")) {
+                rg.check(R.id.townCentre);
+            }
+            else if (templocation.equals("Church")) {
+                rg.check(R.id.church);
+            }
+            else {
+                EditText other = findViewById(R.id.other);
+                other.setText(templocation);
+            }
         }
 
         final Button nextButton = findViewById(R.id.farmerRequestPickupSetPickupLocationTypeNextButton);
@@ -33,7 +49,7 @@ public class FarmerRequestPickupSetPickupLocationType extends AppCompatActivity 
                 String locationtype;
 
                 if (id == -1){
-                    EditText edittext = (EditText)findViewById(R.id.editText);
+                    EditText edittext = (EditText)findViewById(R.id.other);
                     locationtype = edittext.getText().toString();
                 }
                 else{
