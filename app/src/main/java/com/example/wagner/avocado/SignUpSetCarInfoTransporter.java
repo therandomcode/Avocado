@@ -87,6 +87,7 @@ public class SignUpSetCarInfoTransporter extends AppCompatActivity {
 
 
 =======
+                Intent myIntent = new Intent(SignUpSetCarInfoTransporter.this, TransporterHome.class);
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
                 String firstname = getIntent().getStringExtra("firstname");

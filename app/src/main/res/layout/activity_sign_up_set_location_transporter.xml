@@ -86,6 +86,17 @@
         app:layout_constraintStart_toEndOf="@+id/postalcode"
         app:layout_constraintTop_toBottomOf="@+id/city" />
 =======
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Country"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText5" />
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
     <EditText
@@ -130,6 +141,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressline2" />
 =======
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <EditText
+        android:id="@+id/postalcode"
+        android:layout_width="124dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Postal Code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="City"
+        app:layout_constraintEnd_toStartOf="@+id/editText4"
+        app:layout_constraintTop_toBottomOf="@+id/editText6" />
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
     <TextView
@@ -170,8 +206,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 <<<<<<< HEAD
+
 </android.support.constraint.ConstraintLayout>
 =======
+    <Button
+        android:id="@+id/signUpSetLocationSkipButton"
+        android:layout_width="62dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Skip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

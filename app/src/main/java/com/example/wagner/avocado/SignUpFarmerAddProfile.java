@@ -23,6 +23,11 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
                 Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
                         FarmerHome.class);
 =======
+        final Button nextButton = findViewById(R.id.signUpFarmerAddPhotosFinishButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
+                        SignUpFarmerAddPhotos.class);
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
                 String firstname = getIntent().getStringExtra("firstname");
@@ -60,6 +65,7 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
 <<<<<<< HEAD
         skipButton.setOnClickListener(new View.OnClickListener() {
 =======
+        backButton.setOnClickListener(new View.OnClickListener() {
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpFarmerAddProfile.this,

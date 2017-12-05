@@ -32,9 +32,11 @@
 <<<<<<< HEAD
         android:layout_marginTop="28dp"
 =======
+        android:layout_marginTop="88dp"
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         android:text="Next"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
 <<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/Transporter" />
@@ -50,14 +52,69 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
 =======
+        app:layout_constraintTop_toBottomOf="@+id/editText4"/>
+
+    <EditText
+        android:id="@+id/lastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Last Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.458"
+        app:layout_constraintStart_toEndOf="@+id/imageButton5"
+        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+
+    <EditText
+        android:id="@+id/firstname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="72dp"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         app:layout_constraintStart_toEndOf="@+id/imageButton5"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/Transporter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="192dp"
+        android:layout_marginTop="300dp"
+        android:text="Transporter"
+        app:layout_constraintBottom_toTopOf="@+id/FarmerRequestPickupDateBackButton"
+        app:layout_constraintEnd_toStartOf="@+id/pmCheckBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onTransporterClicked"
+        tools:text="Transporter" />
+
+    <CheckBox
+        android:id="@+id/Farmer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="300dp"
+        android:text="Farmer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onFarmerClicked"
+        tools:text="Farmer" />
 
     <EditText
 <<<<<<< HEAD
         android:id="@+id/lastname"
 =======
+        android:id="@+id/phonenumber"
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,6 +160,14 @@
     <EditText
         android:id="@+id/phonenumber"
 =======
+        android:hint="Cell Phone #"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <EditText
+        android:id="@+id/password"
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -133,6 +198,8 @@
         app:layout_constraintStart_toEndOf="@+id/passwordIcon"
         app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
 =======
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
     <ImageButton
@@ -145,6 +212,7 @@
 <<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/phoneIcon"
 =======
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         app:srcCompat="@mipmap/password_lock" />
 

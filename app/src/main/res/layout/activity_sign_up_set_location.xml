@@ -102,6 +102,8 @@
         android:layout_width="217dp"
         android:layout_height="46dp"
 =======
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"

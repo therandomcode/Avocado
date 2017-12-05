@@ -24,6 +24,7 @@
     <Button
         android:id="@+id/signUpTransporterAddPhotosBackButton"
 =======
+        android:id="@+id/backButton"
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
@@ -35,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
-        android:id="@+id/signUpTransporterAddPhotosNextButton"
+        android:id="@+id/nextButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -107,6 +108,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 =======
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/insert_photo" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="272dp"
+        android:text="Add photos"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/signUpSetLocationSkipButton"
+        android:layout_width="62dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Skip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
 </android.support.constraint.ConstraintLayout>

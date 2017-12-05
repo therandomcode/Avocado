@@ -116,6 +116,17 @@ public class SignUpSetLocation extends AppCompatActivity implements
                 myIntent.putExtra("city", city);
 
 =======
+                Intent myIntent = new Intent(SignUpSetLocation.this, SignUpFarmerAddProfile.class);
+
+                myIntent.putExtra("firstname", firstname);
+                myIntent.putExtra("lastname", lastname);
+                myIntent.putExtra("phonenumber", phonenumber);
+                myIntent.putExtra("password", password);
+                myIntent.putExtra("address", address);
+                myIntent.putExtra("country", country);
+                myIntent.putExtra("postalcode", postalcode);
+                myIntent.putExtra("city", city);
+
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
                 startActivity(myIntent);
             }

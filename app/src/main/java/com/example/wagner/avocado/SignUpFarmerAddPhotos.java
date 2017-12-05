@@ -22,6 +22,7 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                         SignUpFarmerAddProfile.class);
 
 =======
+                        FarmerHome.class);
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
                 String firstname = getIntent().getStringExtra("firstname");

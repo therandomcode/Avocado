@@ -128,6 +128,7 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
                 Intent myIntent = new Intent(SignUpSetLocationTransporter.this, SignUpLater.class);
 
 =======
+                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, TransporterHome.class);
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
                 String firstname = getIntent().getStringExtra("firstname");
@@ -192,6 +193,11 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
         EditText city = findViewById(R.id.city);
 
 =======
+        EditText addressLine1 = findViewById(R.id.editText2);
+        EditText country = findViewById(R.id.editText3);
+        EditText addressLine2 = findViewById(R.id.editText6);
+        EditText postalCode = findViewById(R.id.editText4);
+        EditText city = findViewById(R.id.editText5);
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         addressLine1.setVisibility(View.VISIBLE);
         addressLine2.setVisibility(View.VISIBLE);
@@ -211,6 +217,11 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
         EditText city = findViewById(R.id.city);
 
 =======
+        EditText addressLine1 = findViewById(R.id.editText2);
+        EditText country = findViewById(R.id.editText3);
+        EditText addressLine2 = findViewById(R.id.editText6);
+        EditText postalCode = findViewById(R.id.editText4);
+        EditText city = findViewById(R.id.editText5);
 >>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         addressLine1.setVisibility(View.GONE);
         addressLine2.setVisibility(View.GONE);
