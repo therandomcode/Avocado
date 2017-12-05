@@ -39,7 +39,7 @@ import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
 
-public class SignUpSetLocation extends AppCompatActivity implements
+public class SignUpSetLocationTransporter extends AppCompatActivity implements
         OnMarkerClickListener,
         OnMapClickListener,
         OnMapReadyCallback,
@@ -67,19 +67,17 @@ public class SignUpSetLocation extends AppCompatActivity implements
      */
     private Marker mLastMarker;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_set_location);
-
-
+        setContentView(R.layout.activity_sign_up_set_location_transporter);
 
         findViewById(R.id.map).setVisibility(View.GONE);
 
         final Button nextButton = findViewById(R.id.signUpSetLocationNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
@@ -99,11 +97,7 @@ public class SignUpSetLocation extends AppCompatActivity implements
                 EditText text5 = (EditText)findViewById(R.id.city);
                 String city = text5.getText().toString();
 
-
-
-                Intent myIntent = new Intent(SignUpSetLocation.this, SignUpFarmerAddPhotos.class);
-
-
+                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, SignUpSetCarInfoTransporter.class);
 
                 myIntent.putExtra("firstname", firstname);
                 myIntent.putExtra("lastname", lastname);
@@ -121,7 +115,7 @@ public class SignUpSetLocation extends AppCompatActivity implements
         final Button backButton = findViewById(R.id.signUpSetLocationBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetLocation.this, CreateAccount.class);
+                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, CreateAccount.class);
                 startActivity(myIntent);
             }
         });
@@ -130,6 +124,9 @@ public class SignUpSetLocation extends AppCompatActivity implements
         skipButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, SignUpLater.class);
+
+
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
                 String phonenumber = getIntent().getStringExtra("phonenumber");
@@ -137,9 +134,10 @@ public class SignUpSetLocation extends AppCompatActivity implements
 
                 DatabaseHandler db = new DatabaseHandler();
 
-                db.insertFarmer(firstname, lastname, phonenumber, password, "", "", "", "");
+                db.insertTransporter(firstname, lastname, "", "", "",
+                        "", "", password, phonenumber, ""
+                        , "", "");
 
-                Intent myIntent = new Intent(SignUpSetLocation.this, SignUpLater.class);
                 startActivity(myIntent);
             }
         });
@@ -182,11 +180,13 @@ public class SignUpSetLocation extends AppCompatActivity implements
     }
 
     private void setAddressTextView(){
+
         EditText addressLine1 = findViewById(R.id.addressline1);
         EditText country = findViewById(R.id.country);
         EditText addressLine2 = findViewById(R.id.addressline2);
         EditText postalCode = findViewById(R.id.postalcode);
         EditText city = findViewById(R.id.city);
+
         addressLine1.setVisibility(View.VISIBLE);
         addressLine2.setVisibility(View.VISIBLE);
         city.setVisibility(View.VISIBLE);
@@ -196,11 +196,13 @@ public class SignUpSetLocation extends AppCompatActivity implements
     }
 
     private void setDropPinTextView() {
+
         EditText addressLine1 = findViewById(R.id.addressline1);
         EditText country = findViewById(R.id.country);
         EditText addressLine2 = findViewById(R.id.addressline2);
         EditText postalCode = findViewById(R.id.postalcode);
         EditText city = findViewById(R.id.city);
+
         addressLine1.setVisibility(View.GONE);
         addressLine2.setVisibility(View.GONE);
         city.setVisibility(View.GONE);
@@ -314,3 +316,4 @@ public class SignUpSetLocation extends AppCompatActivity implements
         return false;
     }
 }
+

@@ -1,24 +1,35 @@
 package com.example.wagner.avocado;
 
+import android.os.Bundle;
+
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 
-public class SignUpTransporterAddPhotos extends AppCompatActivity {
+import android.widget.CompoundButton;
+import android.widget.ToggleButton;
+import android.widget.EditText;
 
-    @Override
+/**
+ * Created by arkaroy on 12/2/17.
+ */
+
+public class SignUpSetCarInfoTransporter extends AppCompatActivity {
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_transporter_add_photos);
+        setContentView(R.layout.activity_sign_up_set_car_info_transporter);
 
-        final Button nextbutton = findViewById(R.id.signUpTransporterAddPhotosNextButton);
+        final Button nextbutton = findViewById(R.id.signUpSetCarNextButton);
         nextbutton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, SignUpTransporterAddProfile.class);
+                Intent myIntent = new Intent(SignUpSetCarInfoTransporter.this, SignUpTransporterAddPhotos.class);
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
@@ -28,9 +39,15 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
                 String country = getIntent().getStringExtra("country");
                 String postalcode = getIntent().getStringExtra("postalcode");
                 String city = getIntent().getStringExtra("city");
-                String carmake = getIntent().getStringExtra("carmake");
-                String licenseplatenumber = getIntent().getStringExtra("licenseplatenumber");
-                String capacity = getIntent().getStringExtra("capacity");
+
+                EditText edittext1 = (EditText)findViewById(R.id.carmake);
+                String carmake = edittext1.getText().toString();
+
+                EditText edittext2 = (EditText)findViewById(R.id.licenseplatenumber);
+                String licenseplatenumber = edittext1.getText().toString();
+
+                EditText edittext3 = (EditText)findViewById(R.id.capacity);
+                String capacity = edittext1.getText().toString();
 
                 myIntent.putExtra("firstname", firstname);
                 myIntent.putExtra("lastname", lastname);
@@ -44,15 +61,16 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
                 myIntent.putExtra("licenseplatenumber", licenseplatenumber);
                 myIntent.putExtra("capacity", capacity);
 
+
                 startActivity(myIntent);
             }
         });
 
-        final Button backbutton = findViewById(R.id.backButton);
+        final Button backbutton = findViewById(R.id.signUpSetCarBackButton);
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, SignUpSetCarInfoTransporter.class);
+                Intent myIntent = new Intent(SignUpSetCarInfoTransporter.this, SignUpSetLocationTransporter.class);
                 startActivity(myIntent);
             }
         });
@@ -62,7 +80,10 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, SignUpLater.class);
+
+                Intent myIntent = new Intent(SignUpSetCarInfoTransporter.this, SignUpLater.class);
+
+
 
 
                 String firstname = getIntent().getStringExtra("firstname");
@@ -73,17 +94,15 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
                 String country = getIntent().getStringExtra("country");
                 String postalcode = getIntent().getStringExtra("postalcode");
                 String city = getIntent().getStringExtra("city");
-                String carmake = getIntent().getStringExtra("carmake");
-                String licenseplatenumber = getIntent().getStringExtra("licenseplatenumber");
-                String capacity = getIntent().getStringExtra("capacity");
 
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertTransporter(firstname, lastname, "", address, city, postalcode
-                        , country, password, phonenumber, carmake, capacity, licenseplatenumber);
+                        , country, password, phonenumber, "", "", "");
 
                 startActivity(myIntent);
             }
         });
+
 
     }
 }

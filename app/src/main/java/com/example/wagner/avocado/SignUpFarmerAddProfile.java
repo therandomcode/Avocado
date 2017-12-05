@@ -7,19 +7,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class SignUpFarmerAddPhotos extends AppCompatActivity {
+public class SignUpFarmerAddProfile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_farmer_add_photos);
+        setContentView(R.layout.activity_sign_up_farmer_add_profile);
 
-        final Button nextButton = findViewById(R.id.signUpFarmerAddPhotosNextButton);
-        nextButton.setOnClickListener(new View.OnClickListener() {
+
+        final Button finishButton = findViewById(R.id.signUpFarmerAddPhotosFinishButton);
+        finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpFarmerAddPhotos.this,
-                        SignUpFarmerAddProfile.class);
-
+                showToast();
+                Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
+                        FarmerHome.class);
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
@@ -30,10 +31,14 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 String country = getIntent().getStringExtra("country");
                 String postalcode = getIntent().getStringExtra("postalcode");
 
-
-                DatabaseHandler db = new DatabaseHandler();
-                db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
-                        postalcode, city);
+                myIntent.putExtra("firstname", firstname);
+                myIntent.putExtra("lastname", lastname);
+                myIntent.putExtra("phonenumber", phonenumber);
+                myIntent.putExtra("password", password);
+                myIntent.putExtra("address", address);
+                myIntent.putExtra("city", city);
+                myIntent.putExtra("country", country);
+                myIntent.putExtra("postalcode", postalcode);
 
                 startActivity(myIntent);
             }
@@ -42,8 +47,8 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
         final Button backButton = findViewById(R.id.signUpFarmerAddPhotosBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpFarmerAddPhotos.this,
-                        SignUpFarmerAddProfile.class);
+                Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
+                        SignUpSetLocation.class);
                 startActivity(myIntent);
             }
         });
@@ -51,8 +56,8 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
         final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
         skipButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpFarmerAddPhotos.this,
-                        SignUpLater.class);
+                Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
+                        FarmerHome.class);
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
@@ -66,9 +71,14 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
                         postalcode, city);
-
                 startActivity(myIntent);
             }
         });
     }
+
+    private void showToast() {
+        Toast.makeText(this, "Thank you for signing up!", Toast.LENGTH_LONG).show();
+    }
+
+
 }

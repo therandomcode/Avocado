@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -65,6 +66,7 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
 
         homeButton = findViewById(R.id.transporterSetAvailabilityLocationTypeHomeButton);
         anotherLocationButton = findViewById(R.id.transporterSetAvailabilityLocationTypeAnotherLocationButton);
+        final ImageView house = findViewById(R.id.transporterSetAvailabilityLocationTypeHouseIcon);
 
         homeButton.setChecked(true);
         anotherLocationButton.setChecked(false);
@@ -75,10 +77,12 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
                     anotherLocationButton.setChecked(false);
                     findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.GONE);
                     address.setVisibility(View.GONE);
+                    house.setVisibility(View.GONE);
                 } else {
                     anotherLocationButton.setChecked(true);
                     findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.VISIBLE);
                     address.setVisibility(View.VISIBLE);
+                    house.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -89,10 +93,12 @@ public class TransporterSetAvailabilityLocationType extends AppCompatActivity im
                     homeButton.setChecked(false);
                     findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.VISIBLE);
                     address.setVisibility(View.VISIBLE);
+                    house.setVisibility(View.VISIBLE);
                 } else {
                     homeButton.setChecked(true);
                     findViewById(R.id.transporterSetAvailabilityLocationTypeMap).setVisibility(View.GONE);
                     address.setVisibility(View.GONE);
+                    house.setVisibility(View.GONE);
                 }
             }
         });
