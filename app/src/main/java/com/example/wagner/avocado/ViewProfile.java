@@ -81,7 +81,7 @@ public class ViewProfile extends AppCompatActivity {
         final Button backButton = findViewById(R.id.profileBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(ViewProfile.this, FarmerRequestPickupChooseTransporter.class);
+                Intent myIntent = new Intent(ViewProfile.this, Loading.class);
                 myIntent.putExtra("popup", getIntent().getIntExtra("popup",0));
                 myIntent.putExtra
                         ("phonenumber", getIntent().getStringExtra("phonenumber"));

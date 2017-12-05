@@ -80,8 +80,7 @@ public class FarmerRequestPickupReviewOrder extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerRequestPickupReviewOrder.this,
-                        FarmerRequestPickupChooseTransporter.class);
-
+                        Loading.class);
                 myIntent.putExtra
                         ("phonenumber", getIntent().getStringExtra("phonenumber"));
                 myIntent.putExtra
