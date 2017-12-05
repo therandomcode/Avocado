@@ -123,7 +123,7 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
 
                 Intent farmerRequestPickupSetDropoffLocationIntent = new Intent
                         (FarmerRequestPickupSetDropoffLocation.this,
-                        FarmerRequestPickupChooseTransporter.class);
+                        Loading.class);
 
                 if ((!addressLine1String.equals("") && !cityString.equals("") &&
                         !countryString.equals("") && !postalCodeString.equals("")) ||
