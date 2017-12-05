@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.wagner.avocado.SignUpSetLocation">
 
+<<<<<<< HEAD
     <Button
         android:id="@+id/signUpSetLocationSkipButton"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -18,6 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
     <fragment
         android:id="@+id/map"
         class="com.google.android.gms.maps.SupportMapFragment"
@@ -72,6 +75,7 @@
 
     <EditText
         android:id="@+id/country"
+<<<<<<< HEAD
         android:layout_width="126dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -81,6 +85,8 @@
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/postalcode"
         app:layout_constraintTop_toBottomOf="@+id/city" />
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
     <EditText
         android:id="@+id/addressline2"
@@ -94,6 +100,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/addressline1" />
 
     <EditText
@@ -122,6 +129,8 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressline2" />
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
     <TextView
         android:id="@+id/textView5"
@@ -160,5 +169,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
+<<<<<<< HEAD
+</android.support.constraint.ConstraintLayout>
+=======
+
 
 </android.support.constraint.ConstraintLayout>
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1

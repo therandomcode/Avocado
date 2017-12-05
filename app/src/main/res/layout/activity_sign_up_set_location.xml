@@ -98,8 +98,11 @@
 
     <EditText
         android:id="@+id/city"
+<<<<<<< HEAD
         android:layout_width="217dp"
         android:layout_height="46dp"
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"

@@ -68,8 +68,11 @@
         <activity android:name=".SignUpTransporterAddProfile"/>
         <activity android:name=".SignUpSetCarInfoTransporter"/>
         <activity android:name=".SignUpSetLocationTransporter"/>
+<<<<<<< HEAD
         <activity android:name=".TransporterBrowseFarmers"/>
         <activity android:name=".TransporterAvailability"/>
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
     </application>
 
 </manifest>

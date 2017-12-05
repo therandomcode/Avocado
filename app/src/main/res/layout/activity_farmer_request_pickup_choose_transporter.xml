@@ -15,7 +15,11 @@
         android:text="Choose your driver"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
         />
+=======
+
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
     <TextView
         android:id="@+id/textView16"
@@ -34,6 +38,7 @@
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
         android:text="Browse other drivers"
@@ -41,6 +46,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bestMatchListView"
         android:textSize="20sp"/>
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
     <Button
         android:id="@+id/farmerRequestPickupChooseTransporterNextButton"
@@ -66,6 +73,9 @@
 
     <ListView
         android:id="@+id/bestMatchListView"
+<<<<<<< HEAD
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         android:layout_width="321dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"

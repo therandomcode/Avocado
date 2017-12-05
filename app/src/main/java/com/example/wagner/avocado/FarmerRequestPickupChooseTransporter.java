@@ -70,6 +70,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         }
 
         bestMatch = findViewById(R.id.bestMatchListView);
+<<<<<<< HEAD
         FarmerRequestPickupChooseTransporterCustomListView bcustomListview
                 = new FarmerRequestPickupChooseTransporterCustomListView(this,btransportername,btimes,bimgid,blocations);
         bestMatch.setAdapter(bcustomListview);
@@ -81,14 +82,22 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         lst.setAdapter(ocustomListview);
 
 
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> af076201fb77b54104f654165934092dd573db20
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
 
         final Button button = findViewById(R.id.farmerRequestPickupChooseTransporterNextButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+<<<<<<< HEAD
                 Intent farmerBeginRequestPickupIntent
                         = new Intent(FarmerRequestPickupChooseTransporter.this,
 
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
                         FarmerRequestPickupReviewOrder.class);
                 startActivity(farmerBeginRequestPickupIntent);
             }
@@ -124,9 +133,12 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         Gson gson = new GsonBuilder().create();
         params.put("getTransporters", gson.toJson(wordList));
 
+<<<<<<< HEAD
 
         client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/getTransporters.php", params,
                 new AsyncHttpResponseHandler() {
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {

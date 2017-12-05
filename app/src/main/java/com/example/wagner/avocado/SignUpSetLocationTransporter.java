@@ -123,9 +123,12 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
         final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
         skipButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+<<<<<<< HEAD
 
                 Intent myIntent = new Intent(SignUpSetLocationTransporter.this, SignUpLater.class);
 
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
@@ -180,6 +183,7 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
     }
 
     private void setAddressTextView(){
+<<<<<<< HEAD
 
         EditText addressLine1 = findViewById(R.id.addressline1);
         EditText country = findViewById(R.id.country);
@@ -187,6 +191,8 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
         EditText postalCode = findViewById(R.id.postalcode);
         EditText city = findViewById(R.id.city);
 
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         addressLine1.setVisibility(View.VISIBLE);
         addressLine2.setVisibility(View.VISIBLE);
         city.setVisibility(View.VISIBLE);
@@ -196,6 +202,7 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
     }
 
     private void setDropPinTextView() {
+<<<<<<< HEAD
 
         EditText addressLine1 = findViewById(R.id.addressline1);
         EditText country = findViewById(R.id.country);
@@ -203,6 +210,8 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
         EditText postalCode = findViewById(R.id.postalcode);
         EditText city = findViewById(R.id.city);
 
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         addressLine1.setVisibility(View.GONE);
         addressLine2.setVisibility(View.GONE);
         city.setVisibility(View.GONE);

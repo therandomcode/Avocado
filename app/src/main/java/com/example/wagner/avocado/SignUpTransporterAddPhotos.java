@@ -13,7 +13,11 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_transporter_add_photos);
 
+<<<<<<< HEAD
         final Button nextbutton = findViewById(R.id.signUpTransporterAddPhotosNextButton);
+=======
+        final Button nextbutton = findViewById(R.id.nextButton);
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         nextbutton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -61,9 +65,13 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
         skipbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
 
                 Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, SignUpLater.class);
 
+=======
+                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, TransporterHome.class);
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");

@@ -79,12 +79,15 @@ public class SignUpSetCarInfoTransporter extends AppCompatActivity {
         skipbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
 
 
                 Intent myIntent = new Intent(SignUpSetCarInfoTransporter.this, SignUpLater.class);
 
 
 
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");

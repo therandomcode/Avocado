@@ -99,6 +99,7 @@ public class SignUpSetLocation extends AppCompatActivity implements
                 EditText text5 = (EditText)findViewById(R.id.city);
                 String city = text5.getText().toString();
 
+<<<<<<< HEAD
 
 
                 Intent myIntent = new Intent(SignUpSetLocation.this, SignUpFarmerAddPhotos.class);
@@ -114,6 +115,8 @@ public class SignUpSetLocation extends AppCompatActivity implements
                 myIntent.putExtra("postalcode", postalcode);
                 myIntent.putExtra("city", city);
 
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
                 startActivity(myIntent);
             }
         });

@@ -18,8 +18,11 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpFarmerAddPhotos.this,
+<<<<<<< HEAD
                         SignUpFarmerAddProfile.class);
 
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");

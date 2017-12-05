@@ -29,11 +29,14 @@
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+<<<<<<< HEAD
         android:layout_marginTop="28dp"
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         android:text="Next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/Transporter" />
 
     <EditText
@@ -46,17 +49,23 @@
         android:hint="First Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         app:layout_constraintStart_toEndOf="@+id/imageButton5"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+<<<<<<< HEAD
         android:id="@+id/lastname"
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+<<<<<<< HEAD
         android:hint="Last Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,6 +102,8 @@
 
     <EditText
         android:id="@+id/phonenumber"
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -117,9 +128,12 @@
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toEndOf="@+id/passwordIcon"
         app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
     <ImageButton
         android:id="@+id/passwordIcon"
@@ -128,7 +142,10 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/phoneIcon"
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
         app:srcCompat="@mipmap/password_lock" />
 
     <ImageButton

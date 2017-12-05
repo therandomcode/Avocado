@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<<<<<<< HEAD
         <Button
             android:id="@+id/signUpSetCarBackButton"
             style="@style/Widget.AppCompat.Button.Colored"
@@ -102,5 +103,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
 </android.support.constraint.ConstraintLayout>

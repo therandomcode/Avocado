@@ -14,6 +14,7 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_farmer_add_profile);
 
+<<<<<<< HEAD
 
         final Button finishButton = findViewById(R.id.signUpFarmerAddPhotosFinishButton);
         finishButton.setOnClickListener(new View.OnClickListener() {
@@ -21,6 +22,8 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
                 showToast();
                 Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
                         FarmerHome.class);
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
@@ -54,7 +57,10 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
         });
 
         final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
+<<<<<<< HEAD
         skipButton.setOnClickListener(new View.OnClickListener() {
+=======
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpFarmerAddProfile.this,
                         FarmerHome.class);
@@ -71,14 +77,23 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
                         postalcode, city);
+<<<<<<< HEAD
+=======
+
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
                 startActivity(myIntent);
             }
         });
     }
 
+<<<<<<< HEAD
     private void showToast() {
         Toast.makeText(this, "Thank you for signing up!", Toast.LENGTH_LONG).show();
     }
 
 
 }
+=======
+
+}
+>>>>>>> e5736c17ae041a9c097c39afdf359096e28435d1
