@@ -48,13 +48,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/myFarm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="My Farm" />
 
         <RadioButton
+            android:id="@+id/farm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -62,29 +63,23 @@
             tools:text="Crossroads" />
 
         <RadioButton
+            android:id="@+id/townCentre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Town Centre" />
 
         <RadioButton
+            android:id="@+id/church"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Church" />
 
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Other"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="51dp" />
     </RadioGroup>
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/other"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"

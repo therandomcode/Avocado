@@ -56,7 +56,7 @@ public class LogIn extends AppActivity implements TransporterReceived{
                 password = pass.getText().toString();
                 phone = user.getText().toString();
 
-                if (!phone.equals(null) && !pass.equals(null)) {
+                if (!phone.equals("") && !pass.equals("")) {
                     if (isFarmer)
                         db.getFarmer(phone);
                     else
