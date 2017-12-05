@@ -6,8 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.model.LatLng;
 
 public class FarmerRequestPickupAddPayment extends AppCompatActivity {
+
+    private Intent myIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,45 +25,95 @@ public class FarmerRequestPickupAddPayment extends AppCompatActivity {
         final RadioButton bankAccountRadioButton = (RadioButton) findViewById(R.id.bankAccountRadioButton);
         final RadioButton creditCardRadioButton = (RadioButton) findViewById(R.id.creditCardRadioButton);
 
+
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (creditCardRadioButton.isChecked()){
-                    nextButton.setOnClickListener(new View.OnClickListener() {
-                        public void onClick(View v) {
-                            Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupAddPayment.this,
-                                    FarmerRequestPickupEnterAnotherPayment.class);
-                            startActivity(farmerBeginRequestPickupIntent);
-                        }
-                    });
-                } else if (bankAccountRadioButton.isChecked()){
-                    nextButton.setOnClickListener(new View.OnClickListener() {
-                        public void onClick(View v) {
-                            Intent addBankAccountIntent = new Intent(FarmerRequestPickupAddPayment.this,
-                                    FarmerRequestPickupAddBankAccount.class);
-                            startActivity(addBankAccountIntent);
-                        }
-                    });
-                } else if (cashRadioButton.isChecked()) {
-                    nextButton.setOnClickListener(new View.OnClickListener(){
-                        public void onClick(View v) {
-                            Intent skipAhead = new Intent(FarmerRequestPickupAddPayment.this,
-                                    FarmerRequestPickupReviewOrder.class);
-                            startActivity(skipAhead);
-                        }
-                    });
+                if (!creditCardRadioButton.isChecked() && !bankAccountRadioButton.isChecked()
+                        && !cashRadioButton.isChecked()) {
+                    showToast("Please select a payment method.");
                 }
-                Intent i = new Intent(FarmerRequestPickupAddPayment.this,
-                        FarmerRequestPickupOrderConfirmation.class);
-                startActivity(i);
+                else {
+                    if (creditCardRadioButton.isChecked()) {
+                        myIntent = new Intent(FarmerRequestPickupAddPayment.this,
+                                        FarmerRequestPickupEnterAnotherPayment.class);
+                    } else if (bankAccountRadioButton.isChecked()) {
+                        myIntent = new Intent(FarmerRequestPickupAddPayment.this,
+                                FarmerRequestPickupAddBankAccount.class);
+                    } else {
+                        myIntent = new Intent(FarmerRequestPickupAddPayment.this,
+                                FarmerRequestPickupOrderConfirmation.class);
+                    }
+                    myIntent.putExtra
+                            ("phonenumber", getIntent().getStringExtra("phonenumber"));
+                    myIntent.putExtra
+                            ("locationtype", getIntent().getStringExtra("locationtype"));
+                    myIntent.putExtra
+                            ("address", getIntent().getStringExtra("address"));
+                    myIntent.putExtra
+                            ("date", getIntent().getStringExtra("date"));
+                    myIntent.putExtra
+                            ("time", getIntent().getStringExtra("time"));
+                    myIntent.putExtra
+                            ("crop", getIntent().getStringExtra("crop"));
+                    myIntent.putExtra
+                            ("metric", getIntent().getStringExtra("metric"));
+                    myIntent.putExtra
+                            ("amount", getIntent().getStringExtra("amount"));
+                    myIntent.putExtra
+                            ("address", getIntent().getStringExtra("address"));
+                    myIntent.putExtra
+                            ("country", getIntent().getStringExtra("country"));
+                    myIntent.putExtra
+                            ("postalcode", getIntent().getStringExtra("postalcode"));
+                    myIntent.putExtra
+                            ("city", getIntent().getStringExtra("city"));
+                    Bundle bundle = getIntent().getParcelableExtra("bundle");
+                    LatLng coords = bundle.getParcelable("coordinates");
+                    Bundle args = new Bundle();
+                    args.putParcelable("coordinates", coords);
+                    myIntent.putExtra("bundle", args);
+                    myIntent.putExtra
+                            ("address2", getIntent().getStringExtra("address2"));
+                    myIntent.putExtra
+                            ("country2", getIntent().getStringExtra("country2"));
+                    myIntent.putExtra
+                            ("postalcode2", getIntent().getStringExtra("postalcode2"));
+                    myIntent.putExtra
+                            ("city2", getIntent().getStringExtra("city2"));
+                    Bundle bundle2 = getIntent().getParcelableExtra("bundle2");
+                    LatLng coords2 = bundle.getParcelable("coordinates2");
+                    Bundle args2 = new Bundle();
+                    args.putParcelable("coordinates2", coords2);
+                    myIntent.putExtra("bundle2", args2);
+
+                    myIntent.putExtra
+                            ("myDate", getIntent().getIntExtra("myDate", 0));
+                    myIntent.putExtra
+                            ("myMonth", getIntent().getIntExtra("myMonth", 0));
+                    myIntent.putExtra
+                            ("myAM", getIntent().getBooleanExtra("myAM",false));
+                    myIntent.putExtra
+                            ("myPM", getIntent().getBooleanExtra("myPM",false));
+                    startActivity(myIntent);
+                }
             }
         });
 
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                String phonenumber = getIntent().getStringExtra("phonenumber");
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupAddPayment.this,
                         FarmerRequestPickupOrderConfirmation.class);
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this,
+                message,
+                Toast.LENGTH_SHORT).show();
     }
 }

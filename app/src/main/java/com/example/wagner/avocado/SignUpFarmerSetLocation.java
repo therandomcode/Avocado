@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.CompoundButton;
@@ -24,22 +25,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import cz.msebera.android.httpclient.Header;
-
-public class SignUpSetLocationTransporter extends AppCompatActivity implements
+public class SignUpFarmerSetLocation extends AppCompatActivity implements
         OnMarkerClickListener,
         OnMapClickListener,
         OnMapReadyCallback,
@@ -65,12 +52,53 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
     /**
      * Keeps track of the selected marker.
      */
-    private Marker mLastMarker;
+    private Marker mLastMarker = null;
+    private LatLng markerLatLng = null;
+    private EditText addressLine1;
+    private EditText addressLine2;
+    private EditText cityText;
+    private EditText countryText;
+    private EditText postalCodeText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_set_location_transporter);
+        setContentView(R.layout.activity_sign_up_set_location);
+
+        addressLine1 = (EditText)findViewById(R.id.addressline1);
+        addressLine2 = (EditText)findViewById(R.id.addressline2);
+        cityText = (EditText)findViewById(R.id.city);
+        countryText = (EditText)findViewById(R.id.country);
+        postalCodeText = (EditText)findViewById(R.id.postalcode);
+
+        String address = getIntent().getStringExtra("address");
+        if (address != null) {
+            String[] addresses = address.split("/");
+            if (addresses.length > 0) {
+                String address1 = addresses[0];
+                addressLine1.setText(address1, TextView.BufferType.EDITABLE);
+            }
+            if (addresses.length == 2) {
+                addressLine2.setText(addresses[1], TextView.BufferType.EDITABLE);
+            }
+        }
+        String city = getIntent().getStringExtra("city");
+        if ((city != null) && (!city.equals(""))) cityText.setText(city, TextView.BufferType.EDITABLE);
+        String country = getIntent().getStringExtra("country");
+        if ((country != null) && (!country.equals(""))) countryText.setText(country, TextView.BufferType.EDITABLE);
+        String postalcode = getIntent().getStringExtra("postalcode");
+        if ((postalcode != null) && (!postalcode.equals(""))) {
+            postalCodeText.setText(postalcode, TextView.BufferType.EDITABLE);
+        }
+        else {
+            Bundle coords = getIntent().getParcelableExtra("bundle");
+            if (coords != null) {
+                LatLng coordinates = coords.getParcelable("coordinates");
+                if (coordinates != null) { markerLatLng = coordinates; }
+            }
+        }
 
         findViewById(R.id.map).setVisibility(View.GONE);
 
@@ -78,27 +106,90 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 String password = getIntent().getStringExtra("password");
 
-                EditText text2 = (EditText)findViewById(R.id.addressline1);
-                EditText text6 = (EditText)findViewById(R.id.addressline2);
-                String address = text2.getText().toString() + " " + text6.getText().toString();
+                addressLine1 = (EditText)findViewById(R.id.addressline1);
+                addressLine2 = (EditText)findViewById(R.id.addressline2);
+                cityText = (EditText)findViewById(R.id.city);
+                countryText = (EditText)findViewById(R.id.country);
+                postalCodeText = (EditText)findViewById(R.id.postalcode);
+                String addressLine1String = addressLine1.getText().toString();
+                String addressLine2String = addressLine2.getText().toString();
+                String cityString = cityText.getText().toString();
+                String countryString = countryText.getText().toString();
+                String postalCodeString = postalCodeText.getText().toString();
 
-                EditText text3 = (EditText)findViewById(R.id.country);
-                String country = text3.getText().toString();
+                if ((!addressLine1String.equals("") && !cityString.equals("") &&
+                        !countryString.equals("") && !postalCodeString.equals("")) ||
+                        markerLatLng != null) {
+                    String address = addressLine1.getText().toString() + "/"
+                            + addressLine2.getText().toString();
 
-                EditText text4 = (EditText)findViewById(R.id.postalcode);
-                String postalcode = text4.getText().toString();
+                    Intent myIntent = new Intent(SignUpFarmerSetLocation.this, SignUpFarmerAddPhotos.class);
 
-                EditText text5 = (EditText)findViewById(R.id.city);
-                String city = text5.getText().toString();
+                    myIntent.putExtra("firstname", firstname);
+                    myIntent.putExtra("lastname", lastname);
+                    myIntent.putExtra("phonenumber", phonenumber);
+                    myIntent.putExtra("password", password);
+                    myIntent.putExtra("address", address);
+                    myIntent.putExtra("country", countryString);
+                    myIntent.putExtra("postalcode", postalCodeString);
+                    myIntent.putExtra("city", cityString);
 
-                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, SignUpSetCarInfoTransporter.class);
+                    Bundle args = new Bundle();
+                    args.putParcelable("coordinates", markerLatLng);
+                    myIntent.putExtra("bundle", args);
 
+                    startActivity(myIntent);
+                }
+                else {
+                    showToast("Please enter information for all of the address" +
+                            " fields or drop a pin to continue.");
+                }
+            }
+        });
+
+        final Button backButton = findViewById(R.id.signUpSetLocationBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(SignUpFarmerSetLocation.this, CreateAccount.class);
+                myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
+                myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("user", "farmer");
+                startActivity(myIntent);
+            }
+        });
+
+        final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
+        skipButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String firstname = getIntent().getStringExtra("firstname");
+                String lastname = getIntent().getStringExtra("lastname");
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                String password = getIntent().getStringExtra("password");
+
+                DatabaseHandler db = new DatabaseHandler();
+
+                db.insertFarmer(firstname, lastname, phonenumber, password, "", ""
+                        , "", "", "[]");
+
+                addressLine1 = (EditText)findViewById(R.id.addressline1);
+                addressLine2 = (EditText)findViewById(R.id.addressline2);
+                cityText = (EditText)findViewById(R.id.city);
+                countryText = (EditText)findViewById(R.id.country);
+                postalCodeText = (EditText)findViewById(R.id.postalcode);
+
+                String address = addressLine1.getText().toString() + "/"
+                        + addressLine2.getText().toString();
+                String country = countryText.getText().toString();
+                String postalcode = postalCodeText.getText().toString();
+                String city = cityText.getText().toString();
+
+                Intent myIntent = new Intent(SignUpFarmerSetLocation.this, SignUpLater.class);
                 myIntent.putExtra("firstname", firstname);
                 myIntent.putExtra("lastname", lastname);
                 myIntent.putExtra("phonenumber", phonenumber);
@@ -107,39 +198,9 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
                 myIntent.putExtra("country", country);
                 myIntent.putExtra("postalcode", postalcode);
                 myIntent.putExtra("city", city);
+                myIntent.putExtra("screen", "FarmerSetLocation");
 
-                startActivity(myIntent);
-            }
-        });
-
-        final Button backButton = findViewById(R.id.signUpSetLocationBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, CreateAccount.class);
-                myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
-                myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
-                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
-                myIntent.putExtra("password", getIntent().getStringExtra("password"));
-                myIntent.putExtra("user", "transporter");
-                startActivity(myIntent);
-            }
-        });
-
-        final Button skipButton = findViewById(R.id.signUpSetLocationSkipButton);
-        skipButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpSetLocationTransporter.this, SignUpLater.class);
-
-                String firstname = getIntent().getStringExtra("firstname");
-                String lastname = getIntent().getStringExtra("lastname");
-                String phonenumber = getIntent().getStringExtra("phonenumber");
-                String password = getIntent().getStringExtra("password");
-
-                DatabaseHandler db = new DatabaseHandler();
-
-                db.insertTransporter(firstname, lastname, "", "", "",
-                        "", "", password, phonenumber, ""
-                        , "", "");
+                myIntent.putExtra("type", "farmer");
 
                 startActivity(myIntent);
             }
@@ -213,6 +274,10 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+
+        if (markerLatLng != null) {
+            mLastMarker = mMap.addMarker(new MarkerOptions().position(markerLatLng));
+        }
 
         // Set listener for marker click event.  See the bottom of this class for its behavior.
         mMap.setOnMarkerClickListener(this);
@@ -294,9 +359,10 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
     public void onMapClick(final LatLng point) {
         // Any showing info window closes when the map is clicked.
         // Clear the currently selected marker.
+        markerLatLng = point;
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
-        Toast.makeText(this, "Setting your pickup location", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Setting your farm's location", Toast.LENGTH_SHORT).show();
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
     }
 
@@ -305,6 +371,7 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
         // The user has re-tapped on the marker which was already showing an info window.
         if (marker.equals(mLastMarker)) {
             mLastMarker.remove();
+            markerLatLng = null;
             return true;
         }
 
@@ -314,5 +381,10 @@ public class SignUpSetLocationTransporter extends AppCompatActivity implements
         // for the default behavior to occur.
         return false;
     }
-}
 
+    private void showToast(String message) {
+        Toast.makeText(this,
+                message,
+                Toast.LENGTH_SHORT).show();
+    }
+}

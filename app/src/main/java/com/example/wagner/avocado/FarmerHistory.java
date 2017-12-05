@@ -33,7 +33,7 @@ public class FarmerHistory extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerHistory.this,
-                        FarmerHome.class);
+                        FarmerEditProfile.class);
                 startActivity(myIntent);
             }
         });

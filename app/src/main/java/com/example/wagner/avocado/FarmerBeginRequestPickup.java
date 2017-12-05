@@ -33,11 +33,11 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, produceSpinner);
         s.setAdapter(produceAdapter);
 
-//        String savedProduce = getIntent().getStringExtra("produce");
-//        if (savedProduce != null) {
-//            int position = produceAdapter.getPosition(savedProduce);
-//            s.setSelection(position);
-//        }
+        String savedProduce = getIntent().getStringExtra("produce");
+        if ( (savedProduce != null) && !savedProduce.equals("Avocados")) {
+            int position = produceAdapter.getPosition(savedProduce);
+            s.setSelection(position);
+        }
 
         this.metricSpinner = new String[] {
                 "kg", "tons", "2x2x2 foot boxes", "4x4x4 foot boxes", "50x50x50 cm boxes"
@@ -63,6 +63,8 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
 
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerBeginRequestPickup.this, FarmerRequestPickupPickDate.class);
 
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 farmerBeginRequestPickupIntent.putExtra("crop", crop);
                 farmerBeginRequestPickupIntent.putExtra("metric", metric);
                 farmerBeginRequestPickupIntent.putExtra("amount", amount);

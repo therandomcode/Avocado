@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import android.widget.EditText;
+
+import com.google.android.gms.maps.model.LatLng;
 
 public class SignUpLater extends AppCompatActivity {
 
@@ -55,9 +58,66 @@ public class SignUpLater extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showToast();
-                Intent farmerRequestPickupSetPickupLocationIntent = new Intent(SignUpLater.this,
-                        FarmerHome.class);
+                Intent farmerRequestPickupSetPickupLocationIntent;
+
+                String type = getIntent().getStringExtra("type");
+                if (type.equals("farmer")){
+                    farmerRequestPickupSetPickupLocationIntent = new Intent(SignUpLater.this, FarmerHome.class);
+                }   
+                else {
+                    farmerRequestPickupSetPickupLocationIntent = new Intent(SignUpLater.this, TransporterHome.class);
+                }   
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);
                 startActivity(farmerRequestPickupSetPickupLocationIntent);
+            }
+        });
+
+        final Button backButton = findViewById(R.id.signUpLaterBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String prevScreen = getIntent().getStringExtra("screen");
+                if (prevScreen != null) {
+                    Intent myIntent;
+                    if (prevScreen.equals("FarmerSetLocation")) {
+                        myIntent = new Intent(SignUpLater.this,
+                                SignUpFarmerSetLocation.class);
+                    }
+                    else if (prevScreen.equals("FarmerAddPhotos")) {
+                        myIntent = new Intent(SignUpLater.this,
+                                SignUpFarmerAddPhotos.class);
+                    }
+                    else if (prevScreen.equals("TransporterSetLocation")) {
+                        myIntent = new Intent(SignUpLater.this,
+                                SignUpTransporterSetLocation.class);
+                    }
+                    else if (prevScreen.equals("TransporterSetCarInfo")) {
+                        myIntent = new Intent(SignUpLater.this,
+                                SignUpTransporterSetCarInfo.class);
+                    }
+                    else {
+                        myIntent = new Intent(SignUpLater.this,
+                                SignUpTransporterAddPhotos.class);
+                    }
+
+                    myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
+                    myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
+                    myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                    myIntent.putExtra("address", getIntent().getStringExtra("address"));
+                    myIntent.putExtra("city", getIntent().getStringExtra("city"));
+                    myIntent.putExtra("postalcode", getIntent().getStringExtra("postalcode"));
+                    myIntent.putExtra("country", getIntent().getStringExtra("country"));
+                    myIntent.putExtra("user", getIntent().getStringExtra("user"));
+
+                    Bundle bundle = getIntent().getParcelableExtra("bundle");
+                    if (bundle != null) {
+                        LatLng coords = bundle.getParcelable("coordinates");
+                        Bundle args = new Bundle();
+                        args.putParcelable("coordinates", coords);
+                        myIntent.putExtra("bundle", args);
+                    }
+                    startActivity(myIntent);
+                }
             }
         });
 

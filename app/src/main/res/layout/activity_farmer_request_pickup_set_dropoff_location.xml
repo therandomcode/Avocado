@@ -6,16 +6,105 @@
     android:layout_height="match_parent"
     tools:context="com.example.wagner.avocado.FarmerRequestPickupSetDropoffLocation">
 
+    <EditText
+        android:id="@+id/addressline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Address line 1"
+        android:inputType="textPostalAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/farmerRequestPickupSetDropoffLocationEnterAddressButton" />
+
+    <EditText
+        android:id="@+id/country"
+        android:layout_width="132dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="Country"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/postalcode"
+        app:layout_constraintTop_toBottomOf="@+id/city" />
+
+    <EditText
+        android:id="@+id/addressline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Address line 2"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressline1" />
+
+    <EditText
+        android:id="@+id/postalcode"
+        android:layout_width="81dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Zip Code"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city" />
+
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="217dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="City"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressline2" />
+
+    <ToggleButton
+        android:id="@+id/farmerRequestPickupSetDropoffLocationEnterAddressButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="8dp"
+        android:text="Enter Address"
+        android:textOff="Enter Address"
+        android:textOn="Enter Address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <ToggleButton
+        android:id="@+id/farmerRequestPickupSetDropoffLocationDropPinButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Drop Pin"
+        android:textOff="Drop Pin"
+        android:textOn="Drop Pin"
+        app:layout_constraintStart_toEndOf="@+id/farmerRequestPickupSetDropoffLocationEnterAddressButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
     <fragment
         android:id="@+id/map"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="349dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="293dp"
+        android:layout_marginBottom="64dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
@@ -40,18 +129,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editText7"
-        android:layout_width="wrap_content"
-        android:layout_height="41dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Enter Your Address Here"
-        android:inputType="textPostalAddress"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
     <TextView
         android:id="@+id/textView21"
         android:layout_width="304dp"
@@ -62,15 +139,5 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21"
-        app:srcCompat="@mipmap/house" />
 
 </android.support.constraint.ConstraintLayout>

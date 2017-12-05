@@ -13,11 +13,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.os.Parcelable;
+
+import com.google.android.gms.maps.model.LatLng;
 
 public class SignUpFarmerAddPhotos extends AppCompatActivity {
 
@@ -69,6 +71,12 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 myIntent.putExtra("country", country);
                 myIntent.putExtra("postalcode", postalcode);
 
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
+
                 startActivity(myIntent);
             }
         });
@@ -77,7 +85,7 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(SignUpFarmerAddPhotos.this,
-                        SignUpSetLocation.class);
+                        SignUpFarmerSetLocation.class);
                 myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
                 myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
                 myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
@@ -85,7 +93,13 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 myIntent.putExtra("city", getIntent().getStringExtra("city"));
                 myIntent.putExtra("postalcode", getIntent().getStringExtra("postalcode"));
                 myIntent.putExtra("country", getIntent().getStringExtra("country"));
-                myIntent.putExtra("user", "transporter");
+                myIntent.putExtra("user", "farmer");
+
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });
@@ -106,9 +120,26 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 String postalcode = getIntent().getStringExtra("postalcode");
 
                 DatabaseHandler db = new DatabaseHandler();
-                db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
-                        postalcode, city);
+                db.insertFarmer(firstname, lastname, phonenumber, password, address, country
+                        , postalcode, city, "[]");
 
+                myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
+                myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                myIntent.putExtra("address", getIntent().getStringExtra("address"));
+                myIntent.putExtra("city", getIntent().getStringExtra("city"));
+                myIntent.putExtra("postalcode", getIntent().getStringExtra("postalcode"));
+                myIntent.putExtra("country", getIntent().getStringExtra("country"));
+                myIntent.putExtra("user", "farmer");
+                myIntent.putExtra("screen", "FarmerAddPhotos");
+
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
+
+                myIntent.putExtra("type", "farmer");
                 startActivity(myIntent);
             }
         });

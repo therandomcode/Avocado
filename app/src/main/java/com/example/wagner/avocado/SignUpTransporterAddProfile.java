@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class SignUpTransporterAddProfile extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +37,16 @@ public class SignUpTransporterAddProfile extends AppCompatActivity{
                 String licenseplatenumber = getIntent().getStringExtra("licenseplatenumber");
                 String capacity = getIntent().getStringExtra("capacity");
 
+                int index = address.indexOf("/");
+                String newaddress = address.substring(0,index) + " " + address.substring(index+1);
+
                 DatabaseHandler db = new DatabaseHandler();
-                db.insertTransporter(firstname, lastname, "", address, city, postalcode
-                        , country, password, phonenumber, carmake, capacity, licenseplatenumber);
+                System.out.println("Hello");
+                db.insertTransporter(firstname, lastname, "[]", address, city, postalcode
+                        , country, password, phonenumber, carmake, capacity, licenseplatenumber, "[]");
+
+                myIntent.putExtra("type", "transporter");
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
 
                 startActivity(myIntent);
             }
@@ -59,6 +68,12 @@ public class SignUpTransporterAddProfile extends AppCompatActivity{
                 myIntent.putExtra("carmake", getIntent().getStringExtra("carmake"));
                 myIntent.putExtra("licenseplatenumber", getIntent().getStringExtra("licenseplatenumber"));
                 myIntent.putExtra("capacity", getIntent().getStringExtra("capacity"));
+
+                Bundle bundle = getIntent().getParcelableExtra("bundle");
+                LatLng coords = bundle.getParcelable("coordinates");
+                Bundle args = new Bundle();
+                args.putParcelable("coordinates", coords);
+                myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
             }
         });
