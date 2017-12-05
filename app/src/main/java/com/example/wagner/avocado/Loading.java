@@ -36,6 +36,8 @@ public class Loading  extends AppActivity implements TransporterReceived{
         Intent farmerBeginRequestPickupIntent = new Intent(Loading.this,
                 FarmerRequestPickupChooseTransporter.class);
 
+        farmerBeginRequestPickupIntent.putExtra
+                ("popup", getIntent().getIntExtra("popup",-1));
         farmerBeginRequestPickupIntent.putExtra("availability", response);
 
         String phonenumber = getIntent().getStringExtra("phonenumber");

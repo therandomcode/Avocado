@@ -65,7 +65,7 @@ public class DatabaseHandler extends AppCompatActivity{
 
         Gson gson = new GsonBuilder().create();
         params.put("insertFarmer", gson.toJson(wordList));
-        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/insertfarmer.php",params ,new AsyncHttpResponseHandler() {
+        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/insertFarmer.php",params ,new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
@@ -123,7 +123,7 @@ public class DatabaseHandler extends AppCompatActivity{
 
         Gson gson = new GsonBuilder().create();
         params.put("insertTransporter", gson.toJson(wordList));
-        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/inserttransporter.php",params ,new AsyncHttpResponseHandler() {
+        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/inserttransporter.php",params ,new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
@@ -173,7 +173,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("getTransporters", gson.toJson(wordList));
 
-        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/getTransporters.php", params,
+        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getTransporters.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override
@@ -217,7 +217,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("getTransporter", gson.toJson(wordList));
 
-        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/getTransporter.php", params,
+        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getTransporter.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override
@@ -259,7 +259,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("getFarmer", gson.toJson(wordList));
 
-        client.post("http://10.0.2.2/~arkaroy/sqlitetomysql/getFarmer.php", params,
+        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getFarmer.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override

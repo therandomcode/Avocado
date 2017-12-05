@@ -34,7 +34,7 @@ public class LogIn extends AppActivity implements TransporterReceived{
         farmerBox = (CheckBox) findViewById(R.id.Farmer);
         transporterBox = (CheckBox) findViewById(R.id.Transporter);
 
-        final Button logInButton = findViewById(R.id.signUpButton);
+        final Button logInButton = findViewById(R.id.logInButton);
         logInButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
