@@ -28,14 +28,14 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDSypbiDSbbZeikhCxs6_UYhfxvKMszglY" />
 
-        <activity android:name=".FarmerHome">
+        <activity android:name=".BeginSignUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BeginSignUp" />
+        <activity android:name=".FarmerHome" />
         <activity android:name=".SignUpFarmerSetLocation" />
         <activity android:name=".SignUpFarmerAddPhotos" />
         <activity android:name=".SignUpFarmerAddProfile" />
