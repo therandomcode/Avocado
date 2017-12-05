@@ -37,6 +37,15 @@ public class FarmerEditProfile extends AppCompatActivity {
                 setDefaultView();
             }
         });
+
+        final Button backButton = findViewById(R.id.farmerProfileBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent returnHomeIntent = new Intent(FarmerEditProfile.this, FarmerHome.class);
+                startActivity(returnHomeIntent);
+            }
+        });
+
     }
 
     private void setDefaultView(){

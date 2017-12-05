@@ -85,6 +85,15 @@ tools:context="com.example.wagner.avocado.FarmerEditProfile">
             android:layout_alignParentTop="true"
             android:text="Save Changes" />
 
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_edit_short_bio"
+            android:layout_centerHorizontal="true"
+            android:numStars="5"
+            android:rating="4.6"/>
+
         <!-- @Arka change android:text="yo amo el aguacate" to the user's bio -->
 
 
@@ -103,12 +112,36 @@ tools:context="com.example.wagner.avocado.FarmerEditProfile">
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:background="@android:color/holo_green_light"
+            android:clickable="false"
+            android:elevation="4dp"
+            android:padding="20dp"
+            android:text="Phone Number:" />
+        <!-- @Arka change phone number -->
+
+        <TextView
+            android:id="@+id/user_profile_phoneNumber2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:background="#fff"
             android:clickable="false"
             android:elevation="4dp"
             android:padding="20dp"
-            android:text="Phone Number: 123-456-7890" />
-        <!-- @Arka change phone number -->
+            android:text="123-456-7890" />
+
+        <EditText
+            android:id="@+id/profile_edit_phoneNumber"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#fff"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:padding="20dp"
+            android:text="123-456-7890" />
 
         <TextView
             android:id="@+id/user_profile_address"
@@ -117,26 +150,25 @@ tools:context="com.example.wagner.avocado.FarmerEditProfile">
             android:layout_margin="5dp"
             android:layout_marginBottom="3dp"
             android:layout_marginTop="3dp"
+            android:background="@android:color/holo_green_light"
+            android:clickable="false"
+            android:elevation="4dp"
+            android:padding="20dp"
+            android:text="Address:" />
+        <!-- @Arka change address -->
+
+        <TextView
+            android:id="@+id/user_profile_address2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
             android:background="#fff"
             android:clickable="false"
             android:elevation="4dp"
             android:padding="20dp"
-            android:text="Address: # 55, Suesca-Cucunubá, Las Vegas, Suesca, Cundinamarca, Colombia" />
-        <!-- @Arka change address -->
-
-        <EditText
-            android:id="@+id/profile_edit_phoneNumber"
-            android:inputType= "phone"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="#fff"
-            android:clickable="true"
-            android:elevation="4dp"
-            android:padding="20dp"
-            android:text="Phone Number: 123-456-7890"
-            android:hint="Phone Number"/>
-        <!-- @Arka change phone number -->
+            android:text="# 55, Suesca-Cucunubá, Las Vegas, Suesca, Cundinamarca, Colombia" />
 
         <EditText
             android:id="@+id/profile_edit_address"
@@ -148,9 +180,12 @@ tools:context="com.example.wagner.avocado.FarmerEditProfile">
             android:background="#fff"
             android:clickable="false"
             android:elevation="4dp"
+            android:hint="Address"
             android:padding="20dp"
-            android:text="Address: # 55, Suesca-Cucunubá, Las Vegas, Suesca, Cundinamarca, Colombia"
-            android:hint="Address"/>
+            android:text="# 55, Suesca-Cucunubá, Las Vegas, Suesca, Cundinamarca, Colombia" />
+
+        <!-- @Arka change phone number -->
+
         <!-- @Arka change address -->
 
 <!--
@@ -198,5 +233,20 @@ tools:context="com.example.wagner.avocado.FarmerEditProfile">
             android:layout_below="@+id/farmerEditProfileButton"
             android:text="View History" />
 
+        <Button
+            android:id="@+id/farmerProfileBackButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
     </RelativeLayout>
+
+
 </ScrollView>
