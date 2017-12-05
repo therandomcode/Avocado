@@ -37,9 +37,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
     ListView lst;
 
     PopupWindow popUpWindow;
-    LayoutParams layoutParams;
     LinearLayout mainLayout;
-    Button btnClickHere;
     LinearLayout containerLayout;
     TextView tvMsg;
 
@@ -134,6 +132,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
                                     long arg3)
             {
                 findViewById(R.id.popUp).setVisibility(View.VISIBLE);
+                transporterIndex = -42;
             }
         });
 
