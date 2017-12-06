@@ -234,8 +234,6 @@ public class DatabaseHandler extends AppCompatActivity{
                     public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
 
                     }
-
-
                 }
         );
     }
