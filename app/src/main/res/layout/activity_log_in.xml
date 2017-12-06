@@ -6,6 +6,33 @@
     android:layout_height="match_parent"
     tools:context="com.example.wagner.avocado.LogIn">
 
+    <CheckBox
+        android:id="@+id/Farmer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="28dp"
+        android:onClick="onFarmerClicked"
+        android:text="Farmer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:text="Farmer" />
+
+    <CheckBox
+        android:id="@+id/Transporter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
+        android:onClick="onTransporterClicked"
+        android:text="Transporter"
+        app:layout_constraintBottom_toTopOf="@+id/FarmerRequestPickupDateBackButton"
+        app:layout_constraintEnd_toStartOf="@+id/pmCheckBox"
+        app:layout_constraintStart_toEndOf="@+id/Farmer"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:text="Transporter" />
+
     <Button
         android:id="@+id/cancelButton"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -24,13 +51,13 @@
         app:layout_constraintVertical_bias="0.014" />
 
     <Button
-        android:id="@+id/signUpButton"
+        android:id="@+id/logInButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="219dp"
         android:layout_height="43dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="72dp"
         android:text="Log In"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
