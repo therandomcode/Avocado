@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -13,7 +14,7 @@ import android.widget.ListView;
 
 public class FarmerMyMessages extends AppCompatActivity {
 
-
+    ListView messages;
     ListView lst;
     String[] transportername = {"Felipe los Espadrillas", "Ricardo de Leon", "Davíd Latafundia"};
     String[] time = {"Tuesday, 2 October 15:10", "Thursday, 4 October 13:24", "Tuesday, 6 October 15:36"};
@@ -29,14 +30,5 @@ public class FarmerMyMessages extends AppCompatActivity {
         lst = findViewById(R.id.messagesListView);
         FarmerMessagesListView customListview = new FarmerMessagesListView(this, transportername, time, msg);
         lst.setAdapter(customListview);
-
-        final Button backButton = findViewById(R.id.farmerMyMessagesBackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent myIntent = new Intent(FarmerMyMessages.this,
-                        FarmerHome.class);
-                startActivity(myIntent);
-            }
-        });
     }
 }

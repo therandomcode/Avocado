@@ -101,7 +101,6 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         bestMatch = findViewById(R.id.bestMatchListView);
         String [] transarray = transportername.toArray(new String[transportername.size()]);
         String [] cararray = cars.toArray(new String[cars.size()]);
