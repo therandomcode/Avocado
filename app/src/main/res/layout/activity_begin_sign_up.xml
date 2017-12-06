@@ -53,6 +53,7 @@ tools:context="com.example.wagner.avocado.BeginSignUp">
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/agromovilLogo" />
 
+
     <Button
         android:id="@+id/signUpButton"
         style="@style/Widget.AppCompat.Button.Colored"
