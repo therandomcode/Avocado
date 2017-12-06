@@ -70,7 +70,7 @@
         <activity android:name=".SignUpTransporterSetCarInfo" />
         <activity android:name=".SignUpTransporterSetLocation" />
         <activity android:name=".Loading" />
-        <activity android:name=".farmerMyMessagesDetail"></activity>
+        <activity android:name=".farmerMyMessagesDetailView"></activity>
     </application>
 
 </manifest>

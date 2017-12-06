@@ -47,8 +47,6 @@ public class TransporterHistoryListView extends ArrayAdapter<String> {
         viewHolder.tvw2.setText(time[position]);
         viewHolder.tvw3.setText(price[position]);
         viewHolder.tvw4.setText(delivered[position]);
-
-
         return r;
     }
 
