@@ -77,7 +77,7 @@
         android:id="@+id/farmerRequestPickupSetLocationEnterAddressButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="8dp"
         android:text="Enter Address"
         android:textOff="Enter Address"
@@ -101,8 +101,8 @@
         android:id="@+id/map"
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="246dp"
-        android:layout_marginBottom="128dp"
+        android:layout_height="243dp"
+        android:layout_marginBottom="156dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="0dp" />
@@ -132,10 +132,10 @@
     <TextView
         android:id="@+id/textView21"
         android:layout_width="304dp"
-        android:layout_height="65dp"
+        android:layout_height="35dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="Where should your transporter go for pickup?"
+        android:text="Produce pickup location"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -189,6 +189,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.541"
-        app:layout_constraintStart_toStartOf="@+id/farmerRequestPickupSetPickupLocationBackButton" />
+        app:layout_constraintStart_toStartOf="@+id/farmerRequestPickupSetPickupLocationBackButton"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:text="What kind of location is this?"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

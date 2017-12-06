@@ -189,7 +189,7 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent farmerRequestPickupSetDropoffLocationIntent = new Intent(FarmerRequestPickupSetDropoffLocation.this,
-                        FarmerRequestPickupSetPickupLocationType.class);
+                        FarmerRequestPickupSetPickupLocation.class);
 
                 farmerRequestPickupSetDropoffLocationIntent.putExtra
                         ("locationtype", getIntent().getStringExtra("locationtype"));

@@ -118,7 +118,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
             public void onClick(View v) {
 
                 Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupSetPickupLocation.this,
-                        FarmerRequestPickupSetPickupLocationType.class);
+                        FarmerRequestPickupSetDropoffLocation.class);
 
                 addressLine1 = (EditText)findViewById(R.id.addressline1);
                 addressLine2 = (EditText)findViewById(R.id.addressline2);
