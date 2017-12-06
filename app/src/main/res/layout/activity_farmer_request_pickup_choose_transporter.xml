@@ -45,15 +45,15 @@
         app:layout_constraintTop_toBottomOf="@+id/bestMatchListView" />
 
     <!--<Button-->
-        <!--android:id="@+id/farmerRequestPickupChooseTransporterNextButton"-->
-        <!--style="@style/Widget.AppCompat.Button.Colored"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:text="Next"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent" />-->
+    <!--android:id="@+id/farmerRequestPickupChooseTransporterNextButton"-->
+    <!--style="@style/Widget.AppCompat.Button.Colored"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:layout_marginEnd="8dp"-->
+    <!--android:text="Next"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent" />-->
 
     <Button
         android:id="@+id/farmerRequestPickupChooseTransporterBackButton"
@@ -68,8 +68,8 @@
 
     <ListView
         android:id="@+id/bestMatchListView"
-        android:layout_width="321dp"
-        android:layout_height="70dp"
+        android:layout_width="310dp"
+        android:layout_height="120dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
@@ -80,8 +80,8 @@
 
     <ListView
         android:id="@+id/listview"
-        android:layout_width="321dp"
-        android:layout_height="214dp"
+        android:layout_width="310dp"
+        android:layout_height="165dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
@@ -92,7 +92,7 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/popUp"
         android:layout_width="312dp"
-        android:layout_height="132dp"
+        android:layout_height="125dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="196dp"
@@ -132,6 +132,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/close" />
+
+        <TextView
+            android:id="@+id/transporterName"
+            android:layout_width="137dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Transporter X"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
