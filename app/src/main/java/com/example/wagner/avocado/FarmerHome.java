@@ -44,7 +44,7 @@ public class FarmerHome extends AppCompatActivity {
         final Button messagesButton = findViewById(R.id.farmerHomeMessagesButton);
         messagesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(FarmerHome.this, FarmerMessages.class);
+                Intent myIntent = new Intent(FarmerHome.this, FarmerMyMessages.class);
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);
