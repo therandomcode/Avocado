@@ -36,6 +36,8 @@ public class Loading  extends AppActivity implements TransporterReceived{
         Intent farmerBeginRequestPickupIntent = new Intent(Loading.this,
                 FarmerRequestPickupChooseTransporter.class);
 
+        farmerBeginRequestPickupIntent.putExtra
+                ("popup", getIntent().getIntExtra("popup",-1));
         farmerBeginRequestPickupIntent.putExtra("availability", response);
 
         String phonenumber = getIntent().getStringExtra("phonenumber");
@@ -80,6 +82,15 @@ public class Loading  extends AppActivity implements TransporterReceived{
         Bundle args2 = new Bundle();
         args.putParcelable("coordinates2", coords2);
         farmerBeginRequestPickupIntent.putExtra("bundle2", args2);
+
+        farmerBeginRequestPickupIntent.putExtra
+                ("myDate", getIntent().getIntExtra("myDate", 0));
+        farmerBeginRequestPickupIntent.putExtra
+                ("myMonth", getIntent().getIntExtra("myMonth", 0));
+        farmerBeginRequestPickupIntent.putExtra
+                ("myAM", getIntent().getBooleanExtra("myAM",false));
+        farmerBeginRequestPickupIntent.putExtra
+                ("myPM", getIntent().getBooleanExtra("myPM",false));
 
         startActivity(farmerBeginRequestPickupIntent);
     }

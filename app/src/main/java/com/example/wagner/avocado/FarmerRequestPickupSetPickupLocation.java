@@ -118,7 +118,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
             public void onClick(View v) {
 
                 Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupSetPickupLocation.this,
-                        FarmerRequestPickupSetPickupLocationType.class);
+                        FarmerRequestPickupSetDropoffLocation.class);
 
                 addressLine1 = (EditText)findViewById(R.id.addressline1);
                 addressLine2 = (EditText)findViewById(R.id.addressline2);
@@ -155,6 +155,15 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                     args.putParcelable("coordinates", markerLatLng);
                     farmerRequestPickupSetPickupLocationIntent.putExtra("bundle", args);
 
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("myDate", getIntent().getIntExtra("myDate",0));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("myMonth", getIntent().getIntExtra("myMonth",0));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("myAM", getIntent().getBooleanExtra("myAM",false));
+                    farmerRequestPickupSetPickupLocationIntent.putExtra
+                            ("myPM", getIntent().getBooleanExtra("myPM",false));
+
                     startActivity(farmerRequestPickupSetPickupLocationIntent);
                 }
                 else {
@@ -183,6 +192,10 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                         ("metric", getIntent().getStringExtra("metric"));
                 myIntent.putExtra
                         ("amount", getIntent().getStringExtra("amount"));
+                myIntent.putExtra("myDate", getIntent().getIntExtra("myDate",0));
+                myIntent.putExtra("myMonth", getIntent().getIntExtra("myMonth",0));
+                myIntent.putExtra("myAM", getIntent().getBooleanExtra("myAM",false));
+                myIntent.putExtra("myPM", getIntent().getBooleanExtra("myPM", false));
                 startActivity(myIntent);
             }
         });

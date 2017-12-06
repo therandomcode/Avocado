@@ -54,5 +54,6 @@ android:background="#f2ffe6">
         android:layout_weight="1"
         android:paddingLeft="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
 </RelativeLayout>
 </LinearLayout>
