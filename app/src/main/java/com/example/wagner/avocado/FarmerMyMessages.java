@@ -16,10 +16,10 @@ public class FarmerMyMessages extends AppCompatActivity {
 
     ListView lst;
     String[] transportername = {"Felipe los Espadrillas", "Ricardo de Leon", "Davíd Latafundia"};
-    String[] time = {"Tuesday, 2 October", "Thursday, 4 October", "Tuesday, 2 October"};
+    String[] time = {"Tuesday, 2 October 15:10", "Thursday, 4 October 13:24", "Tuesday, 6 October 15:36"};
     Integer[] imgid = {R.drawable.bgavocado, R.drawable.bgavocado, R.drawable.bgavocado};
     String[] msg = {"Hi Juan, it's Felipe. I'm going to be late because there is a tree blocking the road. I'm sorry! ", "Hello! Are you still free Friday?", "OK, sounds good. See you then. "};
-    String[] delivered = {"delivered", "delivered", "not delivered"};
+    //String[] delivered = {"delivered", "delivered", "not delivered"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class FarmerMyMessages extends AppCompatActivity {
         setContentView(R.layout.activity_farmer_my_messages);
 
         lst = findViewById(R.id.messagesListView);
-        FarmerHistoryListView customListview = new FarmerHistoryListView(this, transportername, time, imgid, msg, delivered);
+        FarmerMessagesListView customListview = new FarmerMessagesListView(this, transportername, time, msg);
         lst.setAdapter(customListview);
 
         final Button backButton = findViewById(R.id.farmerMyMessagesBackButton);

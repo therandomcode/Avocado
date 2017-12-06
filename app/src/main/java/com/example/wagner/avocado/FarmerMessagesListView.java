@@ -13,19 +13,15 @@ import android.widget.TextView;
 public class FarmerMessagesListView extends ArrayAdapter<String> {
     private String[] transportername;
     private String[] time;
-    private Integer[] imgid;
     private Activity context;
     private String[] price;
-    private String[] delivered;
 
-    public FarmerMessagesListView(Activity context, String[] transportername, String[] time, Integer[] imgid, String[] price, String[] delivered) {
+    public FarmerMessagesListView(Activity context, String[] transportername, String[] time, String[] price) {
         super(context, R.layout.activity_farmer_history_listview, transportername);
         this.context = context;
         this.transportername = transportername;
         this.time = time;
-        this.imgid = imgid;
         this.price = price;
-        this.delivered = delivered;
     }
 
     @NonNull
@@ -35,18 +31,16 @@ public class FarmerMessagesListView extends ArrayAdapter<String> {
         FarmerMessagesListView.ViewHolder viewHolder = null;
         if (r == null) {
             LayoutInflater layoutInflater = context.getLayoutInflater();
-            r = layoutInflater.inflate(R.layout.activity_farmer_history_listview, null, true);
+            r = layoutInflater.inflate(R.layout.activity_farmer_messages_listview, null, true);
             viewHolder = new FarmerMessagesListView.ViewHolder(r);
             r.setTag(viewHolder);
         } else {
             viewHolder = (FarmerMessagesListView.ViewHolder) r.getTag();
         }
 
-        viewHolder.ivw.setImageResource(imgid[position]);
         viewHolder.tvw1.setText(transportername[position]);
         viewHolder.tvw2.setText(time[position]);
         viewHolder.tvw3.setText(price[position]);
-        viewHolder.tvw4.setText(delivered[position]);
         return r;
     }
 
@@ -54,15 +48,11 @@ public class FarmerMessagesListView extends ArrayAdapter<String> {
         TextView tvw1;
         TextView tvw2;
         TextView tvw3;
-        TextView tvw4;
-        ImageView ivw;
 
         ViewHolder(View v) {
             tvw1 = v.findViewById(R.id.transportername);
             tvw2 = v.findViewById(R.id.time);
             tvw3 = v.findViewById(R.id.price);
-            tvw4 = v.findViewById(R.id.delivered);
-            ivw = v.findViewById(R.id.imageView);
         }
     }
 }

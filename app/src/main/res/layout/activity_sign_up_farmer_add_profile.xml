@@ -8,7 +8,7 @@
     tools:context="com.example.wagner.avocado.SignUpFarmerAddProfile">
 
     <Button
-        android:id="@+id/signUpFarmerAddPhotosBackButton"
+        android:id="@+id/signUpFarmerAddProfilePictureBackButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/signUpFarmerAddPhotosFinishButton"
+        android:id="@+id/signUpFarmerAddProfilePictureFinishButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/textView23"
-        android:layout_width="288dp"
+        android:layout_width="313dp"
         android:layout_height="80dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="28dp"
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <Button
-        android:id="@+id/facebookButton"
+        android:id="@+id/farmerAddProfilePictureButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -61,7 +61,20 @@
         android:layout_marginTop="8dp"
         android:text="Upload a great picture"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintTop_toBottomOf="@+id/farmerAddProfilePictureImageView" />
+
+    <ImageView
+        android:id="@+id/farmerAddProfilePictureImageView"
+        android:layout_width="316dp"
+        android:layout_height="207dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22"
+        app:srcCompat="@mipmap/insert_photo" />
 
 </android.support.constraint.ConstraintLayout>

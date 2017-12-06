@@ -45,7 +45,7 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
             }
         });
 
-        final Button finishButton = findViewById(R.id.signUpFarmerAddPhotosFinishButton);
+        final Button finishButton = findViewById(R.id.signUpFarmerAddPhotosNextButton);
         finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showToast("Thanks for adding photos!");
