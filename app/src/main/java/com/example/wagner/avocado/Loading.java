@@ -64,6 +64,25 @@ public class Loading  extends AppActivity implements TransporterReceived{
                 ("postalcode", getIntent().getStringExtra("postalcode"));
         farmerBeginRequestPickupIntent.putExtra
                 ("city", getIntent().getStringExtra("city"));
+        farmerBeginRequestPickupIntent.putExtra("startaddress"
+                , getIntent().getStringExtra("startaddress"));
+        farmerBeginRequestPickupIntent.putExtra("startcity"
+                , getIntent().getStringExtra("startcity"));
+        farmerBeginRequestPickupIntent.putExtra("startcountry"
+                , getIntent().getStringExtra("startcountry"));
+        farmerBeginRequestPickupIntent.putExtra("startpostalcode"
+                , getIntent().getStringExtra("startpostalcode"));
+        farmerBeginRequestPickupIntent.putExtra("endaddress"
+                , getIntent().getStringExtra("endaddress"));
+        farmerBeginRequestPickupIntent.putExtra("endcity"
+                , getIntent().getStringExtra("endcity"));
+        farmerBeginRequestPickupIntent.putExtra("endcountry"
+                , getIntent().getStringExtra("endcountry"));
+        farmerBeginRequestPickupIntent.putExtra("endpostalcode"
+                , getIntent().getStringExtra("endpostalcode"));
+
+
+
         Bundle bundle = getIntent().getParcelableExtra("bundle");
         LatLng coords = bundle.getParcelable("coordinates");
         Bundle args = new Bundle();
