@@ -90,6 +90,30 @@ public class TransporterMessages extends AppCompatActivity {
             }
         });
 
+        final Button declineButton = findViewById(R.id.declineButton);
+        declineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(TransporterMessages.this, TransporterMessages.class);
+                ArrayList<String> newtransportername = new ArrayList<>(Arrays.asList(transportername));
+                newtransportername.remove(index);
+                myIntent.putStringArrayListExtra("transporters", newtransportername);
+                ArrayList<String> newtime = new ArrayList<>(Arrays.asList(time));
+                newtime.remove(index);
+                myIntent.putStringArrayListExtra("times", newtime);
+                ArrayList<String> newmsg = new ArrayList<>(Arrays.asList(msg));
+                newmsg.remove(index);
+                myIntent.putStringArrayListExtra("messages", newmsg);
+                ArrayList<Integer> newimgid = new ArrayList<>(Arrays.asList(imgid));
+                newimgid.remove(index);
+                myIntent.putIntegerArrayListExtra("images", newimgid);
+                myIntent.putExtra
+                        ("phonenumber", getIntent().getStringExtra("phonenumber"));
+
+                startActivity(myIntent);
+            }
+        });
+
 
         final ImageButton closeButton = findViewById(R.id.closePopUpButton);
         closeButton.setOnClickListener(new View.OnClickListener() {
