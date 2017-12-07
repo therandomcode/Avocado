@@ -15,6 +15,7 @@ public class TransporterHistory extends AppActivity implements TransporterReceiv
 
     ListView lst;
 
+
     ArrayList<String> fname = new ArrayList<String>();
     ArrayList<String> fdate = new ArrayList<String>();
     ArrayList<Integer> fimgid = new ArrayList<Integer>();
@@ -22,6 +23,7 @@ public class TransporterHistory extends AppActivity implements TransporterReceiv
     ArrayList<String> fendcity = new ArrayList<String>();
 
     String cropprice = "16 000.00";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +86,7 @@ public class TransporterHistory extends AppActivity implements TransporterReceiv
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterHistory.this,
-                        TransporterHome.class);
+                        TransporterEditProfile.class);
 
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 myIntent.putExtra("phonenumber", phonenumber);

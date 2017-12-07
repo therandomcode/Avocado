@@ -16,10 +16,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.sql.DatabaseMetaData;
+import java.util.ArrayList;
 
 public class TransporterSetAvailabilityPickDate extends AppActivity implements TransporterReceived {
 
-    DatePicker datepicker;
     String day;
     String month;
     String year;
@@ -36,6 +36,9 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
     String crop = "";
     String amount = "";
     String metric = "";
+
+    private ArrayList<String> dates;
+    private ArrayList<String> times;
 
 
     @Override
@@ -66,7 +69,6 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
                     year = Integer.toString(datepicker.getYear());
 
                     am = cb1.isChecked();
-
                     pm = cb2.isChecked();
 
                     date = month+"/"+day+"/"+year;
@@ -80,6 +82,13 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
                     else
                         time = "NEVER";
 
+                    dates = getIntent().getStringArrayListExtra("dates");
+                    times = getIntent().getStringArrayListExtra("times");
+
+                    if (dates == null) dates = new ArrayList<>();
+                    if (times == null) times = new ArrayList<>();
+                    dates.add(date);
+                    times.add(time);
                     showToast2(date, time);
                     DatabaseHandler db = new DatabaseHandler(activity);
                     String phonenumber = getIntent().getStringExtra("phonenumber");
@@ -94,7 +103,7 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
                 showToast("Thank you! Farmers in the area will be notified.");
 
                 Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this
-                        , TransporterViewSchedule.class);
+                        , TransporterAvailableTimes.class);
                 phonenumber = getIntent().getStringExtra("phonenumber");
                 
                 myIntent.putExtra("phonenumber", phonenumber);
@@ -102,6 +111,10 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
                 LatLng coords = bundle.getParcelable("coordinates");
                 Bundle args = new Bundle();
                 args.putParcelable("coordinates", coords);
+                myIntent.putStringArrayListExtra("dates",
+                        getIntent().getStringArrayListExtra("dates"));
+                myIntent.putStringArrayListExtra("times",
+                        getIntent().getStringArrayListExtra("times"));
                 myIntent.putExtra("bundle", args);
                 startActivity(myIntent);
 
@@ -132,9 +145,16 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
     }
 
     private void showToast2(String date, String time){
-        Toast.makeText(this,
-                "You are available on " + date + " " + time +".",
-                Toast.LENGTH_LONG).show();
+        if (time.equals("ALLDAY")) {
+            Toast.makeText(this,
+                    "You are available on " + date + " AM/PM.",
+                    Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(this,
+                    "You are available on " + date + " " + time + ".",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -192,6 +212,8 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
         phonenumber = getIntent().getStringExtra("phonenumber");
         myIntent.putExtra("phonenumber", phonenumber);
         myIntent.putExtra("bundle", args);
+        myIntent.putStringArrayListExtra("dates", dates);
+        myIntent.putStringArrayListExtra("times", times);
         startActivity(myIntent);
     }
 }

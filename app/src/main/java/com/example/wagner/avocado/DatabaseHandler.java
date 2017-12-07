@@ -70,7 +70,6 @@ public class DatabaseHandler extends AppCompatActivity{
 
         client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/insertfarmer.php",params ,new AsyncHttpResponseHandler() {
 
-
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
                 try {

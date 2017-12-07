@@ -32,7 +32,7 @@ android:background="#f2ffe6">
         android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large" />
 
     <TextView
-        android:id="@+id/time"
+        android:id="@+id/timePicked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/transporterName"
@@ -47,9 +47,9 @@ android:background="#f2ffe6">
         android:id="@+id/transporterLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/time"
-        android:layout_alignStart="@+id/time"
-        android:layout_below="@+id/time"
+        android:layout_alignLeft="@+id/timePicked"
+        android:layout_alignStart="@+id/timePicked"
+        android:layout_below="@+id/timePicked"
         android:layout_marginTop="12dp"
         android:layout_weight="1"
         android:paddingLeft="10dp"

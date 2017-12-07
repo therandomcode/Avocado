@@ -37,6 +37,8 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent returnHomeIntent = new Intent(FarmerEditProfile.this, FarmerHome.class);
+                returnHomeIntent.putExtra("phonenumber",
+                        getIntent().getStringExtra("phonenumber"));
                 startActivity(returnHomeIntent);
             }
         });
@@ -168,6 +170,7 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
 
                 TextView nameview = (TextView)findViewById(R.id.user_profile_name);
                 nameview.setText(firstname+" "+lastname);
+                findViewById(R.id.user_profile_photo).bringToFront();
 
                 TextView phoneview = (TextView)findViewById(R.id.user_profile_phoneNumber);
                 phoneview.setText(phonenumber);

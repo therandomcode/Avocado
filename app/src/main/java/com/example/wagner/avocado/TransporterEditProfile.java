@@ -40,6 +40,8 @@ public class TransporterEditProfile extends AppActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent returnHomeIntent = new Intent(TransporterEditProfile.this, TransporterHome.class);
+                returnHomeIntent.putExtra("phonenumber",
+                        getIntent().getStringExtra("phonenumber"));
                 startActivity(returnHomeIntent);
             }
         });
@@ -174,6 +176,7 @@ public class TransporterEditProfile extends AppActivity {
 
                 TextView nameview = (TextView)findViewById(R.id.user_profile_name);
                 nameview.setText(firstname+" "+lastname);
+                findViewById(R.id.user_profile_photo).bringToFront();
 
                 TextView phoneview = (TextView)findViewById(R.id.user_profile_phoneNumber);
                 phoneview.setText(phonenumber);

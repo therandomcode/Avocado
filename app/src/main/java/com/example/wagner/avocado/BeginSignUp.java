@@ -13,6 +13,8 @@ public class BeginSignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_begin_sign_up);
 
+        
+
         final Button signUpButton = findViewById(R.id.signUpButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

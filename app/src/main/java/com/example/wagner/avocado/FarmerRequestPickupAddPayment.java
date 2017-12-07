@@ -20,7 +20,7 @@ public class FarmerRequestPickupAddPayment extends AppCompatActivity {
         setContentView(R.layout.activity_farmer_request_pickup_enter_payment);
 
         final Button nextButton = findViewById(R.id.farmerRequestPickupEnterPaymentNextButton);
-        Button backButton = findViewById(R.id.farmerRequestPickupEnterPaymentBackButton);
+        final Button backButton = findViewById(R.id.farmerRequestPickupEnterPaymentBackButton);
         final RadioButton cashRadioButton = (RadioButton) findViewById(R.id.cashRadioButton);
         final RadioButton bankAccountRadioButton = (RadioButton) findViewById(R.id.bankAccountRadioButton);
         final RadioButton creditCardRadioButton = (RadioButton) findViewById(R.id.creditCardRadioButton);
@@ -104,7 +104,7 @@ public class FarmerRequestPickupAddPayment extends AppCompatActivity {
 
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 Intent farmerBeginRequestPickupIntent = new Intent(FarmerRequestPickupAddPayment.this,
-                        FarmerRequestPickupOrderConfirmation.class);
+                        FarmerRequestPickupReviewOrder.class);
                 farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
                 startActivity(farmerBeginRequestPickupIntent);
             }

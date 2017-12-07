@@ -7,8 +7,22 @@
     android:layout_height="match_parent"
     tools:context="com.example.wagner.avocado.SignUpFarmerAddProfile">
 
+    <EditText
+        android:id="@+id/signUpFarmerEnterBioText"
+        android:layout_width="305dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/farmerEnterBioText" />
+
     <Button
-        android:id="@+id/signUpFarmerAddPhotosBackButton"
+        android:id="@+id/signUpFarmerAddProfileBackButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/signUpFarmerAddPhotosFinishButton"
+        android:id="@+id/signUpFarmerAddProfileFinishButton"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,36 +46,66 @@
     <TextView
         android:id="@+id/textView23"
         android:layout_width="288dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="36dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
-        android:text="Would you like to add a profile picture?"
+        android:text="Add a profile picture!"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="315dp"
-        android:layout_height="wrap_content"
+        android:layout_width="279dp"
+        android:layout_height="33dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="People with profile pictures recieve 45% more messaging requests."
+        android:text="Note: People with profile pictures recieve 45% more messaging requests."
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <Button
-        android:id="@+id/facebookButton"
+        android:id="@+id/signUpFarmerAddProfileButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:text="Upload a great picture"
+        android:layout_marginTop="16dp"
+        android:text="Upload a profile picture"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintTop_toBottomOf="@+id/farmerAddProfileViewPhoto" />
+
+    <ImageView
+        android:id="@+id/farmerAddProfileViewPhoto"
+        android:layout_width="311dp"
+        android:layout_height="118dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        app:srcCompat="@mipmap/insert_photo" />
+
+    <TextView
+        android:id="@+id/farmerEnterBioText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:text="Enter a short bio:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpFarmerAddProfileButton" />
 
 </android.support.constraint.ConstraintLayout>

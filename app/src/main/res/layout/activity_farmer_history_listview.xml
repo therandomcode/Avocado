@@ -21,7 +21,7 @@
             />
 
         <TextView
-            android:id="@+id/transportername"
+            android:id="@+id/datePicked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -34,11 +34,11 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/time"
+            android:id="@+id/timePicked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/imageView"
-            android:layout_below="@+id/transportername"
+            android:layout_below="@+id/datePicked"
             android:layout_weight="1"
             android:paddingLeft="10dp"
             android:textColor="#408000"
@@ -61,6 +61,6 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/price"
             android:layout_alignStart="@+id/price"
-            android:layout_alignTop="@+id/time" />
+            android:layout_alignTop="@+id/timePicked" />
     </RelativeLayout>
 </LinearLayout>
