@@ -103,7 +103,8 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
 
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertTransporter(firstname, lastname, "[]", address, city, postalcode
-                        , country, password, phonenumber, carmake, capacity, licenseplatenumber, "[]");
+                        , country, password, phonenumber, carmake, capacity, licenseplatenumber
+                        , "[]", "N.A.", "[]");
 
                 myIntent.putExtra("firstname", firstname);
                 myIntent.putExtra("lastname", lastname);
