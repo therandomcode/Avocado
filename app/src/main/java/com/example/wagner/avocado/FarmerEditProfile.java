@@ -15,6 +15,7 @@ import org.json.JSONObject;
 public class FarmerEditProfile extends AppActivity implements TransporterReceived {
 
     String firstname, lastname, phonenumber, postalcode, country, city, address, pass, transactions;
+    String deliveries, ratings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,7 +139,7 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
 
         DatabaseHandler db1 = new DatabaseHandler();
         db1.insertFarmer(firstname, lastname, phonenumber, pass, address, country, postalcode, city,
-                transactions);
+                transactions, deliveries, ratings);
     }
 
     public void Success(String response){
@@ -155,6 +156,8 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
                 postalcode = (String) x.get("postalcode");
                 country = (String) x.get("country");
                 transactions = (String) x.get("transactions");
+                deliveries = (String) x.get("deliveries");
+                ratings = (String) x.get("ratings");
 
                 TextView nameview = (TextView)findViewById(R.id.user_profile_name);
                 nameview.setText(firstname+" "+lastname);

@@ -43,7 +43,7 @@ public class DatabaseHandler extends AppCompatActivity{
 
     public void insertFarmer(String firstname, String lastname, String phonenumber, String password, String
             address, String country, String postalcode, String
-                                      city, String transactions){
+                                      city, String transactions, String deliveries, String ratings){
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
@@ -60,12 +60,16 @@ public class DatabaseHandler extends AppCompatActivity{
         map.put("postalcode", postalcode);
         map.put("city", city);
         map.put("transactions", transactions);
+        map.put("deliveries", deliveries);
+        map.put("ratings", ratings);
 
         wordList.add(map);
 
         Gson gson = new GsonBuilder().create();
         params.put("insertFarmer", gson.toJson(wordList));
-        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/insertFarmer.php",params ,new AsyncHttpResponseHandler() {
+
+        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/insertfarmer.php",params ,new AsyncHttpResponseHandler() {
+
 
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
@@ -96,7 +100,8 @@ public class DatabaseHandler extends AppCompatActivity{
     public void insertTransporter(String firstname, String lastname, String availability, String
             address, String city, String postalcode, String
                                      country, String password, String phonenumber, String carmake
-                                , String capacity, String licenseplatenumber, String requests){
+                                , String capacity, String licenseplatenumber, String requests,
+                                    String ratings, String deliveries){
 
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
@@ -118,6 +123,8 @@ public class DatabaseHandler extends AppCompatActivity{
         map.put("capacity", capacity);
         map.put("licenseplatenumber", licenseplatenumber);
         map.put("requests", requests);
+        map.put("ratings", ratings);
+        map.put("deliveries", deliveries);
 
         wordList.add(map);
 
@@ -234,8 +241,6 @@ public class DatabaseHandler extends AppCompatActivity{
                     public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
 
                     }
-
-
                 }
         );
     }
@@ -274,7 +279,8 @@ public class DatabaseHandler extends AppCompatActivity{
 
                     @Override
                     public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-
+                        System.out.println("failed");
+                        System.out.println(new String(bytes));
                     }
 
 
