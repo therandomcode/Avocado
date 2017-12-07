@@ -67,6 +67,7 @@ public class ViewProfile extends AppActivity implements TransporterReceived {
         TextView tcountry = (TextView)findViewById(R.id.user_profile_country);
         TextView tpostalcode = (TextView)findViewById(R.id.user_profile_postalcode);
 
+        findViewById(R.id.user_profile_photo).bringToFront();
         tname.setText(name);
         tphonenunmber.setText(phonenumber);
         taddress.setText(address);
