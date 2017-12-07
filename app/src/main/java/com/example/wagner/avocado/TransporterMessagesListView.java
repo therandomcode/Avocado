@@ -1,5 +1,7 @@
 package com.example.wagner.avocado;
 
+import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -11,8 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class TransporterMessagesListView extends ArrayAdapter<String> {
     private String[] transportername;
@@ -20,8 +25,8 @@ public class TransporterMessagesListView extends ArrayAdapter<String> {
     private Activity context;
     private String[] price;
     private Integer[] imgid;
-    private Button[] acceptButton;
-    private Button[] declineButton;
+
+    private TransporterMessagesListView.ViewHolder viewHolder;
 
     public TransporterMessagesListView(Activity context, String[] transportername, String[] time,
                                        String[] price, Integer[] imgid) {
@@ -31,14 +36,13 @@ public class TransporterMessagesListView extends ArrayAdapter<String> {
         this.time = time;
         this.price = price;
         this.imgid = imgid;
-        
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View r = convertView;
-        TransporterMessagesListView.ViewHolder viewHolder = null;
+        viewHolder = null;
         if (r == null) {
             LayoutInflater layoutInflater = context.getLayoutInflater();
             r = layoutInflater.inflate(R.layout.activity_transporter_messages_list_view, null, true);
@@ -63,8 +67,8 @@ public class TransporterMessagesListView extends ArrayAdapter<String> {
 
         ViewHolder(View v) {
             tvw1 = v.findViewById(R.id.farmername);
-            tvw2 = v.findViewById(R.id.t_time);
-            tvw3 = v.findViewById(R.id.t_price);
+            tvw2 = v.findViewById(R.id.t_address);
+            tvw3 = v.findViewById(R.id.t_pickupDate);
             tvw4 = v.findViewById(R.id.farmerPhoto);
         }
     }
