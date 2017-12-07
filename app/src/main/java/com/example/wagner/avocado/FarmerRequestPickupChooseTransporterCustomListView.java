@@ -54,7 +54,7 @@ public class FarmerRequestPickupChooseTransporterCustomListView extends ArrayAda
         ViewHolder(View v) {
             tvw1 = v.findViewById(R.id.transporterName);
             tvw2 = v.findViewById(R.id.timePicked);
-            ivw = v.findViewById(R.id.imageView);
+            ivw = v.findViewById(R.id.farmerPhoto);
         }
     }
 }
