@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentTop="@id/transportername"
             android:layout_marginEnd="33dp"
             android:layout_marginRight="33dp"
             android:textAlignment="textEnd" />

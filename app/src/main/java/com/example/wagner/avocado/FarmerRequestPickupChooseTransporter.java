@@ -41,6 +41,11 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
     LinearLayout containerLayout;
     TextView tvMsg;
 
+    String crop, amount, metric, date, startaddress, startcity, startcountry,startpostalcode
+            , endaddress, endcity, endcountry, endpostalcode, locationtype, timing;
+
+
+
     ArrayList<Transporter> trans = new ArrayList<Transporter>();
     final ArrayList<String> transportername = new ArrayList<String>();/*={"Juan Felipe","Ricardo Sanchez-Delorio","Davíd de Leon"};*/
     final ArrayList<String> cars = new ArrayList<String>();/*={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};*/
@@ -53,6 +58,21 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_choose_transporter);
+
+        locationtype = getIntent().getStringExtra("locationtype");
+        crop = getIntent().getStringExtra("crop");
+        amount = getIntent().getStringExtra("amount");
+        metric = getIntent().getStringExtra("metric");
+        date = getIntent().getStringExtra("date");
+        startaddress = getIntent().getStringExtra("startaddress");
+        startcity = getIntent().getStringExtra("startcity");
+        startcountry = getIntent().getStringExtra("startcountry");
+        startpostalcode = getIntent().getStringExtra("startpostalcode");
+        endaddress = getIntent().getStringExtra("endaddress");
+        endcity = getIntent().getStringExtra("endcity");
+        endcountry = getIntent().getStringExtra("endcountry");
+        endpostalcode = getIntent().getStringExtra("endpostalcode");
+        timing = getIntent().getStringExtra("time");
 
         int temp = getIntent().getIntExtra("popup",-1);
         if (temp != -1) {
@@ -68,16 +88,16 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         popUpWindow = new PopupWindow(this);
         tvMsg = new TextView(this);
 
-        String locationtype = getIntent().getStringExtra("locationtype");
+        //String locationtype = getIntent().getStringExtra("locationtype");
         String droplocation = getIntent().getStringExtra("droplocation");
         String address = getIntent().getStringExtra("address");
-        String date = getIntent().getStringExtra("date");
+        //String date = getIntent().getStringExtra("date");
         String time = getIntent().getStringExtra("time");
-        String crop = getIntent().getStringExtra("crop");
-        String metric = getIntent().getStringExtra("metric");
-        String amount = getIntent().getStringExtra("amount");
+        //String crop = getIntent().getStringExtra("crop");
+        //String metric = getIntent().getStringExtra("metric");
+        //String amount = getIntent().getStringExtra("amount");
 
-        String availability = getIntent().getStringExtra("availability");
+        final String availability = getIntent().getStringExtra("availability");
 
         String firstname, lastname, available, addresstrans, city, postalcode, country, phonenumber,
                 carmake, capacity, licenseplatenumber;
@@ -120,7 +140,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
                                     long arg3)
             {
                 findViewById(R.id.popUp).setVisibility(View.VISIBLE);
-                transporterIndex = -42;
+                transporterIndex = 0;
             }
         });
 
@@ -128,7 +148,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapter, View v, int position,
                                     long arg3)
             {
-                transporterIndex = position;
+                transporterIndex = position+1;
                 findViewById(R.id.popUp).setVisibility(View.VISIBLE);
             }
         });
@@ -258,6 +278,49 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
                         ("myAM", getIntent().getBooleanExtra("myAM",false));
                 myIntent.putExtra
                         ("myPM", getIntent().getBooleanExtra("myPM",false));
+
+                String transporternumber = "";
+                try {
+                    JSONArray avail = new JSONArray(availability);
+                    JSONObject transporter = avail.getJSONObject(transporterIndex);
+                    transporternumber = (String)transporter.get("phonenumber");;
+                } catch (JSONException e) {
+                    System.out.println("Failure");
+                    e.printStackTrace();
+                }
+                String farmernumber = getIntent().getStringExtra("phonenumber");
+
+                String request;
+
+
+                JSONObject newreq = new JSONObject();
+                try {
+                    newreq.put("crop", crop);
+                    newreq.put("amount", amount);
+                    newreq.put("metric", metric);
+                    newreq.put("locationtype", locationtype);
+                    newreq.put("phonenumberfarmer", farmernumber);
+                    newreq.put("phonenumbertransporter", transporternumber);
+                    newreq.put("date", date);
+                    newreq.put("startaddress", startaddress);
+                    newreq.put("startcity", startcity);
+                    newreq.put("startcountry", startcountry);
+                    newreq.put("startpostalcode", startpostalcode);
+                    newreq.put("endaddress", endaddress);
+                    newreq.put("endcity", endcity);
+                    newreq.put("endcountry", endcountry);
+                    newreq.put("endpostalcode", endpostalcode);
+                    newreq.put("time", timing);
+                    newreq.put("status", "pending");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                request = newreq.toString();
+
+
+                DatabaseHandler db = new DatabaseHandler();
+                db.sendRequest(transporternumber, farmernumber, request);
+
                 startActivity(myIntent);
             }
         });
