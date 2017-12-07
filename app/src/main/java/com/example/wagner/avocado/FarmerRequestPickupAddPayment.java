@@ -13,7 +13,6 @@ import com.google.android.gms.maps.model.LatLng;
 public class FarmerRequestPickupAddPayment extends AppCompatActivity {
 
     private Intent myIntent;
-    private boolean done;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,34 +28,21 @@ public class FarmerRequestPickupAddPayment extends AppCompatActivity {
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                done = true;
-                if (creditCardRadioButton.isChecked()){
-                    nextButton.setOnClickListener(new View.OnClickListener() {
-                        public void onClick(View v) {
-                            myIntent = new Intent(FarmerRequestPickupAddPayment.this,
-                                    FarmerRequestPickupEnterAnotherPayment.class);
-                        }
-                    });
-                } else if (bankAccountRadioButton.isChecked()){
-                    nextButton.setOnClickListener(new View.OnClickListener() {
-                        public void onClick(View v) {
-                            myIntent = new Intent(FarmerRequestPickupAddPayment.this,
-                                    FarmerRequestPickupAddBankAccount.class);
-                        }
-                    });
-                } else if (cashRadioButton.isChecked()) {
-                    nextButton.setOnClickListener(new View.OnClickListener(){
-                        public void onClick(View v) {
-                            myIntent = new Intent(FarmerRequestPickupAddPayment.this,
-                                    FarmerRequestPickupReviewOrder.class);
-                        }
-                    });
+                if (!creditCardRadioButton.isChecked() && !bankAccountRadioButton.isChecked()
+                        && !cashRadioButton.isChecked()) {
+                    showToast("Please select a payment method.");
                 }
                 else {
-                    showToast("Please select a payment method.");
-                    done = false;
-                }
-                if (done) {
+                    if (creditCardRadioButton.isChecked()) {
+                        myIntent = new Intent(FarmerRequestPickupAddPayment.this,
+                                        FarmerRequestPickupEnterAnotherPayment.class);
+                    } else if (bankAccountRadioButton.isChecked()) {
+                        myIntent = new Intent(FarmerRequestPickupAddPayment.this,
+                                FarmerRequestPickupAddBankAccount.class);
+                    } else {
+                        myIntent = new Intent(FarmerRequestPickupAddPayment.this,
+                                FarmerRequestPickupOrderConfirmation.class);
+                    }
                     myIntent.putExtra
                             ("phonenumber", getIntent().getStringExtra("phonenumber"));
                     myIntent.putExtra

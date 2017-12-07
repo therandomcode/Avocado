@@ -23,8 +23,25 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
         setDefaultView();
 
 
+        final Button saveChangesButton = findViewById(R.id.farmerSaveChangesButton);
+        saveChangesButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                writeChanges();
+                setDefaultView();
+            }
+        });
+
+        final Button backButton = findViewById(R.id.farmerProfileBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent returnHomeIntent = new Intent(FarmerEditProfile.this, FarmerHome.class);
+                startActivity(returnHomeIntent);
+            }
+        });
+      
         DatabaseHandler db = new DatabaseHandler(this);
         db.getFarmer(getIntent().getStringExtra("phonenumber"));
+
 
     }
 

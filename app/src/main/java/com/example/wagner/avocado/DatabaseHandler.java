@@ -67,7 +67,9 @@ public class DatabaseHandler extends AppCompatActivity{
 
         Gson gson = new GsonBuilder().create();
         params.put("insertFarmer", gson.toJson(wordList));
+
         client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/insertfarmer.php",params ,new AsyncHttpResponseHandler() {
+
 
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
@@ -239,8 +241,6 @@ public class DatabaseHandler extends AppCompatActivity{
                     public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
 
                     }
-
-
                 }
         );
     }

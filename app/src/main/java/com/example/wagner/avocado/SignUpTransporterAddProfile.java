@@ -30,6 +30,7 @@ public class SignUpTransporterAddProfile extends AppCompatActivity{
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 String password = getIntent().getStringExtra("password");
                 String address = getIntent().getStringExtra("address");
+                address = address.replace("/"," ");
                 String country = getIntent().getStringExtra("country");
                 String postalcode = getIntent().getStringExtra("postalcode");
                 String city = getIntent().getStringExtra("city");

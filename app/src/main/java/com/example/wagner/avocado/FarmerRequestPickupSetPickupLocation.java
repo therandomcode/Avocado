@@ -23,6 +23,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.EditText;
@@ -84,6 +86,23 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         countryText = (EditText)findViewById(R.id.country);
         postalCodeText = (EditText)findViewById(R.id.postalcode);
 
+        RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroup);
+        String templocation = getIntent().getStringExtra("locationtype");
+        if ( (templocation != null) && !templocation.equals("")) {
+            if (templocation.equals("My Farm")) {
+                rg.check(R.id.myFarm);
+            } else if (templocation.equals("Farm")) {
+                rg.check(R.id.myFarm);
+            } else if (templocation.equals("Town Centre")) {
+                rg.check(R.id.townCentre);
+            } else if (templocation.equals("Church")) {
+                rg.check(R.id.church);
+            } else {
+                EditText other = findViewById(R.id.otherText);
+                other.setText(templocation);
+            }
+        }
+
         String address = getIntent().getStringExtra("address");
         if (address != null) {
             String[] addresses = address.split("/");
@@ -118,7 +137,19 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
             public void onClick(View v) {
 
                 Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupSetPickupLocation.this,
-                        FarmerRequestPickupSetPickupLocationType.class);
+                        FarmerRequestPickupSetDropoffLocation.class);
+
+                RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroup);
+                int id = rg.getCheckedRadioButtonId();
+                String locationtype;
+                if (id == -1){
+                    EditText edittext = (EditText)findViewById(R.id.otherText);
+                    locationtype = edittext.getText().toString();
+                }
+                else {
+                    RadioButton rb = (RadioButton)findViewById(id);
+                    locationtype = rb.getText().toString();
+                }
 
                 addressLine1 = (EditText)findViewById(R.id.addressline1);
                 addressLine2 = (EditText)findViewById(R.id.addressline2);
@@ -131,9 +162,18 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                 String countryString = countryText.getText().toString();
                 String postalCodeString = postalCodeText.getText().toString();
 
-                if ((!addressLine1String.equals("") && !cityString.equals("") &&
-                        !countryString.equals("") && !postalCodeString.equals("")) ||
-                        markerLatLng != null) {
+                if (((addressLine1String.equals("") || cityString.equals("") ||
+                        countryString.equals("") || postalCodeString.equals("")) &&
+                        markerLatLng == null)) {
+                    showToast("Please enter information for all of the address" +
+                            " fields or drop a pin to continue.");
+                }
+                else if ((locationtype == null) ||
+                        locationtype.equals("")) {
+                    showToast("Please select a location type.");
+                }
+                else {
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("locationtype", locationtype);
                     String address = addressLine1String + "/" + addressLine2String;
                     String phonenumber = getIntent().getStringExtra("phonenumber");
                     farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);
@@ -166,12 +206,6 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
 
                     startActivity(farmerRequestPickupSetPickupLocationIntent);
                 }
-                else {
-                    showToast("Please enter information for all of the address" +
-                            " fields or drop a pin to continue.");
-                }
-
-
             }
         });
 

@@ -5,22 +5,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 
-public class FarmerRequestPickupEnterAnotherPayment extends AppCompatActivity {
+public class ViewProfile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_farmer_request_pickup_enter_another_payment);
+        setContentView(R.layout.activity_view_profile);
+        setDefaultView();
 
-        final Button nextButton = findViewById(R.id.farmerRequestPickupEnterAnotherPaymentNextButton);
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        final Button historyButton = findViewById(R.id.profileHistoryButton);
+        historyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(FarmerRequestPickupEnterAnotherPayment.this,
-                        FarmerRequestPickupOrderConfirmation.class);
-
+                Intent myIntent = new Intent(ViewProfile.this, ProfileHistory.class);
+                myIntent.putExtra("popup", getIntent().getIntExtra("popup",0));
                 myIntent.putExtra
                         ("phonenumber", getIntent().getStringExtra("phonenumber"));
                 myIntent.putExtra
@@ -76,12 +78,11 @@ public class FarmerRequestPickupEnterAnotherPayment extends AppCompatActivity {
             }
         });
 
-        final Button backButton = findViewById(R.id.farmerRequestPickupEnterAnotherPaymentBackButton);
+        final Button backButton = findViewById(R.id.profileBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(FarmerRequestPickupEnterAnotherPayment.this,
-                        FarmerRequestPickupAddPayment.class);
-
+                Intent myIntent = new Intent(ViewProfile.this, Loading.class);
+                myIntent.putExtra("popup", getIntent().getIntExtra("popup",0));
                 myIntent.putExtra
                         ("phonenumber", getIntent().getStringExtra("phonenumber"));
                 myIntent.putExtra
@@ -133,9 +134,20 @@ public class FarmerRequestPickupEnterAnotherPayment extends AppCompatActivity {
                         ("myAM", getIntent().getBooleanExtra("myAM",false));
                 myIntent.putExtra
                         ("myPM", getIntent().getBooleanExtra("myPM",false));
+
                 startActivity(myIntent);
             }
         });
 
     }
+
+    private void setDefaultView(){
+        TextView short_bio = findViewById(R.id.user_profile_short_bio);
+        TextView phoneNumber = findViewById(R.id.user_profile_phoneNumber);
+        TextView address = findViewById(R.id.user_profile_address);
+        short_bio.setVisibility(View.VISIBLE);
+        phoneNumber.setVisibility(View.VISIBLE);
+        address.setVisibility(View.VISIBLE);
+    }
+
 }

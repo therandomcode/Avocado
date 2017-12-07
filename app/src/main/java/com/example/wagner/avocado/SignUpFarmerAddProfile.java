@@ -28,12 +28,10 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 String password = getIntent().getStringExtra("password");
                 String address = getIntent().getStringExtra("address");
+                address = address.replace("/"," ");
                 String city = getIntent().getStringExtra("city");
                 String country = getIntent().getStringExtra("country");
                 String postalcode = getIntent().getStringExtra("postalcode");
-
-                int index = address.indexOf("/");
-                String newaddress = address.substring(0,index) + " " + address.substring(index+1);
 
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertFarmer(firstname, lastname, phonenumber, password, address, country,
