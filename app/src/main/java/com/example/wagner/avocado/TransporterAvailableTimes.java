@@ -61,6 +61,8 @@ public class TransporterAvailableTimes extends AppCompatActivity {
                 myIntent.putExtra("phonenumber", phonenumber);
                 myIntent.putStringArrayListExtra("dates",
                         getIntent().getStringArrayListExtra("dates"));
+                myIntent.putStringArrayListExtra("times",
+                        getIntent().getStringArrayListExtra("times"));
                 myIntent.putExtra("bundle",getIntent().getParcelableExtra("bundle"));
 
                 startActivity(myIntent);
