@@ -44,7 +44,7 @@ public class TransporterMessages extends AppCompatActivity {
         ArrayList<String> checktimes = getIntent().getStringArrayListExtra("times");
         ArrayList<String> checkmsg = getIntent().getStringArrayListExtra("messages");
         ArrayList<Integer> checkimages = getIntent().getIntegerArrayListExtra("images");
-        if ((checktransporters != null) && (!checktransporters.isEmpty())) {
+        if ((checktransporters != null)) {
             transportername = checktransporters.toArray(new String[0]);
             time = checktimes.toArray(new String[0]);
             msg = checkmsg.toArray(new String[0]);
