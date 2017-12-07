@@ -435,7 +435,7 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
         if (!checkPermissions()) {
             requestPermissions();
         } else {
-            getAddress();
+            updateAddress();
         }
     }
 
@@ -494,17 +494,21 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
     }
 
     @SuppressWarnings("MissingPermission")
-    private void getAddress() {
+    private void updateAddress() {
         Location location = new Location("Farm Location");
-        location.setLatitude(markerLatLng.latitude);
-        location.setLongitude(markerLatLng.longitude);
-        mLastLocation = location;
+        if (markerLatLng != null) {
+            location.setLatitude(markerLatLng.latitude);
+            location.setLongitude(markerLatLng.longitude);
+            mLastLocation = location;
 
-        // If the user pressed the fetch address button before we had the location,
-        // this will be set to true indicating that we should kick off the intent
-        // service after fetching the location.
-        if (mAddressRequested) {
-            startIntentService();
+            addressLine1.setText(mAddressOutput, TextView.BufferType.EDITABLE);
+
+            // If the user pressed the fetch address button before we had the location,
+            // this will be set to true indicating that we should kick off the intent
+            // service after fetching the location.
+            if (mAddressRequested) {
+                startIntentService();
+            }
         }
     }
 
@@ -603,12 +607,8 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
                 Log.i(TAG, "User interaction was cancelled.");
             } else if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission granted.
-                getAddress();
+                updateAddress();
             }
         }
-    }
-
-    private void updateAddress() {
-        addressLine1.setText(mAddressOutput, TextView.BufferType.EDITABLE);
     }
 }
