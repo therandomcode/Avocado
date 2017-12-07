@@ -110,6 +110,17 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/user_profile_phoneNumber_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_green_light"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="Phone Number: " />
+
+            <TextView
                 android:id="@+id/user_profile_phoneNumber"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -118,60 +129,7 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Phone Number: " />
-
-            <!-- @Arka change phone number -->
-
-            <TextView
-                android:id="@+id/user_profile_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="#fff"
-                android:clickable="false"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text="Address: " />
-
-            <TextView
-                android:id="@+id/user_profile_city"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#fff"
-                android:clickable="false"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text="City: " />
-
-            <TextView
-                android:id="@+id/user_profile_postalcode"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#fff"
-                android:clickable="false"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text="Postal Code: " />
-
-            <TextView
-                android:id="@+id/user_profile_country"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#fff"
-                android:clickable="false"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text="Country: " />
-            <!-- @Arka change address -->
+                android:text="" />
 
             <EditText
                 android:id="@+id/profile_edit_phoneNumber"
@@ -183,9 +141,33 @@
                 android:elevation="4dp"
                 android:inputType="phone"
                 android:padding="20dp"
-                android:text="Phone Number: "
+                android:text=""
                 android:hint="Phone Number"/>
             <!-- @Arka change phone number -->
+
+            <!-- @Arka change phone number -->
+
+            <TextView
+                android:id="@+id/user_profile_address_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_green_light"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="Address: " />
+
+            <TextView
+                android:id="@+id/user_profile_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="" />
 
             <EditText
                 android:id="@+id/profile_edit_address"
@@ -198,8 +180,32 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Address: "
+                android:text=""
                 android:hint="Address"/>
+
+            <TextView
+                android:id="@+id/user_profile_city_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_green_light"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="City:" />
+
+            <TextView
+                android:id="@+id/user_profile_city"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="" />
 
             <EditText
                 android:id="@+id/profile_edit_city"
@@ -212,8 +218,32 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="City: "
-                android:hint="Address"/>
+                android:text=""
+                android:hint="City"/>
+
+            <TextView
+                android:id="@+id/user_profile_postalcode_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_green_light"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="Postal Code:" />
+
+            <TextView
+                android:id="@+id/user_profile_postalcode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="" />
 
             <EditText
                 android:id="@+id/profile_edit_postalcode"
@@ -226,8 +256,32 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Postal Code: "
-                android:hint="Address"/>
+                android:text=""
+                android:hint="Postal Code"/>
+
+            <TextView
+                android:id="@+id/user_profile_country_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_green_light"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="Country: " />
+
+            <TextView
+                android:id="@+id/user_profile_country"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="" />
 
             <EditText
                 android:id="@+id/profile_edit_country"
@@ -240,8 +294,14 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Country: "
-                android:hint="Address"/>
+                android:text=""
+                android:hint="Country"/>
+            <!-- @Arka change address -->
+
+
+
+
+
             <!-- @Arka change address -->
 
             <!--
