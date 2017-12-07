@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class FarmerMessagesListView extends ArrayAdapter<String> {
     private String[] time;
     private Activity context;
     private String[] price;
+    private Button[] acceptButton;
 
     public FarmerMessagesListView(Activity context, String[] transportername, String[] time, String[] price) {
         super(context, R.layout.activity_farmer_history_listview, transportername);
@@ -22,6 +24,7 @@ public class FarmerMessagesListView extends ArrayAdapter<String> {
         this.transportername = transportername;
         this.time = time;
         this.price = price;
+        this.acceptButton = acceptButton;
     }
 
     @NonNull

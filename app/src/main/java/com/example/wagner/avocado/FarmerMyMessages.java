@@ -19,7 +19,7 @@ public class FarmerMyMessages extends AppCompatActivity {
     String[] transportername = {"Felipe los Espadrillas", "Ricardo de Leon", "Davíd Latafundia"};
     String[] time = {"Tuesday, 2 October 15:10", "Thursday, 4 October 13:24", "Tuesday, 6 October 15:36"};
     Integer[] imgid = {R.drawable.bgavocado, R.drawable.bgavocado, R.drawable.bgavocado};
-    String[] msg = {"Hi Juan, it's Felipe. I'm going to be late because there is a tree blocking the road. I'm sorry! ", "Hello! Are you still free Friday?", "OK, sounds good. See you then. "};
+    String[] msg = {"Requests delivery 20 Dec 2017", "Request delivery 14 Jan 2018", "Requests delivery 15 Jan 2018."};
     //String[] delivered = {"delivered", "delivered", "not delivered"};
 
     @Override
@@ -28,7 +28,8 @@ public class FarmerMyMessages extends AppCompatActivity {
         setContentView(R.layout.activity_farmer_my_messages);
 
         lst = findViewById(R.id.messagesListView);
-        FarmerMessagesListView customListview = new FarmerMessagesListView(this, transportername, time, msg);
+        FarmerMessagesListView customListview = new FarmerMessagesListView(this,
+                transportername, time, msg);
         lst.setAdapter(customListview);
     }
 }
