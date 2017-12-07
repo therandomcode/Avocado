@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -15,12 +16,17 @@ import org.json.JSONObject;
 public class TransporterEditProfile extends AppActivity {
     String firstname, lastname, phonenumber, postalcode, country, city, address, availability, pass, transactions,
             carmake, capacity, licenceplatenumber, requests, ratings, deliveries;
+    RatingBar rb;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transporter_edit_profile);
         setDefaultView();
 
+        rb = (RatingBar)findViewById(R.id.ratingBar);
+        rb.setClickable(false);
 
         final Button saveChangesButton = findViewById(R.id.transporterSaveChangesButton);
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
@@ -97,11 +103,11 @@ public class TransporterEditProfile extends AppActivity {
         EditText edit_postalcode = findViewById(R.id.profile_edit_postalcode);
         EditText edit_country = findViewById(R.id.profile_edit_country);
 
-        edit_phoneNumber.setText("Phone Number: "+phonenumber);
-        edit_address.setText("Address: "+address);
-        edit_city.setText("City: "+city);
-        edit_postalcode.setText("Postal Code: "+ postalcode);
-        edit_country.setText("Country: "+ country);
+        edit_phoneNumber.setText(phonenumber);
+        edit_address.setText(address);
+        edit_city.setText(city);
+        edit_postalcode.setText(postalcode);
+        edit_country.setText(country);
 
         editProfile.setVisibility(View.GONE);
         saveChanges.setVisibility(View.VISIBLE);
@@ -130,11 +136,11 @@ public class TransporterEditProfile extends AppActivity {
         EditText edit_postalcode = findViewById(R.id.profile_edit_postalcode);
         EditText edit_country = findViewById(R.id.profile_edit_country);
 
-        phonenumber= ((String)edit_phoneNumber.getText().toString()).split(" ", 3)[2];
-        address = ((String)edit_address.getText().toString()).split(" ", 2)[1];
-        city = ((String)edit_city.getText().toString()).split(" ",2)[1];
-        postalcode = ((String)edit_postalcode.getText().toString()).split(" ", 2)[1];
-        country = ((String)edit_country.getText().toString()).split(" ", 2)[1];
+        phonenumber= ((String)edit_phoneNumber.getText().toString());
+        address = ((String)edit_address.getText().toString());
+        city = ((String)edit_city.getText().toString());
+        postalcode = ((String)edit_postalcode.getText().toString());
+        country = ((String)edit_country.getText().toString());
 
         DatabaseHandler db1 = new DatabaseHandler();
         db1.insertTransporter(firstname, lastname, availability, address, city, postalcode, country,
@@ -155,32 +161,34 @@ public class TransporterEditProfile extends AppActivity {
                 availability = (String) x.get("availability");
                 carmake = (String) x.get("carmake");
                 capacity = (String) x.get("capacity");
-                licenceplatenumber = (String) x.get("licenceplatenumber");
+                licenceplatenumber = (String) x.get("licenseplatenumber");
                 requests = (String) x.get("requests");
                 city = (String) x.get("city");
                 postalcode = (String) x.get("postalcode");
                 country = (String) x.get("country");
-                transactions = (String) x.get("transactions");
+                requests = (String) x.get("requests");
                 ratings = (String) x.get("ratings");
                 deliveries = (String) x.get("deliveries");
+
+                rb.setRating(Float.parseFloat(ratings));
 
                 TextView nameview = (TextView)findViewById(R.id.user_profile_name);
                 nameview.setText(firstname+" "+lastname);
 
                 TextView phoneview = (TextView)findViewById(R.id.user_profile_phoneNumber);
-                phoneview.setText("Phone Number: "+phonenumber);
+                phoneview.setText(phonenumber);
 
                 TextView addressview = (TextView)findViewById(R.id.user_profile_address);
-                addressview.setText("Address: "+address);
+                addressview.setText(address);
 
                 TextView cityview = (TextView)findViewById(R.id.user_profile_city);
-                cityview.setText("City: "+city);
+                cityview.setText(city);
 
                 TextView pcview = (TextView)findViewById(R.id.user_profile_postalcode);
-                pcview.setText("Postal Code: "+postalcode);
+                pcview.setText(postalcode);
 
                 TextView countryview = (TextView)findViewById(R.id.user_profile_country);
-                countryview.setText("Country: "+country);
+                countryview.setText(country);
 
             }
         } catch (JSONException e) {
@@ -198,6 +206,8 @@ public class TransporterEditProfile extends AppActivity {
         historyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterEditProfile.this, TransporterHistory.class);
+                String phonenumber = getIntent().getStringExtra("phonenumber");
+                myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);
             }
         });
@@ -206,7 +216,7 @@ public class TransporterEditProfile extends AppActivity {
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 writeChanges();
-                Intent myIntent = new Intent(TransporterEditProfile.this, TransporterHome.class);
+                Intent myIntent = new Intent(TransporterEditProfile.this, TransporterEditProfile.class);
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);

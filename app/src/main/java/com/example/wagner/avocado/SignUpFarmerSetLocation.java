@@ -175,7 +175,7 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
                 DatabaseHandler db = new DatabaseHandler();
 
                 db.insertFarmer(firstname, lastname, phonenumber, password, "", ""
-                        , "", "", "[]", "[]", "N.A.");
+                        , "", "", "[]", "[]", "0");
 
 
                 addressLine1 = (EditText)findViewById(R.id.addressline1);

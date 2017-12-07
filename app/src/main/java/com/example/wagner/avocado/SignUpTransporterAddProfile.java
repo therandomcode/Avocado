@@ -38,13 +38,13 @@ public class SignUpTransporterAddProfile extends AppCompatActivity{
                 String licenseplatenumber = getIntent().getStringExtra("licenseplatenumber");
                 String capacity = getIntent().getStringExtra("capacity");
 
-                int index = address.indexOf("/");
-                String newaddress = address.substring(0,index) + " " + address.substring(index+1);
+                address.replace("/", " ");
+
 
                 DatabaseHandler db = new DatabaseHandler();
                 System.out.println("Hello");
                 db.insertTransporter(firstname, lastname, "[]", address, city, postalcode
-                        , country, password, phonenumber, carmake, capacity, licenseplatenumber, "[]", "N.A.", "[]");
+                        , country, password, phonenumber, carmake, capacity, licenseplatenumber, "[]", "0", "[]");
 
                 myIntent.putExtra("type", "transporter");
                 myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));

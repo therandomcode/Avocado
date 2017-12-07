@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import android.widget.RatingBar;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,12 +16,14 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
 
     String firstname, lastname, phonenumber, postalcode, country, city, address, pass, transactions;
     String deliveries, ratings;
+    RatingBar rb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_edit_profile);
         setDefaultView();
-
+        rb = (RatingBar)findViewById(R.id.ratingBar);
+        rb.setClickable(false);
 
         final Button saveChangesButton = findViewById(R.id.farmerSaveChangesButton);
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
@@ -98,11 +100,11 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
         EditText edit_postalcode = findViewById(R.id.profile_edit_postalcode);
         EditText edit_country = findViewById(R.id.profile_edit_country);
 
-        edit_phoneNumber.setText("Phone Number: "+phonenumber);
-        edit_address.setText("Address: "+address);
-        edit_city.setText("City: "+city);
-        edit_postalcode.setText("Postal Code: "+ postalcode);
-        edit_country.setText("Country: "+ country);
+        edit_phoneNumber.setText(phonenumber);
+        edit_address.setText(address);
+        edit_city.setText(city);
+        edit_postalcode.setText(postalcode);
+        edit_country.setText(country);
 
         editProfile.setVisibility(View.GONE);
         saveChanges.setVisibility(View.VISIBLE);
@@ -131,11 +133,13 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
         EditText edit_postalcode = findViewById(R.id.profile_edit_postalcode);
         EditText edit_country = findViewById(R.id.profile_edit_country);
 
-        phonenumber= ((String)edit_phoneNumber.getText().toString()).split(" ", 3)[2];
-        address = ((String)edit_address.getText().toString()).split(" ", 2)[1];
-        city = ((String)edit_city.getText().toString()).split(" ",2)[1];
-        postalcode = ((String)edit_postalcode.getText().toString()).split(" ", 2)[1];
-        country = ((String)edit_country.getText().toString()).split(" ", 2)[1];
+        phonenumber= (String)edit_phoneNumber.getText().toString();
+        address = (String)edit_address.getText().toString();
+        city = (String)edit_city.getText().toString();
+        postalcode = (String)edit_postalcode.getText().toString();
+        country = (String)edit_country.getText().toString();
+
+
 
         DatabaseHandler db1 = new DatabaseHandler();
         db1.insertFarmer(firstname, lastname, phonenumber, pass, address, country, postalcode, city,
@@ -158,6 +162,9 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
                 transactions = (String) x.get("transactions");
                 deliveries = (String) x.get("deliveries");
                 ratings = (String) x.get("ratings");
+
+
+                rb.setRating(Float.parseFloat(ratings));
 
                 TextView nameview = (TextView)findViewById(R.id.user_profile_name);
                 nameview.setText(firstname+" "+lastname);
@@ -193,6 +200,7 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
         historyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerEditProfile.this, FarmerHistory.class);
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber").toString());
                 startActivity(myIntent);
             }
         });
@@ -201,7 +209,7 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 writeChanges();
-                Intent myIntent = new Intent(FarmerEditProfile.this, FarmerHome.class);
+                Intent myIntent = new Intent(FarmerEditProfile.this, FarmerEditProfile.class);
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 myIntent.putExtra("phonenumber", phonenumber);
                 startActivity(myIntent);

@@ -34,6 +34,7 @@ public class FarmerHistory extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerHistory.this,
                         FarmerEditProfile.class);
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber").toString());
                 startActivity(myIntent);
             }
         });
