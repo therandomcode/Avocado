@@ -50,7 +50,9 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
     final ArrayList<String> transportername = new ArrayList<String>();/*={"Juan Felipe","Ricardo Sanchez-Delorio","Davíd de Leon"};*/
     final ArrayList<String> cars = new ArrayList<String>();/*={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};*/
     final ArrayList<String> cities = new ArrayList<String>();/* ={"Cartagena", "Cúcuta", "Santa Marta"};*/
-    Integer[] imgid ={R.drawable.arka,R.drawable.cecilia,R.drawable.raza};
+    final ArrayList<Integer> imgid = new ArrayList<>();
+    final ArrayList<String> number = new ArrayList<String>();
+    //Integer[] imgid ={R.drawable.arka,R.drawable.cecilia,R.drawable.raza};
 
     private int transporterIndex;
   
@@ -112,9 +114,12 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
                 lastname = (String)x.get("lastname");
                 carmake = (String)x.get("carmake");
                 city = (String)x.get("city");
+                phonenumber = (String)x.get("phonenumber");
                 transportername.add(firstname + " " + lastname);
                 cars.add(carmake);
                 cities.add(city);
+                imgid.add(R.drawable.arka);
+                number.add(phonenumber);
             }
         } catch (JSONException e) {
             System.out.println("Failure");
@@ -125,15 +130,30 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         bestMatch = findViewById(R.id.bestMatchListView);
         String [] transarray = transportername.toArray(new String[transportername.size()]);
         String [] cararray = cars.toArray(new String[cars.size()]);
+        Integer [] images = imgid.toArray(new Integer[imgid.size()]);
 
         FarmerRequestPickupChooseTransporterCustomListView customListview
                 = new FarmerRequestPickupChooseTransporterCustomListView(this
-                , transarray, cararray, imgid);
+                , transarray, cararray, images);
         bestMatch.setAdapter(customListview);
+
+        if (transportername.size() > 0) {
+            transportername.remove(0);
+            cars.remove(0);
+            imgid.remove(0);
+        }
+
+        transarray = transportername.toArray(new String[transportername.size()]);
+        cararray = cars.toArray(new String[cars.size()]);
+        images = imgid.toArray(new Integer[imgid.size()]);
+
+        FarmerRequestPickupChooseTransporterCustomListView secondListview
+                = new FarmerRequestPickupChooseTransporterCustomListView(this
+                , transarray, cararray, images);
 
         lst= findViewById(R.id.listview);
         lst.setClickable(true);
-        lst.setAdapter(customListview);
+        lst.setAdapter(secondListview);
 
         bestMatch.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapter, View v, int position,
@@ -143,16 +163,15 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
                 transporterIndex = 0;
             }
         });
-
-        lst.setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> adapter, View v, int position,
-                                    long arg3)
-            {
-                transporterIndex = position+1;
-                findViewById(R.id.popUp).setVisibility(View.VISIBLE);
-            }
-        });
-
+        if (transportername.size() > 0) {
+            lst.setOnItemClickListener(new OnItemClickListener() {
+                public void onItemClick(AdapterView<?> adapter, View v, int position,
+                                        long arg3) {
+                    transporterIndex = position + 1;
+                    findViewById(R.id.popUp).setVisibility(View.VISIBLE);
+                }
+            });
+        }
         final ImageButton closeButton = findViewById(R.id.closePopUpButton);
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +185,8 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(FarmerRequestPickupChooseTransporter.this, ViewProfile.class);
+
+                myIntent.putExtra("transporternumber", number.get(transporterIndex));
                 myIntent.putExtra("popup",transporterIndex);
                 myIntent.putExtra
                         ("phonenumber", getIntent().getStringExtra("phonenumber"));
