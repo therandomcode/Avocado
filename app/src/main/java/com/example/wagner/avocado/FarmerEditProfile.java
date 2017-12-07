@@ -163,19 +163,19 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
                 nameview.setText(firstname+" "+lastname);
 
                 TextView phoneview = (TextView)findViewById(R.id.user_profile_phoneNumber);
-                phoneview.setText("Phone Number: "+phonenumber);
+                phoneview.setText(phonenumber);
 
                 TextView addressview = (TextView)findViewById(R.id.user_profile_address);
-                addressview.setText("Address: "+address);
+                addressview.setText(address);
 
                 TextView cityview = (TextView)findViewById(R.id.user_profile_city);
-                cityview.setText("City: "+city);
+                cityview.setText(city);
 
                 TextView pcview = (TextView)findViewById(R.id.user_profile_postalcode);
-                pcview.setText("Postal Code: "+postalcode);
+                pcview.setText(postalcode);
 
                 TextView countryview = (TextView)findViewById(R.id.user_profile_country);
-                countryview.setText("Country: "+country);
+                countryview.setText(country);
 
             }
         } catch (JSONException e) {
