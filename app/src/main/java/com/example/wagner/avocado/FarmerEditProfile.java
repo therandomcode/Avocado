@@ -170,6 +170,7 @@ public class FarmerEditProfile extends AppActivity implements TransporterReceive
 
                 TextView nameview = (TextView)findViewById(R.id.user_profile_name);
                 nameview.setText(firstname+" "+lastname);
+                findViewById(R.id.user_profile_photo).bringToFront();
 
                 TextView phoneview = (TextView)findViewById(R.id.user_profile_phoneNumber);
                 phoneview.setText(phonenumber);

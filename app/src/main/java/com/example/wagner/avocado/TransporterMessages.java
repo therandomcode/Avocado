@@ -33,5 +33,15 @@ public class TransporterMessages extends AppCompatActivity {
         TransporterMessagesListView customListview = new TransporterMessagesListView(this,
                 transportername, time, msg);
         lst.setAdapter(customListview);
+
+        final Button backButton = findViewById(R.id.transporterMyMessagesBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(TransporterMessages.this,
+                        TransporterHome.class);
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
+                startActivity(myIntent);
+            }
+        });
     }
 }
