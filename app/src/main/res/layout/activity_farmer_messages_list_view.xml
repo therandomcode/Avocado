@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,27 +16,46 @@
             android:id="@+id/transportername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/t_acceptRequestButton"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_toEndOf="@+id/transporterPhoto"
+            android:layout_toRightOf="@+id/transporterPhoto"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/price"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="@color/common_google_signin_btn_text_light_default" />
 
         <!-- PRICE IS ACTUALLY MESSAGE CONTENT -->
         <TextView
-            android:id="@+id/price"
-            android:layout_width="200dp"
+            android:id="@+id/t_address"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_toEndOf="@+id/transporterPhoto"
+            android:layout_toRightOf="@+id/transporterPhoto"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/common_google_signin_btn_text_light_default"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/t_pickupDate"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_toLeftOf="@+id/t_declineRequestButton"
+            android:layout_toStartOf="@+id/t_declineRequestButton"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        <ImageView
+            android:id="@+id/transporterPhoto"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/transportername"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:layout_alignParentTop="true"
+            app:srcCompat="@drawable/profile" />
 
     </RelativeLayout>
 </LinearLayout>

@@ -14,7 +14,7 @@
         >
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/farmerPhoto"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="0.11"
@@ -27,8 +27,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_toRightOf="@+id/imageView"
+            android:layout_toEndOf="@+id/farmerPhoto"
+            android:layout_toRightOf="@+id/farmerPhoto"
             android:textColor="#264d00"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -37,7 +37,7 @@
             android:id="@+id/timePicked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/imageView"
+            android:layout_toRightOf="@+id/farmerPhoto"
             android:layout_below="@+id/datePicked"
             android:layout_weight="1"
             android:paddingLeft="10dp"

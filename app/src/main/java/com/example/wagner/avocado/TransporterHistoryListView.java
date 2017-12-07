@@ -64,7 +64,7 @@ public class TransporterHistoryListView extends ArrayAdapter<String> {
             tvw2 = v.findViewById(R.id.timePicked);
             tvw3 = v.findViewById(R.id.price);
             tvw4 = v.findViewById(R.id.delivered);
-            ivw = v.findViewById(R.id.imageView);
+            ivw = v.findViewById(R.id.farmerPhoto);
         }
     }
 }
