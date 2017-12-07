@@ -20,7 +20,7 @@ public class TransporterMessages extends AppCompatActivity {
     ListView lst;
     String[] transportername = {"Felipe los Espadrillas", "Ricardo de Leon", "Davíd Latafundia"};
     String[] time = {"Tuesday, 2 October 15:10", "Thursday, 4 October 13:24", "Tuesday, 6 October 15:36"};
-    Integer[] imgid = {R.drawable.bgavocado, R.drawable.bgavocado, R.drawable.bgavocado};
+    Integer[] imgid = {R.drawable.profile, R.drawable.cecilia, R.drawable.maria};
     String[] msg = {"Requests delivery 20 Dec 2017", "Request delivery 14 Jan 2018", "Requests delivery 15 Jan 2018."};
     //String[] delivered = {"delivered", "delivered", "not delivered"};
 
@@ -31,7 +31,7 @@ public class TransporterMessages extends AppCompatActivity {
 
         lst = findViewById(R.id.transporterMessagesListView);
         TransporterMessagesListView customListview = new TransporterMessagesListView(this,
-                transportername, time, msg);
+                transportername, time, msg, imgid);
         lst.setAdapter(customListview);
 
         final Button backButton = findViewById(R.id.transporterMyMessagesBackButton);
