@@ -19,17 +19,19 @@ public class TransporterMessagesListView extends ArrayAdapter<String> {
     private String[] time;
     private Activity context;
     private String[] price;
+    private Integer[] imgid;
     private Button[] acceptButton;
     private Button[] declineButton;
 
-    public TransporterMessagesListView(Activity context, String[] transportername, String[] time, String[] price) {
+    public TransporterMessagesListView(Activity context, String[] transportername, String[] time,
+                                       String[] price, Integer[] imgid) {
         super(context, R.layout.activity_transporter_messages_list_view, transportername);
         this.context = context;
         this.transportername = transportername;
         this.time = time;
         this.price = price;
-        this.acceptButton = acceptButton;
-        this.declineButton = declineButton;
+        this.imgid = imgid;
+        
     }
 
     @NonNull
@@ -49,6 +51,7 @@ public class TransporterMessagesListView extends ArrayAdapter<String> {
         viewHolder.tvw1.setText(transportername[position]);
         viewHolder.tvw2.setText(time[position]);
         viewHolder.tvw3.setText(price[position]);
+        viewHolder.tvw4.setImageResource(imgid[position]);
         return r;
     }
 
@@ -56,11 +59,13 @@ public class TransporterMessagesListView extends ArrayAdapter<String> {
         TextView tvw1;
         TextView tvw2;
         TextView tvw3;
+        ImageView tvw4;
 
         ViewHolder(View v) {
             tvw1 = v.findViewById(R.id.farmername);
             tvw2 = v.findViewById(R.id.t_time);
             tvw3 = v.findViewById(R.id.t_price);
+            tvw4 = v.findViewById(R.id.farmerPhoto);
         }
     }
 }
