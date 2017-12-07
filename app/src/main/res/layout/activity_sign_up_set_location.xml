@@ -118,7 +118,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:hint="Where is your farm?"
-        android:textSize="36sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

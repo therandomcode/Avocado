@@ -15,12 +15,15 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 public class TransporterMessages extends AppCompatActivity {
 
@@ -87,6 +90,11 @@ public class TransporterMessages extends AppCompatActivity {
                         ("phonenumber", getIntent().getStringExtra("phonenumber"));
 
                 startActivity(myIntent);
+
+                Toast toast = Toast.makeText(TransporterMessages.this,
+                        "Thank you! They have been added to your schedule, which you can access from the home page.",
+                        Toast.LENGTH_LONG);
+                toast.show();
             }
         });
 
