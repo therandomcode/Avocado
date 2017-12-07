@@ -40,6 +40,8 @@ public class TransporterEditProfile extends AppActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent returnHomeIntent = new Intent(TransporterEditProfile.this, TransporterHome.class);
+                returnHomeIntent.putExtra("phonenumber",
+                        getIntent().getStringExtra("phonenumber"));
                 startActivity(returnHomeIntent);
             }
         });
