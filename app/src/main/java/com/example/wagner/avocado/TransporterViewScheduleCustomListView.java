@@ -42,15 +42,13 @@ public class TransporterViewScheduleCustomListView extends ArrayAdapter<String> 
         startButton = viewHolder.startButton;
         startButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ViewHolder viewHolder = new ViewHolder(v);
-                viewHolder.startButton.setVisibility(View.GONE);
+                v.findViewById(R.id.startButton).setVisibility(View.GONE);
             }
         });
 
         viewHolder.ivw.setImageResource(imgid[position]);
         viewHolder.tvw1.setText(transportername[position]);
         viewHolder.tvw2.setText(time[position]);
-
 
         return r;
     }
