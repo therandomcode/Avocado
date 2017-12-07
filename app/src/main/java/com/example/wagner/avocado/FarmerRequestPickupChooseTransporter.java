@@ -10,26 +10,17 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView.OnItemClickListener;
 
 import java.util.*;
-
-import cz.msebera.android.httpclient.Header;
 
 public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
@@ -141,7 +132,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
             }
         });
 
-        final Button viewProfileButton = findViewById(R.id.viewProfile);
+        final Button viewProfileButton = findViewById(R.id.acceptButton);
         viewProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
