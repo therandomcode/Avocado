@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class TransporterEditProfile extends AppActivity {
     String firstname, lastname, phonenumber, postalcode, country, city, address, availability, pass, transactions,
-            carmake, capacity, licenceplatenumber, requests;
+            carmake, capacity, licenceplatenumber, requests, ratings, deliveries;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,7 +138,7 @@ public class TransporterEditProfile extends AppActivity {
 
         DatabaseHandler db1 = new DatabaseHandler();
         db1.insertTransporter(firstname, lastname, availability, address, city, postalcode, country,
-                pass, phonenumber, carmake, capacity, licenceplatenumber, requests);
+                pass, phonenumber, carmake, capacity, licenceplatenumber, requests, ratings, deliveries);
 
     }
 
@@ -161,6 +161,8 @@ public class TransporterEditProfile extends AppActivity {
                 postalcode = (String) x.get("postalcode");
                 country = (String) x.get("country");
                 transactions = (String) x.get("transactions");
+                ratings = (String) x.get("ratings");
+                deliveries = (String) x.get("deliveries");
 
                 TextView nameview = (TextView)findViewById(R.id.user_profile_name);
                 nameview.setText(firstname+" "+lastname);
