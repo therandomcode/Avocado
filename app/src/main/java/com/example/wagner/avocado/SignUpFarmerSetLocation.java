@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Geocoder;
+import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -12,10 +13,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.CompoundButton;
+import android.os.ResultReceiver;
+import android.os.Handler;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,6 +31,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import android.util.Log;
+
 
 public class SignUpFarmerSetLocation extends AppCompatActivity implements
         OnMarkerClickListener,
@@ -35,6 +41,50 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
         GoogleMap.OnMyLocationButtonClickListener,
         ActivityCompat.OnRequestPermissionsResultCallback,
         OnMapAndViewReadyListener.OnGlobalLayoutAndMapReadyListener {
+
+    private Bundle bundle;
+
+    private static final String TAG = SignUpFarmerSetLocation.class.getSimpleName();
+
+    private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 34;
+    private static final String ADDRESS_REQUESTED_KEY = "address-request-pending";
+    private static final String LOCATION_ADDRESS_KEY = "location-address";
+
+    /**
+     * Represents a geographical location.
+     */
+    private Location mLastLocation;
+
+    /**
+     * Tracks whether the user has requested an address. Becomes true when the user requests an
+     * address and false when the address (or an error message) is delivered.
+     */
+    private boolean mAddressRequested;
+
+    /**
+     * The formatted location address.
+     */
+    private String mAddressOutput;
+
+    /**
+     * Receiver registered with this activity to get the response from FetchAddressIntentService.
+     */
+    private AddressResultReceiver mResultReceiver;
+
+    /**
+     * Displays the location address.
+     */
+    private TextView mLocationAddressTextView;
+
+    /**
+     * Visible while the address is being fetched.
+     */
+    private ProgressBar mProgressBar;
+
+    /**
+     * Kicks off the request to fetch an address when pressed.
+     */
+    private Button mFetchAddressButton;
 
     /**
      * Request code for location permission request.
@@ -70,6 +120,8 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_set_location);
 
+        bundle = savedInstanceState;
+
         addressLine1 = (EditText)findViewById(R.id.addressline1);
         addressLine2 = (EditText)findViewById(R.id.addressline2);
         cityText = (EditText)findViewById(R.id.city);
@@ -77,6 +129,10 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
         postalCodeText = (EditText)findViewById(R.id.postalcode);
 
         geocoder = new Geocoder(SignUpFarmerSetLocation.this);
+        mResultReceiver = new AddressResultReceiver(new Handler());
+        mAddressRequested = false;
+        mAddressOutput = "";
+        updateValuesFromBundle(bundle);
 
         String address = getIntent().getStringExtra("address");
         if (address != null) {
@@ -327,23 +383,6 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
-            return;
-        }
-
-        if (PermissionUtils.isPermissionGranted(permissions, grantResults,
-                Manifest.permission.ACCESS_FINE_LOCATION)) {
-            // Enable the my location layer if the permission has been granted.
-            enableMyLocation();
-        } else {
-            // Display the missing permission error dialog when the fragments resume.
-            mPermissionDenied = true;
-        }
-    }
-
-    @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
         if (mPermissionDenied) {
@@ -366,6 +405,7 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
         // Any showing info window closes when the map is clicked.
         // Clear the currently selected marker.
         markerLatLng = point;
+        updateAddress();
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
         Toast.makeText(this, "Setting your farm's location", Toast.LENGTH_SHORT).show();
@@ -388,9 +428,187 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
         return false;
     }
 
-    private void showToast(String message) {
-        Toast.makeText(this,
-                message,
-                Toast.LENGTH_SHORT).show();
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if (!checkPermissions()) {
+            requestPermissions();
+        } else {
+            getAddress();
+        }
+    }
+
+    /**
+     * Updates fields based on data stored in the bundle.
+     */
+    private void updateValuesFromBundle(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            // Check savedInstanceState to see if the address was previously requested.
+            if (savedInstanceState.keySet().contains(ADDRESS_REQUESTED_KEY)) {
+                mAddressRequested = savedInstanceState.getBoolean(ADDRESS_REQUESTED_KEY);
+            }
+            // Check savedInstanceState to see if the location address string was previously found
+            // and stored in the Bundle. If it was found, display the address string in the UI.
+            if (savedInstanceState.keySet().contains(LOCATION_ADDRESS_KEY)) {
+                mAddressOutput = savedInstanceState.getString(LOCATION_ADDRESS_KEY);
+                displayAddressOutput();
+            }
+        }
+    }
+
+    /**
+     * Runs when user clicks the Fetch Address button.
+     */
+    @SuppressWarnings("unused")
+    public void fetchAddressButtonHandler(View view) {
+        if (mLastLocation != null) {
+            startIntentService();
+            return;
+        }
+
+        // If we have not yet retrieved the user location, we process the user's request by setting
+        // mAddressRequested to true. As far as the user is concerned, pressing the Fetch Address button
+        // immediately kicks off the process of getting the address.
+        mAddressRequested = true;
+    }
+
+    /**
+     * Creates an intent, adds location data to it as an extra, and starts the intent service for
+     * fetching an address.
+     */
+    private void startIntentService() {
+        // Create an intent for passing to the intent service responsible for fetching the address.
+        Intent intent = new Intent(this, FetchAddressIntentService.class);
+
+        // Pass the result receiver as an extra to the service.
+        intent.putExtra(Constants.RECEIVER, mResultReceiver);
+
+        // Pass the location data as an extra to the service.
+        intent.putExtra(Constants.LOCATION_DATA_EXTRA, mLastLocation);
+
+        // Start the service. If the service isn't already running, it is instantiated and started
+        // (creating a process for it if needed); if it is running then it remains running. The
+        // service kills itself automatically once all intents are processed.
+        startService(intent);
+    }
+
+    @SuppressWarnings("MissingPermission")
+    private void getAddress() {
+        Location location = new Location("Farm Location");
+        location.setLatitude(markerLatLng.latitude);
+        location.setLongitude(markerLatLng.longitude);
+        mLastLocation = location;
+
+        // If the user pressed the fetch address button before we had the location,
+        // this will be set to true indicating that we should kick off the intent
+        // service after fetching the location.
+        if (mAddressRequested) {
+            startIntentService();
+        }
+    }
+
+    /**
+     * Updates the address in the UI.
+     */
+    private void displayAddressOutput() {
+        mLocationAddressTextView.setText(mAddressOutput);
+    }
+
+    /**
+     * Shows a toast with the given text.
+     */
+    private void showToast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save whether the address has been requested.
+        savedInstanceState.putBoolean(ADDRESS_REQUESTED_KEY, mAddressRequested);
+
+        // Save the address string.
+        savedInstanceState.putString(LOCATION_ADDRESS_KEY, mAddressOutput);
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    /**
+     * Receiver for data sent from FetchAddressIntentService.
+     */
+    private class AddressResultReceiver extends ResultReceiver {
+        AddressResultReceiver(Handler handler) {
+            super(handler);
+        }
+
+        /**
+         *  Receives data sent from FetchAddressIntentService and updates the UI in MainActivity.
+         */
+        @Override
+        protected void onReceiveResult(int resultCode, Bundle resultData) {
+
+            // Display the address string or an error message sent from the intent service.
+            mAddressOutput = resultData.getString(Constants.RESULT_DATA_KEY);
+            displayAddressOutput();
+
+            // Show a toast message if an address was found.
+            if (resultCode == Constants.SUCCESS_RESULT) {
+                showToast(getString(R.string.address_found));
+            }
+
+            // Reset. Enable the Fetch Address button and stop showing the progress bar.
+            mAddressRequested = false;
+        }
+    }
+    /**
+     * Return the current state of the permissions needed.
+     */
+    private boolean checkPermissions() {
+        int permissionState = ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+        return permissionState == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermissions() {
+        boolean shouldProvideRationale =
+                ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.ACCESS_FINE_LOCATION);
+
+        // Provide an additional rationale to the user. This would happen if the user denied the
+        // request previously, but didn't check the "Don't ask again" checkbox.
+        if (shouldProvideRationale) {
+            Log.i(TAG, "Displaying permission rationale to provide additional context.");
+
+        } else {
+            Log.i(TAG, "Requesting permission");
+            // Request permission. It's possible this can be auto answered if device policy
+            // sets the permission in a given state or the user denied the permission
+            // previously and checked "Never ask again".
+            ActivityCompat.requestPermissions(SignUpFarmerSetLocation.this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    REQUEST_PERMISSIONS_REQUEST_CODE);
+        }
+    }
+
+    /**
+     * Callback received when a permissions request has been completed.
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        Log.i(TAG, "onRequestPermissionResult");
+        if (requestCode == REQUEST_PERMISSIONS_REQUEST_CODE) {
+            if (grantResults.length <= 0) {
+                // If user interaction was interrupted, the permission request is cancelled and you
+                // receive empty arrays.
+                Log.i(TAG, "User interaction was cancelled.");
+            } else if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted.
+                getAddress();
+            }
+        }
+    }
+
+    private void updateAddress() {
+        addressLine1.setText(mAddressOutput, TextView.BufferType.EDITABLE);
     }
 }

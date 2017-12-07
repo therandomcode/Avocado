@@ -30,4 +30,5 @@ dependencies {
     implementation files('libs/android-async-http-1.4.9.jar')
     implementation files('libs/gson-2.8.2.jar')
     implementation files('libs/httpclient-4.4.1.1.jar')
+    compile 'com.google.android.gms:play-services-location:11.0.0'
 }

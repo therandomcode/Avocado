@@ -72,6 +72,9 @@
         <activity android:name=".SignUpTransporterSetCarInfo"/>
         <activity android:name=".SignUpTransporterSetLocation"/>
         <activity android:name=".Loading"/>
+        <service
+            android:name=".FetchAddressIntentService"
+            android:exported="false"/>
     </application>
 
 
