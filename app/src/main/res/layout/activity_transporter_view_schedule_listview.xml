@@ -14,7 +14,7 @@
         >
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/farmerPhoto"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_weight="0.11"
@@ -27,8 +27,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
-            android:layout_toEndOf="@+id/imageView"
-            android:layout_toRightOf="@+id/imageView"
+            android:layout_toEndOf="@+id/farmerPhoto"
+            android:layout_toRightOf="@+id/farmerPhoto"
             android:textColor="#264d00"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -45,5 +45,15 @@
             android:paddingLeft="10dp"
             android:textColor="#408000"
             android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/startButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="75dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="Start" />
     </RelativeLayout>
 </LinearLayout>
