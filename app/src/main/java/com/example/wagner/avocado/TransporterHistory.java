@@ -7,25 +7,82 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class TransporterHistory extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.ArrayList;
+public class TransporterHistory extends AppActivity implements TransporterReceived{
 
     ListView lst;
-    String[] transportername={"Juan","Ricardo","Davíd"};
-    String[] time={"Tuesday, 2 October","Thursday, 4 October","Tuesday, 2 October"};
-    Integer[] imgid ={R.drawable.farmer4,R.drawable.farmer5,R.drawable.farmer6};
-    String[] price={"150 COP", "130 COP", "200 COP"};
-    String[] delivered={"delivered","delivered","not delivered"};
+
+
+    ArrayList<String> fname = new ArrayList<String>();
+    ArrayList<String> fdate = new ArrayList<String>();
+    ArrayList<Integer> fimgid = new ArrayList<Integer>();
+    ArrayList<String> fstartcity = new ArrayList<String>();
+    ArrayList<String> fendcity = new ArrayList<String>();
+
+    String cropprice = "16 000.00";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transporter_history);
 
+        DatabaseHandler db = new DatabaseHandler(this);
+        db.getTransaction(getIntent().getStringExtra("phonenumber"),"transporter");
+
+
+    }
+
+    public void Success(String response){
+
+        String name;
+        String date;
+        String phonenumber;
+        String startcity;
+        String endcity;
+
+        try {
+            System.out.println("THE RESPONSE: "+response);
+            JSONArray hist = new JSONArray(response);
+            for (int i = 0; i < hist.length(); i++) {
+                //x is the transporter object
+                JSONObject indhist = hist.getJSONObject(i);
+
+                name = (String)indhist.get("firstname")+" "+(String)indhist.get("lastname");
+                date = (String)indhist.get("date");
+                phonenumber = (String)indhist.get("phonenumberfarmer");
+                startcity = (String)indhist.get("startcity");
+                endcity = (String)indhist.get("endcity");
+
+                fname.add(name);
+                fdate.add(date);
+                fimgid.add(R.drawable.arka);
+                fstartcity.add(startcity);
+                fendcity.add(endcity);
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         lst= findViewById(R.id.listview);
-        TransporterHistoryListView customListview = new TransporterHistoryListView(this,transportername,time,imgid,price,delivered);
+
+
+        TransporterHistoryListView customListview = new TransporterHistoryListView(this,
+                fname.toArray(new String[fname.size()])
+                ,fdate.toArray(new String[fdate.size()])
+                ,fimgid.toArray(new Integer[fimgid.size()])
+                ,fstartcity.toArray(new String[fstartcity.size()])
+                ,fendcity.toArray(new String[fendcity.size()]));
         lst.setAdapter(customListview);
-        
+
         final Button backButton = findViewById(R.id.transporterHistoryBackButton);
+
+
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterHistory.this,

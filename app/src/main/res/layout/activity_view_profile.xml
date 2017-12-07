@@ -77,14 +77,6 @@
                 android:textColor="#fff"
                 android:textSize="14sp" />
             -->
-            <Button
-                android:id="@+id/farmerSaveChangesButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:text="Save Changes" />
 
             <RatingBar
                 android:id="@+id/ratingBar"
@@ -94,7 +86,7 @@
                 android:layout_below="@+id/user_profile_name"
                 android:layout_centerHorizontal="true"
                 android:numStars="5"
-                android:rating="4.6" />
+                android:rating="0" />
 
             <!-- @Arka change android:text="yo amo el aguacate" to the user's bio -->
 
@@ -131,18 +123,6 @@
                 android:padding="20dp"
                 android:text="" />
 
-            <EditText
-                android:id="@+id/profile_edit_phoneNumber"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="#fff"
-                android:clickable="true"
-                android:elevation="4dp"
-                android:inputType="phone"
-                android:padding="20dp"
-                android:text=""
-                android:hint="Phone Number"/>
             <!-- @Arka change phone number -->
 
             <!-- @Arka change phone number -->
@@ -169,20 +149,6 @@
                 android:padding="20dp"
                 android:text="" />
 
-            <EditText
-                android:id="@+id/profile_edit_address"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#fff"
-                android:clickable="false"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text=""
-                android:hint="Address"/>
-
             <TextView
                 android:id="@+id/user_profile_city_label"
                 android:layout_width="fill_parent"
@@ -206,20 +172,6 @@
                 android:elevation="4dp"
                 android:padding="20dp"
                 android:text="" />
-
-            <EditText
-                android:id="@+id/profile_edit_city"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#fff"
-                android:clickable="false"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text=""
-                android:hint="City"/>
 
             <TextView
                 android:id="@+id/user_profile_postalcode_label"
@@ -245,20 +197,6 @@
                 android:padding="20dp"
                 android:text="" />
 
-            <EditText
-                android:id="@+id/profile_edit_postalcode"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#fff"
-                android:clickable="false"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text=""
-                android:hint="Postal Code"/>
-
             <TextView
                 android:id="@+id/user_profile_country_label"
                 android:layout_width="fill_parent"
@@ -283,19 +221,6 @@
                 android:padding="20dp"
                 android:text="" />
 
-            <EditText
-                android:id="@+id/profile_edit_country"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#fff"
-                android:clickable="false"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text=""
-                android:hint="Country"/>
             <!-- @Arka change address -->
 
 
@@ -330,24 +255,6 @@
                     @Arka up to you if you want to keep this or add another database item
                 -->
         </LinearLayout>
-
-        <Button
-            android:id="@+id/farmerEditProfileButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text="Edit Profile" />
-
-        <Button
-            android:id="@+id/farmerHistoryButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/farmerEditProfileButton"
-            android:text="View History" />
 
         <Button
             android:id="@+id/farmerProfileBackButton"

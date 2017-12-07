@@ -86,6 +86,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         countryText = (EditText)findViewById(R.id.country);
         postalCodeText = (EditText)findViewById(R.id.postalcode);
 
+
         RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroup);
         String templocation = getIntent().getStringExtra("locationtype");
         if ( (templocation != null) && !templocation.equals("")) {
@@ -103,6 +104,10 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
             }
         }
 
+
+
+
+
         String address = getIntent().getStringExtra("address");
         if (address != null) {
             String[] addresses = address.split("/");
@@ -114,7 +119,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                 addressLine2.setText(addresses[1], TextView.BufferType.EDITABLE);
             }
         }
-        String city = getIntent().getStringExtra("city");
+        final String city = getIntent().getStringExtra("city");
         if ((city != null) && (!city.equals(""))) cityText.setText(city, TextView.BufferType.EDITABLE);
         String country = getIntent().getStringExtra("country");
         if ((country != null) && (!country.equals(""))) countryText.setText(country, TextView.BufferType.EDITABLE);
@@ -156,6 +161,12 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                 cityText = (EditText)findViewById(R.id.city);
                 countryText = (EditText)findViewById(R.id.country);
                 postalCodeText = (EditText)findViewById(R.id.postalcode);
+
+                final String startaddress = addressLine1.getText().toString() + " " + addressLine2.getText().toString();
+                final String startcity = cityText.getText().toString();
+                final String startcountry = countryText.getText().toString();
+                final String startpostalcode = postalCodeText.getText().toString();
+
                 String addressLine1String = addressLine1.getText().toString();
                 String addressLine2String = addressLine2.getText().toString();
                 String cityString = cityText.getText().toString();
@@ -191,6 +202,14 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                     farmerRequestPickupSetPickupLocationIntent.putExtra("country", countryString);
                     farmerRequestPickupSetPickupLocationIntent.putExtra("postalcode", postalCodeString);
                     farmerRequestPickupSetPickupLocationIntent.putExtra("city", cityString);
+
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("startaddress", startaddress);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("startcity", startcity);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("startcountry", startcountry);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("startpostalcode", startpostalcode);
+
+
+
                     Bundle args = new Bundle();
                     args.putParcelable("coordinates", markerLatLng);
                     farmerRequestPickupSetPickupLocationIntent.putExtra("bundle", args);

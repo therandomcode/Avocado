@@ -10,7 +10,12 @@ import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 
-public class ViewProfile extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import android.widget.RatingBar;
+
+public class ViewProfile extends AppActivity implements TransporterReceived {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +23,63 @@ public class ViewProfile extends AppCompatActivity {
         setContentView(R.layout.activity_view_profile);
         setDefaultView();
 
-        final Button historyButton = findViewById(R.id.farmerHistoryButton);
+        DatabaseHandler db = new DatabaseHandler(this);
+        db.getTransporter(getIntent().getStringExtra("transporternumber"));
+    }
+
+    private void setDefaultView(){
+        //TextView short_bio = findViewById(R.id.user_profile_short_bio);
+        TextView phoneNumber = findViewById(R.id.user_profile_phoneNumber);
+        TextView address = findViewById(R.id.user_profile_address);
+        //short_bio.setVisibility(View.VISIBLE);
+        phoneNumber.setVisibility(View.VISIBLE);
+        address.setVisibility(View.VISIBLE);
+    }
+
+    public void Success(String response){
+
+        String name = "";
+        String rating = "";
+        String address = "";
+        String phonenumber = "";
+        String country = "";
+        String city = "";
+        String postalcode = "";
+
+        try {
+            JSONArray avail = new JSONArray(response);
+            JSONObject transporter = avail.getJSONObject(0);
+            name = (String)transporter.get("firstname")+" "+(String)transporter.get("lastname");
+            rating = (String)transporter.get("ratings");
+            address = (String)transporter.get("address");
+            phonenumber = (String)transporter.get("phonenumber");
+            country = (String)transporter.get("country");
+            city = (String)transporter.get("city");
+            postalcode = (String)transporter.get("postalcode");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        TextView tname = (TextView)findViewById(R.id.user_profile_name);
+        TextView tphonenunmber = (TextView)findViewById(R.id.user_profile_phoneNumber);
+        TextView taddress = (TextView)findViewById(R.id.user_profile_address);
+        TextView tcity = (TextView)findViewById(R.id.user_profile_city);
+        TextView tcountry = (TextView)findViewById(R.id.user_profile_country);
+        TextView tpostalcode = (TextView)findViewById(R.id.user_profile_postalcode);
+
+        tname.setText(name);
+        tphonenunmber.setText(phonenumber);
+        taddress.setText(address);
+        tcity.setText(city);
+        tcountry.setText(country);
+        tpostalcode.setText(postalcode);
+
+        RatingBar rb = (RatingBar)findViewById(R.id.ratingBar);
+        rb.setClickable(false);
+        rb.setRating(Float.parseFloat(rating));
+
+
+       /* final Button historyButton = findViewById(R.id.farmerHistoryButton);
         historyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(ViewProfile.this, ProfileHistory.class);
@@ -77,7 +138,7 @@ public class ViewProfile extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
-
+*/
         final Button backButton = findViewById(R.id.farmerProfileBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -138,16 +199,6 @@ public class ViewProfile extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
-
-    }
-
-    private void setDefaultView(){
-        //TextView short_bio = findViewById(R.id.user_profile_short_bio);
-        TextView phoneNumber = findViewById(R.id.user_profile_phoneNumber);
-        TextView address = findViewById(R.id.user_profile_address);
-        //short_bio.setVisibility(View.VISIBLE);
-        phoneNumber.setVisibility(View.VISIBLE);
-        address.setVisibility(View.VISIBLE);
     }
 
 }
