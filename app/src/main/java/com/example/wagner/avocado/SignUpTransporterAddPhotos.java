@@ -29,7 +29,7 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_transporter_add_photos);
 
-        final Button addPhotosButton = findViewById(R.id.signUpFarmerAddPhotosButton);
+        final Button addPhotosButton = findViewById(R.id.signUpTransporterAddPhotosButton);
         addPhotosButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -256,7 +256,7 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
             cursor.close();
 
             // String picturePath contains the path of selected Image
-           z ImageView imageView = findViewById(R.id.transporterAddzPhotosViewPhoto);
+            ImageView imageView = findViewById(R.id.transporterAddPhotosViewPhoto);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
         }
     }

@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,12 +24,14 @@ import com.google.android.gms.maps.model.LatLng;
 public class SignUpFarmerAddProfile extends AppCompatActivity {
 
     private int RESULT_LOAD_IMAGE = 1;
+    private EditText shortBio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_farmer_add_profile);
 
+        shortBio = findViewById(R.id.signUpFarmerEnterBioText);
         final Button addPhotosButton = findViewById(R.id.signUpFarmerAddProfileButton);
         addPhotosButton.setOnClickListener(new View.OnClickListener() {
 
@@ -66,6 +69,7 @@ public class SignUpFarmerAddProfile extends AppCompatActivity {
                         postalcode, city, "[]","[]", "N.A.");
                 myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
                 myIntent.putExtra("type", "farmer");
+                myIntent.putExtra("shortbio", shortBio.getText().toString());
 
                 startActivity(myIntent);
             }
