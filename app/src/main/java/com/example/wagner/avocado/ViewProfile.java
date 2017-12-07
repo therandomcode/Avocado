@@ -18,7 +18,7 @@ public class ViewProfile extends AppCompatActivity {
         setContentView(R.layout.activity_view_profile);
         setDefaultView();
 
-        final Button historyButton = findViewById(R.id.profileHistoryButton);
+        final Button historyButton = findViewById(R.id.farmerHistoryButton);
         historyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(ViewProfile.this, ProfileHistory.class);
@@ -78,7 +78,7 @@ public class ViewProfile extends AppCompatActivity {
             }
         });
 
-        final Button backButton = findViewById(R.id.profileBackButton);
+        final Button backButton = findViewById(R.id.farmerProfileBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(ViewProfile.this, Loading.class);
@@ -142,10 +142,10 @@ public class ViewProfile extends AppCompatActivity {
     }
 
     private void setDefaultView(){
-        TextView short_bio = findViewById(R.id.user_profile_short_bio);
+        //TextView short_bio = findViewById(R.id.user_profile_short_bio);
         TextView phoneNumber = findViewById(R.id.user_profile_phoneNumber);
         TextView address = findViewById(R.id.user_profile_address);
-        short_bio.setVisibility(View.VISIBLE);
+        //short_bio.setVisibility(View.VISIBLE);
         phoneNumber.setVisibility(View.VISIBLE);
         address.setVisibility(View.VISIBLE);
     }

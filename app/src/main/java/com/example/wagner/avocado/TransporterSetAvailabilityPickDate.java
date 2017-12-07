@@ -194,10 +194,13 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements T
                 String carmake = (String)x.get("carmake");
                 String capacity = (String)x.get("capacity");
                 String licenseplatenumber = (String)x.get("licenseplatenumber");
+                String requests = (String)x.get("requests");
+                String ratings = (String)x.get("ratings");
+                String deliveries = (String)x.get("deliveries");
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertTransporter(firstname, lastname, availability, address, city,
                         postalcode, country, password, phonenumber, carmake, capacity,
-                        licenseplatenumber, "[]");
+                        licenseplatenumber, requests, ratings, deliveries);
             }
 
         } catch (JSONException e) {
