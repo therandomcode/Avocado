@@ -65,6 +65,7 @@
         <activity android:name=".TransporterHistory" />
         <activity android:name=".TransporterSetAvailabilityPickDate" />
         <activity android:name=".TransporterSetAvailabilityLocation" />
+        <activity android:name=".TransporterAvailableTimes" />
         <activity android:name=".FarmerMessages" />
         <activity android:name=".SignUpTransporterAddProfile"/>
         <activity android:name=".SignUpTransporterSetCarInfo"/>
