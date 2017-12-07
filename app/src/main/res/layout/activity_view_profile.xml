@@ -46,13 +46,13 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="76dp"
-                android:text="Jose Cartolos"
+                android:text=""
                 android:textColor="#fff"
                 android:textSize="24sp"
                 android:textStyle="bold" />
             <!-- @Arka change android:text= "Jose Cartolos" to the user's name -->
-
-            <TextView
+            <!--
+           <TextView
                 android:id="@+id/user_profile_short_bio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,7 +62,41 @@
                 android:text="yo amo el aguacate"
 
                 android:textColor="#fff"
+                android:textSize="14sp" />*/
+            -->
+            <!--
+            <EditText
+                android:id="@+id/profile_edit_short_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/user_profile_name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:text="yo amo el aguacate"
+                android:hint="Bio"
+                android:textColor="#fff"
                 android:textSize="14sp" />
+            -->
+            <Button
+                android:id="@+id/farmerSaveChangesButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="Save Changes" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:progressTint="@color/ratingStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/user_profile_name"
+                android:layout_centerHorizontal="true"
+                android:numStars="5"
+                android:rating="4.6" />
+
+            <!-- @Arka change android:text="yo amo el aguacate" to the user's bio -->
 
 
         </RelativeLayout>
@@ -76,6 +110,17 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/user_profile_phoneNumber_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_green_light"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="Phone Number: " />
+
+            <TextView
                 android:id="@+id/user_profile_phoneNumber"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -84,11 +129,48 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Phone Number: 123-456-7890" />
+                android:text="" />
+
+            <EditText
+                android:id="@+id/profile_edit_phoneNumber"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#fff"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:inputType="phone"
+                android:padding="20dp"
+                android:text=""
+                android:hint="Phone Number"/>
+            <!-- @Arka change phone number -->
+
             <!-- @Arka change phone number -->
 
             <TextView
+                android:id="@+id/user_profile_address_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_green_light"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="Address: " />
+
+            <TextView
                 android:id="@+id/user_profile_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/profile_edit_address"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -98,12 +180,168 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Address: # 55, Suesca-Cucunubá, Las Vegas, Suesca, Cundinamarca, Colombia" />
+                android:text=""
+                android:hint="Address"/>
+
+            <TextView
+                android:id="@+id/user_profile_city_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_green_light"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="City:" />
+
+            <TextView
+                android:id="@+id/user_profile_city"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/profile_edit_city"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text=""
+                android:hint="City"/>
+
+            <TextView
+                android:id="@+id/user_profile_postalcode_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_green_light"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="Postal Code:" />
+
+            <TextView
+                android:id="@+id/user_profile_postalcode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/profile_edit_postalcode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text=""
+                android:hint="Postal Code"/>
+
+            <TextView
+                android:id="@+id/user_profile_country_label"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_green_light"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="Country: " />
+
+            <TextView
+                android:id="@+id/user_profile_country"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="" />
+
+            <EditText
+                android:id="@+id/profile_edit_country"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:background="#fff"
+                android:clickable="false"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text=""
+                android:hint="Country"/>
             <!-- @Arka change address -->
+
+
+
+
+
+            <!-- @Arka change address -->
+
+            <!--
+                    These are potential other profile information that could be useful to add in later
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:padding="20dp"
+                        android:text="Crops Sold: Avocado" />
+                    @Arka up to you if you want to keep this or add another database item
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:padding="20dp"
+                        android:text="Preferred Pickup Location: Farm, Town Centre" />
+                    @Arka up to you if you want to keep this or add another database item
+                -->
         </LinearLayout>
 
         <Button
-            android:id="@+id/profileHistoryButton"
+            android:id="@+id/farmerEditProfileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="Edit Profile" />
+
+        <Button
+            android:id="@+id/farmerHistoryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -112,15 +350,18 @@
             android:text="View History" />
 
         <Button
-            android:id="@+id/profileBackButton"
+            android:id="@+id/farmerProfileBackButton"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="11dp"
-            android:layout_marginStart="11dp"
-            android:text="Back" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </RelativeLayout>
+
+
 </ScrollView>
