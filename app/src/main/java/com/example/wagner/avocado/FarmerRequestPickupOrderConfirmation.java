@@ -19,7 +19,7 @@ public class FarmerRequestPickupOrderConfirmation extends AppCompatActivity {
             public void onClick(View v) {
                 showToast();
                 Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupOrderConfirmation.this,
-                        FarmerHome.class);
+                        FarmerMyMessages.class);
 
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);

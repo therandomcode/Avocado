@@ -45,7 +45,7 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
             }
         });
 
-        final Button finishButton = findViewById(R.id.signUpFarmerAddPhotosFinishButton);
+        final Button finishButton = findViewById(R.id.signUpFarmerAddPhotosNextButton);
         finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showToast("Thanks for adding photos!");
@@ -158,9 +158,9 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
                 requestPermission(Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_PERMISSION_READ_EXTERNAL_STORAGE);
             }
         } else {
-            Toast.makeText(SignUpFarmerAddPhotos.this,
-                    "Permission (already) Granted!",
-                    Toast.LENGTH_SHORT).show();
+//            Toast.makeText(SignUpFarmerAddPhotos.this,
+//                    "Permission (already) Granted!",
+//                    Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -175,24 +175,24 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
             case REQUEST_PERMISSION_READ_EXTERNAL_STORAGE:
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this,
-                            "Read Permission Granted!",
-                            Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this,
+//                            "Read Permission Granted!",
+//                            Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this,
-                            "Read Permission Denied!",
-                            Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this,
+//                            "Read Permission Denied!",
+//                            Toast.LENGTH_SHORT).show();
                 }
             case REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE:
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(SignUpFarmerAddPhotos.this,
-                            "Write Permission Granted!",
-                            Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(SignUpFarmerAddPhotos.this,
+//                            "Write Permission Granted!",
+//                            Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(SignUpFarmerAddPhotos.this,
-                            "Write Permission Denied!",
-                            Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(SignUpFarmerAddPhotos.this,
+//                            "Write Permission Denied!",
+//                            Toast.LENGTH_SHORT).show();
                 }
         }
     }
@@ -220,9 +220,9 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
 
     //This is a complete misuse of the toast method sorry
     private void showToast(String message) {
-        Toast.makeText(this,
-                message,
-                Toast.LENGTH_LONG).show();
+//        Toast.makeText(this,
+//                message,
+//                Toast.LENGTH_LONG).show();
     }
 
     @Override

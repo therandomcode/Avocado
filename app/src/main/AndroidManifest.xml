@@ -14,9 +14,7 @@
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="23" />
-
-
-
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -68,10 +66,12 @@
         <activity android:name=".TransporterSetAvailabilityLocation" />
         <activity android:name=".TransporterAvailableTimes" />
         <activity android:name=".FarmerMessages" />
-        <activity android:name=".SignUpTransporterAddProfile"/>
-        <activity android:name=".SignUpTransporterSetCarInfo"/>
-        <activity android:name=".SignUpTransporterSetLocation"/>
-        <activity android:name=".Loading"/>
+        <activity android:name=".FarmerMyMessages" />
+        <activity android:name=".SignUpTransporterAddProfile" />
+        <activity android:name=".SignUpTransporterSetCarInfo" />
+        <activity android:name=".SignUpTransporterSetLocation" />
+        <activity android:name=".Loading" />
+        <activity android:name=".farmerMyMessagesDetailView"></activity>
     </application>
 
 
