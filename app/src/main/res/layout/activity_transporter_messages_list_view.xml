@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/transparent"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/farmername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <!-- PRICE IS ACTUALLY MESSAGE CONTENT -->
+        <TextView
+            android:id="@+id/t_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="@id/t_acceptRequestButton"
+            android:layout_below="@+id/price"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/common_google_signin_btn_text_light_default" />
+
+        <TextView
+            android:id="@+id/t_price"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/farmername"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        <Button
+            android:id="@+id/t_acceptRequestButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_alignBottom="@+id/t_price"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="@id/farmername"
+            android:text="Accept" />
+
+        <Button
+            android:id="@+id/t_rejectRequestButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="@id/t_acceptRequestButton"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Reject" />
+
+    </RelativeLayout>
+</LinearLayout>
