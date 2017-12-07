@@ -121,7 +121,7 @@ public class SignUpFarmerAddPhotos extends AppCompatActivity {
 
                 DatabaseHandler db = new DatabaseHandler();
                 db.insertFarmer(firstname, lastname, phonenumber, password, address, country
-                        , postalcode, city, "[]","[]","N.A.");
+                        , postalcode, city, "[]","[]","0");
 
                 myIntent.putExtra("firstname", getIntent().getStringExtra("firstname"));
                 myIntent.putExtra("lastname", getIntent().getStringExtra("lastname"));

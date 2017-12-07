@@ -70,10 +70,11 @@ public class SignUpTransporterAddProfile extends AppCompatActivity{
                 String carmake = getIntent().getStringExtra("carmake");
                 String licenseplatenumber = getIntent().getStringExtra("licenseplatenumber");
                 String capacity = getIntent().getStringExtra("capacity");
+              
                 DatabaseHandler db = new DatabaseHandler();
                 System.out.println("Hello");
                 db.insertTransporter(firstname, lastname, "[]", address, city, postalcode
-                        , country, password, phonenumber, carmake, capacity, licenseplatenumber, "[]", "N.A.", "[]");
+                        , country, password, phonenumber, carmake, capacity, licenseplatenumber, "[]", "0", "[]");
 
                 myIntent.putExtra("type", "transporter");
                 myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));

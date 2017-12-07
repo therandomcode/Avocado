@@ -94,6 +94,7 @@
                 android:layout_below="@+id/user_profile_name"
                 android:layout_centerHorizontal="true"
                 android:numStars="5"
+                android:isIndicator="true"
                 android:rating="4.6" />
 
             <!-- @Arka change android:text="yo amo el aguacate" to the user's bio -->

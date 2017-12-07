@@ -85,13 +85,13 @@ public class DatabaseHandler extends AppCompatActivity{
                     }
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
-
+                    System.out.println("failed like this?");
                 }
             }
 
             @Override
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-
+                System.out.println("hello????"+new String(bytes));
             }
         });
     }

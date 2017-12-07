@@ -178,7 +178,7 @@ public class SignUpTransporterSetLocation extends AppCompatActivity implements
 
                 db.insertTransporter(firstname, lastname, "[]", "", "",
                         "", "", password, phonenumber, ""
-                        , "", "", "[]", "N.A.", "[]");
+                        , "", "", "[]", "0", "[]");
                 myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
                 myIntent.putExtra("type", "transporter");
 
