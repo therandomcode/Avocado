@@ -70,7 +70,6 @@ public class DatabaseHandler extends AppCompatActivity{
 
         client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/insertfarmer.php",params ,new AsyncHttpResponseHandler() {
 
-
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
                 try {
@@ -86,13 +85,13 @@ public class DatabaseHandler extends AppCompatActivity{
                     }
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
-
+                    System.out.println("failed like this?");
                 }
             }
 
             @Override
             public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
-
+                System.out.println("hello????"+new String(bytes));
             }
         });
     }
