@@ -12,7 +12,7 @@ public class TransporterHistory extends AppCompatActivity {
     ListView lst;
     String[] transportername={"Juan","Ricardo","Davíd"};
     String[] time={"Tuesday, 2 October","Thursday, 4 October","Tuesday, 2 October"};
-    Integer[] imgid ={R.drawable.bgavocado,R.drawable.bgavocado,R.drawable.bgavocado};
+    Integer[] imgid ={R.drawable.farmer4,R.drawable.farmer5,R.drawable.farmer6};
     String[] price={"150 COP", "130 COP", "200 COP"};
     String[] delivered={"delivered","delivered","not delivered"};
 
