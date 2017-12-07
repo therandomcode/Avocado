@@ -14,7 +14,7 @@ public class FarmerHistory extends AppCompatActivity {
     ListView lst;
     String[] transportername={"Juan","Ricardo","Davíd"};
     String[] time={"Tuesday, 2 October","Thursday, 4 October","Tuesday, 2 October"};
-    Integer[] imgid ={R.drawable.bgavocado,R.drawable.bgavocado,R.drawable.bgavocado};
+    Integer[] imgid ={R.drawable.farmer1,R.drawable.farmer2,R.drawable.farmer3};
     String[] price={"150 COP", "130 COP", "200 COP"};
     String[] delivered={"delivered","delivered","not delivered"};
 
