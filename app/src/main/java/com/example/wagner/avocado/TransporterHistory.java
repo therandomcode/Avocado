@@ -29,7 +29,7 @@ public class TransporterHistory extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterHistory.this,
-                        TransporterHome.class);
+                        TransporterEditProfile.class);
 
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 myIntent.putExtra("phonenumber", phonenumber);

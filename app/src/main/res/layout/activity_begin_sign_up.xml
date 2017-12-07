@@ -14,11 +14,19 @@ tools:context="com.example.wagner.avocado.BeginSignUp">
         android:layout_marginTop="64dp"
         android:baselineAligned="false"
         android:text="WhatsApp"
-        app:layout_constraintStart_toEndOf="@+id/farmerAddProfilePictureButton"
+        app:layout_constraintStart_toEndOf="@+id/farmer
+                                            
+                                            
+                                            PictureButton"
         app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
 
     <Button
         android:id="@+id/farmerAddProfilePictureButton"
+        app:layout_constraintStart_toEndOf="@+id/signUpFarmerAddProfileButton"
+        app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
+
+    <Button
+        android:id="@+id/signUpFarmerAddProfileButton"
         android:layout_width="108dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -52,6 +60,7 @@ tools:context="com.example.wagner.avocado.BeginSignUp">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/agromovilLogo" />
+
 
     <Button
         android:id="@+id/signUpButton"

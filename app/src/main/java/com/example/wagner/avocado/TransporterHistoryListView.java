@@ -58,8 +58,8 @@ public class TransporterHistoryListView extends ArrayAdapter<String> {
         ImageView ivw;
 
         ViewHolder(View v) {
-            tvw1 = v.findViewById(R.id.transportername);
-            tvw2 = v.findViewById(R.id.time);
+            tvw1 = v.findViewById(R.id.datePicked);
+            tvw2 = v.findViewById(R.id.timePicked);
             tvw3 = v.findViewById(R.id.price);
             tvw4 = v.findViewById(R.id.delivered);
             ivw = v.findViewById(R.id.imageView);

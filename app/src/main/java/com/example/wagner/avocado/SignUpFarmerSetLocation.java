@@ -3,6 +3,7 @@ package com.example.wagner.avocado;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Geocoder;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
 
 public class SignUpFarmerSetLocation extends AppCompatActivity implements
         OnMarkerClickListener,
@@ -59,6 +61,7 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
     private EditText cityText;
     private EditText countryText;
     private EditText postalCodeText;
+    private Geocoder geocoder;
 
 
     @Override
@@ -72,6 +75,8 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
         cityText = (EditText)findViewById(R.id.city);
         countryText = (EditText)findViewById(R.id.country);
         postalCodeText = (EditText)findViewById(R.id.postalcode);
+
+        geocoder = new Geocoder(SignUpFarmerSetLocation.this);
 
         String address = getIntent().getStringExtra("address");
         if (address != null) {
@@ -175,7 +180,8 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
                 DatabaseHandler db = new DatabaseHandler();
 
                 db.insertFarmer(firstname, lastname, phonenumber, password, "", ""
-                        , "", "", "[]");
+                        , "", "", "[]", "[]", "0");
+
 
                 addressLine1 = (EditText)findViewById(R.id.addressline1);
                 addressLine2 = (EditText)findViewById(R.id.addressline2);
