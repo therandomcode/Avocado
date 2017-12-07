@@ -71,7 +71,6 @@
         <activity android:name=".SignUpTransporterSetCarInfo" />
         <activity android:name=".SignUpTransporterSetLocation" />
         <activity android:name=".Loading" />
-        <activity android:name=".FarmerMessagesListView"></activity>
     </application>
 
 </manifest>
