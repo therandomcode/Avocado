@@ -23,9 +23,10 @@
             android:id="@+id/t_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/t_acceptRequestButton"
+            android:layout_alignBottom="@+id/t_acceptRequestButton"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="@id/t_acceptRequestButton"
-            android:layout_below="@+id/price"
+            android:layout_alignParentStart="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/common_google_signin_btn_text_light_default" />
 
@@ -35,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/farmername"
+            android:layout_alignTop="@+id/t_rejectRequestButton"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <Button
@@ -43,14 +44,15 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
-            android:layout_alignBottom="@+id/t_price"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="@id/farmername"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
             android:text="Accept" />
 
         <Button
             android:id="@+id/t_rejectRequestButton"
-            style="@style/Widget.AppCompat.Button.Colored"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_alignParentBottom="true"
@@ -58,7 +60,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="@id/t_acceptRequestButton"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Reject" />
+            android:text="Decline" />
 
     </RelativeLayout>
 </LinearLayout>

@@ -20,16 +20,16 @@ public class TransporterMessagesListView extends ArrayAdapter<String> {
     private Activity context;
     private String[] price;
     private Button[] acceptButton;
-    private Button[] rejectButton;
+    private Button[] declineButton;
 
     public TransporterMessagesListView(Activity context, String[] transportername, String[] time, String[] price) {
-        super(context, R.layout.activity_farmer_history_listview, transportername);
+        super(context, R.layout.activity_transporter_messages_list_view, transportername);
         this.context = context;
         this.transportername = transportername;
         this.time = time;
         this.price = price;
         this.acceptButton = acceptButton;
-        this.rejectButton = rejectButton;
+        this.declineButton = declineButton;
     }
 
     @NonNull
@@ -39,7 +39,7 @@ public class TransporterMessagesListView extends ArrayAdapter<String> {
         TransporterMessagesListView.ViewHolder viewHolder = null;
         if (r == null) {
             LayoutInflater layoutInflater = context.getLayoutInflater();
-            r = layoutInflater.inflate(R.layout.activity_farmer_messages_list_view, null, true);
+            r = layoutInflater.inflate(R.layout.activity_transporter_messages_list_view, null, true);
             viewHolder = new TransporterMessagesListView.ViewHolder(r);
             r.setTag(viewHolder);
         } else {
@@ -58,9 +58,9 @@ public class TransporterMessagesListView extends ArrayAdapter<String> {
         TextView tvw3;
 
         ViewHolder(View v) {
-            tvw1 = v.findViewById(R.id.transportername);
-            tvw2 = v.findViewById(R.id.time);
-            tvw3 = v.findViewById(R.id.price);
+            tvw1 = v.findViewById(R.id.farmername);
+            tvw2 = v.findViewById(R.id.t_time);
+            tvw3 = v.findViewById(R.id.t_price);
         }
     }
 }
