@@ -33,8 +33,12 @@ public class TransporterMessages extends AppCompatActivity {
     String[] time = {"Tuesday, 2 October 15:10", "Thursday, 4 October 13:24", "Tuesday, 6 October 15:36"};
     Integer[] imgid = {R.drawable.profile, R.drawable.cecilia, R.drawable.maria};
     String[] msg = {"Requests delivery 20 Dec 2017", "Request delivery 14 Jan 2018", "Requests delivery 15 Jan 2018."};
-    //String[] delivered = {"delivered", "delivered", "not delivered"};
     private int index;
+
+    /*
+     * currently hardcoding the list of farmers that are requesting pickup
+     * TODO use the database to only load farmers that have sent a request to the trnasporter
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +95,14 @@ public class TransporterMessages extends AppCompatActivity {
 
                 startActivity(myIntent);
 
+                /*
+                 * TODO insert this farmer into the database and load it into the transporter's
+                 * TODO schedule
+                 */
+
                 Toast toast = Toast.makeText(TransporterMessages.this,
-                        "Thank you! They have been added to your schedule, which you can access from the home page.",
+                        "Thank you! They have been added to your schedule, " +
+                                "which you can access from the home page.",
                         Toast.LENGTH_LONG);
                 toast.show();
             }
@@ -122,7 +132,7 @@ public class TransporterMessages extends AppCompatActivity {
             }
         });
 
-
+        //hides the popup
         final ImageButton closeButton = findViewById(R.id.closePopUpButton);
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override

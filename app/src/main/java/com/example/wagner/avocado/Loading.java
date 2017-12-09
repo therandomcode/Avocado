@@ -45,8 +45,6 @@ public class Loading  extends AppActivity implements TransporterReceived{
         farmerBeginRequestPickupIntent.putExtra
                 ("locationtype", getIntent().getStringExtra("locationtype"));
         farmerBeginRequestPickupIntent.putExtra
-                ("address", getIntent().getStringExtra("address"));
-        farmerBeginRequestPickupIntent.putExtra
                 ("date", getIntent().getStringExtra("date"));
         farmerBeginRequestPickupIntent.putExtra
                 ("time", getIntent().getStringExtra("time"));
@@ -57,50 +55,40 @@ public class Loading  extends AppActivity implements TransporterReceived{
         farmerBeginRequestPickupIntent.putExtra
                 ("amount", getIntent().getStringExtra("amount"));
         farmerBeginRequestPickupIntent.putExtra
-                ("address", getIntent().getStringExtra("address"));
+                ("startaddress", getIntent().getStringExtra("startaddress"));
         farmerBeginRequestPickupIntent.putExtra
-                ("country", getIntent().getStringExtra("country"));
+                ("startcountry", getIntent().getStringExtra("startcountry"));
         farmerBeginRequestPickupIntent.putExtra
-                ("postalcode", getIntent().getStringExtra("postalcode"));
+                ("startpostalcode", getIntent().getStringExtra("startpostalcode"));
         farmerBeginRequestPickupIntent.putExtra
-                ("city", getIntent().getStringExtra("city"));
-        farmerBeginRequestPickupIntent.putExtra("startaddress"
-                , getIntent().getStringExtra("startaddress"));
-        farmerBeginRequestPickupIntent.putExtra("startcity"
-                , getIntent().getStringExtra("startcity"));
-        farmerBeginRequestPickupIntent.putExtra("startcountry"
-                , getIntent().getStringExtra("startcountry"));
-        farmerBeginRequestPickupIntent.putExtra("startpostalcode"
-                , getIntent().getStringExtra("startpostalcode"));
-        farmerBeginRequestPickupIntent.putExtra("endaddress"
-                , getIntent().getStringExtra("endaddress"));
-        farmerBeginRequestPickupIntent.putExtra("endcity"
-                , getIntent().getStringExtra("endcity"));
-        farmerBeginRequestPickupIntent.putExtra("endcountry"
-                , getIntent().getStringExtra("endcountry"));
-        farmerBeginRequestPickupIntent.putExtra("endpostalcode"
-                , getIntent().getStringExtra("endpostalcode"));
+                ("startcity", getIntent().getStringExtra("startcity"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("endaddress" , getIntent().getStringExtra("endaddress"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("endcity", getIntent().getStringExtra("endcity"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("endcountry", getIntent().getStringExtra("endcountry"));
+        farmerBeginRequestPickupIntent.putExtra
+                ("endpostalcode", getIntent().getStringExtra("endpostalcode"));
 
-
-
-        Bundle bundle = getIntent().getParcelableExtra("bundle");
-        LatLng coords = bundle.getParcelable("coordinates");
+        Bundle bundle = getIntent().getParcelableExtra("startbundle");
+        LatLng coords = bundle.getParcelable("startcoordinates");
         Bundle args = new Bundle();
-        args.putParcelable("coordinates", coords);
-        farmerBeginRequestPickupIntent.putExtra("bundle", args);
+        args.putParcelable("startcoordinates", coords);
+        farmerBeginRequestPickupIntent.putExtra("startbundle", args);
         farmerBeginRequestPickupIntent.putExtra
-                ("address2", getIntent().getStringExtra("address2"));
+                ("endaddress", getIntent().getStringExtra("endaddress"));
         farmerBeginRequestPickupIntent.putExtra
-                ("country2", getIntent().getStringExtra("country2"));
+                ("endcountry", getIntent().getStringExtra("endcountry"));
         farmerBeginRequestPickupIntent.putExtra
-                ("postalcode2", getIntent().getStringExtra("postalcode2"));
+                ("endpostalcode", getIntent().getStringExtra("endpostalcode"));
         farmerBeginRequestPickupIntent.putExtra
-                ("city2", getIntent().getStringExtra("city2"));
-        Bundle bundle2 = getIntent().getParcelableExtra("bundle2");
-        LatLng coords2 = bundle.getParcelable("coordinates2");
+                ("endcity", getIntent().getStringExtra("endcity"));
+        Bundle bundle2 = getIntent().getParcelableExtra("endbundle");
+        LatLng coords2 = bundle2.getParcelable("endcoordinates");
         Bundle args2 = new Bundle();
-        args.putParcelable("coordinates2", coords2);
-        farmerBeginRequestPickupIntent.putExtra("bundle2", args2);
+        args2.putParcelable("endcoordinates", coords2);
+        farmerBeginRequestPickupIntent.putExtra("endbundle", args2);
 
         farmerBeginRequestPickupIntent.putExtra
                 ("myDate", getIntent().getIntExtra("myDate", 0));

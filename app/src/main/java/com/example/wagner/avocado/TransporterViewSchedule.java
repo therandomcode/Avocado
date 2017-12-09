@@ -16,6 +16,12 @@ public class TransporterViewSchedule extends AppCompatActivity {
     String[] time={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};
     Integer[] imgid ={R.drawable.bgavocado,R.drawable.bgavocado,R.drawable.bgavocado};
 
+    /*
+     * hardcoded farmers to populate schedule
+     * TODO have the database populate the schedule based on how many requests the transporter
+     * TODO must complete
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,11 @@ public class TransporterViewSchedule extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
+        /*
+         * TODO have the toggles filter the database accordingly to display all the farmer requests
+         * TODO in the selected timeframe
+         */
 
         final ToggleButton todayButton = findViewById(R.id.transporterViewScheduleTodayButton);
         final ToggleButton tomorrowButton = findViewById(R.id.transporterViewScheduleTomorrowButton);

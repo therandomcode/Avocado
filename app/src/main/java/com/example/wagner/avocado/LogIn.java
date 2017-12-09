@@ -16,10 +16,8 @@ import android.widget.EditText;
 
 public class LogIn extends AppActivity implements TransporterReceived{
 
-
     private CheckBox farmerBox;
     private CheckBox transporterBox;
-
 
     private String password, phone;
     Boolean isFarmer = true;
@@ -29,7 +27,6 @@ public class LogIn extends AppActivity implements TransporterReceived{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         final DatabaseHandler db = new DatabaseHandler(this);
-
 
         farmerBox = (CheckBox) findViewById(R.id.Farmer);
         transporterBox = (CheckBox) findViewById(R.id.Transporter);
@@ -41,15 +38,14 @@ public class LogIn extends AppActivity implements TransporterReceived{
                 farmerBox = (CheckBox) findViewById(R.id.Farmer);
                 transporterBox = (CheckBox) findViewById(R.id.Transporter);
                 
-                
+                //checks which box is clicked to determine whether user is trying to log in as a
+                //farmer or transporter
                 if (farmerBox.isChecked()) {
                     isFarmer = true;
                 }
                 else if (transporterBox.isChecked()) {
                     isFarmer = false;
                 }
-
-                //Intent myIntent = new Intent(LogIn.this, FarmerHome.class);
 
                 EditText user = (EditText)findViewById(R.id.phonenumber);
                 EditText pass = (EditText)findViewById(R.id.password);
@@ -65,11 +61,11 @@ public class LogIn extends AppActivity implements TransporterReceived{
                 else {
                     showToast("Please enter username and password");
                 }
-                //startActivity(myIntent);
 
             }
         });
 
+        //returns to the home screen
         final Button cancelButton = findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -92,9 +88,7 @@ public class LogIn extends AppActivity implements TransporterReceived{
     }
 
     private void showToast(String message) {
-        Toast.makeText(this,
-                message,
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     public void Success(String response){

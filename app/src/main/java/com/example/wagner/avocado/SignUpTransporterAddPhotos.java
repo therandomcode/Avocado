@@ -49,7 +49,8 @@ public class SignUpTransporterAddPhotos extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this, SignUpTransporterAddProfile.class);
+                Intent myIntent = new Intent(SignUpTransporterAddPhotos.this,
+                        SignUpTransporterAddProfile.class);
 
                 String firstname = getIntent().getStringExtra("firstname");
                 String lastname = getIntent().getStringExtra("lastname");

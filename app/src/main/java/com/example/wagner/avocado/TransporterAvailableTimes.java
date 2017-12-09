@@ -27,6 +27,11 @@ public class TransporterAvailableTimes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transporter_available_times);
 
+        /*
+         * receives all the dates and times the user entered as an ArrayList
+         * converts the data to an array and reverses it so it displays in order of how the user
+         * selected it
+         */
         ArrayList<String> datesArrayList = getIntent().getStringArrayListExtra("dates");
         ArrayList<String> timesArrayList = getIntent().getStringArrayListExtra("times");
         dates = datesArrayList.toArray(new String[0]);
@@ -57,8 +62,8 @@ public class TransporterAvailableTimes extends AppCompatActivity {
                 Intent myIntent = new Intent(TransporterAvailableTimes.this,
                         TransporterSetAvailabilityPickDate.class);
 
-                String phonenumber = getIntent().getStringExtra("phonenumber");
-                myIntent.putExtra("phonenumber", phonenumber);
+                myIntent.putExtra("phonenumber",
+                        getIntent().getStringExtra("phonenumber"));
                 myIntent.putStringArrayListExtra("dates",
                         getIntent().getStringArrayListExtra("dates"));
                 myIntent.putStringArrayListExtra("times",
@@ -76,17 +81,15 @@ public class TransporterAvailableTimes extends AppCompatActivity {
                         TransporterViewSchedule.class);
 
                 showToast("Great! We have set your availability!");
-                String phonenumber = getIntent().getStringExtra("phonenumber");
-                myIntent.putExtra("phonenumber", phonenumber);
+                myIntent.putExtra("phonenumber",
+                        getIntent().getStringExtra("phonenumber"));
                 startActivity(myIntent);
             }
         });
     }
 
     private void showToast(String message) {
-        Toast.makeText(this,
-                message,
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
 

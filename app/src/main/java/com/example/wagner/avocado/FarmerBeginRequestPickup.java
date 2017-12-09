@@ -22,9 +22,12 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_begin_request_pickup);
 
-        produceSize = (EditText)findViewById(R.id.editText2);
+        //checks if the produce size was entered before and if so, sets it to the previously
+        //entered amount
+        produceSize = (EditText)findViewById(R.id.numberOfCrop);
         produceSize.setText(getIntent().getStringExtra("amount"),TextView.BufferType.EDITABLE);
 
+        //sets up the produce spinner with the crops as the fields
         this.produceSpinner = new String[] {
                 "Avocados", "Bananas", "Cocoa Beans", "Coffee", "Corn", "Fique", "Oilseed", "Strawberries", "Tobacco"
         };
@@ -33,12 +36,16 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, produceSpinner);
         s.setAdapter(produceAdapter);
 
+        //checks if the crop was entered before and if so, sets it to the previously
+        //entered crop
+        // TODO doesn't work yet
         String savedProduce = getIntent().getStringExtra("produce");
         if ( (savedProduce != null) && !savedProduce.equals("Avocados")) {
             int position = produceAdapter.getPosition(savedProduce);
             s.setSelection(position);
         }
 
+        //sets up the produce spinner with the crops as the fields
         this.metricSpinner = new String[] {
                 "kg", "tons", "2x2x2 foot boxes", "4x4x4 foot boxes", "50x50x50 cm boxes"
         };
@@ -46,8 +53,17 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
         ArrayAdapter<String> metricAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, metricSpinner);
         t.setAdapter(metricAdapter);
-        //Back and next navigation buttons
 
+        //checks if the metric was entered before and if so, sets it to the previously
+        //entered metric
+        // TODO doesn't work yet
+        String savedMetric = getIntent().getStringExtra("metric");
+        if ( (savedMetric != null) && !savedMetric.equals("kg")) {
+            int position = metricAdapter.getPosition(savedMetric);
+            t.setSelection(position);
+        }
+
+        //Back and next navigation buttons
         final Button nextButton = findViewById(R.id.farmerBeginRequestPickupNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -58,10 +74,11 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
                 Spinner spinner2 = (Spinner)findViewById(R.id.metricSpinner);
                 String metric = spinner2.getSelectedItem().toString();
 
-                produceSize = (EditText)findViewById(R.id.editText2);
+                produceSize = (EditText)findViewById(R.id.numberOfCrop);
                 String amount = produceSize.getText().toString();
 
-                Intent farmerBeginRequestPickupIntent = new Intent(FarmerBeginRequestPickup.this, FarmerRequestPickupPickDate.class);
+                Intent farmerBeginRequestPickupIntent = new Intent
+                        (FarmerBeginRequestPickup.this, FarmerRequestPickupPickDate.class);
 
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 farmerBeginRequestPickupIntent.putExtra("phonenumber", phonenumber);
@@ -69,23 +86,29 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
                 farmerBeginRequestPickupIntent.putExtra("metric", metric);
                 farmerBeginRequestPickupIntent.putExtra("amount", amount);
 
-                if (amount.length() == 0) showToast();
+                //checks if the fields are all filled in before continuing to next activity
+                if (amount.length() == 0) showToast("Please enter how much produce you have.");
                 else startActivity(farmerBeginRequestPickupIntent);
             }
         });
 
+        //returns to the farmer home screen but passes the phonenumber in the intent so the account
+        //remains logged in
         final Button backButton = findViewById(R.id.farmerBeginRequestPickupBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent farmerBeginRequestPickupIntent = new Intent(FarmerBeginRequestPickup.this, FarmerHome.class);
+                Intent farmerBeginRequestPickupIntent =
+                        new Intent(FarmerBeginRequestPickup.this, FarmerHome.class);
+                farmerBeginRequestPickupIntent.putExtra("phonenumber",
+                        getIntent().getStringExtra("phonenumber"));
                 startActivity(farmerBeginRequestPickupIntent);
             }
         });
     }
 
-    private void showToast() {
+    private void showToast(String message) {
         Toast.makeText(this,
-                "Please enter how much produce you have.",
+                message,
                 Toast.LENGTH_SHORT).show();
     }
 }
