@@ -48,9 +48,10 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/datePicked"
+            android:layout_alignBottom="@+id/datePicked"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
             android:layout_marginEnd="33dp"
             android:layout_marginRight="33dp"
             android:textAlignment="textEnd" />
@@ -61,6 +62,6 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/price"
             android:layout_alignStart="@+id/price"
-            android:layout_alignTop="@+id/timePicked" />
+            android:layout_below="@+id/timePicked" />
     </RelativeLayout>
 </LinearLayout>

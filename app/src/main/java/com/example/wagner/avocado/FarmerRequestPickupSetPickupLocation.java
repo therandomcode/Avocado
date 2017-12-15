@@ -108,7 +108,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
 
 
 
-        String address = getIntent().getStringExtra("address");
+        String address = getIntent().getStringExtra("startaddress");
         if (address != null) {
             String[] addresses = address.split("/");
             if (addresses.length > 0) {
@@ -119,22 +119,23 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                 addressLine2.setText(addresses[1], TextView.BufferType.EDITABLE);
             }
         }
-        final String city = getIntent().getStringExtra("city");
+        final String city = getIntent().getStringExtra("startcity");
         if ((city != null) && (!city.equals(""))) cityText.setText(city, TextView.BufferType.EDITABLE);
-        String country = getIntent().getStringExtra("country");
+        String country = getIntent().getStringExtra("startcountry");
         if ((country != null) && (!country.equals(""))) countryText.setText(country, TextView.BufferType.EDITABLE);
-        String postalcode = getIntent().getStringExtra("postalcode");
+        String postalcode = getIntent().getStringExtra("startpostalcode");
         if ((postalcode != null) && (!postalcode.equals(""))) {
             postalCodeText.setText(postalcode, TextView.BufferType.EDITABLE);
         }
         else {
-            Bundle coords = getIntent().getParcelableExtra("bundle");
+            Bundle coords = getIntent().getParcelableExtra("startbundle");
             if (coords != null) {
-                LatLng coordinates = coords.getParcelable("coordinates");
+                LatLng coordinates = coords.getParcelable("startcoordinates");
                 if (coordinates != null) { markerLatLng = coordinates; }
             }
         }
 
+        // initially hides the map view
         findViewById(R.id.map).setVisibility(View.GONE);
 
         final Button nextButton = findViewById(R.id.farmerRequestPickupSetPickupLocationNextButton);
@@ -162,19 +163,15 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                 countryText = (EditText)findViewById(R.id.country);
                 postalCodeText = (EditText)findViewById(R.id.postalcode);
 
-                final String startaddress = addressLine1.getText().toString() + " " + addressLine2.getText().toString();
+                final String startaddress = addressLine1.getText().toString() + "/" + addressLine2.getText().toString();
                 final String startcity = cityText.getText().toString();
                 final String startcountry = countryText.getText().toString();
                 final String startpostalcode = postalCodeText.getText().toString();
 
-                String addressLine1String = addressLine1.getText().toString();
-                String addressLine2String = addressLine2.getText().toString();
-                String cityString = cityText.getText().toString();
-                String countryString = countryText.getText().toString();
-                String postalCodeString = postalCodeText.getText().toString();
-
-                if (((addressLine1String.equals("") || cityString.equals("") ||
-                        countryString.equals("") || postalCodeString.equals("")) &&
+                //checks to see if a location was selected and if a location type was selected
+                //if not it pops a toast
+                if (((startaddress.equals("") || startcity.equals("") ||
+                        startcountry.equals("") || startpostalcode.equals("")) &&
                         markerLatLng == null)) {
                     showToast("Please enter information for all of the address" +
                             " fields or drop a pin to continue.");
@@ -185,7 +182,6 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                 }
                 else {
                     farmerRequestPickupSetPickupLocationIntent.putExtra("locationtype", locationtype);
-                    String address = addressLine1String + "/" + addressLine2String;
                     String phonenumber = getIntent().getStringExtra("phonenumber");
                     farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);
                     farmerRequestPickupSetPickupLocationIntent.putExtra
@@ -198,21 +194,15 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                             ("metric", getIntent().getStringExtra("metric"));
                     farmerRequestPickupSetPickupLocationIntent.putExtra
                             ("amount", getIntent().getStringExtra("amount"));
-                    farmerRequestPickupSetPickupLocationIntent.putExtra("address", address);
-                    farmerRequestPickupSetPickupLocationIntent.putExtra("country", countryString);
-                    farmerRequestPickupSetPickupLocationIntent.putExtra("postalcode", postalCodeString);
-                    farmerRequestPickupSetPickupLocationIntent.putExtra("city", cityString);
 
                     farmerRequestPickupSetPickupLocationIntent.putExtra("startaddress", startaddress);
                     farmerRequestPickupSetPickupLocationIntent.putExtra("startcity", startcity);
                     farmerRequestPickupSetPickupLocationIntent.putExtra("startcountry", startcountry);
                     farmerRequestPickupSetPickupLocationIntent.putExtra("startpostalcode", startpostalcode);
 
-
-
                     Bundle args = new Bundle();
-                    args.putParcelable("coordinates", markerLatLng);
-                    farmerRequestPickupSetPickupLocationIntent.putExtra("bundle", args);
+                    args.putParcelable("startcoordinates", markerLatLng);
+                    farmerRequestPickupSetPickupLocationIntent.putExtra("startbundle", args);
 
                     farmerRequestPickupSetPickupLocationIntent.putExtra
                             ("myDate", getIntent().getIntExtra("myDate",0));
@@ -252,6 +242,13 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                 startActivity(myIntent);
             }
         });
+
+        /*
+         * TODO use the geocoder and reverse geocoder to turn addresses into LatLng and vice versa
+         * TODO for the toggle buttons,
+         * TODO   if the user enters an address and switches to drop pin, a marker at that location
+         * TODO   if the user drops a pin and switches to address, auto-fill the address for that pin
+         */
 
         final ToggleButton enterAddressButton = findViewById(R.id.farmerRequestPickupSetLocationEnterAddressButton);
         final ToggleButton dropPinButton = findViewById(R.id.farmerRequestPickupSetLocationDropPinButton);

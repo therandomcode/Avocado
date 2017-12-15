@@ -17,6 +17,9 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_pick_date);
 
+        //checks if the user had previously entered a date and time for pickup and sets the date
+        //picker to that date
+        //uses the current date as a default if the user had not entered anything
         DatePicker datepicker = (DatePicker)findViewById(R.id.datePicker);
         int prevDate = getIntent().getIntExtra("myDate",datepicker.getDayOfMonth());
         int prevMonth = getIntent().getIntExtra("myMonth",datepicker.getMonth());
@@ -31,7 +34,8 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
 
         datepicker.updateDate(datepicker.getYear(),prevMonth,prevDate);
 
-
+        //checks to see if all the fields were filled out
+        //records the info selected and passes it to the next screen
         final Button nextButton = findViewById(R.id.FarmerRequestPickupDateNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -67,6 +71,7 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
                     myIntent.putExtra("crop", getIntent().getStringExtra("crop"));
                     myIntent.putExtra("metric", getIntent().getStringExtra("metric"));
                     myIntent.putExtra("amount", getIntent().getStringExtra("amount"));
+
                     //Add whatever needs to be read from this screen to the bundle
                     myIntent.putExtra("myDate", datepicker.getDayOfMonth());
                     myIntent.putExtra("myMonth", datepicker.getMonth());
@@ -78,10 +83,12 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
             }
         });
 
+        //returns to the select crop screen and passes all the info the user previously entered
         final Button backButton = findViewById(R.id.FarmerRequestPickupDateBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(FarmerRequestPickupPickDate.this, FarmerBeginRequestPickup.class);
+                Intent myIntent = new Intent(FarmerRequestPickupPickDate.this,
+                        FarmerBeginRequestPickup.class);
                 myIntent.putExtra("crop", getIntent().getStringExtra("crop"));
                 myIntent.putExtra("metric", getIntent().getStringExtra("metric"));
                 myIntent.putExtra("amount", getIntent().getStringExtra("amount"));
@@ -91,8 +98,6 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
     }
 
     private void showToast(String message) {
-        Toast.makeText(this,
-                message,
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

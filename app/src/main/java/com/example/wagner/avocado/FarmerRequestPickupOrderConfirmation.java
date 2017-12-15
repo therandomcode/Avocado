@@ -14,12 +14,14 @@ public class FarmerRequestPickupOrderConfirmation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_order_confirmation);
 
-        final Button button = findViewById(R.id.farmerRequestPickupOrderConfirmationFinishButton);
-        button.setOnClickListener(new View.OnClickListener() {
+        //returns to the farmer home screen after the order is completed
+        final Button finishButton = findViewById(R.id.farmerRequestPickupOrderConfirmationFinishButton);
+        finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showToast();
-                Intent farmerRequestPickupSetPickupLocationIntent = new Intent(FarmerRequestPickupOrderConfirmation.this,
-                        FarmerHome.class);
+                showToast("Thank you! Your request for pickup has been sent.");
+                Intent farmerRequestPickupSetPickupLocationIntent =
+                        new Intent(FarmerRequestPickupOrderConfirmation.this,
+                            FarmerHome.class);
 
                 String phonenumber = getIntent().getStringExtra("phonenumber");
                 farmerRequestPickupSetPickupLocationIntent.putExtra("phonenumber", phonenumber);
@@ -28,9 +30,7 @@ public class FarmerRequestPickupOrderConfirmation extends AppCompatActivity {
         });
     }
 
-    private void showToast() {
-        Toast.makeText(this,
-                "Thank you! Your request for pickup has been sent.",
-                Toast.LENGTH_LONG).show();
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }

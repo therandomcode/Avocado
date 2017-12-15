@@ -43,11 +43,11 @@
     <TextView
         android:id="@+id/textView23"
         android:layout_width="313dp"
-        android:layout_height="82dp"
+        android:layout_height="51dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="28dp"
-        android:text="Would you like to add photos of your farm or crops?"
+        android:text="Add photos of your farm"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,19 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        app:layout_constraintTop_toBottomOf="@+id/textView32"
         app:srcCompat="@mipmap/insert_photo" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="32dp"
+        android:text="This will help transporters find their way to pick up your produce."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="110dp" />
 </android.support.constraint.ConstraintLayout>

@@ -53,6 +53,7 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
 
     /**
      * Keeps track of the selected marker.
+     * Keeps track of the chosen LatLng.
      */
     private Marker mLastMarker = null;
     private LatLng markerLatLng = null;
@@ -127,11 +128,11 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
                 String countryString = countryText.getText().toString();
                 String postalCodeString = postalCodeText.getText().toString();
 
+                //checks if all the fields were filled in or a pin was dropped
                 if ((!addressLine1String.equals("") && !cityString.equals("") &&
                         !countryString.equals("") && !postalCodeString.equals("")) ||
                         markerLatLng != null) {
-                    String address = addressLine1.getText().toString() + "/"
-                            + addressLine2.getText().toString();
+                    String address = addressLine1String + "/" + addressLine2String;
 
                     Intent myIntent = new Intent(SignUpFarmerSetLocation.this, SignUpFarmerAddPhotos.class);
 
@@ -157,6 +158,8 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
             }
         });
 
+        //returns to the create account screen
+        //passes all the inputted info except for password since user might forget what they entered
         final Button backButton = findViewById(R.id.signUpSetLocationBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -217,6 +220,12 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         new OnMapAndViewReadyListener(mapFragment, this);
 
+        /*
+         * TODO use the geocoder and reverse geocoder to turn addresses into LatLng and vice versa
+         * TODO for the toggle buttons,
+         * TODO   if the user enters an address and switches to drop pin, a marker at that location
+         * TODO   if the user drops a pin and switches to address, auto-fill the address for that pin
+         */
 
         final ToggleButton enterAddressButton = findViewById(R.id.signUpSetLocationEnterAddressButton);
         final ToggleButton dropPinButton = findViewById(R.id.signUpSetLocationDropPinButton);

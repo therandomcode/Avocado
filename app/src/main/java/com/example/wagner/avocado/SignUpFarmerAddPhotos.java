@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.os.Parcelable;
 
 import com.google.android.gms.maps.model.LatLng;
 
