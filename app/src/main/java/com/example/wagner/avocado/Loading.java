@@ -2,11 +2,6 @@ package com.example.wagner.avocado;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
-
-import java.util.ArrayList;
-import android.content.Context;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -14,7 +9,7 @@ import com.google.android.gms.maps.model.LatLng;
  * Created by arkaroy on 12/3/17.
  */
 
-public class Loading  extends AppActivity implements TransporterReceived{
+public class Loading  extends AppActivity implements DataReceived {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
