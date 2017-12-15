@@ -2,7 +2,6 @@ package com.example.wagner.avocado;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -11,7 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
-public class TransporterHistory extends AppActivity implements TransporterReceived{
+public class TransporterHistory extends AppActivity implements DataReceived {
 
     ListView lst;
 
