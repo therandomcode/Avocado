@@ -3,6 +3,7 @@ package com.example.wagner.avocado;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,13 @@ public class TransporterViewScheduleCustomListView extends ArrayAdapter<String> 
         startButton = viewHolder.startButton;
         startButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                v.findViewById(R.id.startButton).setVisibility(View.GONE);
+                Button start = v.findViewById(R.id.startButton);
+                if (start.getText().equals("Start")) {
+                    start.setText("Finish");
+                }
+                else if (start.getText().equals("Finish")) {
+                    start.setText("Done");
+                }
             }
         });
 
