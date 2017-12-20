@@ -27,6 +27,10 @@ import static android.support.v4.content.ContextCompat.startActivity;
 
 /**
  * Created by arkaroy on 12/2/17.
+ * IF AT ANY POINT, THE SERVER HOSTING THE PHP CODE GETS CHANGED:
+ * GO THROUGH THIS FILE AND WHEREVER YOU SEE THE FOLLOWING:
+ * http://epiwork.hcii.cs.cmu.edu/agromovil/sites/:
+ * CHANGE IT TO THE NEW PATH TO THE PHP FILE
  */
 
 public class DatabaseHandler extends AppCompatActivity{
