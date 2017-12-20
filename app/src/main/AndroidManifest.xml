@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:largeHeap="true"
         android:allowBackup="true"
         android:icon="@mipmap/agromovil_logo"
         android:label="@string/app_name"
