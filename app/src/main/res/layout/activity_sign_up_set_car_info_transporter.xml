@@ -39,9 +39,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:hint="What vehicle do you operate?"
-        android:textSize="28sp"
+        android:text="Tell us about your vehicle. "
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.854"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

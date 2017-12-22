@@ -9,16 +9,25 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class TransporterMessages extends AppActivity implements DataReceived {
+
+import static android.widget.Toast.LENGTH_LONG;
+
+public class TransporterMessages extends AppCompatActivity {
 
     ListView messages;
     ListView lst;
+<<<<<<< HEAD
     ArrayList<String> transportername = new ArrayList<String>();
     ArrayList<String> realtimes = new ArrayList<String>();
     ArrayList<String> times = new ArrayList<String>();
@@ -27,7 +36,19 @@ public class TransporterMessages extends AppActivity implements DataReceived {
     ArrayList<String> msg = new ArrayList<String>();
     ArrayList<String> farmernumbers = new ArrayList<String>();
     //String[] delivered = {"delivered", "delivered", "not delivered"};
+=======
+    String[] transportername = {"Felipe los Espadrillas", "Ricardo de Leon", "Davíd Latafundia"};
+    String[] time = {"Tuesday, 2 October 15:10", "Thursday, 4 October 13:24", "Tuesday, 6 October 15:36"};
+    Integer[] imgid = {R.drawable.profile, R.drawable.cecilia, R.drawable.maria};
+    String[] msg = {"Requests delivery 20 Dec 2017", "Request delivery 14 Jan 2018", "Requests delivery 15 Jan 2018."};
+
+>>>>>>> e9fe275f5e7741d449262ceb457f9fb59aff3573
     private int index;
+
+    /*
+     * currently hardcoding the list of farmers that are requesting pickup
+     * TODO use the database to only load farmers that have sent a request to the trnasporter
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +147,17 @@ public class TransporterMessages extends AppActivity implements DataReceived {
 
 
                 startActivity(myIntent);
+
+                /*
+                 * TODO insert this farmer into the database and load it into the transporter's
+                 * TODO schedule
+                 */
+
+                Toast toast = Toast.makeText(TransporterMessages.this,
+                        "Thank you! They have been added to your schedule, " +
+                                "which you can access from the home page.",
+                        Toast.LENGTH_LONG);
+                toast.show();
             }
         });
 
@@ -157,7 +189,7 @@ public class TransporterMessages extends AppActivity implements DataReceived {
             }
         });
 
-
+        //hides the popup
         final ImageButton closeButton = findViewById(R.id.closePopUpButton);
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override

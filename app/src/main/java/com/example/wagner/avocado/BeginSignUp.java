@@ -14,7 +14,7 @@ public class BeginSignUp extends AppCompatActivity {
         setContentView(R.layout.activity_begin_sign_up);
 
         
-
+        //performs an activity if the sign up button is clicked
         final Button signUpButton = findViewById(R.id.signUpButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -23,6 +23,7 @@ public class BeginSignUp extends AppCompatActivity {
             }
         });
 
+        //performs an activity if the log in button is clicked
         final Button logInButton = findViewById(R.id.logInButton);
         logInButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

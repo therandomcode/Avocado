@@ -15,6 +15,7 @@ public class FarmerRequestPickupEnterAnotherPayment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_enter_another_payment);
 
+        //proceeds to the order confirmation screen and passes all necessary information
         final Button nextButton = findViewById(R.id.farmerRequestPickupEnterAnotherPaymentNextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -26,8 +27,6 @@ public class FarmerRequestPickupEnterAnotherPayment extends AppCompatActivity {
                 myIntent.putExtra
                         ("locationtype", getIntent().getStringExtra("locationtype"));
                 myIntent.putExtra
-                        ("address", getIntent().getStringExtra("address"));
-                myIntent.putExtra
                         ("date", getIntent().getStringExtra("date"));
                 myIntent.putExtra
                         ("time", getIntent().getStringExtra("time"));
@@ -37,33 +36,38 @@ public class FarmerRequestPickupEnterAnotherPayment extends AppCompatActivity {
                         ("metric", getIntent().getStringExtra("metric"));
                 myIntent.putExtra
                         ("amount", getIntent().getStringExtra("amount"));
-                myIntent.putExtra
-                        ("address", getIntent().getStringExtra("address"));
-                myIntent.putExtra
-                        ("country", getIntent().getStringExtra("country"));
-                myIntent.putExtra
-                        ("postalcode", getIntent().getStringExtra("postalcode"));
-                myIntent.putExtra
-                        ("city", getIntent().getStringExtra("city"));
-                Bundle bundle = getIntent().getParcelableExtra("bundle");
-                LatLng coords = bundle.getParcelable("coordinates");
-                Bundle args = new Bundle();
-                args.putParcelable("coordinates", coords);
-                myIntent.putExtra("bundle", args);
-                myIntent.putExtra
-                        ("address2", getIntent().getStringExtra("address2"));
-                myIntent.putExtra
-                        ("country2", getIntent().getStringExtra("country2"));
-                myIntent.putExtra
-                        ("postalcode2", getIntent().getStringExtra("postalcode2"));
-                myIntent.putExtra
-                        ("city2", getIntent().getStringExtra("city2"));
-                Bundle bundle2 = getIntent().getParcelableExtra("bundle2");
-                LatLng coords2 = bundle.getParcelable("coordinates2");
-                Bundle args2 = new Bundle();
-                args.putParcelable("coordinates2", coords2);
-                myIntent.putExtra("bundle2", args2);
 
+                //saves the pickup address and LatLng coordinates
+                myIntent.putExtra
+                        ("startaddress", getIntent().getStringExtra("startaddress"));
+                myIntent.putExtra
+                        ("startcountry", getIntent().getStringExtra("startcountry"));
+                myIntent.putExtra
+                        ("startpostalcode", getIntent().getStringExtra("startpostalcode"));
+                myIntent.putExtra
+                        ("startcity", getIntent().getStringExtra("startcity"));
+                Bundle startBundle = getIntent().getParcelableExtra("startbundle");
+                LatLng startCoords = startBundle.getParcelable("startcoordinates");
+                Bundle startArgs = new Bundle();
+                startArgs.putParcelable("startcoordinates", startCoords);
+                myIntent.putExtra("startbundle", startArgs);
+
+                //saves the dropoff address and LatLng coordinates
+                myIntent.putExtra
+                        ("endaddress", getIntent().getStringExtra("endaddress"));
+                myIntent.putExtra
+                        ("endcountry", getIntent().getStringExtra("endcountry"));
+                myIntent.putExtra
+                        ("endpostalcode", getIntent().getStringExtra("endpostalcode"));
+                myIntent.putExtra
+                        ("endcity", getIntent().getStringExtra("endcity"));
+                Bundle endBundle = getIntent().getParcelableExtra("endbundle");
+                LatLng endCoords = endBundle.getParcelable("endcoordinates");
+                Bundle endArgs = new Bundle();
+                endArgs.putParcelable("endcoordinates", endCoords);
+                myIntent.putExtra("endbundle", endArgs);
+
+                //saves the selected pickup date
                 myIntent.putExtra
                         ("myDate", getIntent().getIntExtra("myDate", 0));
                 myIntent.putExtra
@@ -76,6 +80,7 @@ public class FarmerRequestPickupEnterAnotherPayment extends AppCompatActivity {
             }
         });
 
+        //returns to the add payment screen and passes all the necessary information to the next intent
         final Button backButton = findViewById(R.id.farmerRequestPickupEnterAnotherPaymentBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -87,8 +92,6 @@ public class FarmerRequestPickupEnterAnotherPayment extends AppCompatActivity {
                 myIntent.putExtra
                         ("locationtype", getIntent().getStringExtra("locationtype"));
                 myIntent.putExtra
-                        ("address", getIntent().getStringExtra("address"));
-                myIntent.putExtra
                         ("date", getIntent().getStringExtra("date"));
                 myIntent.putExtra
                         ("time", getIntent().getStringExtra("time"));
@@ -98,33 +101,38 @@ public class FarmerRequestPickupEnterAnotherPayment extends AppCompatActivity {
                         ("metric", getIntent().getStringExtra("metric"));
                 myIntent.putExtra
                         ("amount", getIntent().getStringExtra("amount"));
-                myIntent.putExtra
-                        ("address", getIntent().getStringExtra("address"));
-                myIntent.putExtra
-                        ("country", getIntent().getStringExtra("country"));
-                myIntent.putExtra
-                        ("postalcode", getIntent().getStringExtra("postalcode"));
-                myIntent.putExtra
-                        ("city", getIntent().getStringExtra("city"));
-                Bundle bundle = getIntent().getParcelableExtra("bundle");
-                LatLng coords = bundle.getParcelable("coordinates");
-                Bundle args = new Bundle();
-                args.putParcelable("coordinates", coords);
-                myIntent.putExtra("bundle", args);
-                myIntent.putExtra
-                        ("address2", getIntent().getStringExtra("address2"));
-                myIntent.putExtra
-                        ("country2", getIntent().getStringExtra("country2"));
-                myIntent.putExtra
-                        ("postalcode2", getIntent().getStringExtra("postalcode2"));
-                myIntent.putExtra
-                        ("city2", getIntent().getStringExtra("city2"));
-                Bundle bundle2 = getIntent().getParcelableExtra("bundle2");
-                LatLng coords2 = bundle.getParcelable("coordinates2");
-                Bundle args2 = new Bundle();
-                args.putParcelable("coordinates2", coords2);
-                myIntent.putExtra("bundle2", args2);
 
+                //saves the pickup address and LatLng coordinates
+                myIntent.putExtra
+                        ("startaddress", getIntent().getStringExtra("startaddress"));
+                myIntent.putExtra
+                        ("startcountry", getIntent().getStringExtra("startcountry"));
+                myIntent.putExtra
+                        ("startpostalcode", getIntent().getStringExtra("startpostalcode"));
+                myIntent.putExtra
+                        ("startcity", getIntent().getStringExtra("startcity"));
+                Bundle startBundle = getIntent().getParcelableExtra("startbundle");
+                LatLng startCoords = startBundle.getParcelable("startcoordinates");
+                Bundle startArgs = new Bundle();
+                startArgs.putParcelable("startcoordinates", startCoords);
+                myIntent.putExtra("startbundle", startArgs);
+
+                //saves the dropoff address and LatLng coordinates
+                myIntent.putExtra
+                        ("endaddress", getIntent().getStringExtra("endaddress"));
+                myIntent.putExtra
+                        ("endcountry", getIntent().getStringExtra("endcountry"));
+                myIntent.putExtra
+                        ("endpostalcode", getIntent().getStringExtra("endpostalcode"));
+                myIntent.putExtra
+                        ("endcity", getIntent().getStringExtra("endcity"));
+                Bundle endBundle = getIntent().getParcelableExtra("endbundle");
+                LatLng endCoords = endBundle.getParcelable("endcoordinates");
+                Bundle endArgs = new Bundle();
+                endArgs.putParcelable("endcoordinates", endCoords);
+                myIntent.putExtra("endbundle", endArgs);
+
+                //saves the selected pickup date
                 myIntent.putExtra
                         ("myDate", getIntent().getIntExtra("myDate", 0));
                 myIntent.putExtra

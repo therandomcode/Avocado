@@ -115,7 +115,13 @@ public class TransporterSetAvailabilityLocation extends AppCompatActivity implem
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterSetAvailabilityLocation.this,
                         TransporterSetAvailabilityPickDate.class);
-              
+
+                /*
+                 * TODO use the geocoder to turn addresses into LatLng and vice versa
+                 * TODO if the user enters an address, a marker is dropped at that location
+                 * TODO if the user drops a pin, auto-fill the address for that pin
+                 */
+
                 if (homeButton.isChecked())
                     myIntent.putExtra("address", "home");
                 else {
@@ -139,8 +145,8 @@ public class TransporterSetAvailabilityLocation extends AppCompatActivity implem
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterSetAvailabilityLocation.this,
                         TransporterViewSchedule.class);
-                String phonenumber = getIntent().getStringExtra("phonenumber");
-                myIntent.putExtra("phonenumber", phonenumber);
+                myIntent.putExtra("phonenumber",
+                        getIntent().getStringExtra("phonenumber"));
                 startActivity(myIntent);
             }
         });

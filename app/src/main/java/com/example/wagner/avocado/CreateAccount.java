@@ -25,11 +25,15 @@ public class CreateAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
+        //asigns variables to the editText fields
         fn = (EditText)findViewById(R.id.firstname);
         pn = (EditText)findViewById(R.id.phonenumber);
         pass = (EditText)findViewById(R.id.password);
         ln = (EditText)findViewById(R.id.lastname);
 
+        //checks the strings based in the intents to see if the user had entered info in the screen
+        //gone to the next screen and then gone back
+        //if so, it sets the fields to the strings the user originally entered
         String firstNameTemp = getIntent().getStringExtra("firstname");
         String lastNameTemp = getIntent().getStringExtra("lastname");
         String phoneNumTemp = getIntent().getStringExtra("phonenumber");
@@ -58,6 +62,9 @@ public class CreateAccount extends AppCompatActivity {
             transporterBox.setChecked(true);
         }
 
+        //performs an activity and passes info entered when the submit button is clicked
+        //if not all the fields are filled out, it does not go to the next activity and
+        // throws a toast
         final Button submitButton = findViewById(R.id.createAccountSubmitButton);
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -72,6 +79,7 @@ public class CreateAccount extends AppCompatActivity {
                 if ((farmerBox.isChecked() || transporterBox.isChecked()) && (!firstname.equals("")) &&
                         (!lastname.equals("")) && (!phonenumber.equals("")) && (!password.equals(""))) {
 
+                    //proceeds to the correct sign up sequence depending on which box is clicked
                     if (farmerBox.isChecked()) {
                         Intent farmerBeginRequestPickupIntent = new Intent(CreateAccount.this,
                                 SignUpFarmerSetLocation.class);
@@ -95,11 +103,12 @@ public class CreateAccount extends AppCompatActivity {
                     }
                 }
                 else {
-                    showToast();
+                    showToast("Please enter information for all of the fields to continue.");
                 }
             }
         });
 
+        //returns to the sign up/login home screen if cancel is clicked
         final Button cancelButton = findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -122,9 +131,10 @@ public class CreateAccount extends AppCompatActivity {
         }
     }
 
-    private void showToast() {
+    //shows a toast
+    private void showToast(String message) {
         Toast.makeText(this,
-                "Please enter information for all of the fields to continue.",
+                message,
                 Toast.LENGTH_SHORT).show();
     }
 }

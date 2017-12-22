@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"
         android:layout_marginStart="32dp"
-        android:text="160.00 COP"
+        android:text="16 000.00 COP"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintBottom_toTopOf="@+id/farmerRequestPickupReviewOrderBackButton"
         app:layout_constraintStart_toStartOf="parent" />
@@ -123,7 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="32dp"
-        android:text=" 7.85 TAX"
+        android:text=" 785.00 TAX"
         app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -133,7 +133,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="32dp"
-        android:text="152.15 SERVICE COST"
+        android:text="15215.00 SERVICE COST"
         app:layout_constraintBottom_toTopOf="@+id/textView27"
         app:layout_constraintStart_toStartOf="parent" />
 

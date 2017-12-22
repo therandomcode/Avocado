@@ -54,10 +54,10 @@ public class SignUpLater extends AppCompatActivity {
             }
         });
 
-        final Button button = findViewById(R.id.button_cal_next3);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button finishButton = findViewById(R.id.button_cal_next3);
+        finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showToast();
+                showToast("Great! We will send you a reminder.");
                 Intent farmerRequestPickupSetPickupLocationIntent;
 
                 String type = getIntent().getStringExtra("type");
@@ -73,6 +73,7 @@ public class SignUpLater extends AppCompatActivity {
             }
         });
 
+        //returns to the appropriate screen using the string passed in the intent
         final Button backButton = findViewById(R.id.signUpLaterBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -123,7 +124,7 @@ public class SignUpLater extends AppCompatActivity {
 
     }
 
-    private void showToast() {
-        Toast.makeText(this, "Great! We will send you a reminder.", Toast.LENGTH_LONG).show();
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }
