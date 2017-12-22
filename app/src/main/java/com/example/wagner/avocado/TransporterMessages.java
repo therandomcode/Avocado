@@ -19,6 +19,13 @@ public class TransporterMessages extends AppActivity implements DataReceived {
 
     ListView messages;
     ListView lst;
+    ArrayList<String> transportername = new ArrayList<String>();
+    ArrayList<String> realtimes = new ArrayList<String>();
+    ArrayList<String> times = new ArrayList<String>();
+    ArrayList<String> dates = new ArrayList<String>();
+    ArrayList<Integer> imgid = new ArrayList<Integer>();
+    ArrayList<String> msg = new ArrayList<String>();
+    ArrayList<String> farmernumbers = new ArrayList<String>();
     //String[] delivered = {"delivered", "delivered", "not delivered"};
     private int index;
 
@@ -27,6 +34,37 @@ public class TransporterMessages extends AppActivity implements DataReceived {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transporter_messages);
 
+        DatabaseHandler db = new DatabaseHandler(this);
+        db.getRequests(getIntent().getStringExtra("phonenumber"));
+    }
+
+    public void Success(String response){
+        String name, date, time, sloc, eloc, farmernumber;
+        try {
+            JSONArray avail = new JSONArray(response);
+            for (int i = 0; i < avail.length(); i++) {
+                JSONObject x = avail.getJSONObject(i);
+                name = (String) x.get("firstname") + " " + (String) x.get("lastname");
+                System.out.println("name: "+name);
+                date = (String) x.get("date");
+                time = (String) x.get("time");
+                sloc = (String) x.get("startcity");
+                eloc = (String) x.get("endcity");
+                farmernumber = (String) x.get("phonenumberfarmer");
+
+                transportername.add(name);
+                realtimes.add(time);
+                times.add(time+" "+date);
+                dates.add(date);
+                imgid.add(R.drawable.arka);
+                msg.add(sloc+" to "+eloc);
+                farmernumbers.add(farmernumber);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
         findViewById(R.id.popUp).setVisibility(View.GONE);
 
         ArrayList<String> checktransporters = getIntent().getStringArrayListExtra("transporters");
@@ -34,16 +72,20 @@ public class TransporterMessages extends AppActivity implements DataReceived {
         ArrayList<String> checkmsg = getIntent().getStringArrayListExtra("messages");
         ArrayList<Integer> checkimages = getIntent().getIntegerArrayListExtra("images");
         if ((checktransporters != null)) {
-            transportername = checktransporters.toArray(new String[0]);
-            time = checktimes.toArray(new String[0]);
+            /*transportername = checktransporters.toArray(new String[0]);
+            times = checktimes.toArray(new String[0]);
             msg = checkmsg.toArray(new String[0]);
-            imgid = checkimages.toArray(new Integer[0]);
+            imgid = checkimages.toArray(new Integer[0]);*/
         }
 
+        String[] tnames = transportername.toArray(new String[transportername.size()]);
+        String[] ttime = times.toArray(new String[transportername.size()]);
+        Integer[] tim = imgid.toArray(new Integer[transportername.size()]);
+        String[] tmsg = msg.toArray(new String[transportername.size()]);
 
         lst = findViewById(R.id.transporterMessagesListView);
         TransporterMessagesListView customListview = new TransporterMessagesListView(this,
-                transportername, time, msg, imgid);
+                tnames, ttime, tmsg, tim);
         lst.setAdapter(customListview);
 
         lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -60,20 +102,28 @@ public class TransporterMessages extends AppActivity implements DataReceived {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterMessages.this, TransporterMessages.class);
-                ArrayList<String> newtransportername = new ArrayList<>(Arrays.asList(transportername));
+                ArrayList<String> newtransportername = transportername;
                 newtransportername.remove(index);
                 myIntent.putStringArrayListExtra("transporters", newtransportername);
-                ArrayList<String> newtime = new ArrayList<>(Arrays.asList(time));
+                ArrayList<String> newtime = times;
                 newtime.remove(index);
                 myIntent.putStringArrayListExtra("times", newtime);
-                ArrayList<String> newmsg = new ArrayList<>(Arrays.asList(msg));
+                ArrayList<String> newmsg = msg;
                 newmsg.remove(index);
                 myIntent.putStringArrayListExtra("messages", newmsg);
-                ArrayList<Integer> newimgid = new ArrayList<>(Arrays.asList(imgid));
+                ArrayList<Integer> newimgid = imgid;
                 newimgid.remove(index);
                 myIntent.putIntegerArrayListExtra("images", newimgid);
                 myIntent.putExtra
                         ("phonenumber", getIntent().getStringExtra("phonenumber"));
+
+                DatabaseHandler db = new DatabaseHandler();
+                db.updateStatus(farmernumbers.get(index), getIntent().getStringExtra("phonenumber")
+                            , "accepted", dates.get(index), realtimes.get(index));
+
+                String transporternumber = getIntent().getStringExtra("phonenumber");
+
+
 
                 startActivity(myIntent);
             }
@@ -84,20 +134,24 @@ public class TransporterMessages extends AppActivity implements DataReceived {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(TransporterMessages.this, TransporterMessages.class);
-                ArrayList<String> newtransportername = new ArrayList<>(Arrays.asList(transportername));
+                ArrayList<String> newtransportername =transportername;
                 newtransportername.remove(index);
                 myIntent.putStringArrayListExtra("transporters", newtransportername);
-                ArrayList<String> newtime = new ArrayList<>(Arrays.asList(time));
+                ArrayList<String> newtime = times;
                 newtime.remove(index);
                 myIntent.putStringArrayListExtra("times", newtime);
-                ArrayList<String> newmsg = new ArrayList<>(Arrays.asList(msg));
+                ArrayList<String> newmsg =msg;
                 newmsg.remove(index);
                 myIntent.putStringArrayListExtra("messages", newmsg);
-                ArrayList<Integer> newimgid = new ArrayList<>(Arrays.asList(imgid));
+                ArrayList<Integer> newimgid = imgid;
                 newimgid.remove(index);
                 myIntent.putIntegerArrayListExtra("images", newimgid);
                 myIntent.putExtra
                         ("phonenumber", getIntent().getStringExtra("phonenumber"));
+
+                DatabaseHandler db = new DatabaseHandler();
+                db.updateStatus(farmernumbers.get(index), getIntent().getStringExtra("phonenumber")
+                        , "declined", dates.get(index), realtimes.get(index));
 
                 startActivity(myIntent);
             }
@@ -121,5 +175,6 @@ public class TransporterMessages extends AppActivity implements DataReceived {
                 startActivity(myIntent);
             }
         });
+
     }
 }

@@ -349,17 +349,36 @@ public class DatabaseHandler extends AppCompatActivity{
         );
     }
 
-    public void sendRequest(String transporternumber, String farmernumber, String request){
+    public void sendRequest(String crop, String amount, String metric, String locationtype
+                            , String farmernumber, String transporternumber, String date, String time
+                            , String startaddress, String startcity, String startcountry
+                            , String startpostalcode, String endaddress, String endcity
+                            , String endcountry, String endpostalcode, String status
+                            , String farmerrating, String transporterrating){
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
         HashMap<String, String> map = new HashMap<String, String>();
 
+        map.put("crop", crop);
+        map.put("amount", amount);
+        map.put("metric", metric);
+        map.put("locationtype", locationtype);
         map.put("phonenumberfarmer", farmernumber);
         map.put("phonenumbertransporter", transporternumber);
-        map.put("request", request);
-
-
+        map.put("date", date);
+        map.put("time", time);
+        map.put("startaddress", startaddress);
+        map.put("startcity", startcity);
+        map.put("startcountry", startcountry);
+        map.put("startpostalcode", startpostalcode);
+        map.put("endaddress", endaddress);
+        map.put("endcity", endcity);
+        map.put("endcountry", endcountry);
+        map.put("endpostalcode", endpostalcode);
+        map.put("status", status);
+        map.put("farmerrating", farmerrating);
+        map.put("transporterrating", transporterrating);
 
         ArrayList<HashMap<String, String>> wordList;
         wordList = new ArrayList<HashMap<String, String>>();
@@ -388,6 +407,95 @@ public class DatabaseHandler extends AppCompatActivity{
                     }
 
 
+                }
+        );
+    }
+
+    public void getRequests(String phonenumber){
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        System.out.println("phonenumber: "+phonenumber);
+
+        map.put("phonenumber", phonenumber);
+
+        //intent = nextscreen;
+        final ArrayList<Transporter> trans = new ArrayList<Transporter>();
+
+        ArrayList<HashMap<String, String>> wordList;
+        wordList = new ArrayList<HashMap<String, String>>();
+        wordList.add(map);
+
+        Gson gson = new GsonBuilder().create();
+        params.put("getRequests", gson.toJson(wordList));
+
+        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getRequests.php", params,
+                new AsyncHttpResponseHandler() {
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] b) {
+
+                        String response = new String(b);
+                        System.out.println("requests: ");
+                        System.out.println(response);
+                        activity.Success(response);
+
+                    }
+
+                    @Override
+                    public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+
+                    }
+                }
+        );
+    }
+
+    public void updateStatus(String phonenumberfarmer, String phonenumbertransporter, String status
+                            , String date, String time){
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        System.out.println("phonenumberfarmer: "+phonenumberfarmer);
+        System.out.println("phonenumbertransporter: "+phonenumbertransporter);
+        System.out.println("status: "+status);
+        System.out.println("date: "+date);
+        System.out.println("time: "+time);
+
+        map.put("phonenumberfarmer", phonenumberfarmer);
+        map.put("phonenumbertransporter", phonenumbertransporter);
+        map.put("status", status);
+        map.put("date", date);
+        map.put("time", time);
+
+        //intent = nextscreen;
+        final ArrayList<Transporter> trans = new ArrayList<Transporter>();
+
+        ArrayList<HashMap<String, String>> wordList;
+        wordList = new ArrayList<HashMap<String, String>>();
+        wordList.add(map);
+
+        Gson gson = new GsonBuilder().create();
+        params.put("updateStatus", gson.toJson(wordList));
+
+        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/updateStatus.php", params,
+                new AsyncHttpResponseHandler() {
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] b) {
+
+                        String response = new String(b);
+                        System.out.println("updateStatus: ");
+                        System.out.println(response);
+                        activity.Success(response);
+
+                    }
+
+                    @Override
+                    public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                        System.out.println(new String(bytes));
+                    }
                 }
         );
     }

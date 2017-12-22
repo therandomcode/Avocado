@@ -331,7 +331,10 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
 
 
                 DatabaseHandler db = new DatabaseHandler();
-                db.sendRequest(transporternumber, farmernumber, request);
+                db.sendRequest(crop, amount, metric, locationtype, farmernumber, transporternumber
+                                , date, timing, startaddress, startcity, startcountry, startpostalcode
+                                , endaddress, endcity, endcountry, endpostalcode, "pending"
+                                , "0", "0");
 
                 startActivity(myIntent);
             }
