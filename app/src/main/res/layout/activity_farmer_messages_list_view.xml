@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="118dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="5dp"
         android:background="@android:color/transparent"
         android:padding="15dp">
@@ -37,17 +37,6 @@
             android:textColor="@color/common_google_signin_btn_text_light_default"
             android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/t_pickupDate"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_toLeftOf="@+id/t_declineRequestButton"
-            android:layout_toStartOf="@+id/t_declineRequestButton"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
         <ImageView
             android:id="@+id/transporterPhoto"
             android:layout_width="40dp"
@@ -56,6 +45,17 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             app:srcCompat="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/transporterRequestStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="TextView"
+            android:textColor="@android:color/holo_green_light"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 </LinearLayout>

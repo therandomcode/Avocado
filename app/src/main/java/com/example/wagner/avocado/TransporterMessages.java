@@ -22,9 +22,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
-import static android.widget.Toast.LENGTH_LONG;
-
 public class TransporterMessages extends AppCompatActivity {
 
     ListView messages;
