@@ -76,7 +76,7 @@ public class ViewProfile extends AppActivity implements DataReceived {
         RatingBar rb = (RatingBar)findViewById(R.id.ratingBar);
         rb.setClickable(false);
         rb.setRating(Float.parseFloat(rating));
-        
+
         final Button backButton = findViewById(R.id.farmerProfileBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

@@ -2,13 +2,25 @@ package com.example.wagner.avocado;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageButton;
+import android.widget.ListView;
+
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,7 +29,6 @@ import java.util.ArrayList;
 
 public class FarmerMessages extends AppActivity implements DataReceived{
 
-    //temporary hardcoded messages from transporters
     ListView lst;
 
 
@@ -26,10 +37,14 @@ public class FarmerMessages extends AppActivity implements DataReceived{
     ArrayList<String> status = new ArrayList<String>();
     ArrayList<Integer> imgids = new ArrayList<Integer>();
 
+    private int index;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_messages);
+
 
         //sets the listview to the hardcoded transporters
         DatabaseHandler db =  new DatabaseHandler(this);
@@ -68,15 +83,15 @@ public class FarmerMessages extends AppActivity implements DataReceived{
                 names.toArray(new String[names.size()])
                 , fulltimes.toArray(new String[fulltimes.size()])
                 , status.toArray(new String[status.size()]));
+
         lst.setAdapter(customListview);
 
-        //returns to the sign up/login home screen if cancel is clicked
         final Button backButton = findViewById(R.id.farmerMyMessagesBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent myIntent = new Intent(FarmerMessages.this, FarmerHome.class);
-                myIntent.putExtra("phonenumber",
-                        getIntent().getStringExtra("phonenumber"));
+                Intent myIntent = new Intent(FarmerMessages.this,
+                        FarmerHome.class);
+                myIntent.putExtra("phonenumber", getIntent().getStringExtra("phonenumber"));
                 startActivity(myIntent);
             }
         });
