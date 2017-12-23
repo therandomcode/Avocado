@@ -22,41 +22,68 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class FarmerMessages extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.ArrayList;
+
+public class FarmerMessages extends AppActivity implements DataReceived{
 
     ListView lst;
-    String[] transportername = {"Felipe los Espadrillas", "Ricardo de Leon", "Davíd Latafundia", "Roberto Santos", "Antonio Cortéz"};
-    String[] time = {"Tuesday, 2 October 15:10", "Thursday, 4 October 13:24", "Tuesday, 6 October 15:36", "Monday 10 October 9:30", "Friday 10 October 11:45"};
-    Integer[] imgid = {R.drawable.profile, R.drawable.cecilia, R.drawable.maria, R.drawable.arka, R.drawable.andrew};
-    String[] status = {"Accepted", "Declined", "In Progress", "Declined", "Declined"};
+
+
+    ArrayList<String> names = new ArrayList<String>();
+    ArrayList<String> fulltimes = new ArrayList<String>();
+    ArrayList<String> status = new ArrayList<String>();
+    ArrayList<Integer> imgids = new ArrayList<Integer>();
 
     private int index;
 
-    /*
-     * currently hardcoding the list of farmers that are requesting pickup
-     * TODO use the database to only load farmers that have sent a request to the transporter
-     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_messages);
 
-        ArrayList<String> checktransporters = getIntent().getStringArrayListExtra("transporters");
-        ArrayList<String> checktimes = getIntent().getStringArrayListExtra("times");
-        ArrayList<String> checkmsg = getIntent().getStringArrayListExtra("messages");
-        ArrayList<Integer> checkimages = getIntent().getIntegerArrayListExtra("images");
-        if ((checktransporters != null)) {
-            transportername = checktransporters.toArray(new String[0]);
-            time = checktimes.toArray(new String[0]);
-            status = checkmsg.toArray(new String[0]);
-            imgid = checkimages.toArray(new Integer[0]);
+
+        //sets the listview to the hardcoded transporters
+        DatabaseHandler db =  new DatabaseHandler(this);
+        db.getSchedule(getIntent().getStringExtra("phonenumber"));
+    }
+
+    public void Success(String response){
+
+
+        String name, stat, date, mytime;
+
+        try {
+            JSONArray transporters = new JSONArray(response);
+
+            for (int i = 0; i < transporters.length(); i++){
+                JSONObject transporter = transporters.getJSONObject(i);
+                name = (String)transporter.get("firstname")+" "+(String)transporter.get("lastname");
+                stat = (String) transporter.get("status");
+                date = (String) transporter.get("date");
+                mytime = (String) transporter.get("time");
+
+                names.add(name);
+                fulltimes.add(date+" "+mytime);
+                status.add(stat);
+                imgids.add(R.drawable.bgavocado);
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
 
-        lst = findViewById(R.id.farmerMessagesListView);
+        lst = findViewById(R.id.messagesListView);
         FarmerMessagesListView customListview = new FarmerMessagesListView(this,
-                transportername, time, status, imgid);
+                names.toArray(new String[names.size()])
+                , fulltimes.toArray(new String[fulltimes.size()])
+                , status.toArray(new String[status.size()]));
+
         lst.setAdapter(customListview);
 
         final Button backButton = findViewById(R.id.farmerMyMessagesBackButton);

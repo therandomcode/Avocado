@@ -9,12 +9,24 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.ToggleButton;
 
-public class TransporterViewSchedule extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.util.ArrayList;
+
+public class TransporterViewSchedule extends AppActivity implements DataReceived{
 
     ListView lst;
-    String[] transportername={"Juan","Ricardo","Davíd"};
+    /*String[] transportername={"Juan","Ricardo","Davíd"};
     String[] time={"1996 Toyota Tacoma","2002 Nissan Navara","2000 Agrale Marrua"};
     Integer[] imgid ={R.drawable.bgavocado,R.drawable.bgavocado,R.drawable.bgavocado};
+    */
+    ArrayList<String> names = new ArrayList<String>();
+    ArrayList<String> fulltimes = new ArrayList<String>();
+    ArrayList<Integer> imgids = new ArrayList<Integer>();
+    ArrayList<String> startlocations = new ArrayList<String>();
+    ArrayList<String> endlocations = new ArrayList<String>();
+
 
     /*
      * hardcoded farmers to populate schedule
@@ -27,8 +39,45 @@ public class TransporterViewSchedule extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transporter_view_schedule);
 
+        DatabaseHandler db =  new DatabaseHandler(this);
+        db.getSchedule(getIntent().getStringExtra("phonenumber"));
+    }
+
+    public void Success(String response){
+
+        String name, sloc, eloc, date, mytime;
+
+        try {
+            JSONArray scheduledFarmers = new JSONArray(response);
+
+            for (int i = 0; i < scheduledFarmers.length(); i++){
+                JSONObject farmer = scheduledFarmers.getJSONObject(i);
+                name = (String)farmer.get("firstname")+" "+(String)farmer.get("lastname");
+                sloc = (String) farmer.get("startcity");
+                eloc = (String) farmer.get("endcity");
+                date = (String) farmer.get("date");
+                mytime = (String) farmer.get("time");
+
+                names.add(name);
+                fulltimes.add(date+" "+mytime);
+                startlocations.add(sloc);
+                endlocations.add(eloc);
+                imgids.add(R.drawable.bgavocado);
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
         lst= findViewById(R.id.listview);
-        TransporterViewScheduleCustomListView customListview = new TransporterViewScheduleCustomListView(this,transportername,time,imgid);
+        TransporterViewScheduleCustomListView customListview =
+                new TransporterViewScheduleCustomListView(this
+                        ,names.toArray(new String[names.size()])
+                        ,fulltimes.toArray(new String[fulltimes.size()])
+                        ,imgids.toArray(new Integer[imgids.size()]));
         lst.setAdapter(customListview);
 
         final Button setAvailabilityButton = findViewById(R.id.transporterViewScheduleSetAvailabilityButton);
