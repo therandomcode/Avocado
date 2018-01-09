@@ -4,7 +4,7 @@ include_once './db_functions.php';
 $db = new DB_Functions(); 
 //Get JSON posted by Android Application
 
-$json = $_POST["getRequests"];
+$json = $_POST["getSchedule"];
 //Remove Slashes
 
 if (get_magic_quotes_gpc()){
@@ -22,7 +22,7 @@ $b=array();
 for($i=0; $i<count($data) ; $i++)
 {
 	//Store User into MySQL DB   
-	$res = $db->getPendingTransactionTransporter($data[$i]->phonenumber);
+	$res = $db->getAcceptedTransactionTransporter($data[$i]->phonenumber);
 	while ($row = mysql_fetch_assoc($res)){
 	    $farmer = $db->getFarmer($row['phonenumberfarmer']);
 	    $final = array_merge(mysql_fetch_assoc($farmer), $row);    
