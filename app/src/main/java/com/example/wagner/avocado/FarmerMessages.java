@@ -78,11 +78,12 @@ public class FarmerMessages extends AppActivity implements DataReceived{
         }
 
 
-        lst = findViewById(R.id.messagesListView);
+        lst = findViewById(R.id.farmerMessagesListView);
         FarmerMessagesListView customListview = new FarmerMessagesListView(this,
                 names.toArray(new String[names.size()])
                 , fulltimes.toArray(new String[fulltimes.size()])
-                , status.toArray(new String[status.size()]));
+                , status.toArray(new String[status.size()])
+                , imgids.toArray(new Integer[imgids.size()]));
 
         lst.setAdapter(customListview);
 
