@@ -112,7 +112,7 @@ class DB_Functions {
         return $result;
     }
 
-    public function updateFarmerRequest($phonenumber, $request){
+    /*public function updateFarmerRequest($phonenumber, $request){
 	$farmerres = mysql_query("select * FROM farmers WHERE phonenumber = '$phonenumber'");
 
 	while ($farmer = mysql_fetch_assoc($farmerres)){
@@ -122,7 +122,7 @@ class DB_Functions {
 	$del = json_encode($deliveries);
 	$result = mysql_query("UPDATE farmers SET deliveries = '$del' WHERE phonenumber = '$phonenumber'");
     	return $result;
-    }
+    }*/
 
     public function updateTransporterRequest($phonenumber, $request){
 	$transporterres = mysql_query("select * FROM transporters WHERE phonenumber = '$phonenumber'");
