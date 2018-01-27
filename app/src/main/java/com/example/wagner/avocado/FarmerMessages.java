@@ -77,8 +77,7 @@ public class FarmerMessages extends AppActivity implements DataReceived{
             e.printStackTrace();
         }
 
-
-        lst = findViewById(R.id.listview);
+        lst = findViewById(R.id.farmerMessagesListView);
         FarmerMessagesListView customListview = new FarmerMessagesListView(this,
                 names.toArray(new String[names.size()])
                 , fulltimes.toArray(new String[fulltimes.size()])

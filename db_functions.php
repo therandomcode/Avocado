@@ -144,26 +144,49 @@ class DB_Functions {
     }
     
     public function getTransactionFarmer($phonenumber){
-	$result = mysql_query("select * FROM Transactions WHERE phonenumberfarmer = '$phonenumber'");
+	$result = mysql_query("select * FROM Transactions WHERE phonenumberfarmer = '$phonenumber'
+				 AND status = 'finished'");
    	return $result;
     }
 
     public function getTransactionTransporter($phonenumber){
-	$result = mysql_query("select * FROM Transactions WHERE phonenumbertransporter = '$phonenumber'");
+	$result = mysql_query("select * FROM Transactions WHERE phonenumbertransporter = '$phonenumber'
+				 AND status = 'finished'");
     	return $result;
     }
 
+    public function getPendingTransactionTransporter($phonenumber){
+	$result = mysql_query("select * FROM Transactions WHERE phonenumbertransporter = '$phonenumber' 
+				and status = 'pending'");
+	return $result;
+    }
+
+    public function getFarmerRequests($phonenumber){
+        $result = mysql_query("select * FROM Transactions WHERE phonenumberfarmer = '$phonenumber' 
+                                and (status = 'pending' OR status = 'accepted' OR status = 'declined'
+					OR status = 'on the way')");
+        return $result;
+    }
+
+    public function getAcceptedTransactionTransporter($phonenumber){
+        $result = mysql_query("select * FROM Transactions WHERE phonenumbertransporter = '$phonenumber' 
+                                and status = 'accepted' OR status = 'started'");
+        return $result;
+    }
+
     public function insertTransaction($crop, $amount, $metric, $locationtype, $phonenumberfarmer
-					, $phonenumbertransporter, $date, $startaddress, $startcity
+					, $phonenumbertransporter, $date, $time, $startaddress, $startcity
 					, $startcountry, $startpostalcode, $endaddress, $endcity
-					, $endcountry, $endpostalcode, $status)
+					, $endcountry, $endpostalcode, $status, $farmerrating
+					, $transporterrating)
     {
 	$result = mysql_query("INSERT INTO Transactions VALUES('$crop', '$amount', '$metric'
 							, '$locationtype', '$phonenumberfarmer'
-							, '$phonenumbertransporter', '$date'
+							, '$phonenumbertransporter', '$date', '$time'
 							, '$startaddress', '$startcity', '$startcountry'
 							, '$startpostalcode', '$endaddress', '$endcity'
-							, '$endcountry', '$endpostalcode', '$status')");
+							, '$endcountry', '$endpostalcode', '$status'
+							, '$farmerrating', '$transporterrating')");
 	if ($result) {
             return true;
         } else {
@@ -176,6 +199,17 @@ class DB_Functions {
             }            
         }
 	
+    }
+
+    public function updateFarmerRequest($phonenumberfarmer, $phonenumbertransporter, $status
+					, $date, $time){
+        $result = mysql_query("UPDATE Transactions 
+				SET status = '$status' 
+				WHERE phonenumberfarmer = '$phonenumberfarmer'
+				and phonenumbertransporter = '$phonenumbertransporter'
+				and date = '$date'
+				and time = '$time'");
+        return $result;
     }
 }
 
