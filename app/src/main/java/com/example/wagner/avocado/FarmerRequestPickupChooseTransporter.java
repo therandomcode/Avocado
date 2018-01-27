@@ -192,7 +192,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         });
 
         //takes the user to the profile of the transporter they select
-        final Button viewProfileButton = findViewById(R.id.acceptButton);
+        final Button viewProfileButton = findViewById(R.id.changeStatusButton);
         viewProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

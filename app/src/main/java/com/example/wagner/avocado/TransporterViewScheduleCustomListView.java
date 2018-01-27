@@ -15,15 +15,18 @@ import android.widget.TextView;
 public class TransporterViewScheduleCustomListView extends ArrayAdapter<String> {
     private String[] transportername;
     private String[] time;
+    private String[] status;
     private Integer[] imgid;
     private Activity context;
     private Button startButton;
 
-    public TransporterViewScheduleCustomListView(Activity context, String[] transportername, String[] time, Integer[] imgid) {
+    public TransporterViewScheduleCustomListView(Activity context, String[] transportername,
+                                                 String[] time, String[] status, Integer[] imgid) {
         super(context, R.layout.activity_transporter_view_schedule_listview, transportername);
         this.context = context;
         this.transportername = transportername;
         this.time = time;
+        this.status = status;
         this.imgid = imgid;
     }
 
@@ -40,22 +43,11 @@ public class TransporterViewScheduleCustomListView extends ArrayAdapter<String> 
         } else {
             viewHolder = (ViewHolder) r.getTag();
         }
-        startButton = viewHolder.startButton;
-        startButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Button start = v.findViewById(R.id.startButton);
-                if (start.getText().equals("Start")) {
-                    start.setText("Finish");
-                }
-                else if (start.getText().equals("Finish")) {
-                    start.setText("Done");
-                }
-            }
-        });
 
         viewHolder.ivw.setImageResource(imgid[position]);
         viewHolder.tvw1.setText(transportername[position]);
         viewHolder.tvw2.setText(time[position]);
+        viewHolder.tvw3.setText(status[position]);
 
         return r;
     }
@@ -63,14 +55,14 @@ public class TransporterViewScheduleCustomListView extends ArrayAdapter<String> 
     class ViewHolder {
         TextView tvw1;
         TextView tvw2;
+        TextView tvw3;
         ImageView ivw;
-        Button startButton;
 
         ViewHolder(View v) {
             tvw1 = v.findViewById(R.id.farmerName);
             tvw2 = v.findViewById(R.id.timePicked);
+            tvw3 = v.findViewById(R.id.status);
             ivw = v.findViewById(R.id.farmerPhoto);
-            startButton = v.findViewById(R.id.startButton);
         }
     }
 }
