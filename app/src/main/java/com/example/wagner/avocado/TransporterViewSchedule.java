@@ -1,7 +1,6 @@
 package com.example.wagner.avocado;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -139,7 +138,7 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
             }
         });
 
-        final Button earlyButton = findViewById(R.id.earlyButton);
+        final Button earlyButton = findViewById(R.id.lateButton);
         earlyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
@@ -147,7 +146,7 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
             }
         });
 
-        final Button lateButton = findViewById(R.id.lateButton);
+        final Button lateButton = findViewById(R.id.hereButton);
         lateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
