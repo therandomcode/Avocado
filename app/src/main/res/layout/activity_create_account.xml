@@ -71,10 +71,10 @@
         android:layout_marginStart="68dp"
         android:layout_marginTop="40dp"
         android:onClick="onFarmerClicked"
-        android:text="Farmer"
+        android:text="Productor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
-        tools:text="Farmer" />
+        tools:text="Productor" />
 
     <CheckBox
         android:id="@+id/Transporter"
@@ -84,12 +84,12 @@
         android:layout_marginStart="172dp"
         android:layout_marginTop="40dp"
         android:onClick="onTransporterClicked"
-        android:text="Transporter"
+        android:text="Transportador"
         app:layout_constraintBottom_toTopOf="@+id/FarmerRequestPickupDateBackButton"
         app:layout_constraintEnd_toStartOf="@+id/pmCheckBox"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
-        tools:text="Transporter" />
+        tools:text="Transportador" />
 
     <Button
         android:id="@+id/createAccountSubmitButton"
@@ -99,7 +99,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
-        android:text="Next"
+        android:text="Siguiente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +114,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Cancel"
+        android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -77,7 +77,6 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
             e.printStackTrace();
         }
 
-        findViewById(R.id.popUp).setVisibility(View.GONE);
         findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
 
         lst= findViewById(R.id.listview);
@@ -96,37 +95,9 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
                 index = position;
                 String status = (String) changeStatusButton.getText();
                 if (!status.equals("Completed")) {
-                    findViewById(R.id.popUp).setVisibility(View.VISIBLE);
-                    findViewById(R.id.popUp).bringToFront();
+                    findViewById(R.id.messagesPopUp).setVisibility(View.VISIBLE);
+                    findViewById(R.id.messagesPopUp).bringToFront();
                 }
-            }
-        });
-
-        changeStatusButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                String status = (String) changeStatusButton.getText();
-                if (status.equals("Start trip")) {
-                    changeStatusButton.setText("Finish trip");
-                    showToast("The farmer has been notified!");
-                    s = "On route";
-                }
-                else if (status.equals("Finish trip")) {
-                    s = "Completed";
-                    showToast("Your trip has been completed!");
-                }
-                else {
-                    s = "Start trip";
-                }
-                findViewById(R.id.popUp).setVisibility(View.GONE);
-            }
-        });
-
-        final Button sendMessagesButton = findViewById(R.id.sendMessageButton);
-        sendMessagesButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                findViewById(R.id.popUp).setVisibility(View.GONE);
-                findViewById(R.id.messagesPopUp).setVisibility(View.VISIBLE);
-                findViewById(R.id.messagesPopUp).bringToFront();
             }
         });
 
@@ -162,22 +133,12 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
             }
         });
 
-        //closes the popup
-        final ImageButton closeButton = findViewById(R.id.closePopUpButton);
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                findViewById(R.id.popUp).setVisibility(View.GONE);
-            }
-        });
-
         //closes the messages popup
         final ImageButton closeMessagesButton = findViewById(R.id.closeMessagesPopUpButton);
         closeMessagesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
-                findViewById(R.id.popUp).setVisibility(View.VISIBLE);
             }
         });
 
