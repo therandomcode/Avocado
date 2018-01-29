@@ -52,7 +52,7 @@ public class FarmerRequestPickupPickDate extends AppCompatActivity {
                 Boolean pm = cb2.isChecked();
 
                 if (!cb1.isChecked() && !cb2.isChecked()) {
-                    showToast("Please enter a time when you will be available.");
+                    showToast("Por favor, ingrese una hora en la que estará disponible.");
                 }
                 else {
                     String date = month+"/"+day+"/"+year;

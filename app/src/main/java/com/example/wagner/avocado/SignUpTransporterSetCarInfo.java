@@ -91,7 +91,7 @@ public class SignUpTransporterSetCarInfo extends AppCompatActivity {
                     startActivity(myIntent);
                 }
                 else {
-                    showToast("Please enter information for all of the fields to continue.");
+                    showToast("Por favor ingrese la información de todos los campos para continuar.");
                 }
             }
         });

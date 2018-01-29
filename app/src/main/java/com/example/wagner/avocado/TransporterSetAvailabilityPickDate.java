@@ -53,7 +53,7 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements D
                 cb2 = (CheckBox)findViewById(R.id.pmCheckBox);
 
                 if (!cb1.isChecked() && !cb2.isChecked()) {
-                    showToast("Please enter a time when you will be available.");
+                    showToast("Por favor, ingrese cuando estará disponible.");
                 }
                 else {
                     bundle = getIntent().getParcelableExtra("bundle");
@@ -98,7 +98,7 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements D
         final Button finishButton = findViewById(R.id.transporterSetAvailabilityFinishButton);
         finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showToast("Thank you! Farmers in the area will be notified.");
+                showToast("¡Gracias! Los productores en el área serán notificados.");
 
                 Intent myIntent = new Intent(TransporterSetAvailabilityPickDate.this
                         , TransporterAvailableTimes.class);
@@ -145,12 +145,12 @@ public class TransporterSetAvailabilityPickDate extends AppActivity implements D
     private void showToast2(String date, String time){
         if (time.equals("ALLDAY")) {
             Toast.makeText(this,
-                    "You are available on " + date + " AM/PM.",
+                    "Estás disponible en " + date + " AM/PM.",
                     Toast.LENGTH_LONG).show();
         }
         else {
             Toast.makeText(this,
-                    "You are available on " + date + " " + time + ".",
+                    "Estás disponible en " + date + " " + time + ".",
                     Toast.LENGTH_LONG).show();
         }
     }

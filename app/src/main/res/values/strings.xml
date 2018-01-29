@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Agromovil</string>
     <!--    Permissions    -->
-    <string name="permission_rationale_location">Access to the location service is required to show your current location on the map.</string>
-    <string name="location_permission_denied">Location permission is required.</string>
-    <string name="permission_required_toast">Location permission is required.</string>
+    <string name="permission_rationale_location">Se requiere acceso al servicio de ubicación para
+        mostrar su ubicación actual en el mapa.</string>
+    <string name="location_permission_denied">Se requiere permiso de ubicación.</string>
+    <string name="permission_required_toast">Se requiere permiso de ubicación.</string>
 
     <string name="address">Enter Your Address Here.</string>
     <string name="next">Next</string>

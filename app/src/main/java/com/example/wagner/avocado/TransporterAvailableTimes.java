@@ -80,7 +80,7 @@ public class TransporterAvailableTimes extends AppCompatActivity {
                 Intent myIntent = new Intent(TransporterAvailableTimes.this,
                         TransporterViewSchedule.class);
 
-                showToast("Great! We have set your availability!");
+                showToast("Configuramos su disponibilidad.");
                 myIntent.putExtra("phonenumber",
                         getIntent().getStringExtra("phonenumber"));
                 startActivity(myIntent);

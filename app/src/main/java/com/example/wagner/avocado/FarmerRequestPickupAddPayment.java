@@ -33,7 +33,7 @@ public class FarmerRequestPickupAddPayment extends AppCompatActivity {
             public void onClick(View v) {
                 if (!creditCardRadioButton.isChecked() && !bankAccountRadioButton.isChecked()
                         && !cashRadioButton.isChecked()) {
-                    showToast("Please select a payment method.");
+                    showToast("Por favor seleccione un método de pago.");
                 }
                 else {
                     if (creditCardRadioButton.isChecked()) {

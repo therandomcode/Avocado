@@ -18,7 +18,7 @@ public class FarmerRequestPickupOrderConfirmation extends AppCompatActivity {
         final Button finishButton = findViewById(R.id.farmerRequestPickupOrderConfirmationFinishButton);
         finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showToast("Thank you! Your request for pickup has been sent.");
+                showToast("¡Gracias! Su solicitud de recolección ha sido enviada.");
                 Intent farmerRequestPickupSetPickupLocationIntent =
                         new Intent(FarmerRequestPickupOrderConfirmation.this,
                             FarmerHome.class);

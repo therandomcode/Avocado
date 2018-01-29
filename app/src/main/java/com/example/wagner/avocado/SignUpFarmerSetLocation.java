@@ -152,8 +152,8 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
                     startActivity(myIntent);
                 }
                 else {
-                    showToast("Please enter information for all of the address" +
-                            " fields or drop a pin to continue.");
+                    showToast("Ingrese información para todos los campos de dirección" +
+                            " o suelte su ubicación para continuar.");
                 }
             }
         });
@@ -329,7 +329,7 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
 
     @Override
     public boolean onMyLocationButtonClick() {
-        Toast.makeText(this, "Going to your location", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "En camino a su ubicación", Toast.LENGTH_SHORT).show();
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false;
@@ -377,7 +377,7 @@ public class SignUpFarmerSetLocation extends AppCompatActivity implements
         markerLatLng = point;
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
-        Toast.makeText(this, "Setting your farm's location", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Configurando su ubicación", Toast.LENGTH_SHORT).show();
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
     }
 

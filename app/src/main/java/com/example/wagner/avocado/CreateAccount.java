@@ -103,7 +103,7 @@ public class CreateAccount extends AppCompatActivity {
                     }
                 }
                 else {
-                    showToast("Please enter information for all of the fields to continue.");
+                    showToast("Por favor ingrese la información de todos los campos para continuar.");
                 }
             }
         });

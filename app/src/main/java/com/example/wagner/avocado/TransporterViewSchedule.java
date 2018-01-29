@@ -105,7 +105,7 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
         onMyWayButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
-                showToast("Your message has been sent!");
+                showToast("¡Su mensaje ha sido enviado!");
             }
         });
 
@@ -113,7 +113,7 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
         earlyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
-                showToast("Your message has been sent!");
+                showToast("¡Su mensaje ha sido enviado!");
             }
         });
 
@@ -121,7 +121,7 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
         lateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
-                showToast("Your message has been sent!");
+                showToast("¡Su mensaje ha sido enviado!");
             }
         });
 
@@ -129,7 +129,7 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
         cancelTripButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
-                showToast("Your message has been sent!");
+                showToast("¡Su mensaje ha sido enviado!");
             }
         });
 
