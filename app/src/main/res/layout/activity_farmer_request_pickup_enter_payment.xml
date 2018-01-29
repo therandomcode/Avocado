@@ -14,7 +14,7 @@ tools:context="com.example.wagner.avocado.FarmerRequestPickupAddPayment">
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Next"
+        android:text="Siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -25,7 +25,7 @@ tools:context="com.example.wagner.avocado.FarmerRequestPickupAddPayment">
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:text="Back"
+        android:text="Anterior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -43,7 +43,7 @@ tools:context="com.example.wagner.avocado.FarmerRequestPickupAddPayment">
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_weight="1"
-            android:text="Cash (not recommended)" />
+            android:text="Efectivo (no recomendado)" />
 
         <RadioButton
             android:id="@+id/bankAccountRadioButton"
@@ -51,7 +51,7 @@ tools:context="com.example.wagner.avocado.FarmerRequestPickupAddPayment">
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_weight="1"
-            android:text="Bank Account" />
+            android:text="Cuenta Bancaria" />
 
         <RadioButton
             android:id="@+id/creditCardRadioButton"
@@ -59,7 +59,7 @@ tools:context="com.example.wagner.avocado.FarmerRequestPickupAddPayment">
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_weight="1"
-            android:text="Credit Card" />
+            android:text="Tarjeta de Crédito" />
     </RadioGroup>
 
     <TextView
@@ -68,7 +68,7 @@ tools:context="com.example.wagner.avocado.FarmerRequestPickupAddPayment">
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:text="What payment method will you be using?"
+        android:text="¿Qué método de pago usará?"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

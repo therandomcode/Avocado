@@ -102,7 +102,7 @@ public class LogIn extends AppActivity implements DataReceived {
                 JSONObject x = avail.getJSONObject(0);
                 String realpass = (String) x.get("pass");
                 if (realpass.equals(password)){
-                    showToast("Welcome "+(String)x.get("firstname"));
+                    showToast("Bienvenido "+(String)x.get("firstname"));
                     Intent myIntent;
                     if (isFarmer)
                         myIntent = new Intent(LogIn.this, FarmerHome.class);

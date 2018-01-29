@@ -27,7 +27,7 @@
         android:layout_height="30dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="12dp"
-        android:text="Best Match:"
+        android:text="Mejor Conexión:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,9 +107,9 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="36dp"
             android:layout_marginTop="56dp"
-            android:text="View Profile"
+            android:text="Ver perfil"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="56dp"
-            android:text="Select"
+            android:text="Seleccione"
             app:layout_constraintStart_toEndOf="@+id/changeStatusButton"
             app:layout_constraintTop_toTopOf="parent" />
 

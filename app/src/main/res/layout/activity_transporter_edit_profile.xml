@@ -81,10 +81,13 @@
                 android:id="@+id/transporterSaveChangesButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:text="Save Changes" />
+                android:layout_marginLeft="58dp"
+                android:layout_marginStart="58dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/user_profile_name"
+                android:layout_toRightOf="@+id/user_profile_name"
+                android:text="Guardar cambios" />
 
             <RatingBar
                 android:id="@+id/ratingBar"
@@ -116,11 +119,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@android:color/holo_green_dark"
-                android:textColor="#fff"
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Phone Number: " />
+                android:text="Número de Celular:"
+                android:textColor="#fff" />
 
             <TextView
                 android:id="@+id/user_profile_phoneNumber"
@@ -155,11 +158,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@android:color/holo_green_dark"
-                android:textColor="#fff"
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Address: " />
+                android:text="Dirección Línea:"
+                android:textColor="#fff" />
 
             <TextView
                 android:id="@+id/user_profile_address"
@@ -192,11 +195,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@android:color/holo_green_dark"
-                android:textColor="#fff"
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="City:" />
+                android:text="Ciudad:"
+                android:textColor="#fff" />
 
             <TextView
                 android:id="@+id/user_profile_city"
@@ -231,11 +234,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@android:color/holo_green_dark"
-                android:textColor="#fff"
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Postal Code:" />
+                android:text="Código Postal:"
+                android:textColor="#fff" />
 
             <TextView
                 android:id="@+id/user_profile_postalcode"
@@ -270,11 +273,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@android:color/holo_green_dark"
-                android:textColor="#fff"
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Country: " />
+                android:text="País: "
+                android:textColor="#fff" />
 
             <TextView
                 android:id="@+id/user_profile_country"
@@ -344,7 +347,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:text="Edit Profile" />
+            android:text="Editar su perfil" />
 
         <Button
             android:id="@+id/transporterHistoryButton"
@@ -353,7 +356,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/transporterEditProfileButton"
-            android:text="View History" />
+            android:text="Ver su historia" />
 
         <Button
             android:id="@+id/transporterProfileBackButton"

@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/signUpSetLocationSkipButton"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="62dp"
+        android:layout_width="80dp"
         android:layout_height="39dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"

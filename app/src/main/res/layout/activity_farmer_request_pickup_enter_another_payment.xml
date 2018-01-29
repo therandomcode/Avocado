@@ -7,27 +7,27 @@
 
     tools:context="com.example.wagner.avocado.FarmerRequestPickupEnterAnotherPayment">
 
-<Button
-    android:id="@+id/farmerRequestPickupEnterAnotherPaymentNextButton"
-    style="@style/Widget.AppCompat.Button.Colored"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:layout_marginEnd="8dp"
-    android:text="Next"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+    <Button
+        android:id="@+id/farmerRequestPickupEnterAnotherPaymentNextButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-<Button
-    android:id="@+id/farmerRequestPickupEnterAnotherPaymentBackButton"
-    style="@style/Widget.AppCompat.Button.Colored"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:layout_marginStart="8dp"
-    android:text="Back"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/farmerRequestPickupEnterAnotherPaymentBackButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Anterior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -44,11 +44,12 @@
     <TableLayout
         android:id="@+id/tableLayout"
         android:layout_width="match_parent"
-        android:layout_height="216dp"
+        android:layout_height="206dp"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18">
 
@@ -65,7 +66,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="Card Number"
+                android:hint="Número de Tarjeta"
                 android:inputType="textPersonName" />
 
         </TableRow>
@@ -84,8 +85,14 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="Expiration"
+                android:hint="Fecha de Vencimiento"
                 android:inputType="textPersonName" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <EditText
                 android:id="@+id/editText32"
@@ -96,15 +103,8 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="CVC"
+                android:hint="Número de Seguridad"
                 android:inputType="textPersonName" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
         </TableRow>
     </TableLayout>
 
@@ -116,7 +116,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="Please enter your bank card details."
+        android:text="Por favor ingrese los datos de su tarjeta."
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +129,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="Your data will be kept confidential. For more information, see our privacy policy at https://www.agromovil.co/"
+        android:text="Sus datos son confidenciales. Para obtener más información, consulte nuestra política de privacidad a https://www.agromovil.com"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />

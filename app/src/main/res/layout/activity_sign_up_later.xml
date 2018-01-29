@@ -25,7 +25,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:text="OK"
+        android:text="Listo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"></Button>
 
@@ -37,7 +37,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="Don't want to fill this in now?"
+        android:text="Saltar"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,10 +47,10 @@
     <TextView
         android:id="@+id/textView8"
         android:layout_width="280dp"
-        android:layout_height="22dp"
+        android:layout_height="35dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Set a reminder to fill in this information later"
+        android:text="Configure una notificación para completar esta información más tarde."
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="247dp"
-        android:layout_height="352dp"
+        android:layout_height="328dp"
         android:layout_marginBottom="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -71,16 +71,16 @@
 
     <ToggleButton
         android:id="@+id/signUpLaterToday"
-        android:layout_width="wrap_content"
+        android:layout_width="61dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Today"
-        android:textOff="Today"
-        android:textOn="Today"
+        android:textOff="Hoy"
+        android:textOn="Hoy"
         app:layout_constraintEnd_toStartOf="@+id/signUpLaterTomorrow"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -88,11 +88,11 @@
         android:id="@+id/signUpLaterTomorrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
+        android:layout_marginStart="96dp"
         android:layout_marginTop="8dp"
         android:text="Tomorrow"
-        android:textOff="Tomorrow"
-        android:textOn="Tomorrow"
+        android:textOff="Mañana"
+        android:textOn="Mañana"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -104,8 +104,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Weekend"
-        android:textOff="Weekend"
-        android:textOn="Weekend"
+        android:textOff="El Fin de Semana"
+        android:textOn="El Fin de Semana"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toEndOf="@+id/signUpLaterTomorrow"

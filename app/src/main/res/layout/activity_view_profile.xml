@@ -110,7 +110,7 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Phone Number: " />
+                android:text="Número de Celular:" />
 
             <TextView
                 android:id="@+id/user_profile_phoneNumber"
@@ -136,7 +136,7 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Address: " />
+                android:text="Dirección Línea:" />
 
             <TextView
                 android:id="@+id/user_profile_address"
@@ -158,7 +158,7 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="City:" />
+                android:text="Ciudad:" />
 
             <TextView
                 android:id="@+id/user_profile_city"
@@ -182,7 +182,7 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Postal Code:" />
+                android:text="Código Postal:" />
 
             <TextView
                 android:id="@+id/user_profile_postalcode"
@@ -206,7 +206,7 @@
                 android:clickable="false"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Country: " />
+                android:text="País:" />
 
             <TextView
                 android:id="@+id/user_profile_country"
@@ -263,7 +263,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
-            android:text="Back"
+            android:text="Anterior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

@@ -2,7 +2,7 @@
     <string name="app_name">Agromovil</string>
     <!--    Permissions    -->
     <string name="permission_rationale_location">Access to the location service is required to show your current location on the map.</string>
-    <string name="location_permission_denied">Location permission is required to enable the \'my location\' layer. Please try again and grant access to use the location.</string>
+    <string name="location_permission_denied">Location permission is required.</string>
     <string name="permission_required_toast">Location permission is required.</string>
 
     <string name="address">Enter Your Address Here.</string>
