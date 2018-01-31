@@ -45,7 +45,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, "admin_channel")
-            .setSmallIcon(R.drawable.agromovil_logo) //a resource for your custom small icon
+            .setSmallIcon(R.drawable.notification_logo) //a resource for your custom small icon
             .setContentTitle(remoteMessage.getNotification().getTitle()) //the "title" value you sent in your notification
             .setContentText(remoteMessage.getNotification().getBody()) //ditto
             .setAutoCancel(true) //dismisses the notification on click

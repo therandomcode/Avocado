@@ -267,7 +267,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("getFarmer", gson.toJson(wordList));
 
-        client.post("http://10.0.2.2/Avocado/getFarmer.php", params,
+        client.post("http://172.104.28.91/getFarmer.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override
