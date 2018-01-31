@@ -57,7 +57,7 @@ public class SignUpLater extends AppCompatActivity {
         final Button finishButton = findViewById(R.id.button_cal_next3);
         finishButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showToast("Great! We will send you a reminder.");
+                showToast("¡Te enviaremos un recordatorio!");
                 Intent farmerRequestPickupSetPickupLocationIntent;
 
                 String type = getIntent().getStringExtra("type");

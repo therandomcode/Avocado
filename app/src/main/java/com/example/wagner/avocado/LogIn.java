@@ -57,7 +57,7 @@ public class LogIn extends AppActivity implements DataReceived {
                         db.getTransporter(phone);
                 }
                 else {
-                    showToast("Please enter username and password");
+                    showToast("Por favor ingrese nombre de usuario y contraseña.");
                 }
 
             }
@@ -93,7 +93,7 @@ public class LogIn extends AppActivity implements DataReceived {
         try {
             JSONArray avail = new JSONArray(response);
             if (avail.length() == 0){
-                showToast("Username does not exist, please sign up!");
+                showToast("El nombre de usuario no existe, ¡Por favor, regístrase!");
                 Intent myIntent = new Intent(LogIn.this, LogIn.class);
                 startActivity(myIntent);
             }
@@ -102,7 +102,7 @@ public class LogIn extends AppActivity implements DataReceived {
                 JSONObject x = avail.getJSONObject(0);
                 String realpass = (String) x.get("pass");
                 if (realpass.equals(password)){
-                    showToast("Welcome "+(String)x.get("firstname"));
+                    showToast("Bienvenido "+(String)x.get("firstname"));
                     Intent myIntent;
                     if (isFarmer)
                         myIntent = new Intent(LogIn.this, FarmerHome.class);
@@ -112,7 +112,7 @@ public class LogIn extends AppActivity implements DataReceived {
                     startActivity(myIntent);
                 }
                 else {
-                    showToast("Invalid password");
+                    showToast("La contraseña es invalida.");
                     Intent myIntent = new Intent(LogIn.this, LogIn.class);
                     startActivity(myIntent);
                 }

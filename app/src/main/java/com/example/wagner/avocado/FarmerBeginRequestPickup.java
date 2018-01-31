@@ -29,7 +29,8 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
 
         //sets up the produce spinner with the crops as the fields
         this.produceSpinner = new String[] {
-                "Avocados", "Bananas", "Cocoa Beans", "Coffee", "Corn", "Fique", "Oilseed", "Strawberries", "Tobacco"
+                "Aguacates", "Plátanos", "Cacao", "Café", "Maíz", "Semillas Oleaginosas",
+                "Fresas o Frutillas", "Tobaco"
         };
         Spinner s = (Spinner) findViewById(R.id.produceSpinner);
         ArrayAdapter<String> produceAdapter = new ArrayAdapter<String>(this,
@@ -47,7 +48,7 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
 
         //sets up the produce spinner with the crops as the fields
         this.metricSpinner = new String[] {
-                "kg", "tons", "2x2x2 foot boxes", "4x4x4 foot boxes", "50x50x50 cm boxes"
+                "kg", "toneladas", "Cajas 50x50x50 cm", "Cajas 60x60x60 cm", "Cajas 120x120x120 cm"
         };
         Spinner t = (Spinner) findViewById(R.id.metricSpinner);
         ArrayAdapter<String> metricAdapter = new ArrayAdapter<String>(this,
@@ -87,7 +88,7 @@ public class FarmerBeginRequestPickup extends AppCompatActivity {
                 farmerBeginRequestPickupIntent.putExtra("amount", amount);
 
                 //checks if the fields are all filled in before continuing to next activity
-                if (amount.length() == 0) showToast("Please enter how much produce you have.");
+                if (amount.length() == 0) showToast("Por favor ingrese la cantidad de productos que tiene.");
                 else startActivity(farmerBeginRequestPickupIntent);
             }
         });

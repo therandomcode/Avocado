@@ -13,7 +13,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="Add Photos"
+        android:text="Subir la foto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/transporterAddPhotosViewPhoto" />
@@ -21,11 +21,11 @@
     <Button
         android:id="@+id/signUpSetLocationSkipButton"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="62dp"
+        android:layout_width="88dp"
         android:layout_height="39dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Skip"
+        android:text="Saltar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -37,7 +37,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="264dp"
-        android:text="BACK"
+        android:text="Anterior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"></Button>
 
@@ -48,7 +48,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
-        android:text="NEXT"
+        android:text="Siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"></Button>
 
@@ -59,7 +59,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:text="Add Vehicle Pictures"
+        android:text="Subir fotos de vehículo"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Adding vehicule pictures increases the number of transporter requests you may receive by 12%."
+        android:text="Subir fotos de su vehículo aumenta la cantidad de solicitudes de transporte."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />

@@ -1,12 +1,14 @@
 package com.example.wagner.avocado;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import org.json.JSONArray;
@@ -26,6 +28,9 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
     ArrayList<Integer> imgids = new ArrayList<Integer>();
     ArrayList<String> startlocations = new ArrayList<String>();
     ArrayList<String> endlocations = new ArrayList<String>();
+    ArrayList<String> statuses = new ArrayList<String>();
+    private int index;
+    private String s;
 
 
     /*
@@ -64,21 +69,78 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
                 endlocations.add(eloc);
                 imgids.add(R.drawable.bgavocado);
 
+                // TODO put statuses in the database and add them to the arraylist
+
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-
+        findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
 
         lst= findViewById(R.id.listview);
         TransporterViewScheduleCustomListView customListview =
                 new TransporterViewScheduleCustomListView(this
                         ,names.toArray(new String[names.size()])
                         ,fulltimes.toArray(new String[fulltimes.size()])
+                        ,statuses.toArray(new String[statuses.size()])
                         ,imgids.toArray(new Integer[imgids.size()]));
         lst.setAdapter(customListview);
+
+        final Button changeStatusButton = findViewById(R.id.changeStatusButton);
+        lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> adapter, View v, int position,
+                                    long arg3) {
+                index = position;
+                String status = (String) changeStatusButton.getText();
+                if (!status.equals("Completed")) {
+                    findViewById(R.id.messagesPopUp).setVisibility(View.VISIBLE);
+                    findViewById(R.id.messagesPopUp).bringToFront();
+                }
+            }
+        });
+
+        final Button onMyWayButton = findViewById(R.id.onMyWayButton);
+        onMyWayButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
+                showToast("¡Su mensaje ha sido enviado!");
+            }
+        });
+
+        final Button earlyButton = findViewById(R.id.lateButton);
+        earlyButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
+                showToast("¡Su mensaje ha sido enviado!");
+            }
+        });
+
+        final Button lateButton = findViewById(R.id.hereButton);
+        lateButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
+                showToast("¡Su mensaje ha sido enviado!");
+            }
+        });
+
+        final Button cancelTripButton = findViewById(R.id.cancelTripButton);
+        cancelTripButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
+                showToast("¡Su mensaje ha sido enviado!");
+            }
+        });
+
+        //closes the messages popup
+        final ImageButton closeMessagesButton = findViewById(R.id.closeMessagesPopUpButton);
+        closeMessagesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
+            }
+        });
 
         final Button setAvailabilityButton = findViewById(R.id.transporterViewScheduleSetAvailabilityButton);
         setAvailabilityButton.setOnClickListener(new View.OnClickListener() {
@@ -154,5 +216,11 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
             }
         });
 
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(this,
+                message,
+                Toast.LENGTH_SHORT).show();
     }
 }

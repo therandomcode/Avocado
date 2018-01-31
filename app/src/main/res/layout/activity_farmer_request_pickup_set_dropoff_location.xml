@@ -77,11 +77,11 @@
         android:id="@+id/farmerRequestPickupSetDropoffLocationEnterAddressButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Enter Address"
-        android:textOff="Enter Address"
-        android:textOn="Enter Address"
+        android:text="Entrar Dirección"
+        android:textOff="Entrar Dirección"
+        android:textOn="Entrar Dirección"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
@@ -92,8 +92,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Drop Pin"
-        android:textOff="Drop Pin"
-        android:textOn="Drop Pin"
+        android:textOff="Poner Su Ubicación"
+        android:textOn="Poner Su Ubicación"
         app:layout_constraintStart_toEndOf="@+id/farmerRequestPickupSetDropoffLocationEnterAddressButton"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
@@ -114,7 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/next"
+        android:text="Siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -125,7 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:text="@string/back"
+        android:text="Anterior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -135,7 +135,8 @@
         android:layout_height="67dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="Produce delivery location"
+        android:text="¿Dónde debería ir el transportador?"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

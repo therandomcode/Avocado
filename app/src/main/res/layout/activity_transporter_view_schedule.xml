@@ -6,13 +6,91 @@
     android:layout_height="match_parent"
     tools:context="com.example.wagner.avocado.FarmerRequestPickupChooseTransporter">
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/messagesPopUp"
+        android:layout_width="245dp"
+        android:layout_height="264dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="128dp"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/cancelTripButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="No puedo hoy."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lateButton" />
+
+        <Button
+            android:id="@+id/lateButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Llegaré unos minutos tarde."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hereButton" />
+
+        <Button
+            android:id="@+id/hereButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="¡Estoy aquí!"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/onMyWayButton" />
+
+        <Button
+            android:id="@+id/onMyWayButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="28dp"
+            android:text="En camino."
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/closeMessagesPopUpButton"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/close" />
+
+    </android.support.constraint.ConstraintLayout>
+
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="Schedule"
+        android:text="El Horario"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:text="Back"
+        android:text="Anterior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -35,8 +113,9 @@
         android:layout_height="314dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -46,33 +125,33 @@
         android:layout_height="45dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="72dp"
-        android:text="Next Week"
-        android:textOff="Next Week"
-        android:textOn="Next Week"
+        android:text="This Week"
+        android:textOff="La Semana"
+        android:textOn="La Semana"
         app:layout_constraintStart_toEndOf="@+id/transporterViewScheduleTomorrowButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ToggleButton
         android:id="@+id/transporterViewScheduleTomorrowButton"
-        android:layout_width="117dp"
+        android:layout_width="95dp"
         android:layout_height="44dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="72dp"
-        android:text="Tomorrow"
-        android:textOff="Tomorrow"
-        android:textOn="Tomorrow"
+        android:text="Mañana"
+        android:textOff="Mañana"
+        android:textOn="Mañana"
         app:layout_constraintStart_toEndOf="@+id/transporterViewScheduleTodayButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ToggleButton
         android:id="@+id/transporterViewScheduleTodayButton"
-        android:layout_width="74dp"
+        android:layout_width="57dp"
         android:layout_height="44dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="72dp"
-        android:text="Today"
-        android:textOff="Today"
-        android:textOn="Today"
+        android:text="Hoy"
+        android:textOff="Hoy"
+        android:textOn="Hoy"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,7 +162,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Set Availability"
+        android:text="Disponibilidad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toEndOf="@+id/farmerRequestPickupChooseTransporterBackButton"
@@ -97,7 +176,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Start Today's Trip"
+        android:text="Comience el viaje"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/transporterViewScheduleBackButton" />

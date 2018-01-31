@@ -40,7 +40,7 @@ public class SignUpTransporterAddProfile extends AppCompatActivity{
             @Override
             public void onClick(View arg0) {
 
-                showToast("We need to ask the user permission.");
+                showToast("Necesitamos pedirle permiso al usuario.");
                 showPhoneStatePermission();
 
                 Intent i = new Intent(
@@ -125,7 +125,7 @@ public class SignUpTransporterAddProfile extends AppCompatActivity{
             }
         } else {
             Toast.makeText(SignUpTransporterAddProfile.this,
-                    "Permission (already) Granted!",
+                    "¡Permiso concedido!",
                     Toast.LENGTH_SHORT).show();
         }
     }
@@ -142,22 +142,22 @@ public class SignUpTransporterAddProfile extends AppCompatActivity{
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(this,
-                            "Read Permission Granted!",
+                            "¡Permiso concedido!",
                             Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this,
-                            "Read Permission Denied!",
+                            "¡Permiso denegado!",
                             Toast.LENGTH_SHORT).show();
                 }
             case REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE:
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(SignUpTransporterAddProfile.this,
-                            "Write Permission Granted!",
+                            "¡Permiso concedido!",
                             Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(SignUpTransporterAddProfile.this,
-                            "Write Permission Denied!",
+                            "¡Permiso denegado!",
                             Toast.LENGTH_SHORT).show();
                 }
         }

@@ -9,11 +9,11 @@
     <Button
         android:id="@+id/signUpSetLocationSkipButton"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="62dp"
+        android:layout_width="82dp"
         android:layout_height="39dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Skip"
+        android:text="Saltar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:text="Back"
+        android:text="Anterior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -36,18 +36,19 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Next"
+        android:text="Siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="313dp"
-        android:layout_height="51dp"
+        android:layout_height="63dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="28dp"
-        android:text="Add photos of your farm"
+        android:text="Subir fotos de la finca o la granja"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +61,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="Add Photos"
+        android:text="Subir Fotos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/farmerAddFarmPhotosViewPhoto" />
@@ -85,7 +86,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
-        android:text="This will help transporters find their way to pick up your produce."
+        android:text="Esto ayudaría transportadores encontrar su ubicación."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"

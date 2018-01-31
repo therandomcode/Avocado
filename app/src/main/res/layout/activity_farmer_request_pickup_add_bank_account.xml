@@ -23,7 +23,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginStart="0dp"
             android:layout_marginTop="16dp"
-            android:text="Please enter your bank details."
+            android:text="Por favor ingrese sus datos bancarios."
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            android:text="Your data will be kept confidential. For more information, see our privacy policy at https://www.agromovil.co/"
+            android:text="Sus datos son confidenciales. Para obtener más información, consulte nuestra política de privacidad."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +62,7 @@
                     android:layout_marginEnd="0dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
-                    android:hint="Account Number"
+                    android:hint="Número de cuenta"
                     android:inputType="textPersonName" />
 
             </TableRow>
@@ -96,7 +96,7 @@
                     android:layout_marginEnd="0dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
-                    android:hint="Currency"
+                    android:hint="Moneda"
                     android:inputType="textPersonName" />
 
             </TableRow>
@@ -113,7 +113,7 @@
                     android:layout_marginEnd="0dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
-                    android:hint="Bank Name"
+                    android:hint="Nombre de banco"
                     android:inputType="textPersonName" />
 
             </TableRow>
@@ -130,7 +130,7 @@
                     android:layout_marginEnd="0dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
-                    android:hint="Country"
+                    android:hint="País"
                     android:inputType="textPersonName" />
 
             </TableRow>
@@ -173,7 +173,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Next"
+        android:text="Siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -184,7 +184,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:text="Back"
+        android:text="Anterior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

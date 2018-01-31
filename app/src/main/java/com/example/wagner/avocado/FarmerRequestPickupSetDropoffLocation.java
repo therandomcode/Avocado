@@ -182,8 +182,8 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
                     startActivity(farmerRequestPickupSetDropoffLocationIntent);
                 }
                 else {
-                    showToast("Please enter information for all of the address" +
-                            " fields or drop a pin to continue.");
+                    showToast("Ingrese información para todos los campos de dirección" +
+                            " o suelte su ubicación para continuar.");
                 }
             }
         });
@@ -329,7 +329,7 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(4.5709,-74.2973), (float) 5.0));
 
         Toast.makeText(this,
-                "Set your dropoff location by dropping a pin or entering your address.",
+                "Suelte su ubicación o ingrese su información para continuar.",
                 Toast.LENGTH_LONG).show();
     }
 
@@ -350,7 +350,7 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
 
     @Override
     public boolean onMyLocationButtonClick() {
-        Toast.makeText(this, "Going to your location", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "En camino a su ubicación", Toast.LENGTH_SHORT).show();
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false;
@@ -398,7 +398,7 @@ public class FarmerRequestPickupSetDropoffLocation extends AppCompatActivity imp
         markerLatLng = point;
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
-        Toast.makeText(this, "Setting your dropoff location", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Configurando su ubicación", Toast.LENGTH_SHORT).show();
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
     }
 

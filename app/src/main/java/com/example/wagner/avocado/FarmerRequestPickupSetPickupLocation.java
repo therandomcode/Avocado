@@ -173,12 +173,12 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
                 if (((startaddress.equals("") || startcity.equals("") ||
                         startcountry.equals("") || startpostalcode.equals("")) &&
                         markerLatLng == null)) {
-                    showToast("Please enter information for all of the address" +
-                            " fields or drop a pin to continue.");
+                    showToast("Ingrese información para todos los campos de dirección" +
+                            " o suelte su ubicación para continuar.");
                 }
                 else if ((locationtype == null) ||
                         locationtype.equals("")) {
-                    showToast("Please select a location type.");
+                    showToast("Por favor seleccione un tipo de ubicación.");
                 }
                 else {
                     farmerRequestPickupSetPickupLocationIntent.putExtra("locationtype", locationtype);
@@ -335,7 +335,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(4.5709,-74.2973), (float) 5.0));
 
         Toast.makeText(this,
-                "Set your pickup location by dropping a pin or entering your address.",
+                "Configure su ubicación o ingrese su dirección.",
                 Toast.LENGTH_LONG).show();
     }
 
@@ -356,7 +356,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
 
     @Override
     public boolean onMyLocationButtonClick() {
-        Toast.makeText(this, "Going to your location", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "En camino a su ubicación", Toast.LENGTH_SHORT).show();
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return false;
@@ -404,7 +404,7 @@ public class FarmerRequestPickupSetPickupLocation extends AppCompatActivity impl
         markerLatLng = point;
         if (mLastMarker != null) mLastMarker.remove();
         mLastMarker = mMap.addMarker(new MarkerOptions().position(point));
-        Toast.makeText(this, "Setting your pickup location", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Configurando su ubicación", Toast.LENGTH_SHORT).show();
         markerLatLng = point;
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
     }
