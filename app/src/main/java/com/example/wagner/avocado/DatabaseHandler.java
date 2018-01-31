@@ -72,7 +72,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("insertFarmer", gson.toJson(wordList));
 
-        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/insertfarmer.php",params ,new AsyncHttpResponseHandler() {
+        client.post("http://172.104.28.91/insertfarmer.php",params ,new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
@@ -133,7 +133,7 @@ public class DatabaseHandler extends AppCompatActivity{
 
         Gson gson = new GsonBuilder().create();
         params.put("insertTransporter", gson.toJson(wordList));
-        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/inserttransporter.php",params ,new AsyncHttpResponseHandler() {
+        client.post("http://172.104.28.91/inserttransporter.php",params ,new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int i, Header[] headers, byte[] bytes) {
@@ -183,7 +183,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("getTransporters", gson.toJson(wordList));
 
-        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getTransporters.php", params,
+        client.post("http://172.104.28.91/getTransporters.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override
@@ -227,7 +227,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("getTransporter", gson.toJson(wordList));
 
-        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getTransporter.php", params,
+        client.post("http://172.104.28.91/getTransporter.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override
@@ -267,7 +267,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("getFarmer", gson.toJson(wordList));
 
-        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getFarmer.php", params,
+        client.post("http://10.0.2.2/Avocado/getFarmer.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override
@@ -314,13 +314,13 @@ public class DatabaseHandler extends AppCompatActivity{
 
         if (type.equals("farmer")){
             post = "getFarmerHistory";
-            url = "http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getFarmerHistory.php";
+            url = "http://172.104.28.91/getFarmerHistory.php";
             System.out.println("hi");
         }
         else if (type.equals("transporter"))
         {
             post = "getTransporterHistory";
-            url = "http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getTransporterHistory.php";
+            url = "http://172.104.28.91/getTransporterHistory.php";
         }
 
 
@@ -388,7 +388,7 @@ public class DatabaseHandler extends AppCompatActivity{
 
         params.put("sendRequest", gson.toJson(wordList));
 
-        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/sendRequest.php", params,
+        client.post("http://172.104.28.91/sendRequest.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override
@@ -430,7 +430,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("getRequests", gson.toJson(wordList));
 
-        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getRequests.php", params,
+        client.post("http://172.104.28.91/getRequests.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override
@@ -470,7 +470,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("getSchedule", gson.toJson(wordList));
 
-        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getSchedule.php", params,
+        client.post("http://172.104.28.91/getSchedule.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override
@@ -510,7 +510,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("getFarmerMessages", gson.toJson(wordList));
 
-        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/getFarmerMessages.php", params,
+        client.post("http://172.104.28.91/getFarmerMessages.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override
@@ -560,7 +560,7 @@ public class DatabaseHandler extends AppCompatActivity{
         Gson gson = new GsonBuilder().create();
         params.put("updateStatus", gson.toJson(wordList));
 
-        client.post("http://epiwork.hcii.cs.cmu.edu/agromovil/sites/updateStatus.php", params,
+        client.post("http://172.104.28.91/updateStatus.php", params,
                 new AsyncHttpResponseHandler() {
 
                     @Override
