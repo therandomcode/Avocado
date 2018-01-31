@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "645988594266",
+    "firebase_url": "https://amglobal-agromovil.firebaseio.com",
+    "project_id": "amglobal-agromovil",
+    "storage_bucket": "amglobal-agromovil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645988594266:android:b879a60857fd5310",
+        "android_client_info": {
+          "package_name": "com.example.wagner.avocado"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645988594266-mkvvtak3optr8jdbpscm1laoc45gh3ut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wagner.avocado",
+            "certificate_hash": "074ced1c7f55c757a07d4b67d0b813152164f2c3"
+          }
+        },
+        {
+          "client_id": "645988594266-52qg8m982fkj2l7ha86vvu8ojgqld67h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuo3kB2IC4BM2TNFt7pdoLVsMgNwhT3N8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645988594266-52qg8m982fkj2l7ha86vvu8ojgqld67h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
