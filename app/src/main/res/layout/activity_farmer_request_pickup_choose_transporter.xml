@@ -22,7 +22,7 @@
 
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/bestMatch"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="40dp"
@@ -34,12 +34,12 @@
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/browseOther"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
-        android:text="Browse other drivers"
+        android:text="Busques otro transportadores"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/bestMatch" />
 
     <ListView
         android:id="@+id/listview"
@@ -88,7 +88,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintTop_toBottomOf="@+id/browseOther" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/popUp"
@@ -135,5 +135,19 @@
             app:srcCompat="@mipmap/close" />
 
     </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/noDrivers"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:text="Lo siento, no hay otros transportadores. Por favor, intente luego."
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bestMatch" />
 
 </android.support.constraint.ConstraintLayout>

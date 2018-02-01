@@ -37,16 +37,16 @@
             android:textColor="@color/common_google_signin_btn_text_light_default"
             android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/t_pickupDate"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_toLeftOf="@+id/t_declineRequestButton"
-            android:layout_toStartOf="@+id/t_declineRequestButton"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        <!--<TextView-->
+            <!--android:id="@+id/t_pickupDate"-->
+            <!--android:layout_width="250dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_marginEnd="7dp"-->
+            <!--android:layout_marginRight="7dp"-->
+            <!--android:layout_toLeftOf="@+id/t_declineRequestButton"-->
+            <!--android:layout_toStartOf="@+id/t_declineRequestButton"-->
+            <!--android:textAppearance="@style/TextAppearance.AppCompat.Body1" />-->
 
         <ImageView
             android:id="@+id/farmerPhoto"

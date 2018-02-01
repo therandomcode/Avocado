@@ -43,6 +43,7 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transporter_view_schedule);
+        findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
 
         DatabaseHandler db =  new DatabaseHandler(this);
         db.getSchedule(getIntent().getStringExtra("phonenumber"));
@@ -76,8 +77,6 @@ public class TransporterViewSchedule extends AppActivity implements DataReceived
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        findViewById(R.id.messagesPopUp).setVisibility(View.GONE);
 
         lst= findViewById(R.id.listview);
         TransporterViewScheduleCustomListView customListview =

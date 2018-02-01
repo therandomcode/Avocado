@@ -54,7 +54,7 @@ public class TransporterMessagesListView extends ArrayAdapter<String> {
 
         viewHolder.tvw1.setText(transportername[position]);
         viewHolder.tvw2.setText(time[position]);
-        viewHolder.tvw3.setText(price[position]);
+        //viewHolder.tvw3.setText(price[position]);
         viewHolder.tvw4.setImageResource(imgid[position]);
         return r;
     }
@@ -62,13 +62,13 @@ public class TransporterMessagesListView extends ArrayAdapter<String> {
     class ViewHolder {
         TextView tvw1;
         TextView tvw2;
-        TextView tvw3;
+        //TextView tvw3;
         ImageView tvw4;
 
         ViewHolder(View v) {
             tvw1 = v.findViewById(R.id.farmername);
             tvw2 = v.findViewById(R.id.t_address);
-            tvw3 = v.findViewById(R.id.t_pickupDate);
+            //tvw3 = v.findViewById(R.id.t_pickupDate);
             tvw4 = v.findViewById(R.id.farmerPhoto);
         }
     }

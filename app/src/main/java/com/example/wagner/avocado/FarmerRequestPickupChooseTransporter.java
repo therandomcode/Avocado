@@ -52,6 +52,7 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_request_pickup_choose_transporter);
 
+        findViewById(R.id.noDrivers).setVisibility(View.GONE);
         locationtype = getIntent().getStringExtra("locationtype");
         crop = getIntent().getStringExtra("crop");
         amount = getIntent().getStringExtra("amount");
@@ -127,59 +128,69 @@ public class FarmerRequestPickupChooseTransporter extends AppCompatActivity {
         Integer [] images = imgid.toArray(new Integer[imgid.size()]);
 
         String[] newTransArray = new String[1];
-        newTransArray[0] = transArray[0];
         String[] newCarArray = new String[1];
-        newCarArray[0] = carArray[0];
         Integer[] newImages = new Integer[1];
-        newImages[0] = images[0];
 
-        FarmerRequestPickupChooseTransporterCustomListView customListview
-                = new FarmerRequestPickupChooseTransporterCustomListView(this
-                , newTransArray, newCarArray, newImages);
-        bestMatch.setAdapter(customListview);
+        if ((transArray.length != 0) && (carArray.length != 0) && (images.length != 0)) {
+            newTransArray[0] = transArray[0];
+            newCarArray[0] = carArray[0];
+            newImages[0] = images[0];
 
-        //checks to see if there are other drivers to choose from
-        //if so, removes the first driver or the current best match and makes a list view of the
-        //remaining drivers
-        if (transportername.size() > 0) {
-            transportername.remove(0);
-            cars.remove(0);
-            imgid.remove(0);
-        }
 
-        transArray = transportername.toArray(new String[transportername.size()]);
-        carArray = cars.toArray(new String[cars.size()]);
-        images = imgid.toArray(new Integer[imgid.size()]);
+            FarmerRequestPickupChooseTransporterCustomListView customListview
+                    = new FarmerRequestPickupChooseTransporterCustomListView(this
+                    , newTransArray, newCarArray, newImages);
+            bestMatch.setAdapter(customListview);
 
-        FarmerRequestPickupChooseTransporterCustomListView secondListView
-                = new FarmerRequestPickupChooseTransporterCustomListView(this
-                , transArray, carArray, images);
-
-        lst = findViewById(R.id.listview);
-        lst.setClickable(true);
-        lst.setAdapter(secondListView);
-
-        //checks to see if the best match item was selected and returns an index of 0 if it was
-        bestMatch.setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> adapter, View v, int position,
-                                    long arg3)
-            {
-                findViewById(R.id.popUp).setVisibility(View.VISIBLE);
-                transporterIndex = 0;
+            //checks to see if there are other drivers to choose from
+            //if so, removes the first driver or the current best match and makes a list view of the
+            //remaining drivers
+            if (transportername.size() > 0) {
+                transportername.remove(0);
+                cars.remove(0);
+                imgid.remove(0);
             }
-        });
 
-        //if there are other drivers to browse, it sets the index to the position of the
-        //index selected plus 1 since the best match would could as index = 0
-        //also displays the popup for the user to view their profile or select them
-        if (transportername.size() > 0) {
-            lst.setOnItemClickListener(new OnItemClickListener() {
+            transArray = transportername.toArray(new String[transportername.size()]);
+            carArray = cars.toArray(new String[cars.size()]);
+            images = imgid.toArray(new Integer[imgid.size()]);
+
+            FarmerRequestPickupChooseTransporterCustomListView secondListView
+                    = new FarmerRequestPickupChooseTransporterCustomListView(this
+                    , transArray, carArray, images);
+
+            lst = findViewById(R.id.listview);
+            lst.setClickable(true);
+            lst.setAdapter(secondListView);
+
+            //checks to see if the best match item was selected and returns an index of 0 if it was
+            bestMatch.setOnItemClickListener(new OnItemClickListener() {
                 public void onItemClick(AdapterView<?> adapter, View v, int position,
                                         long arg3) {
-                    transporterIndex = position + 1;
                     findViewById(R.id.popUp).setVisibility(View.VISIBLE);
+                    transporterIndex = 0;
                 }
             });
+
+            //if there are other drivers to browse, it sets the index to the position of the
+            //index selected plus 1 since the best match would could as index = 0
+            //also displays the popup for the user to view their profile or select them
+            if (transportername.size() > 0) {
+                lst.setOnItemClickListener(new OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> adapter, View v, int position,
+                                            long arg3) {
+                        transporterIndex = position + 1;
+                        findViewById(R.id.popUp).setVisibility(View.VISIBLE);
+                    }
+                });
+            }
+        }
+        else {
+            findViewById(R.id.noDrivers).setVisibility(View.VISIBLE);
+            findViewById(R.id.bestMatchListView).setVisibility(View.GONE);
+            findViewById(R.id.listview).setVisibility(View.GONE);
+            findViewById(R.id.bestMatch).setVisibility(View.GONE);
+            findViewById(R.id.browseOther).setVisibility(View.GONE);
         }
 
         //closes the popup

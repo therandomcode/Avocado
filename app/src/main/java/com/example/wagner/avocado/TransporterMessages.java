@@ -35,13 +35,14 @@ public class TransporterMessages extends AppActivity implements DataReceived {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transporter_messages);
+        findViewById(R.id.popUp).setVisibility(View.GONE);
 
         DatabaseHandler db = new DatabaseHandler(this);
         db.getRequests(getIntent().getStringExtra("phonenumber"));
     }
 
     public void Success(String response){
-        String name, date, time, sloc, eloc, farmernumber;
+        String name, date, time, sloc, eloc, farmernumber, status;
         try {
             JSONArray avail = new JSONArray(response);
             for (int i = 0; i < avail.length(); i++) {
@@ -53,31 +54,31 @@ public class TransporterMessages extends AppActivity implements DataReceived {
                 sloc = (String) x.get("startcity");
                 eloc = (String) x.get("endcity");
                 farmernumber = (String) x.get("phonenumberfarmer");
+                status = (String) x.get("status");
 
-                transportername.add(name);
-                realtimes.add(time);
-                times.add(time+" "+date);
-                dates.add(date);
-                imgid.add(R.drawable.arka);
-                msg.add(sloc+" to "+eloc);
-                farmernumbers.add(farmernumber);
+                if (!status.equals("accepted")) {
+                    transportername.add(name);
+                    realtimes.add(time);
+                    times.add(time + " " + date);
+                    dates.add(date);
+                    imgid.add(R.drawable.arka);
+                    msg.add(sloc + " to " + eloc);
+                    farmernumbers.add(farmernumber);
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-
-        findViewById(R.id.popUp).setVisibility(View.GONE);
-
         ArrayList<String> checktransporters = getIntent().getStringArrayListExtra("transporters");
         ArrayList<String> checktimes = getIntent().getStringArrayListExtra("times");
         ArrayList<String> checkmsg = getIntent().getStringArrayListExtra("messages");
         ArrayList<Integer> checkimages = getIntent().getIntegerArrayListExtra("images");
-        if ((checktransporters != null)) {
-            /*transportername = checktransporters.toArray(new String[0]);
-            times = checktimes.toArray(new String[0]);
-            msg = checkmsg.toArray(new String[0]);
-            imgid = checkimages.toArray(new Integer[0]);*/
+        if (checktransporters != null) {
+            transportername = checktransporters;
+            times = checktimes;
+            msg = checkmsg;
+            imgid = checkimages;
         }
 
         String[] tnames = transportername.toArray(new String[transportername.size()]);
