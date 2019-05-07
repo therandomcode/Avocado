@@ -1,7 +1,6 @@
 package com.example.wagner.avocado;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -100,7 +99,7 @@ public class TransporterMessages extends AppActivity implements DataReceived {
             }
         });
 
-        final Button acceptButton = findViewById(R.id.acceptButton);
+        final Button acceptButton = findViewById(R.id.changeStatusButton);
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
